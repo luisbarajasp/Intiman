@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Intiman</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <link href='https://fonts.googleapis.com/css?family=Vollkorn:400,700' rel='stylesheet' type='text/css'>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+    <div class="main-navigation">
+        <div id="brand">
+            <%= image_tag "brand.png" %>
+        </div>
+        <div class="tipos">
+            <div class="sec-title">
+                <h3>MARCAS</h3>
+            </div>
+            <div class="enlaces">
+                <h4><a href="#">DUHA</a></h4>
+                <h4><a href="#">BYJOU</a></h4>
+                <h4><a href="#">CLOVEK</a></h4>
+            </div>
+            <div class="sec-title">
+                <h3>CATEGORÍAS</h3>
+            </div>
+            <div class="enlaces">
+                <h4><a href="">TÉRMICOS</a></h4>
+                <h4><a href="">PLAYERAS</a></h4>
+                <h4><a href="">BÓXERS</a></h4>
+                <h4><a href="">TANGAS</a></h4>
+                <h4><a href="">TRAJES DE BAÑO</a></h4>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="social">
+                <h5>
+                    Redes Sociales
+                </h5>
+                <ul>
+                    <li><a href=""><i class="fa fa-facebook"></i></a></li>
+                    <li><a href=""><i class="fa fa-instagram"></i></a></li>
+                </ul>
+            </div>
+            <ul class="links">
+                <li><a href="#">Quienes Somos</a></li>
+                <li><a href="#">Contacto</a></li>
+                <li><a href="#">Aviso Legal</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="wrapper_page">
+        <%= yield %>
+    </div>
+
+</body>
+</html>

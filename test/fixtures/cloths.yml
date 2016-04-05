@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  description: MyText
+  normal_price: 1
+  discount_price: 1
+  sale: 1
+
+two:
+  description: MyText
+  normal_price: 1
+  discount_price: 1
+  sale: 1
