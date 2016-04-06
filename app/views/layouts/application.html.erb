@@ -13,7 +13,8 @@
         <div id="brand">
             <%= image_tag "brand.png" %>
         </div>
-        <div class="tipos">
+        <!-- <div class="tipos"> -->
+        <div class="marcas">
             <div class="sec-title">
                 <h3>MARCAS</h3>
             </div>
@@ -22,6 +23,8 @@
                 <h4><a href="#">BYJOU</a></h4>
                 <h4><a href="#">CLOVEK</a></h4>
             </div>
+        </div>
+        <div class="categorias">
             <div class="sec-title">
                 <h3>CATEGORÍAS</h3>
             </div>
@@ -33,6 +36,7 @@
                 <h4><a href="">TRAJES DE BAÑO</a></h4>
             </div>
         </div>
+        <!-- </div>
         <div class="footer">
             <div class="social">
                 <h5>
@@ -48,11 +52,45 @@
                 <li><a href="#">Contacto</a></li>
                 <li><a href="#">Aviso Legal</a></li>
             </ul>
-        </div>
+        </div>-->
     </div>
     <div class="wrapper_page">
         <%= yield %>
     </div>
 
+    <div class="footer">
+        <div class="social">
+            <h5>
+                Redes Sociales
+            </h5>
+            <a class="button" href=""><i class="fa fa-facebook"></i></a>
+            <a class="button" href=""><i class="fa fa-instagram"></i></a>
+        </div>
+        <div class="links">
+            <p>
+                <a href="#">Quienes Somos</a>
+            </p>
+            <p>
+                <a href="#">Contacto</a>
+            </p>
+            <p>
+                <a href="#">Aviso Legal</a>
+            </p>
+        </div>
+        <div class="newsletter">
+            <h3>Newsletter <i class="fa fa-envelope"></i></h3>
+            <p>
+                Suscríbete a nuestro newsletter para ser
+                <span> el primero con increíbles promociones!</span>
+            </p>
+            <form>
+                <input type="text" name="email" value="" placeholder="Email">
+            </form>
+
+        </div>
+        <div class="phrase">
+            <h4>frescura + comodidad + diseño</h4>
+        </div>
+    </div>
 </body>
 </html>
