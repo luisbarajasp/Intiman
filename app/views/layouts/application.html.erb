@@ -9,12 +9,11 @@
 </head>
 <body>
 
-    <div class="main-navigation">
+    <!-- <div class="main-navigation">
         <div id="brand">
-            <%= image_tag "brand.png" %>
+            <%= image_tag "brand1.png" %>
         </div>
-        <!-- <div class="tipos"> -->
-        <div class="marcas">
+        <div class="tipos">
             <div class="sec-title">
                 <h3>MARCAS</h3>
             </div>
@@ -23,8 +22,6 @@
                 <h4><a href="#">BYJOU</a></h4>
                 <h4><a href="#">CLOVEK</a></h4>
             </div>
-        </div>
-        <div class="categorias">
             <div class="sec-title">
                 <h3>CATEGORÍAS</h3>
             </div>
@@ -36,24 +33,78 @@
                 <h4><a href="">TRAJES DE BAÑO</a></h4>
             </div>
         </div>
-        <!-- </div>
-        <div class="footer">
-            <div class="social">
-                <h5>
-                    Redes Sociales
-                </h5>
-                <ul>
-                    <li><a href=""><i class="fa fa-facebook"></i></a></li>
-                    <li><a href=""><i class="fa fa-instagram"></i></a></li>
-                </ul>
+    </div> -->
+
+    <div class="main-navigation">
+        <%= link_to root_path do %>
+            <div id="brand">
+                <!-- <%= image_tag "brand.png" %> -->
+                <h1>INTI<span>MAN</span></h1>
+                <div id="slogan">
+                    <p>
+                        frescura + com<span>odidad + diseño</span>
+                    </p>
+                </div>
             </div>
-            <ul class="links">
-                <li><a href="#">Quienes Somos</a></li>
-                <li><a href="#">Contacto</a></li>
-                <li><a href="#">Aviso Legal</a></li>
-            </ul>
-        </div>-->
+        <% end %>
+        <div class="marcas">
+            <div class="sec-title">
+                <h3>MARCAS</h3>
+            </div>
+            <div class="enlaces">
+                <h4><a href="#">DUHA</a></h4>
+                <h4><a href="#">BYJOU</a></h4>
+                <h4><a href="#">CLOVEK</a></h4>
+            </div>
+        </div>
+        <div class="categorias marcas">
+            <div class="sec-title">
+                <h3>CATEGORÍAS</h3>
+            </div>
+            <div class="enlaces">
+                <h4><a href="">TÉRMICOS</a></h4>
+                <h4><a href="">PLAYERAS</a></h4>
+                <h4><a href="">BÓXERS</a></h4>
+                <h4><a href="">TANGAS</a></h4>
+                <h4><a href="">TRAJES DE BAÑO</a></h4>
+            </div>
+        </div>
+        <div class="buttons">
+            <div class="account button">
+                <h5>
+                <% if user_signed_in? %>
+                    <%= link_to "<i class='fa fa-male'> #{current_user.email}.html_safe", users_show(current_user.id) %>
+                <% else %>
+                    <%= link_to "Iniciar Sesión", new_user_session_path %>
+                <% end %>
+                </h5>
+            </div>
+            <div class="likes button hover">
+                <a href="#"><h5><i class="fa fa-heart"></i> (0)</h5></a>
+                <div class="content">
+                    <h1>content</h1>
+                </div>
+            </div>
+            <div class="bag button hover">
+                <a href="#"><h5><i class="fa fa-shopping-bag"></i> (0)</h5></a>
+                <div class="content">
+                    <h1>content</h1>
+                </div>
+            </div>
+            <div class="search-form">
+                <%= form_tag "/search/create", method: :get, id: "search_form" do %>
+                  <div class="fieldContainer">
+                      <span class="fa fa-search"></span>
+
+                        <%= text_field_tag :keyword, nil, placeholder: "Buscar", id: "query", class: "searchField blur" %>
+
+                      <!-- <input type="search" id="query" class="searchField blur" placeholder="Search"> -->
+                  </div>
+                   <% end %>
+            </div>
+        </div>
     </div>
+
     <div class="wrapper_page">
         <%= yield %>
     </div>
