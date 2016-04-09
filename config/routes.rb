@@ -1,8 +1,15 @@
 Rails.application.routes.draw do
+  get 'variants/new'
+
+  get 'characteristics/new'
+
+  resources :colors
+
+  resources :sizes
+
+  resources :users, :only => [:show]
+
   get 'sales/index'
-
-  get 'users/show'
-
 
   resources :categories, except: [:edit,:update]
 

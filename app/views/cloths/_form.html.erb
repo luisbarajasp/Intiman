@@ -22,6 +22,7 @@
 		<%= f.label :discount_price, "Precio de Descuento (si no hay, déjalo en 0)" %> <br>
 		<%= f.text_field :discount_price, class: "form-control" %>
 	</div>
+    
     <div class="form-group">
 		<%= f.label :category, "Selecciona a que categoria pertenece el producto" %> <br>
 		<%= f.select :category_id, @categories.map {|x| [x.name, x.id]}, {:include_blank=> "Categoria..."}, class: "form-control"%>

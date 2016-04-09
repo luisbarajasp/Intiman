@@ -30,6 +30,7 @@ gem 'friendly_id', '~> 5.1'
 gem 'autosize-rails', '~> 1.18', '>= 1.18.17'
 gem 'fancybox2-rails', '~> 0.2.8'
 gem 'jquery-fileupload-rails', '~> 0.4.6'
+gem 'simple_form', '~> 3.2', '>= 3.2.1'
 
 
 

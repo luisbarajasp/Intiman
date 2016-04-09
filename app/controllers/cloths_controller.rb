@@ -11,7 +11,7 @@ class ClothsController < ApplicationController
       @cloth = Cloth.new
       @categories =  Category.all.order('created_at ASC')
       @brands =  Brand.all.order('created_at ASC')
-
+      @sizes = Size.all.order('created_at ASC')
   end
 
   def create
@@ -51,6 +51,6 @@ class ClothsController < ApplicationController
 
   private
   def cloth_params
-      params.require(:cloth).permit(:description,:normal_price,:discount_price,:sale,:brand_id,:category_id)
+      params.require(:cloth).permit(:description,:normal_price,:discount_price,:brand_id,:category_id,{:size_ids => []})
   end
 end
