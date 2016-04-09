@@ -1,0 +1,37 @@
+<%= form_for @cloth do |f| %>
+    <% if @cloth.errors.any? %>
+
+        <h2><%= pluralize(@cloth.errors.count, "error") %> prevented from saving the cloth:</h2>
+        <ul>
+            <% @cloth.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+        </ul>
+
+    <% end %>
+
+	<div class="form-group">
+		<%= f.label :description, "Descripción del producto" %> <br>
+		<%= f.text_area :description, class: "form-control" %>
+	</div>
+    <div class="form-group">
+		<%= f.label :normal_price, "Precio Normal" %> <br>
+		<%= f.text_field :normal_price, class: "form-control" %>
+	</div>
+    <div class="form-group">
+		<%= f.label :discount_price, "Precio de Descuento (si no hay, déjalo en 0)" %> <br>
+		<%= f.text_field :discount_price, class: "form-control" %>
+	</div>
+    <div class="form-group">
+		<%= f.label :category, "Selecciona a que categoria pertenece el producto" %> <br>
+		<%= f.select :category_id, @categories.map {|x| [x.name, x.id]}, {:include_blank=> "Categoria..."}, class: "form-control"%>
+	</div>
+    <div class="form-group">
+		<%= f.label :brand, "Selecciona a que marca pertenece el producto" %> <br>
+		<%= f.select :brand_id, @brands.map {|x| [x.name, x.id]}, {:include_blank=> "Marca..."}, class: "form-control"%>
+	</div>
+	<div class="form-group">
+   	 	<%= f.submit "Submit", class: "btn btn-success" %>
+ 	</div>
+
+<% end %>

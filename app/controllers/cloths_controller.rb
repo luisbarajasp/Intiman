@@ -1,6 +1,6 @@
-class ClothesController < ApplicationController
+class ClothsController < ApplicationController
   def index
-      @clothes = Cloth.all.order('created_at DESC')
+      @cloths = Cloth.all.order('created_at DESC')
   end
 
   def show
@@ -9,6 +9,9 @@ class ClothesController < ApplicationController
 
   def new
       @cloth = Cloth.new
+      @categories =  Category.all.order('created_at ASC')
+      @brands =  Brand.all.order('created_at ASC')
+
   end
 
   def create

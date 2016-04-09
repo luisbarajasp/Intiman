@@ -1,13 +1,15 @@
 Rails.application.routes.draw do
+  get 'sales/index'
+
   get 'users/show'
 
 
   resources :categories, except: [:edit,:update]
-  
+
   resources :brands, except: [:edit,:update]
 
 
-  resources :clothes
+  resources :cloths
 
   devise_for :users
 

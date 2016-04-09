@@ -1,0 +1,11 @@
+<div class="sales-index">
+    <% @cloths.each do |cloth| %>
+        <div class="descr">
+            <p><%= cloth.description %></p>
+        </div>
+        <div class="prices">
+            <p><%= cloth.normal_price %></p>
+            <p><%= cloth.discount_price %></p>
+        </div>
+    <% end %>
+</div>
