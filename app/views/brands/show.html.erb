@@ -1,2 +1,15 @@
-<h1>Brands#show</h1>
-<p>Find me in app/views/brands/show.html.erb</p>
+<div class="page-name">
+    <h3><%= @brand.name %></h3>
+</div>
+<div class="brand-show">
+    <% if admin_signed_in? %>
+        <%= link_to '<i class="fa fa-trash"></i>'.html_safe, brand_path(@brand), method: :delete, data: {confirm: "Estas seguro?"} %>
+    <% end %>
+    <div class="clothes">
+        <% @brand.cloths.each do |cloth| %>
+            <div class="descr">
+                <p><%= cloth.description %></p>
+            </div>
+        <% end %>
+    </div>
+</div>

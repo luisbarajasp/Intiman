@@ -49,48 +49,53 @@
         <% end %>
         <div class="marcas">
             <div class="sec-title">
-                <h3>MARCAS</h3>
+                <%= link_to "<h3>MARCAS</h3>".html_safe, brands_path %>
             </div>
             <div class="enlaces">
-                <h4><a href="#">DUHA</a></h4>
-                <h4><a href="#">BYJOU</a></h4>
-                <h4><a href="#">CLOVEK</a></h4>
+                <% @brands.each do |brand| %>
+                    <h4><%= link_to brand.name.mb_chars.upcase.to_s, brand_path(brand) %></h4>
+                <% end %>
             </div>
         </div>
         <div class="categorias marcas">
             <div class="sec-title">
-                <h3>CATEGORÍAS</h3>
+                <%= link_to "<h3>CATEGORÍAS</h3>".html_safe, categories_path %>
             </div>
             <div class="enlaces">
-                <h4><a href="">TÉRMICOS</a></h4>
-                <h4><a href="">PLAYERAS</a></h4>
-                <h4><a href="">BÓXERS</a></h4>
-                <h4><a href="">TANGAS</a></h4>
-                <h4><a href="">TRAJES DE BAÑO</a></h4>
+                <% @categories.each do |category| %>
+                    <h4><%= link_to category.name.mb_chars.upcase.to_s, category_path(category) %></h4>
+                <% end %>
             </div>
         </div>
+        <div class="sale">
+            <a href="#"><h3>SALE</h3></a>
+        </div>
         <div class="buttons">
-            <div class="account button">
-                <h5>
-                <% if user_signed_in? %>
-                    <%= link_to "<i class='fa fa-male'> #{current_user.email}.html_safe", users_show(current_user.id) %>
-                <% else %>
-                    <%= link_to "Iniciar Sesión", new_user_session_path %>
-                <% end %>
-                </h5>
-            </div>
-            <div class="likes button hover">
-                <a href="#"><h5><i class="fa fa-heart"></i> (0)</h5></a>
-                <div class="content">
-                    <h1>content</h1>
+            <% if admin_signed_in? %>
+                <%= link_to "Cerrar sesión de administrador",destroy_admin_session_path, method: :delete %>
+            <% else %>
+                <div class="account button">
+                    <h5>
+                    <% if user_signed_in? %>
+                        <%= link_to "<i class='fa fa-male'> #{current_user.email}.html_safe", users_show(current_user.id) %>
+                    <% else %>
+                        <%= link_to "Iniciar Sesión", new_user_session_path %>
+                    <% end %>
+                    </h5>
                 </div>
-            </div>
-            <div class="bag button hover">
-                <a href="#"><h5><i class="fa fa-shopping-bag"></i> (0)</h5></a>
-                <div class="content">
-                    <h1>content</h1>
+                <div class="likes button hover">
+                    <a href="#"><h5><i class="fa fa-heart"></i> (0)</h5></a>
+                    <div class="content">
+                        <h1>content</h1>
+                    </div>
                 </div>
-            </div>
+                <div class="bag button hover">
+                    <a href="#"><h5><i class="fa fa-shopping-bag"></i> (0)</h5></a>
+                    <div class="content">
+                        <h1>content</h1>
+                    </div>
+                </div>
+            <% end %>
             <div class="search-form">
                 <%= form_tag "/search/create", method: :get, id: "search_form" do %>
                   <div class="fieldContainer">
@@ -105,43 +110,64 @@
         </div>
     </div>
 
+    <% if notice %>
+          <div class="alert alert-success">
+            <a href="#" data-dismiss="alert" class="close">×</a>
+            <ul>
+              <li>
+                <%= notice %>
+              </li>
+            </ul>
+          </div>
+    <% elsif alert %>
+        <div class="alert alert-danger">
+          <a href="#" data-dismiss="alert" class="close">×</a>
+          <ul>
+            <li>
+              <%= alert %>
+            </li>
+          </ul>
+        </div>
+    <% end %>
+
     <div class="wrapper_page">
         <%= yield %>
     </div>
+    <% if !admin_signed_in? %>
+        <div class="footer">
+            <div class="social">
+                <h5>
+                    Redes Sociales
+                </h5>
+                <a class="button" href=""><i class="fa fa-facebook"></i></a>
+                <a class="button" href=""><i class="fa fa-instagram"></i></a>
+            </div>
+            <div class="links">
+                <p>
+                    <a href="#">Quienes Somos</a>
+                </p>
+                <p>
+                    <a href="#">Contacto</a>
+                </p>
+                <p>
+                    <a href="#">Aviso Legal</a>
+                </p>
+            </div>
+            <div class="newsletter">
+                <h3>Newsletter <i class="fa fa-envelope"></i></h3>
+                <p>
+                    Suscríbete a nuestro newsletter para ser
+                    <span> el primero con increíbles promociones!</span>
+                </p>
+                <form>
+                    <input type="text" name="email" value="" placeholder="Email">
+                </form>
 
-    <div class="footer">
-        <div class="social">
-            <h5>
-                Redes Sociales
-            </h5>
-            <a class="button" href=""><i class="fa fa-facebook"></i></a>
-            <a class="button" href=""><i class="fa fa-instagram"></i></a>
+            </div>
+            <div class="phrase">
+                <h4>frescura + comodidad + diseño</h4>
+            </div>
         </div>
-        <div class="links">
-            <p>
-                <a href="#">Quienes Somos</a>
-            </p>
-            <p>
-                <a href="#">Contacto</a>
-            </p>
-            <p>
-                <a href="#">Aviso Legal</a>
-            </p>
-        </div>
-        <div class="newsletter">
-            <h3>Newsletter <i class="fa fa-envelope"></i></h3>
-            <p>
-                Suscríbete a nuestro newsletter para ser
-                <span> el primero con increíbles promociones!</span>
-            </p>
-            <form>
-                <input type="text" name="email" value="" placeholder="Email">
-            </form>
-
-        </div>
-        <div class="phrase">
-            <h4>frescura + comodidad + diseño</h4>
-        </div>
-    </div>
+    <% end %>
 </body>
 </html>

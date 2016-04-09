@@ -1,0 +1,24 @@
+<div class="categories-index skinny_wrapper">
+    <% if admin_signed_in? %>
+        <%= link_to "Nueva", new_brand_path %>
+    <% end %>
+    <% @brands.each do |brand| %>
+        <div class="brand">
+            <div class="name">
+                <h2><%= brand.name %></h2>
+            </div>
+            <div class="clothes">
+                <% brand.cloths.each do |cloth| %>
+                    <div class="cloth">
+                        <div class="desc">
+                            <p><%= cloth.description %></p>
+                        </div>
+                    </div>
+                <% end %>
+            </div>
+            <div class="link">
+                <%= link_to "Ver más", brand %>
+            </div>
+        </div>
+    <% end %>
+</div>

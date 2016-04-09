@@ -21,7 +21,7 @@
  @import "font-awesome";
 
  $principal: #125688;
- $secondary: #9a976a;
+ $secondary: #C2B49A;
  $dark: #212121;
  $light-dark: #272727;
  $white: #fff;
@@ -268,6 +268,20 @@ p,ul,ol{
             min-width: 130px;
         }
     }
+    .sale{
+        display: inline-block;
+        margin: 0 2.5em;
+        position: relative;
+        a{
+            h3{
+                font-size: 14px;
+                color: $dark;
+                &:hover{
+                    color: $secondary;
+                }
+            }
+        }
+    }
     .buttons{
         display: inline-block;
         float: right;
@@ -339,23 +353,42 @@ p,ul,ol{
                     border: none;
                     background: transparent;
                     color: $dark;
-                    &::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+                    &::-webkit-input-placeholder {
                         color:    $dark;
                     }
-                    &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+                    &:-moz-placeholder {
                        color:    $dark;
                        opacity:  1;
                     }
-                    &::-moz-placeholder { /* Mozilla Firefox 19+ */
+                    &::-moz-placeholder {
                        color:    $dark;
                        opacity:  1;
                     }
-                    &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+                    &:-ms-input-placeholder {
                        color:    $dark;
                     }
                 }
             }
         }
+    }
+}
+
+.alert{
+    z-index: 300;
+    position: fixed;
+    top: 70px;
+    left: 10%;
+    width: 80%;
+    ul>li{
+        list-style: none;
+        font-size: 1em;
+    }
+}
+
+.page-name{
+    text-align: center;
+    h3{
+        font-size: 20px;
     }
 }
 
@@ -508,3 +541,9 @@ p,ul,ol{
         }
     }
 }
+
+@import 'brands';
+@import 'categories';
+@import 'clothes';
+@import 'pages';
+@import 'users';

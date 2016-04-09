@@ -16,7 +16,7 @@
 //= require turbolinks
 //= require_tree .
 
-$(document).ready(function(){
+var ready = function(){
     // var width = $('.main-navigation').width();
     //
     // $('.wrapper_page').css("margin-left", width);
@@ -27,7 +27,11 @@ $(document).ready(function(){
     $('.search-form').click(function(){
         $('.search-form .fieldContainer .searchField').fadeIn().focus();
     });
-});
+
+};
+
+$(document).ready(ready);
+$(document).on('page:load', ready);
 
 //For hiding search form when clicking in other part of document
 $(document).mouseup(function (e)

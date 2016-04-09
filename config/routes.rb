@@ -1,14 +1,16 @@
 Rails.application.routes.draw do
   get 'users/show'
 
-  get 'brands/show'
 
-  get 'categories/show'
+  resources :categories, except: [:edit,:update]
+  
+  resources :brands, except: [:edit,:update]
+
 
   resources :clothes
 
   devise_for :users
-  
+
   devise_for :admins
 
   get 'pages/home'
