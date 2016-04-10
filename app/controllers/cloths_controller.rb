@@ -46,7 +46,7 @@ class ClothsController < ApplicationController
       @cloth = Cloth.find(params[:id])
       @cloth.destroy
 
-      redirect_to clothes
+      redirect_to cloths_path
   end
 
   private

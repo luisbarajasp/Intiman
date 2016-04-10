@@ -1,2 +1,15 @@
-<h1>Clothes#show</h1>
-<p>Find me in app/views/clothes/show.html.erb</p>
+<div class="cloth">
+    <% if admin_signed_in? %>
+        <div class="admin-links">
+            <%= link_to "<i class='fa fa-pencil'></i>".html_safe, edit_cloth_path(@cloth) %>
+            <%= link_to '<i class="fa fa-trash"></i>'.html_safe, cloth_path(@cloth), method: :delete, data: {confirm: "Estás seguro?"} %>
+        </div>
+    <% end %>
+    <h6><%= @cloth.description %></h6>
+    <h5>
+        <%= @cloth.normal_price %>
+        <% if @cloth.discount_price != 0 %>
+        <span><%= @cloth.discount_price %></span>
+        <% end %>
+    </h5>
+</div>

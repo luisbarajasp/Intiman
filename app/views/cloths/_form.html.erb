@@ -1,4 +1,4 @@
-<%= form_for @cloth do |f| %>
+<%= semantic_form_for @cloth do |f| %>
     <% if @cloth.errors.any? %>
 
         <h2><%= pluralize(@cloth.errors.count, "error") %> prevented from saving the cloth:</h2>
@@ -11,28 +11,26 @@
     <% end %>
 
 	<div class="form-group">
-		<%= f.label :description, "Descripción del producto" %> <br>
-		<%= f.text_area :description, class: "form-control" %>
+		<%= f.input :description, :as => :text, :label => "Descripción del producto", :input_html => { :class => 'form-control'} %>
 	</div>
     <div class="form-group">
-		<%= f.label :normal_price, "Precio Normal" %> <br>
-		<%= f.text_field :normal_price, class: "form-control" %>
+		<%= f.input :normal_price, :label => "Precio Normal", :input_html => { :class => 'form-control'} %>
 	</div>
     <div class="form-group">
-		<%= f.label :discount_price, "Precio de Descuento (si no hay, déjalo en 0)" %> <br>
-		<%= f.text_field :discount_price, class: "form-control" %>
+        <%= f.input :discount_price, :label => "Precio de Descuento", :hint => "si no tiene descuento, déjalo en 0", :input_html => { :class => 'form-control'} %>
 	</div>
 
     <div class="form-group">
-		<%= f.label :category, "Selecciona a que categoria pertenece el producto" %> <br>
-		<%= f.select :category_id, @categories.map {|x| [x.name, x.id]}, {:include_blank=> "Categoria..."}, class: "form-control"%>
+        <%= f.input :category, :as => :select, :collection => Category.all, :label => "Selecciona a que categoria pertenece el producto", :input_html => { :class => 'form-control'}, :include_blank => false %>
 	</div>
     <div class="form-group">
-		<%= f.label :brand, "Selecciona a que marca pertenece el producto" %> <br>
-		<%= f.select :brand_id, @brands.map {|x| [x.name, x.id]}, {:include_blank=> "Marca..."}, class: "form-control"%>
+        <%= f.input :brand, :as => :select, :collection => Brand.all, :label => "Selecciona a que marca pertenece el producto", :input_html => { :class => 'form-control'}, :include_blank => false %>
 	</div>
+    <div class="form-group">
+        <%= f.input :sizes, :as => :check_boxes, :collection => Hash[Size.all.map { |size| [size.letter, size.id] }] %>
+    </div>
 	<div class="form-group">
-   	 	<%= f.submit "Submit", class: "btn btn-success" %>
+        <%= f.action :submit %>
  	</div>
 
 <% end %>

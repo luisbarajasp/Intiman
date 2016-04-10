@@ -1,27 +1,8 @@
 Rails.application.routes.draw do
-  get 'sizes/index'
-
-  get 'sizes/new'
-
-  get 'sizes/show'
-
-  get 'sizes/edit'
-
-  get 'colors/index'
-
-  get 'colors/show'
-
-  get 'colors/new'
-
-  get 'colors/edit'
-
-  get 'variants/new'
-
-  get 'characteristics/new'
 
   resources :colors
 
-  resources :sizes
+  resources :sizes, :except => [:edit, :update]
 
   resources :users, :only => [:show]
 
