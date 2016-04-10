@@ -32,8 +32,14 @@
     <div class="form-group">
         <%= f.input :colors, :as => :check_boxes, :label => "Selecciona los colores en los que está disponible", :collection => Color.all %>
     </div>
+    <div class="form-group">
+        <%= f.input :image1, :required => false, :as => :file, :label => "Imagen 1", :hint => "Producto sólo", :input_html => { :class => 'form-control'} %>
+    </div>
+    <div class="form-group">
+        <%= f.input :image2, :required => false, :as => :file, :label => "Imagen 2", :hint => "Modelo con producto puesto", :input_html => { :class => 'form-control'} %>
+    </div>
 	<div class="form-group">
-        <%= f.action :submit %>
+        <%= f.action :submit, :button_html => { :value => 'Nuevo Producto'}, :input_html => { :class => 'btn btn-success'} %>
  	</div>
 
 <% end %>

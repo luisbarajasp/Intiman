@@ -51,6 +51,6 @@ class ClothsController < ApplicationController
 
   private
   def cloth_params
-      params.require(:cloth).permit(:description,:normal_price,:discount_price,:brand_id,:category_id,{:size_ids => []},{:color_ids => []})
+      params.require(:cloth).permit(:description,:normal_price,:discount_price,:brand_id,:category_id,{:size_ids => []},{:color_ids => []}, :image1, :image2)
   end
 end

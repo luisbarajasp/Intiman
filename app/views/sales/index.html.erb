@@ -3,6 +3,16 @@
         <h3>Sales</h3>
     </div>
     <% @cloths.each do |cloth| %>
+        <% if cloth.image1 && cloth.image2 %>
+            <div class="image1">
+                <h2>Producto solo</h2>
+                <%= image_tag cloth.image1.url(:preview) %>
+            </div>
+            <div class="image2">
+                <h2>Modelo con producto</h2>
+                <%= image_tag cloth.image2.url(:preview) %>
+            </div>
+        <% end %>
         <div class="descr">
             <p><%= cloth.description %></p>
         </div>
