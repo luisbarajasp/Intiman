@@ -2,8 +2,8 @@
 
 one:
   name: MyString
-  cloth_id: 1
+  hex: MyString
 
 two:
   name: MyString
-  cloth_id: 1
+  hex: MyString

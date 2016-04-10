@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class VariantTest < ActiveSupport::TestCase
+class SizeTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
