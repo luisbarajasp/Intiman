@@ -27,7 +27,10 @@
         <%= f.input :brand, :as => :select, :collection => Brand.all, :label => "Selecciona a que marca pertenece el producto", :input_html => { :class => 'form-control'}, :include_blank => false %>
 	</div>
     <div class="form-group">
-        <%= f.input :sizes, :as => :check_boxes, :collection => Hash[Size.all.map { |size| [size.letter, size.id] }] %>
+        <%= f.input :sizes, :as => :check_boxes, :label => "Selecciona las tallas en las que está disponible", :collection => Hash[Size.all.map { |size| [size.letter, size.id] }] %>
+    </div>
+    <div class="form-group">
+        <%= f.input :colors, :as => :check_boxes, :label => "Selecciona los colores en los que está disponible", :collection => Color.all %>
     </div>
 	<div class="form-group">
         <%= f.action :submit %>
