@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   resources :users, :only => [:show]
 
-  get 'sales/index'
+  get 'sales/index', :path => 'sales'
 
   resources :categories, except: [:edit,:update]
 

@@ -15,6 +15,8 @@
 //= require jquery-fileupload
 //= require twitter/bootstrap
 //= require turbolinks
+//= require masonry/jquery.masonry
+//= require jquery.turbolinks
 //= require_tree .
 
 var ready = function(){

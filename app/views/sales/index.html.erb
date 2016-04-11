@@ -1,24 +1,83 @@
-<div class="sales-index">
-    <div class="page-name">
-        <h3>Sales</h3>
+<div class="page-name">
+    <h3>Sales</h3>
+</div>
+<div class="wrapper">
+    <div class="filters">
+        <div class="btn-group">
+          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Talla <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </div>
+        <div class="btn-group">
+          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Color <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </div>
+        <div class="btn-group">
+          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Marca <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </div>
+        <div class="btn-group">
+          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Categoría <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </div>
     </div>
-    <% @cloths.each do |cloth| %>
-        <% if cloth.image1 && cloth.image2 %>
-            <div class="image1">
-                <h2>Producto solo</h2>
-                <%= image_tag cloth.image1.url(:preview) %>
-            </div>
-            <div class="image2">
-                <h2>Modelo con producto</h2>
-                <%= image_tag cloth.image2.url(:preview) %>
-            </div>
+    <div id="cloths" class="transitions-enabled clearfix">
+        <% @cloths.each do |cloth| %>
+            <%= link_to cloth do %>
+                <div class="box col3">
+                    <div class="thumbnail">
+                        <div class="images">
+                            <div class="image1">
+                                <%= image_tag cloth.image1.url(:preview) %>
+                            </div>
+                            <div class="image2">
+                                <%= image_tag cloth.image2.url(:preview) %>
+                            </div>
+                        </div>
+                        <div class="descr">
+                            <p><%= cloth.description %></p>
+                        </div>
+                        <div class="prices">
+                            <p id="discount">MXN <span id="nom_price"><%= number_to_currency(cloth.normal_price) %></span> <span id="dis_price"><%= number_to_currency(cloth.discount_price) %></span></p>
+                        </div>
+                        <div class="buttons">
+                            <a id="like" href=""><i class="fa fa-heart"></i></a> <br>
+                            <a id="bag" href=""><i class="fa fa-shopping-bag"></i></a>
+                        </div>
+                    </div>
+                </div>
+            <% end %>
         <% end %>
-        <div class="descr">
-            <p><%= cloth.description %></p>
-        </div>
-        <div class="prices">
-            <p><%= cloth.normal_price %></p>
-            <p><%= cloth.discount_price %></p>
-        </div>
-    <% end %>
+    </div>
 </div>
