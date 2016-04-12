@@ -74,15 +74,17 @@
                                 <%= image_tag cloth.image2.url(:preview) %>
                             </div>
                         </div>
-                        <div class="descr">
-                            <p><%= cloth.description %></p>
-                        </div>
-                        <div class="prices">
-                            <p id="discount">MXN <span id="nom_price"><%= number_to_currency(cloth.normal_price) %></span> <span id="dis_price"><%= number_to_currency(cloth.discount_price) %></span></p>
-                        </div>
-                        <div class="buttons">
-                            <a id="like" href=""><i class="fa fa-heart"></i></a> <br>
-                            <a id="bag" href=""><i class="fa fa-shopping-bag"></i></a>
+                        <div class="caption">
+                            <div class="descr">
+                                <p><%= cloth.description %></p>
+                            </div>
+                            <div class="prices">
+                                <p id="discount">MXN <span id="nom_price"><%= number_to_currency(cloth.normal_price) %></span> <span id="dis_price"><%= number_to_currency(cloth.discount_price) %></span></p>
+                            </div>
+                            <div class="buttons">
+                                <a id="like" href=""><i class="fa fa-heart"></i></a> <br>
+                                <a id="bag" href=""><i class="fa fa-shopping-bag"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>

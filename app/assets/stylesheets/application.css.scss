@@ -463,64 +463,75 @@ p,ul,ol{
                 }
             }
         }
-        .descr{
-            margin: 0;
+        .caption{
             position: absolute;
             top: 190px;
-            height: 35px;
-            width: 220px;
-            padding: 2px;
-            overflow: hidden;
-            p{
-                font-size: 13px;
-            }
-        }
-        .prices{
-            position: absolute;
-            bottom: 18px;
-            width: 220px;
-            padding: 2px;
-            height: 40px;
-            font-family: 'Vollkorn', serif;
-            p{
-                font-size: 16px;
-            }
-            p#discount{
-                #nom_price{
-                    text-decoration: line-through;
-                    color: #878585;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 90px;
+            width: 285px;
+            .descr{
+                margin: 0;
+                position: absolute;
+                top: 0px;
+                height: 25px;
+                width: 220px;
+                padding: 2px;
+                overflow: hidden;
+                p{
+                    font-size: 13px;
                 }
-                #dis_price{
+            }
+            .prices{
+                position: absolute;
+                bottom: 28px;
+                width: 220px;
+                padding: 2px;
+                height: 40px;
+                font-family: 'Vollkorn', serif;
+                p{
+                    font-size: 16px;
+                }
+                p#discount{
+                    #nom_price{
+                        text-decoration: line-through;
+                        color: #878585;
+                    }
+                    #dis_price{
+                        font-size: 20px;
+                        color: $red;
+                    }
+                }
+            }
+            .buttons{
+                position: absolute;
+                right: 2px;
+                bottom: 32px;
+                height: 60px;
+                line-height: 30px;
+                width: 70px;
+                text-align: center;
+                a{
                     font-size: 20px;
-                    color: $red;
+                    color: $dark;
+                    text-decoration: none;
+                }
+                #bag{
+                    &:hover{
+                        color: $secondary;
+                    }
+                }
+                #like{
+                    &:hover{
+                        color: $red;
+                    }
                 }
             }
         }
-        .buttons{
-            position: absolute;
-            right: 2px;
-            bottom: 22px;
-            height: 70px;
-            line-height: 35px;
-            width: 70px;
-            text-align: center;
-            a{
-                font-size: 20px;
-                color: $dark;
-                text-decoration: none;
-            }
-            #bag{
-                &:hover{
-                    color: $secondary;
-                }
-            }
-            #like{
-                &:hover{
-                    color: $red;
-                }
-            }
-        }
+
         &:hover{
+            background: $uLight-gray;
             .images{
                 .image1{
                     display: none;
@@ -529,7 +540,10 @@ p,ul,ol{
                     display: block;
                 }
             }
-
+            .caption{
+                background: $white;
+                top: 90px;
+            }
         }
     }
 }
