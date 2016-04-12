@@ -1,5 +1,16 @@
 <div class="new-form super_skinny_wrapper">
     <h1>Editar Producto</h1>
 
+    <div class="images">
+        <div class="col-md-6">
+            <h4>Imagen del producto</h4>
+            <%= image_tag @cloth.image1.url(:preview) %>
+        </div>
+        <div class="col-md-6">
+            <h4>Imagen del modelo con producto</h4>
+            <%= image_tag @cloth.image2.url(:preview) %>
+        </div>
+    </div>
+
     <%= render 'form' %>
 </div>

@@ -1,5 +1,5 @@
 class AddSizesToCloths < ActiveRecord::Migration
   def change
-      add_column :cloths, :sizes, :integer, array: true, default: []
+      add_column :cloths, :sizes, :string, array: true, default: []
   end
 end

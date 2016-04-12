@@ -16,6 +16,8 @@ class ClothsController < ApplicationController
 
   def create
       @cloth = Cloth.new cloth_params
+      @cloth.category_n = @cloth.category.name
+      @cloth.brand_n = @cloth.brand.name
 
       if @cloth.save
           redirect_to @cloth, notice: "Cloth uploaded succesfully."
@@ -51,6 +53,8 @@ class ClothsController < ApplicationController
 
   private
   def cloth_params
-      params.require(:cloth).permit(:description,:normal_price,:discount_price,:brand_id,:category_id,{:size_ids => []},{:color_ids => []}, :image1, :image2)
+      params.require(:cloth).permit(:description,:normal_price,:discount_price,:brand_id,:category_id,
+      #{:size_ids => []},{:color_ids => []},
+      :image1, :image2,{:sizes => []},{:colors => []})
   end
 end
