@@ -2,29 +2,16 @@
     <h3>Sales</h3>
 </div>
 <div class="wrapper">
+
     <div class="filters">
         <div class="btn-group">
           <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Talla <span class="caret"></span>
           </button>
           <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-          </ul>
-        </div>
-        <div class="btn-group">
-          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Precio <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
+            <% @sizes.each do |size| %>
+                <li><%= link_to size.letter, params.merge(:size => size.letter) %></li>
+            <% end %>
           </ul>
         </div>
         <div class="btn-group">
@@ -32,11 +19,9 @@
             Color <span class="caret"></span>
           </button>
           <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
+            <% @colors.each do |color| %>
+                <li><%= link_to color.name, params.merge(:color => color.name) %> </li>
+            <% end %>
           </ul>
         </div>
         <div class="btn-group">
@@ -44,11 +29,9 @@
             Marca <span class="caret"></span>
           </button>
           <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
+            <% @brands.each do |brand| %>
+                <li><%= link_to brand.name, params.merge(:brand => brand.name) %></li>
+            <% end %>
           </ul>
         </div>
         <div class="btn-group">
@@ -56,12 +39,13 @@
             Categoría <span class="caret"></span>
           </button>
           <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
+            <% @categories.each do |category| %>
+                <li><%= link_to category.name, params.merge(:category => category.name) %></li>
+            <% end %>
           </ul>
+        </div>
+        <div class="btn-group" id="clean">
+            <%= link_to "Limpiar filtros", sales_index_path %>
         </div>
         <div class="sort-by">
             <div class="btn-group">
@@ -69,15 +53,14 @@
                 Ordenar por: <span class="caret"></span>
               </button>
               <ul class="dropdown-menu dropdown-menu-right">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">Separated link</a></li>
+                <li><%= link_to "Más nuevo", params.merge(:sort => 'created_at', :order => 'DESC') %></li>
+                <li><%= link_to "Precio menor a mayor", params.merge(:sort => 'discount_price', :order => 'ASC') %></li>
+                <li><%= link_to "Precio mayor a menor", params.merge(:sort => 'discount_price', :order => 'DESC') %></li>
               </ul>
             </div>
         </div>
     </div>
+
     <div id="cloths" class="transitions-enabled clearfix">
         <% @cloths.each do |cloth| %>
             <%= link_to cloth do %>

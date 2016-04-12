@@ -8,5 +8,7 @@ class ApplicationController < ActionController::Base
   def get_categories_brands
       @categories = Category.all.order('created_at ASC')
       @brands = Brand.all.order('created_at ASC')
+      @sizes = Size.all.order('created_at ASC')
+      @colors = Color.all.order('created_at ASC')
   end
 end

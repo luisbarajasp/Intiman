@@ -11,13 +11,33 @@ class ClothsController < ApplicationController
       @cloth = Cloth.new
       @categories =  Category.all.order('created_at ASC')
       @brands =  Brand.all.order('created_at ASC')
-      @sizes = Size.all.order('created_at ASC')
   end
 
   def create
       @cloth = Cloth.new cloth_params
       @cloth.category_n = @cloth.category.name
       @cloth.brand_n = @cloth.brand.name
+
+      tmp = Array.new
+      tmp2 = Array.new
+
+
+      @cos = @cloth.cos
+      @cos.each do |co|
+          @color = co.color.name
+          tmp<<@color
+      end
+
+       @cloth.colors_n = tmp
+
+       @sis = @cloth.sis
+       @sis.each do |si|
+           @size = si.size.letter
+           tmp2<<@size
+       end
+
+       @cloth.sizes_n = tmp2
+
 
       if @cloth.save
           redirect_to @cloth, notice: "Cloth uploaded succesfully."
@@ -32,6 +52,28 @@ class ClothsController < ApplicationController
 
   def update
       @cloth = Cloth.find(params[:id])
+      @cloth.category_n = @cloth.category.name
+      @cloth.brand_n = @cloth.brand.name
+
+      tmp = Array.new
+      tmp2 = Array.new
+
+
+      @cos = @cloth.cos
+      @cos.each do |co|
+          @color = co.color.name
+          tmp<<@color
+      end
+
+      @cloth.colors_n = tmp
+
+      @sis = @cloth.sis
+      @sis.each do |si|
+          @size = si.size.letter
+          tmp2<<@size
+      end
+
+      @cloth.sizes_n = tmp2
 
       respond_to do |f|
 			if @cloth.update(cloth_params)
@@ -54,7 +96,8 @@ class ClothsController < ApplicationController
   private
   def cloth_params
       params.require(:cloth).permit(:description,:normal_price,:discount_price,:brand_id,:category_id,
-      #{:size_ids => []},{:color_ids => []},
-      :image1, :image2,{:sizes => []},{:colors => []})
+      {:size_ids => []},{:color_ids => []},:image1, :image2
+      #,{:sizes => []},{:colors => []}
+      )
   end
 end

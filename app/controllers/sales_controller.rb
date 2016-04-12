@@ -1,48 +1,51 @@
 class SalesController < ApplicationController
   def index
-      #@cloths = Cloth.where('discount_price != 0').order('created_at DESC')
 
       #filtering
-        conditions = String.new
-        wheres = Array.new
+        # conditions = String.new
+        # wheres = Array.new
+        #
+        # conditions << "discount_price != 0"
+        #
+        # if params.has_key?(:size)
+        #   conditions << " AND " unless conditions.length == 0
+        #   conditions << "? IN (sizes)"
+        #   wheres << params[:size]
+        # end
+        # if params.has_key?(:discount_price)
+        #   conditions << " AND " unless conditions.length == 0
+        #   conditions << "discount_price < ?"
+        #   wheres << params[:discount_price]
+        # end
+        # if params.has_key?(:normal_price)
+        #   conditions << " AND " unless conditions.length == 0
+        #   conditions << "normal_price < ?"
+        #   wheres << params[:normal_price]
+        # end
+        # if params.has_key?(:color)
+        #   conditions << " AND " unless conditions.length == 0
+        #   conditions << "? IN (colors)"
+        #   wheres << params[:color]
+        # end
+        # if params.has_key?(:brand)
+        #   conditions << " AND " unless conditions.length == 0
+        #   conditions << "brand_n = ?"
+        #   wheres << params[:brand]
+        # end
+        # if params.has_key?(:category)
+        #   conditions << " AND " unless conditions.length == 0
+        #   conditions << "category_n = ?"
+        #   wheres << params[:category]
+        # end
+        #
+        # wheres.insert(0, conditions)
 
-        conditions << "discount_price != 0"
+        @cloths = Cloth.order( "#{params[:sort] or 'created_at'} #{params[:order] or 'DESC'}")
 
-        if params.has_key?(:type)
-          conditions << " AND " unless conditions.length == 0
-          conditions << "type = ?"
-          wheres << params[:type]
-        end
-        if params.has_key?(:make)
-          conditions << " AND " unless conditions.length == 0
-          conditions << "make = ?"
-          wheres << params[:make]
-        end
-        if params.has_key?(:model)
-          conditions << " AND " unless conditions.length == 0
-          conditions << "model = ?"
-          wheres << params[:model]
-        end
-        if params.has_key?(:color)
-          conditions << " AND " unless conditions.length == 0
-          conditions << "color = ?"
-          wheres << params[:color]
-        end
-        if params.has_key?(:price)
-          conditions << " AND " unless conditions.length == 0
-          conditions << "discount_price < ?"
-          wheres << params[:price]
-        end
-        if params.has_key?(:city)
-          conditions << " AND " unless conditions.length == 0
-          conditions << "merchants.city = ?"
-          wheres << params[:city]
-        end
-
-        wheres.insert(0, conditions)
-
-        @cloths = Cloth.where( wheres ).order( "#{params[:sort] or 'created_at'} DESC")
-
-        #render :json => @cloth.as_json()
+        @cloths = @cloths.where('? IN (sizes)', params[:size]).to_a if params[:size]
+        @cloths = @cloths.where('brand_n = ?', params[:brand]) if params[:brand]
+        @cloths = @cloths.where('category_n = ?', params[:category]) if params[:category]
+        @cloths = @cloths.where('? IN (colors)', params[:color]) if params[:color]
+        @cloths = @cloths.where('discount_price < ?', params[:price]) if params[:price]
   end
 end
