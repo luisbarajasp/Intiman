@@ -242,7 +242,7 @@ p,ul,ol{
             -o-transition: all 0.6s ease-in-out;
             transition: all 0.6s ease-in-out;
             top: 67px;
-            background: $white;
+            background: #faf4f4;
             padding: 0 5px;
             h4{
                 a{
@@ -391,6 +391,7 @@ p,ul,ol{
 
 .page-name{
     text-align: center;
+    padding-bottom: 3em;
     h3{
         font-size: 30px;
     }
@@ -412,6 +413,9 @@ p,ul,ol{
         &:hover{
             background: $secondary;
         }
+    }
+    .sort-by{
+        float: right;
     }
 }
 
