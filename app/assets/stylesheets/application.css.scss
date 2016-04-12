@@ -415,8 +415,46 @@ p,ul,ol{
             background: $secondary;
         }
     }
+    #clean{
+        a{
+            -moz-transition: all 0.4s ease;
+            -o-transition: all 0.4s ease;
+            -webkit-transition: all 0.4s ease;
+            transition: all 0.4s ease;
+            font-weight: 400;
+            text-decoration: none;
+            background: $white;
+            padding: 3px;
+            border-radius: 3px;
+            -moz-border-radius: 3px;
+            -webkit-border-radius: 3px;
+            -o-border-radius: 3px;
+            &:hover{
+                background: $secondary;
+                color: $white;
+            }
+        }
+    }
     .sort-by{
         float: right;
+    }
+}
+
+.disable{
+    a{
+        pointer-events: none;
+        cursor: default;
+        color: $white;
+        border: 1px solid $white;
+
+    }
+}
+
+.enable{
+    a{
+        cursor: pointer;
+        border: 1px solid $secondary;
+        color: $secondary;
     }
 }
 
@@ -512,6 +550,7 @@ p,ul,ol{
                 line-height: 30px;
                 width: 70px;
                 text-align: center;
+                padding-top: 5px;
                 a{
                     font-size: 20px;
                     color: $dark;
@@ -525,6 +564,42 @@ p,ul,ol{
                 #like{
                     &:hover{
                         color: $red;
+                    }
+                }
+            }
+            .info{
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 280px;
+                height: 30px;
+                padding: 2px;
+                line-height: 26px;
+                .sizes{
+                    text-align: center;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 99px;
+                    p{
+                        display: inline;
+                    }
+                }
+                .colors{
+                    text-align: left;
+                    width: 180px;
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    left: 100px;
+                    height: 26px;
+                    #circle {
+                      display: inline-block;
+                      width: 14px;
+                      height: 14px;
+                      -webkit-border-radius: 7px;
+                      -moz-border-radius: 7px;
+                      border-radius: 7px;
                     }
                 }
             }

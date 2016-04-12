@@ -44,7 +44,7 @@
             <% end %>
           </ul>
         </div>
-        <div class="btn-group" id="clean">
+        <div class="btn-group disable" id="clean">
             <%= link_to "Limpiar filtros", sales_index_path %>
         </div>
         <div class="sort-by">
@@ -84,6 +84,22 @@
                             <div class="buttons">
                                 <a id="like" href=""><i class="fa fa-heart"></i></a> <br>
                                 <a id="bag" href=""><i class="fa fa-shopping-bag"></i></a>
+                            </div>
+                            <div class="info">
+                                <div class="sizes">
+                                    <% @sis.each do |si| %>
+                                        <% if si.cloth == cloth %>
+                                            <p><%= si.size.letter %></p>
+                                        <% end %>
+                                    <% end %>
+                                </ul>
+                                <div class="colors">
+                                    <% @cos.each do |co| %>
+                                        <% if co.cloth == cloth %>
+                                            <div id="circle" style="background: <%= co.color.hex %>"></div>
+                                        <% end %>
+                                    <% end %>
+                                </div>
                             </div>
                         </div>
                     </div>

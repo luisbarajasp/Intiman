@@ -31,6 +31,12 @@ var ready = function(){
         $('.search-form .fieldContainer .searchField').fadeIn().focus();
     });
 
+    if (window.location.href.indexOf("?") > -1) {
+        $('#clean').removeClass("disable").addClass('enable');
+    }else{
+        $('#clean').addClass("disable").removeClass('enable');
+    }
+
 };
 
 $(document).ready(ready);

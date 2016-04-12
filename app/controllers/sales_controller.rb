@@ -42,10 +42,13 @@ class SalesController < ApplicationController
 
         @cloths = Cloth.order( "#{params[:sort] or 'created_at'} #{params[:order] or 'DESC'}")
 
-        @cloths = @cloths.where('? IN (sizes)', params[:size]).to_a if params[:size]
+        @cloths = @cloths.where('? IN (sizes_n)', params[:size]).to_a if params[:size]
         @cloths = @cloths.where('brand_n = ?', params[:brand]) if params[:brand]
         @cloths = @cloths.where('category_n = ?', params[:category]) if params[:category]
-        @cloths = @cloths.where('? IN (colors)', params[:color]) if params[:color]
+        @cloths = @cloths.where('? IN (colors_n)', params[:color]) if params[:color]
         @cloths = @cloths.where('discount_price < ?', params[:price]) if params[:price]
+
+        @cos = Co.all
+        @sis = Si.all
   end
 end
