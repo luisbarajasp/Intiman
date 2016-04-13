@@ -244,7 +244,8 @@ p,ul,ol{
             transition: all 0.6s ease-in-out;
             top: 67px;
             //background: #F8F7F7;
-            background: $uLight-gray;
+            background: $white;
+            box-shadow: 1px 1px 10px 1px #888;
             padding: 0 5px;
             h4{
                 a{
@@ -292,6 +293,7 @@ p,ul,ol{
         display: inline-block;
         float: right;
         height: 70px;
+        padding-right: 10px;
         .button,.search-form{
             display: inline-block;
             padding: 10px;
@@ -310,7 +312,14 @@ p,ul,ol{
             }
         }
         .account{
-
+            .btn-default{
+                border: 0;
+                border-radius: 0;
+                &:hover{
+                    background: $dark;
+                    color: $secondary;
+                }
+            }
         }
         .hover{
             .content{
@@ -396,6 +405,30 @@ p,ul,ol{
     padding-bottom: 3em;
     h3{
         font-size: 30px;
+    }
+}
+
+.devise-form{
+    .button{
+        text-align: center;
+        .btn-intiman{
+            border: none;
+            background: none;
+            color: $dark;
+            border: 1px solid $dark;
+            font-size: 18px;
+            border-radius: 4px;
+            -moz-border-radius: 4px;
+            -webkit-border-radius: 4px;
+            -o-border-radius: 4px;
+            &:hover{
+                background: $dark;
+                color: $white;
+            }
+        }
+    }
+    a{
+        color: $dark;
     }
 }
 
