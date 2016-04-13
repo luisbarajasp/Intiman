@@ -64,7 +64,7 @@
     <div id="cloths" class="transitions-enabled clearfix">
         <% @cloths.each do |cloth| %>
             <%= link_to cloth do %>
-                <div class="box col3">
+                <div class="box col4">
                     <div class="thumbnail">
                         <div class="images">
                             <div class="image1">
@@ -80,10 +80,6 @@
                             </div>
                             <div class="prices">
                                 <p id="discount">MXN <span id="nom_price"><%= number_to_currency(cloth.normal_price) %></span> <span id="dis_price"><%= number_to_currency(cloth.discount_price) %></span></p>
-                            </div>
-                            <div class="buttons">
-                                <a id="like" href=""><i class="fa fa-heart"></i></a> <br>
-                                <a id="bag" href=""><i class="fa fa-shopping-bag"></i></a>
                             </div>
                             <div class="info">
                                 <div class="sizes">
@@ -102,6 +98,9 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="like">
+                        <a href=""><i class="fa fa-heart"></i></a>
                     </div>
                 </div>
             <% end %>

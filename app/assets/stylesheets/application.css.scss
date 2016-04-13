@@ -460,35 +460,35 @@ p,ul,ol{
 
 #cloths{
     .thumbnail{
-        min-width: 280px;
-        width: 280px;
+        min-width: 210px;
+        width: 210px;
         border: 0;
-        height: 280px;
+        height: 285px;
         margin: 2px 5px 2px 2px;
         border-radius: 0;
         position: relative;
         background: $white;
         .images{
-            width: 280px;
-            min-width: 280px;
-            height: 180px;
+            width: 210px;
+            min-width: 210px;
+            height: 285px;
             position: relative;
             .image1{
-                width: 280px;
-                height: 180px;
+                width: 210px;
+                height: 135px;
                 position: absolute;
-                top: 0;
+                top: 20px;
                 bottom: 0;
                 right: 0;
                 left: 0;
                 img{
-                    width: 280px;
-                    height: 180px;
+                    width: 210px;
+                    height: 135px;
                 }
             }
             .image2{
-                width: 280px;
-                height: 280px;
+                width: 210px;
+                height: 285px;
                 position: absolute;
                 display: none;
                 top: 0;
@@ -496,25 +496,24 @@ p,ul,ol{
                 right: 0;
                 left: 0;
                 img{
-                    width: 280px;
-                    height: 280px;
+                    width: 210px;
+                    height: 285px;
                 }
             }
         }
         .caption{
             position: absolute;
-            top: 190px;
             left: 0;
             right: 0;
             bottom: 0;
             height: 90px;
-            width: 285px;
+            width: 215px;
             .descr{
                 margin: 0;
                 position: absolute;
                 top: 0px;
                 height: 25px;
-                width: 220px;
+                width: 210px;
                 padding: 2px;
                 overflow: hidden;
                 p{
@@ -524,7 +523,7 @@ p,ul,ol{
             .prices{
                 position: absolute;
                 bottom: 28px;
-                width: 220px;
+                width: 210px;
                 padding: 2px;
                 height: 40px;
                 font-family: 'Vollkorn', serif;
@@ -542,36 +541,11 @@ p,ul,ol{
                     }
                 }
             }
-            .buttons{
-                position: absolute;
-                right: 2px;
-                bottom: 32px;
-                height: 60px;
-                line-height: 30px;
-                width: 70px;
-                text-align: center;
-                padding-top: 5px;
-                a{
-                    font-size: 20px;
-                    color: $dark;
-                    text-decoration: none;
-                }
-                #bag{
-                    &:hover{
-                        color: $secondary;
-                    }
-                }
-                #like{
-                    &:hover{
-                        color: $red;
-                    }
-                }
-            }
             .info{
                 position: absolute;
                 bottom: 0;
                 left: 0;
-                width: 280px;
+                width: 210px;
                 height: 30px;
                 padding: 2px;
                 line-height: 26px;
@@ -604,7 +578,19 @@ p,ul,ol{
                 }
             }
         }
-
+        .like{
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            font-size: 15px;
+            a{
+                color: $secondary;
+                text-decoration: none;
+                &:hover{
+                    color: $red;
+                }
+            }
+        }
         &:hover{
             background: $uLight-gray;
             .images{
@@ -617,7 +603,7 @@ p,ul,ol{
             }
             .caption{
                 background: $white;
-                top: 90px;
+                top: 95px;
             }
         }
     }
