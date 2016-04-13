@@ -20,7 +20,7 @@
           </button>
           <ul class="dropdown-menu">
             <% @colors.each do |color| %>
-                <li><%= link_to color.name, params.merge(:color => color.name) %> </li>
+                <li><span id="circle" style="background: <%= color.hex %>"></span> <%= link_to color.name, params.merge(:color => color.name) %> </li>
             <% end %>
           </ul>
         </div>

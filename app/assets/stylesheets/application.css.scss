@@ -415,6 +415,19 @@ p,ul,ol{
             background: $secondary;
         }
     }
+    li{
+        position: relative;
+        #circle {
+         position: absolute;
+         left: 2px;
+         top: 2px;
+          width: 14px;
+          height: 14px;
+          -webkit-border-radius: 7px;
+          -moz-border-radius: 7px;
+          border-radius: 7px;
+        }
+    }
     #clean{
         a{
             -moz-transition: all 0.4s ease;
