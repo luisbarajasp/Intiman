@@ -603,6 +603,17 @@ p,ul,ol{
                     color: $red;
                 }
             }
+            .change-icon > .fa:nth-child(2) {
+                  display: none;
+            }
+            a:hover{
+                .change-icon > .fa:nth-child(1) {
+                  display: none;
+                }
+                .change-icon > .fa:nth-child(2) {
+                  display: inherit;
+                }
+            }
         }
         &:hover{
             background: $uLight-gray;

@@ -77,7 +77,7 @@
                 <div class="account button">
                     <h5>
                     <% if user_signed_in? %>
-                        <%= link_to "<i class='fa fa-male'> #{current_user.email}.html_safe", users_show(current_user.id) %>
+                        <%= link_to "<i class='fa fa-male'></i> #{current_user.email}".html_safe, user_path(current_user.id) %>
                     <% else %>
                         <%= link_to "Iniciar Sesión", new_user_session_path %>
                     <% end %>

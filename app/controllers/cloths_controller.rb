@@ -93,6 +93,21 @@ class ClothsController < ApplicationController
       redirect_to cloths_path
   end
 
+  def like
+    @cloth = Cloth.find(params[:id])
+    @cloth.liked_by current_user
+
+    redirect_to :back
+
+ end
+
+ def unlike
+    @cloth = Cloth.find(params[:id])
+    @cloth.unliked_by current_user
+
+    redirect_to :back
+ end
+
   private
   def cloth_params
       params.require(:cloth).permit(:description,:normal_price,:discount_price,:brand_id,:category_id,

@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  devise_for :users
+
+  devise_for :admins
+
   resources :colors
 
   resources :sizes, :except => [:edit, :update]
@@ -13,11 +17,12 @@ Rails.application.routes.draw do
   resources :brands, except: [:edit,:update]
 
 
-  resources :cloths
-
-  devise_for :users
-
-  devise_for :admins
+  resources :cloths do
+      member do
+        put "like", to: "cloths#like"
+        put "dislike", to: "cloths#unlike"
+      end
+  end
 
   get 'pages/home'
 
@@ -26,5 +31,5 @@ Rails.application.routes.draw do
   get 'pages/contact'
 
   root to: "pages#home"
-  
+
 end
