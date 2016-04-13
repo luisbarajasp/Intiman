@@ -88,7 +88,7 @@
                                             <p><%= si.size.letter %></p>
                                         <% end %>
                                     <% end %>
-                                </ul>
+                                </div>
                                 <div class="colors">
                                     <% @cos.each do |co| %>
                                         <% if co.cloth == cloth %>
@@ -98,27 +98,27 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="like">
-                        <% if !(current_user.liked? cloth) %>
+                        <div class="like">
+                            <% if !(current_user.liked? cloth) %>
 
-                            <%= link_to like_cloth_path(cloth), method: :put do %>
-                                <span class="change-icon">
-                                <i class="fa fa-heart-o"></i>
-                                <i class="fa fa-heart"></i>
-                                </span>
+                                <%= link_to like_cloth_path(cloth), method: :put do %>
+                                    <span class="change-icon">
+                                    <i class="fa fa-heart-o"></i>
+                                    <i class="fa fa-heart"></i>
+                                    </span>
+                                <% end %>
+
+                            <% else %>
+
+                                <%= link_to dislike_cloth_path(cloth), method: :put do %>
+                                    <span class="change-icon">
+                                    <i class="fa fa-heart"></i>
+                                    <i class="fa fa-heart-o"></i>
+                                    </span>
+                                <% end %>
+
                             <% end %>
-
-                        <% else %>
-
-                            <%= link_to dislike_cloth_path(cloth), method: :put do %>
-                                <span class="change-icon">
-                                <i class="fa fa-heart"></i>
-                                <i class="fa fa-heart-o"></i>
-                                </span>
-                            <% end %>
-
-                        <% end %>
+                        </div>
                     </div>
                 </div>
             <% end %>
