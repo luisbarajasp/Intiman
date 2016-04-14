@@ -10,6 +10,11 @@ class ApplicationController < ActionController::Base
       @brands = Brand.all.order('created_at ASC')
       @sizes = Size.all.order('created_at ASC')
       @colors = Color.all.order('created_at ASC')
+      if user_signed_in?
+          @cloths_liked = current_user.find_liked_items
+      end
+      @cos = Co.all
+      @sis = Si.all
   end
 
   before_action :configure_permitted_parameters, if: :devise_controller?

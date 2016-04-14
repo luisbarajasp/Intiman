@@ -102,10 +102,18 @@
                     </h5>
                 </div>
                 <div class="likes button hover">
-                    <a href="#"><h5><i class="fa fa-heart"></i> (0)</h5></a>
-                    <div class="content">
-                        <h1>content</h1>
-                    </div>
+                    <% if user_signed_in? %>
+                        <a href="#"><h5><i class="fa fa-heart"></i> (<%= current_user.find_liked_items.count %>)</h5></a>
+                        <div class="content">
+                            <h1>content</h1>
+                        </div>
+                    <% else %>
+                        <a href="#"><h5><i class="fa fa-heart"></i></h5></a>
+                        <div class="content">
+                            <h1>Necesitas iniciar sesión para poder tener una lista de prendas que te gustan</h1>
+                            <%= link_to "Iniciar Sesión", new_user_session_path, class: "btn-intiman" %>
+                        </div>
+                    <% end %>
                 </div>
                 <div class="bag button hover">
                     <a href="#"><h5><i class="fa fa-shopping-bag"></i> (0)</h5></a>

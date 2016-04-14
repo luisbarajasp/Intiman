@@ -316,7 +316,7 @@ p,ul,ol{
                 border: 0;
                 border-radius: 0;
                 &:hover{
-                    background: $dark;
+                    background: none;
                     color: $secondary;
                 }
             }
@@ -325,31 +325,44 @@ p,ul,ol{
             .content{
                 display: none;
                 min-width: 350px;
-                min-height: 250px;
+                min-height: 300px;
+                max-height: 300px;
                 position: absolute;
-                right: 0;
+                right: -1px;
                 padding: 5px;
-                background: $light-dark;
-                color: $white;
+                background: $white;
+                color: $dark;
+                border-left: 1px solid $light-gray;
+                border-right: 1px solid $light-gray;
+                border-bottom: 1px solid $light-gray;
             }
             &:hover{
-                background: $light-dark;
+                background: $white;
+                border-left: 1px solid $light-gray;
+                border-right: 1px solid $light-gray;
+                border-top: 1px solid $light-gray;
                 .content{
                     display: block;
                 }
                 h5{
-                    color: $secondary;
+                    color: $dark;
                 }
             }
         }
         .bag{
             position: relative;
             .content{
-                top: 65px;
+                top: 58px;
             }
         }
         .likes{
+            &:hover{
+                h5{
+                    color: $red;
+                }
+            }
             .content{
+                overflow-x: scroll;
                 min-width: 100vw;
                 top: 70px;
             }
