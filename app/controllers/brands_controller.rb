@@ -1,4 +1,6 @@
 class BrandsController < ApplicationController
+    before_action :authenticate_admin!, only: [:new,:create,:destroy]
+
     def index
         @brands = Brand.all.order('created_at ASC')
     end

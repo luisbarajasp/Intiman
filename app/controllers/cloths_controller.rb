@@ -1,4 +1,6 @@
 class ClothsController < ApplicationController
+  before_action :authenticate_admin!, except: [:show, :like, :unlike]
+  before_action :authenticate_user!, only: [:like,:unlike]
   def index
       @cloths = Cloth.all.order('created_at DESC')
   end

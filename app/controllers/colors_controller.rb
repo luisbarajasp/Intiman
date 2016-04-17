@@ -1,4 +1,6 @@
 class ColorsController < ApplicationController
+    before_action :authenticate_admin!
+
     def index
         @colors = Color.all.order('created_at ASC')
     end

@@ -1,4 +1,6 @@
 class HomeSlidersController < ApplicationController
+  before_action :authenticate_admin!
+
   def index
       @sliders = HomeSlider.all.order('created_at DESC')
   end

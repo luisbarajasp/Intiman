@@ -1,4 +1,6 @@
 class SizesController < ApplicationController
+  before_action :authenticate_admin!
+
   def index
       @sizes = Size.all.order('created_at ASC')
   end
