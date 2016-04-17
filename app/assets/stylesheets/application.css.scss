@@ -293,7 +293,6 @@ p,ul,ol{
         display: inline-block;
         float: right;
         height: 70px;
-        padding-right: 10px;
         .button,.search-form{
             display: inline-block;
             padding: 10px;
@@ -352,7 +351,7 @@ p,ul,ol{
         .bag{
             position: relative;
             .content{
-                top: 58px;
+                top: 64px;
             }
         }
         .likes{
@@ -375,6 +374,7 @@ p,ul,ol{
             cursor: pointer;
             .fieldContainer{
                 .fa-search{
+                    padding-right: 10px;
                 }
                 .searchField{
                     display:none;

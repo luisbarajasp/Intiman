@@ -1,7 +1,22 @@
-<section class="home">
-    <h1>Pages#home</h1>
-    <p>Find me in app/views/pages/home.html.erb</p>
-    <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-    </p>
-</section>
+<div class="home">
+    <div id="prev">
+        <i class="fa fa-caret-left" aria-hidden="true"></i>
+    </div>
+    <div id="slider">
+        <% @sliders.each do |s| %>
+            <div class="slide">
+                <% if s.description? %>
+                    <div class="description">
+                        <h3><%= s.description %></h3>
+                    </div>
+                <% end %>
+                <%= link_to s.link do %>
+                    <%= image_tag s.image.url(:big) %>
+                <% end %>
+            </div>
+        <% end %>
+    </div>
+    <div id="next">
+        <i class="fa fa-caret-right" aria-hidden="true"></i>
+    </div>
+</div>

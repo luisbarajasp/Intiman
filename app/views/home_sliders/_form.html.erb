@@ -1,0 +1,28 @@
+<%= semantic_form_for @slider do |f| %>
+    <% if @slider.errors.any? %>
+
+        <h2><%= pluralize(@slider.errors.count, "error") %> prevented from saving the slider:</h2>
+        <ul>
+            <% @slider.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+        </ul>
+
+    <% end %>
+    <div class="form-group">
+        <%= f.input :image, :required => false, :as => :file, :label => "Imagen", :input_html => { :class => 'form-control'} %>
+    </div>
+	<div class="form-group">
+		<%= f.input :description, :as => :text, :label => "Descripción del slider", :input_html => { :class => 'form-control'} %>
+	</div>
+    <div class="form-group">
+		<%= f.input :link, :as => :url, :label => "Link al que se dirigirá el slider", :input_html => { :class => 'form-control'} %>
+	</div>
+    <div class="form-group">
+        <%= f.input :display, :as => :boolean, :label => "Desplegar", :input_html => { :class => 'form-control'} %>
+	</div>
+	<div class="form-group">
+        <%= f.action :submit, :button_html => { :value => 'Nuevo Producto'}, :input_html => { :class => 'btn btn-success'} %>
+ 	</div>
+
+<% end %>
