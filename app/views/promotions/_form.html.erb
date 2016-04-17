@@ -1,0 +1,31 @@
+<%= semantic_form_for @promotion do |f| %>
+    <% if @promotion.errors.any? %>
+
+        <h2><%= pluralize(@promotion.errors.count, "error") %> prevented from saving the promotion:</h2>
+        <ul>
+            <% @promotion.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+        </ul>
+
+    <% end %>
+
+	<div class="form-group">
+		<%= f.input :title, :as => :string, :label => "Titulo de la promoción", :input_html => { :class => 'form-control'} %>
+	</div>
+    <div class="select-all">
+        <p id="all">
+            Todos los productos
+        </p>
+    </div>
+    <div class="form-group">
+        <%= f.input :cloths, :as => :check_boxes, :label => "Selecciona las prendas que aplican en esta promoción", :collection => Hash[Cloth.all.map { |cloth| [cloth.description, cloth.id] }] %>
+    </div>
+    <div class="form-group">
+        <%= f.input :show, :as => :boolean, :label => "Enseñar esta promoción" %>
+	</div>
+	<div class="form-group">
+        <%= f.action :submit, :button_html => { :value => 'Nueva Promoción'}, :input_html => { :class => 'btn btn-success'} %>
+ 	</div>
+
+<% end %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160417004437) do
+ActiveRecord::Schema.define(version: 20160417040855) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -100,6 +100,20 @@ ActiveRecord::Schema.define(version: 20160417004437) do
   end
 
   add_index "identities", ["user_id"], name: "index_identities_on_user_id"
+
+  create_table "promotions", force: :cascade do |t|
+    t.string   "title"
+    t.boolean  "show",       default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  create_table "proms", force: :cascade do |t|
+    t.integer  "promotion_id"
+    t.integer  "cloth_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
 
   create_table "sis", force: :cascade do |t|
     t.integer  "cloth_id"

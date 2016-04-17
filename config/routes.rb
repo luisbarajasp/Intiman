@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   resources :colors
 
+  resources :promotions
+
   resources :sizes, :except => [:edit, :update]
 
   resources :users, :only => [:show]
@@ -35,5 +37,7 @@ Rails.application.routes.draw do
   get 'pages/contact'
 
   root to: "pages#home"
+
+  get '*path' => redirect('/')
 
 end

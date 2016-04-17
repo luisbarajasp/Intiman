@@ -39,9 +39,7 @@ var ready = function(){
         }
     }
 
-    var sHeight = $(window).height() -70;
-    var sWidth = (sHeight / 0.5625);
-    var sLeft = ($(window).width() - sWidth) / 2;
+    var sHeight = $(window).height() - 98;
 
 
     $('#slider').height(sHeight);
@@ -146,6 +144,12 @@ var ready = function(){
             }
         }
     }
+
+    $('#all').on('click',function(){
+        $(".choices input").each(function(){
+            this.setAttribute("checked", "checked");
+        });
+    });
 
 };
 
