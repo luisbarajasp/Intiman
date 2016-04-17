@@ -18,8 +18,10 @@
   <%= link_to "No recibiste instrucciones para desbloquear?", new_unlock_path(resource_name) %><br />
 <% end -%>
 
-<%- if devise_mapping.omniauthable? %>
-  <%- resource_class.omniauth_providers.each do |provider| %>
-    <%= link_to "Iniciar sesión con #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider) %><br />
-  <% end -%>
-<% end -%>
+<div class="provider">
+    <%- if devise_mapping.omniauthable? %>
+      <%- resource_class.omniauth_providers.each do |provider| %>
+        <%= link_to "Iniciar sesión con #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider), class: "fb-sign-in" %><br />
+      <% end -%>
+    <% end -%>
+</div>
