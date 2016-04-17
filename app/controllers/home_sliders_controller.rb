@@ -26,7 +26,7 @@ class HomeSlidersController < ApplicationController
 
       respond_to do |f|
 			if @slider.update(slider_params)
-				f.html {redirect_to @slider, notice: "Slider updated succesfully."}
+				f.html {redirect_to home_sliders_path, notice: "Slider updated succesfully."}
 				f.json { render :show, status: :ok, location: @slider }
 			else
 				f.html { render :edit }

@@ -48,103 +48,102 @@ var ready = function(){
     $('#slider img').height(sHeight);
     $('#prev').height(sHeight);
     $('#next').height(sHeight);
-
-    $("#slider").hover(
-        function () {
-            $("#next").show();
-            $("#prev").show();
-        },
-        function () {
-            $("#next").hide();
-            $("#prev").hide();
-    });
-    $("#next").hover(
-        function () {
-            $("#next").show();
-            $("#prev").show();
-        },
-        function () {
-            $("#next").hide();
-            $("#prev").hide();
-    });
-    $("#prev").hover(
-        function () {
-            $("#next").show();
-            $("#prev").show();
-        },
-        function () {
-            $("#next").hide();
-            $("#prev").hide();
-    });
-
-
-
     $('.home').css("padding-top",sHeight);
 
-    //Set options
-    var speed = 500;
-    var autoSwitch = true;
-    var autoSwitchSpeed = 8000;
-    var id;
+    if($('.slide').siblings().size() > 1){
+        $("#slider").hover(
+            function () {
+                $("#next").show();
+                $("#prev").show();
+            },
+            function () {
+                $("#next").hide();
+                $("#prev").hide();
+        });
+        $("#next").hover(
+            function () {
+                $("#next").show();
+                $("#prev").show();
+            },
+            function () {
+                $("#next").hide();
+                $("#prev").hide();
+        });
+        $("#prev").hover(
+            function () {
+                $("#next").show();
+                $("#prev").show();
+            },
+            function () {
+                $("#next").hide();
+                $("#prev").hide();
+        });
 
-    //Add initial active class
-    $('.slide').first().addClass('active');
+        //Set options
+        var speed = 500;
+        var autoSwitch = true;
+        var autoSwitchSpeed = 8000;
+        var id;
 
-    //Hide all slides
-    $('.slide').hide();
+        //Add initial active class
+        $('.slide').first().addClass('active');
 
-    //Show first slide
-    $('.active').show();
+        //Hide all slides
+        $('.slide').hide();
 
-    //Arrow functionality
-    $('#next').on('click',nextSlide);
+        //Show first slide
+        $('.active').show();
 
-    $('#prev').on('click',prevSlide);
+        //Arrow functionality
+        $('#next').on('click',nextSlide);
 
-    //Auto slide
-    if(autoSwitch){
-        id = setInterval(nextSlide,autoSwitchSpeed);
-    }
+        $('#prev').on('click',prevSlide);
 
-    //Function for switching to next slide
-    function nextSlide(){
-        //Let the user see the image for 5 sec
-        clearInterval(id);
-
-        $('.active').removeClass('active').addClass('oldActive');
-        if($('.oldActive').is(':last-child')){
-            $('.slide').first().addClass('active');
-        }else{
-            $('.oldActive').next().addClass('active');
-        }
-        $('.oldActive').removeClass('oldActive');
-        $('.slide').fadeOut(speed);
-        $('.active').fadeIn(speed);
-
-        //Auto slide until the user press next arrow
+        //Auto slide
         if(autoSwitch){
             id = setInterval(nextSlide,autoSwitchSpeed);
         }
-    }
 
-    //Function for switching to previous slide
-    function prevSlide(){
-        //Let the user see the image for 5 sec
-        clearInterval(id);
+        //Function for switching to next slide
+        function nextSlide(){
+            //Let the user see the image for 5 sec
+            clearInterval(id);
 
-        $('.active').removeClass('active').addClass('oldActive');
-        if($('.oldActive').is(':first-child')){
-            $('.slide').last().addClass('active');
-        }else{
-            $('.oldActive').prev().addClass('active');
+            $('.active').removeClass('active').addClass('oldActive');
+            if($('.oldActive').is(':last-child')){
+                $('.slide').first().addClass('active');
+            }else{
+                $('.oldActive').next().addClass('active');
+            }
+            $('.oldActive').removeClass('oldActive');
+            $('.slide').fadeOut(speed);
+            $('.active').fadeIn(speed);
+
+            //Auto slide until the user press next arrow
+            if(autoSwitch){
+                id = setInterval(nextSlide,autoSwitchSpeed);
+            }
         }
-        $('.oldActive').removeClass('oldActive');
-        $('.slide').fadeOut(speed);
-        $('.active').fadeIn(speed);
 
-        //Auto slide until the user press prev arrow
-        if(autoSwitch){
-            id = setInterval(nextSlide,autoSwitchSpeed);
+        //Function for switching to previous slide
+        function prevSlide(){
+            //Let the user see the image for 5 sec
+            clearInterval(id);
+
+            $('.active').removeClass('active').addClass('oldActive');
+            if($('.oldActive').is(':first-child')){
+                $('.slide').last().addClass('active');
+            }else{
+                $('.oldActive').prev().addClass('active');
+            }
+            $('.oldActive').removeClass('oldActive');
+            $('.slide').fadeOut(speed);
+            $('.active').fadeIn(speed);
+
+            //Auto slide until the user press prev arrow
+            if(autoSwitch){
+                id = setInterval(nextSlide,autoSwitchSpeed);
+            }
         }
     }
 
