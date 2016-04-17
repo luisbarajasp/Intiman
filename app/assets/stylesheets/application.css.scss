@@ -179,15 +179,84 @@ p,ul,ol{
     width: 100vw;
     height: 40px;
     text-align: center;
-    background: $dark;
     z-index: 100;
     h3{
         line-height: 40px;
-        color: $white;
+        font-weight: 200;
         font-size: 14px;
         margin: 0;
         i{
             margin-left: 10px;
+        }
+    }
+}
+
+.promotion.black{
+    background: $dark;
+    h3{
+        color: $white;
+    }
+    &:hover{
+        h3{
+            color: $secondary;
+        }
+    }
+}
+
+.promotion.sec{
+    background: $secondary;
+    h3{
+        color: $dark;
+    }
+    &:hover{
+        h3{
+            color: $white;
+        }
+    }
+}
+
+.modal {
+  text-align: center;
+  padding: 0!important;
+}
+
+.modal:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -4px;
+}
+
+.modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.modal-content{
+    background: $dark;
+    .modal-header,.modal-body{
+        width: 90%;
+        margin: 0 auto;
+    }
+    .modal-header{
+        padding: 15px 0 5px 15px;
+        border-bottom: 1px solid $secondary;
+        .modal-title{
+            color: $white;
+        }
+        .fa{
+            color: $secondary;
+        }
+        h4{
+            font-size: 18px;
+        }
+    }
+    .modal-body{
+        p{
+            color: $uLight-gray;
+            font-size: 13px;
         }
     }
 }

@@ -4,7 +4,9 @@ class Promotion < ActiveRecord::Base
 
     before_save :falsify_all_others
 
+    private
+
     def falsify_all_others
-        self.class.where('id != ? and show', self.id).update_all("show = 'false'")
+        self.class.where(show: true).update_all(show: false)
     end
 end

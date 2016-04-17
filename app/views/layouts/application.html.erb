@@ -35,10 +35,34 @@
             </div>
         </div>
     </div> -->
+    <% if controller.controller_name != 'promotions' %>
+        <% if !@promo.description %>
+            <%= link_to @promo do %>
+                <% if controller.action_name == 'home' %>
+                    <div class="promotion black">
+                <% else %>
+                    <div class="promotion sec">
+                <% end %>
+                        <h3><%= @promo.title.mb_chars.upcase.to_s %> <i class="fa fa-angle-double-right" aria-hidden="true"></i></h3>
+                    </div>
+            <% end %>
+        <% else %>
+        <!-- Button trigger modal -->
+            <a  href="" data-toggle="modal" data-target="#myModal">
+                <% if controller.action_name == 'home' %>
+                    <div class="promotion black">
+                <% else %>
+                    <div class="promotion sec">
+                <% end %>
+                        <h3><%= @promo.title.mb_chars.upcase.to_s %> <i class="fa fa-angle-double-right" aria-hidden="true"></i></h3>
+                    </div>
+            </a>
 
-    <%= link_to @promotion do %>
-        <div class="promotion">
-            <h3><%= @promotion.title %> <i class="fa fa-angle-double-right" aria-hidden="true"></i></h3>
+            <%= render 'layouts/promModal' %>
+        <% end %>
+    <% else %>
+        <div class="promotion sec">
+            <h3>APROVECHA ESTA INCREÍBLE PROMOCIÓN <i class="fa fa-exclamation-triangle" aria-hidden="true"></i></h3>
         </div>
     <% end %>
 
@@ -166,6 +190,7 @@
     <div class="wrapper_page">
         <%= yield %>
     </div>
+
     <% if !admin_signed_in? %>
         <div class="footer">
             <div class="social">

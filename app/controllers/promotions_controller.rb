@@ -1,4 +1,6 @@
 class PromotionsController < ApplicationController
+  before_action :authenticate_admin!, :except => [:show]
+
   def index
       @promotions = Promotion.all.order('created_at DESC')
   end
@@ -56,6 +58,6 @@ class PromotionsController < ApplicationController
   private
 
   def promotion_params
-      params.require(:promotion).permit(:title,:show,{:cloth_ids => []})
+      params.require(:promotion).permit(:title,:description,:show,{:cloth_ids => []})
   end
 end

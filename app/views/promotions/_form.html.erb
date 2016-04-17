@@ -13,6 +13,9 @@
 	<div class="form-group">
 		<%= f.input :title, :as => :string, :label => "Titulo de la promoción", :input_html => { :class => 'form-control'} %>
 	</div>
+    <div class="form-group">
+		<%= f.input :description, :as => :text, :label => "Titulo de la promoción", :hint => "Dejalo en blanco si la promoción es sobre productos y no solo desplegar la descripción", :input_html => { :class => 'form-control'} %>
+	</div>
     <div class="select-all">
         <p id="all">
             Todos los productos

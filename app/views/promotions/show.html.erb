@@ -3,127 +3,133 @@
 </div>
 
 <div class="wrapper">
-    <div class="filters">
-        <div class="btn-group">
-          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Talla <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu">
-            <% @sizes.each do |size| %>
-                <li><%= link_to size.letter, params.merge(:size => size.letter) %></li>
-            <% end %>
-          </ul>
-        </div>
-        <div class="btn-group">
-          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Color <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu">
-            <% @colors.each do |color| %>
-                <li><span id="circle" style="background: <%= color.hex %>"></span> <%= link_to color.name, params.merge(:color => color.name) %> </li>
-            <% end %>
-          </ul>
-        </div>
-        <div class="btn-group">
-          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Marca <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu">
-            <% @brands.each do |brand| %>
-                <li><%= link_to brand.name, params.merge(:brand => brand.name) %></li>
-            <% end %>
-          </ul>
-        </div>
-        <div class="btn-group">
-          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Categoría <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu">
-            <% @categories.each do |category| %>
-                <li><%= link_to category.name, params.merge(:category => category.name) %></li>
-            <% end %>
-          </ul>
-        </div>
-        <div class="btn-group disable" id="clean">
-            <%= link_to "Limpiar filtros", @promotion %>
-        </div>
-        <div class="sort-by">
+    <% if !@promotion.description? %>
+        <div class="filters">
             <div class="btn-group">
               <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Ordenar por: <span class="caret"></span>
+                Talla <span class="caret"></span>
               </button>
-              <ul class="dropdown-menu dropdown-menu-right">
-                <li><%= link_to "Más nuevo", params.merge(:sort => 'created_at', :order => 'DESC') %></li>
-                <li><%= link_to "Precio menor a mayor", params.merge(:sort => 'discount_price', :order => 'ASC') %></li>
-                <li><%= link_to "Precio mayor a menor", params.merge(:sort => 'discount_price', :order => 'DESC') %></li>
+              <ul class="dropdown-menu">
+                <% @sizes.each do |size| %>
+                    <li><%= link_to size.letter, params.merge(:size => size.letter) %></li>
+                <% end %>
               </ul>
             </div>
-        </div>
-    </div>
-
-    <div id="cloths" class="transitions-enabled clearfix">
-        <% @cloths.each do |cloth| %>
-            <%= link_to cloth do %>
-                <div class="box col4">
-                    <div class="thumbnail">
-                        <div class="images">
-                            <div class="image1">
-                                <%= image_tag cloth.image1.url(:preview) %>
-                            </div>
-                            <div class="image2">
-                                <%= image_tag cloth.image2.url(:preview) %>
-                            </div>
-                        </div>
-                        <div class="caption">
-                            <div class="descr">
-                                <p><%= cloth.description %></p>
-                            </div>
-                            <div class="prices">
-                                <p id="discount">MXN <span id="nom_price"><%= number_to_currency(cloth.normal_price) %></span> <span id="dis_price"><%= number_to_currency(cloth.discount_price) %></span></p>
-                            </div>
-                            <div class="info">
-                                <div class="sizes">
-                                    <% @sis.each do |si| %>
-                                        <% if si.cloth == cloth %>
-                                            <p><%= si.size.letter %></p>
-                                        <% end %>
-                                    <% end %>
-                                </div>
-                                <div class="colors">
-                                    <% @cos.each do |co| %>
-                                        <% if co.cloth == cloth %>
-                                            <div id="circle" style="background: <%= co.color.hex %>"></div>
-                                        <% end %>
-                                    <% end %>
-                                </div>
-                            </div>
-                        </div>
-                        <% if user_signed_in? %>
-                            <div class="like">
-                                <% if !(current_user.liked? cloth) %>
-
-                                    <%= link_to like_cloth_path(cloth), method: :put do %>
-                                        <span class="change-icon">
-                                        <i class="fa fa-heart-o"></i>
-                                        <i class="fa fa-heart"></i>
-                                        </span>
-                                    <% end %>
-
-                                <% else %>
-
-                                    <%= link_to dislike_cloth_path(cloth), method: :put do %>
-                                        <span class="change-icon">
-                                        <i class="fa fa-heart"></i>
-                                        <i class="fa fa-heart-o"></i>
-                                        </span>
-                                    <% end %>
-
-                                <% end %>
-                            </div>
-                        <% end %>
-                    </div>
+            <div class="btn-group">
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Color <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu">
+                <% @colors.each do |color| %>
+                    <li><span id="circle" style="background: <%= color.hex %>"></span> <%= link_to color.name, params.merge(:color => color.name) %> </li>
+                <% end %>
+              </ul>
+            </div>
+            <div class="btn-group">
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Marca <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu">
+                <% @brands.each do |brand| %>
+                    <li><%= link_to brand.name, params.merge(:brand => brand.name) %></li>
+                <% end %>
+              </ul>
+            </div>
+            <div class="btn-group">
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Categoría <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu">
+                <% @categories.each do |category| %>
+                    <li><%= link_to category.name, params.merge(:category => category.name) %></li>
+                <% end %>
+              </ul>
+            </div>
+            <div class="btn-group disable" id="clean">
+                <%= link_to "Limpiar filtros", @promotion %>
+            </div>
+            <div class="sort-by">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Ordenar por: <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu dropdown-menu-right">
+                    <li><%= link_to "Más nuevo", params.merge(:sort => 'created_at', :order => 'DESC') %></li>
+                    <li><%= link_to "Precio menor a mayor", params.merge(:sort => 'discount_price', :order => 'ASC') %></li>
+                    <li><%= link_to "Precio mayor a menor", params.merge(:sort => 'discount_price', :order => 'DESC') %></li>
+                  </ul>
                 </div>
+            </div>
+        </div>
+
+        <div id="cloths" class="transitions-enabled clearfix">
+            <% @cloths.each do |cloth| %>
+                <%= link_to cloth do %>
+                    <div class="box col4">
+                        <div class="thumbnail">
+                            <div class="images">
+                                <div class="image1">
+                                    <%= image_tag cloth.image1.url(:preview) %>
+                                </div>
+                                <div class="image2">
+                                    <%= image_tag cloth.image2.url(:preview) %>
+                                </div>
+                            </div>
+                            <div class="caption">
+                                <div class="descr">
+                                    <p><%= cloth.description %></p>
+                                </div>
+                                <div class="prices">
+                                    <p id="discount">MXN <span id="nom_price"><%= number_to_currency(cloth.normal_price) %></span> <span id="dis_price"><%= number_to_currency(cloth.discount_price) %></span></p>
+                                </div>
+                                <div class="info">
+                                    <div class="sizes">
+                                        <% @sis.each do |si| %>
+                                            <% if si.cloth == cloth %>
+                                                <p><%= si.size.letter %></p>
+                                            <% end %>
+                                        <% end %>
+                                    </div>
+                                    <div class="colors">
+                                        <% @cos.each do |co| %>
+                                            <% if co.cloth == cloth %>
+                                                <div id="circle" style="background: <%= co.color.hex %>"></div>
+                                            <% end %>
+                                        <% end %>
+                                    </div>
+                                </div>
+                            </div>
+                            <% if user_signed_in? %>
+                                <div class="like">
+                                    <% if !(current_user.liked? cloth) %>
+
+                                        <%= link_to like_cloth_path(cloth), method: :put do %>
+                                            <span class="change-icon">
+                                            <i class="fa fa-heart-o"></i>
+                                            <i class="fa fa-heart"></i>
+                                            </span>
+                                        <% end %>
+
+                                    <% else %>
+
+                                        <%= link_to dislike_cloth_path(cloth), method: :put do %>
+                                            <span class="change-icon">
+                                            <i class="fa fa-heart"></i>
+                                            <i class="fa fa-heart-o"></i>
+                                            </span>
+                                        <% end %>
+
+                                    <% end %>
+                                </div>
+                            <% end %>
+                        </div>
+                    </div>
+                <% end %>
             <% end %>
-        <% end %>
-    </div>
+        </div>
+    <% else %>
+        <div class="prom-description">
+            <h3><%= @promotion.description %></h3>
+        </div>
+    <% end %>
 </div>
