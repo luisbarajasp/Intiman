@@ -39,13 +39,14 @@
      font-family: 'Raleway', sans-serif;
      font-weight: 200;
      box-sizing: border-box;
+     margin: 0;
      &:focus{
          outline: none;
      }
  }
 
  .wrapper_page{
-     margin-top: 71px;
+     margin-top: 97px;
      padding: 1em 3em;
      min-height: 80vh;
  }
@@ -58,6 +59,8 @@
 body {
     background-color: $white;
     height: auto;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 .wrapper2{
@@ -169,15 +172,35 @@ p,ul,ol{
 //     }
 // }
 
-.main-navigation{
-    height: 70px;
+.promotion{
+    position: absolute;
+    top: 0px;
+    left: 0;
     width: 100vw;
-    background: $white;
-    border-bottom: 1px solid $light-gray;
-    position: fixed;
-    top: 0;
+    height: 40px;
+    text-align: center;
+    background: $dark;
+    z-index: 100;
+    h3{
+        line-height: 40px;
+        color: $white;
+        font-size: 14px;
+        margin: 0;
+        i{
+            margin-left: 10px;
+        }
+    }
+}
+
+.main-navigation{
+    width: 100vw;
     left: 0;
     z-index: 1000;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    -webkit-transition: all 1s ease;
+    transition: all 1s ease;
+    display: table-cell;
     a{
         text-decoration: none;
     }
@@ -187,11 +210,6 @@ p,ul,ol{
         max-width: 250px;
         padding: 0 10px;
         position: relative;
-        img{
-            width: 20vw;
-            min-width: 150px;
-            max-width: 250px;
-        }
         h1{
             font-family: 'Vollkorn', serif;
             letter-spacing: 16px;
@@ -401,10 +419,172 @@ p,ul,ol{
     }
 }
 
+.normal{
+    height: 70px;
+    padding: 5px 0;
+    background: transparent;
+    border-bottom: 1px solid $light-gray;
+    position: absolute;
+    top: 35px;
+    #brand{
+        h1{
+            letter-spacing: 16px;
+            font-size: 32px;
+            margin: 10px 0;
+            span{
+                font-family: 'Vollkorn', serif;
+                letter-spacing: -1px;
+                //border-bottom: 1px solid $dark;
+            }
+        }
+        #slogan{
+            top: 37px;
+            left: 75px;
+            p{
+                font-size: 10px;
+                span{
+                    padding-top: 2px;
+                }
+            }
+        }
+        display: inline-block;
+    }
+    .marcas{
+        margin: 0 2.5em;
+        height: 70px;
+        .sec-title{
+            height: 43px;
+            h3{
+              font-size: 14px;
+            }
+        }
+        .enlaces{
+            top: 67px;
+            padding: 0 5px;
+        }
+    }
+    .sale{
+        a{
+            h3{
+                font-size: 14px;
+            }
+        }
+    }
+    .buttons{
+        height: 70px;
+        .button,.search-form{
+            padding: 10px;
+            margin-top: 5px;
+        }
+        .button{
+            height: 65px;
+            h5{
+                font-size: 14px;
+            }
+        }
+        .account{
+        }
+        .bag{
+            .content{
+                top: 64px;
+            }
+        }
+        .likes{
+            .content{
+                top: 70px;
+            }
+        }
+    }
+}
+
+.shrink{
+    position: fixed;
+    top: 0;
+    height: 50px;
+    background: rgba(0,0,0,0.75);
+    #brand{
+        margin: 0 0 0 5px;
+        h1{
+            letter-spacing: 10px;
+            font-size: 20px;
+            margin: 0;
+            color: $white;
+        }
+        #slogan{
+            top: 20px;
+            left: 52px;
+            p{
+                color: transparent;
+                font-size: 6px;
+                span{
+                    border-top: 1px solid $white;
+                    padding-top: 2px;
+                }
+            }
+        }
+    }
+    .marcas{
+        height: 40px;
+        .sec-title{
+            height: 30px;
+            h3{
+              font-size: 14px;
+              color: $white;
+
+            }
+        }
+        .enlaces{
+            top: 52px;
+            padding: 0 5px;
+        }
+    }
+    .sale{
+        a{
+            h3{
+                font-size: 14px;
+                color: $white;
+
+            }
+        }
+    }
+    .buttons{
+        height: 40px;
+        .button,.search-form{
+            padding: 5px;
+            margin-top: 5px;
+        }
+        .button{
+            height: 65px;
+            h5{
+                font-size: 14px;
+                color: $white;
+
+            }
+        }
+        .account{
+            h5{
+                a{
+                    color: $white;
+                }
+            }
+        }
+        .bag{
+            .content{
+                top: 44px;
+            }
+        }
+        .likes{
+            .content{
+                top: 50px;
+            }
+        }
+    }
+}
+
 .alert{
     z-index: 300;
     position: fixed;
-    top: 70px;
+    top: 97px;
     left: 10%;
     width: 80%;
     ul>li{

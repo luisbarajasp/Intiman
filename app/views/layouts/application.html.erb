@@ -36,7 +36,13 @@
         </div>
     </div> -->
 
-    <div class="main-navigation">
+    <%= link_to @promotion do %>
+        <div class="promotion">
+            <h3><%= @promotion.title %> <i class="fa fa-angle-double-right" aria-hidden="true"></i></h3>
+        </div>
+    <% end %>
+
+    <div class="main-navigation normal">
         <%= link_to root_path do %>
             <div id="brand">
                 <!-- <%= image_tag "brand.png" %> -->

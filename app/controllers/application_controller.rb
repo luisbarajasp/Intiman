@@ -10,6 +10,7 @@ class ApplicationController < ActionController::Base
       @brands = Brand.all.order('created_at ASC')
       @sizes = Size.all.order('created_at ASC')
       @colors = Color.all.order('created_at ASC')
+      @promotion = Promotion.where('show = ?', true).first
       if user_signed_in?
           @cloths_liked = current_user.find_liked_items
       end
