@@ -36,7 +36,7 @@
         </div>
     </div> -->
     <% if controller.controller_name != 'promotions' %>
-        <% if !@promo.description %>
+        <% if !@promo.description? %>
             <%= link_to @promo do %>
                 <% if controller.action_name == 'home' %>
                     <div class="promotion black">
@@ -202,13 +202,16 @@
             </div>
             <div class="links">
                 <p>
-                    <a href="#">Quienes Somos</a>
+                    <%= link_to "Quienes Somos", pages_about_path %>
                 </p>
                 <p>
-                    <a href="#">Contacto</a>
+                    <%= link_to "Contacto", pages_contact_path %>
                 </p>
                 <p>
-                    <a href="#">Aviso Legal</a>
+                    <%= link_to "Legal", pages_legal_path %>
+                </p>
+                <p>
+                    <%= link_to "Ayuda", pages_help_path %>
                 </p>
             </div>
             <div class="newsletter">

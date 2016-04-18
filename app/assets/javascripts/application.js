@@ -176,7 +176,7 @@ $(document).mouseup(function (e)
 $(window).scroll(function() {
   if ($(document).scrollTop() > 90) {
     $('.main-navigation').addClass('shrink');
-    $('.main-navigation').fadeIn(500);
+    //$('.main-navigation').fadeIn(500);
     $('.main-navigation').removeClass('normal');
 
   } else {

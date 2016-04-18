@@ -36,6 +36,11 @@ Rails.application.routes.draw do
 
   get 'pages/contact'
 
+  get 'pages/help'
+
+  get 'pages/legal'
+
+
   root to: "pages#home"
 
   get '*path' => redirect('/')
