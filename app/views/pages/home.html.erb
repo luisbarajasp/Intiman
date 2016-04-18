@@ -19,4 +19,15 @@
     <div id="next">
         <i class="fa fa-caret-right" aria-hidden="true"></i>
     </div>
+    <div class="brands">
+        <% @brands.each do |brand| %>
+            <%= link_to brand do %>
+                <div class="brand">
+                    <div class="name">
+                        <h3><%= brand.name %></h3>
+                    </div>
+                </div>
+            <% end %>
+        <% end %>
+    </div>
 </div>

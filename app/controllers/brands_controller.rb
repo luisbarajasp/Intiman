@@ -17,10 +17,10 @@ class BrandsController < ApplicationController
         end
     end
     def show
-        @brand = Brand.find(params[:id])
+        @brand = Brand.friendly.find(params[:id])
     end
     def destroy
-        @brand = Brand.find(params[:id])
+        @brand = Brand.friendly.find(params[:id])
         @brand.destroy
 
         redirect_to brands_path
