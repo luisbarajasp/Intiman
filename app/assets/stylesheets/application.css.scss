@@ -673,6 +673,12 @@ p,ul,ol{
     h3{
         font-size: 30px;
     }
+    hr{
+        border-color: $secondary;
+        border-width: 3px;
+        width: 200px;
+        margin: 5px auto;
+    }
 }
 
 .devise-form{

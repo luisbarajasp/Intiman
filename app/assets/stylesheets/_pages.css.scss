@@ -94,10 +94,11 @@ $red: #ff4c4c;
         height: 800px;
         padding: 50px 0 100px 0;
         margin: 0 auto;
+        text-align: center;
         .brand{
             width: 300px;
             height: 500px;
-            margin: 0 30px;
+            margin: 0 2em;
             .name{
                 h3{
                     text-align: center;
@@ -111,6 +112,11 @@ $red: #ff4c4c;
                 border: 1px solid $light-gray;
                 img{
                     width: 300px;
+                }
+                &:hover{
+                    .buy{
+                        display: block;
+                    }
                 }
             }
             .buy{
@@ -144,11 +150,6 @@ $red: #ff4c4c;
                         background: $white;
                         color: $dark;
                     }
-                }
-            }
-            &:hover{
-                .buy{
-                    display: block;
                 }
             }
         }

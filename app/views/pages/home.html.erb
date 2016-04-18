@@ -20,6 +20,10 @@
         <i class="fa fa-caret-right" aria-hidden="true"></i>
     </div>
     <div class="wrapper">
+        <div class="page-name">
+            <h3>Marcas</h3>
+            <hr>
+        </div>
         <div id="brands" class="transitions-enabled clearfix">
             <% @brands.each do |brand| %>
                 <div class="brand">
@@ -27,9 +31,9 @@
                         <% if brand.cloths.count > 0 %>
                             <%= image_tag brand.cloths.first.image1.url(:preview) %>
                         <% end %>
-                    </div>
-                    <div class="buy">
-                        <%= link_to "Comprar #{brand.name}", brand %></h3>
+                        <div class="buy">
+                            <%= link_to "Comprar #{brand.name}", brand %></h3>
+                        </div>
                     </div>
                     <div class="name">
                         <h3><%= brand.name %></h3>
@@ -37,6 +41,10 @@
 
                 </div>
             <% end %>
+        </div>
+        <div class="page-name">
+            <h3>Categorias</h3>
+            <hr>
         </div>
         <div id="categories" class="transitions-enabled clearfix">
             <% @categories.each do |category| %>
