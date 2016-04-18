@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160418015309) do
+ActiveRecord::Schema.define(version: 20160418200112) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -51,10 +51,10 @@ ActiveRecord::Schema.define(version: 20160418015309) do
 
   create_table "cloths", force: :cascade do |t|
     t.text     "description"
-    t.integer  "normal_price"
-    t.integer  "discount_price",      default: 0
-    t.datetime "created_at",                               null: false
-    t.datetime "updated_at",                               null: false
+    t.decimal  "normal_price",        precision: 12, scale: 3
+    t.decimal  "discount_price",      precision: 12, scale: 3, default: 0.0
+    t.datetime "created_at",                                                        null: false
+    t.datetime "updated_at",                                                        null: false
     t.integer  "category_id"
     t.integer  "brand_id"
     t.string   "image1_file_name"
@@ -65,10 +65,10 @@ ActiveRecord::Schema.define(version: 20160418015309) do
     t.string   "image2_content_type"
     t.integer  "image2_file_size"
     t.datetime "image2_updated_at"
-    t.string   "sizes_n",             default: "--- []\n"
+    t.string   "sizes_n",                                      default: "--- []\n"
     t.string   "category_n"
     t.string   "brand_n"
-    t.string   "colors_n",            default: "--- []\n"
+    t.string   "colors_n",                                     default: "--- []\n"
   end
 
   create_table "colors", force: :cascade do |t|
