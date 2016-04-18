@@ -185,3 +185,16 @@ $(window).scroll(function() {
 
   }
 });
+
+$(window).resize(function() {
+    var sHeight = $(window).height() - 27;
+    var sWidth = $(window).width() + 4 ;
+
+    $('#slider').width(sWidth);
+    $('#slider img').width(sWidth);
+    $('#slider').height(sHeight);
+    $('#slider img').height(sHeight);
+    $('#prev').height(sHeight);
+    $('#next').height(sHeight);
+    $('.home').css("padding-top",sHeight);
+});

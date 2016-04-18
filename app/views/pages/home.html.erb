@@ -19,15 +19,44 @@
     <div id="next">
         <i class="fa fa-caret-right" aria-hidden="true"></i>
     </div>
-    <div class="brands">
-        <% @brands.each do |brand| %>
-            <%= link_to brand do %>
+    <div class="wrapper">
+        <div id="brands" class="transitions-enabled clearfix">
+            <% @brands.each do |brand| %>
                 <div class="brand">
+                    <div id="image">
+                        <% if brand.cloths.count > 0 %>
+                            <%= image_tag brand.cloths.first.image1.url(:preview) %>
+                        <% end %>
+                    </div>
+                    <div class="buy">
+                        <%= link_to "Comprar #{brand.name}", brand %></h3>
+                    </div>
                     <div class="name">
                         <h3><%= brand.name %></h3>
                     </div>
+
                 </div>
             <% end %>
-        <% end %>
+        </div>
+        <div id="categories" class="transitions-enabled clearfix">
+            <% @categories.each do |category| %>
+
+                <div class="category">
+
+                    <div id="image">
+                        <% if category.cloths.count > 0 %>
+                            <%= image_tag category.cloths.first.image2.url(:preview) %>
+                        <% end %>
+                        <%= link_to category do%>
+                        <div class="buy"></div>
+                        <% end %>
+                    </div>
+                    <div class="name">
+                        <h3><%= category.name %></h3>
+                    </div>
+                </div>
+
+            <% end %>
+        </div>
     </div>
 </div>
