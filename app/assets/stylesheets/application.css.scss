@@ -397,6 +397,7 @@ p,ul,ol{
             }
         }
         .account{
+            width: 120px;
             .btn-default{
                 border: 0;
                 border-radius: 0;
@@ -704,7 +705,6 @@ p,ul,ol{
         .account{
             height: 40px;
             position: relative;
-            width: 74px;
             h5{
                 a{
                     color: $white;
