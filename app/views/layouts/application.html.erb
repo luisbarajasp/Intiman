@@ -146,10 +146,12 @@
                         </div>
                     <% end %>
                 </div>
-                <div class="bag button hover">
-                    <a href="#"><h5><i class="fa fa-shopping-cart" aria-hidden="true"></i> (0)</h5></a>
-                    <div class="content">
-                        <h1>content</h1>
+                <div class="cart button hover">
+                    <%= link_to cart_path do %>
+                        <h5 class="cart-size"><%= render 'layouts/cart_size' %></h5>
+                    <% end %>
+                    <div class="content hover-cart">
+                        <%= render 'layouts/hover_cart' %>
                     </div>
                 </div>
             <% end %>

@@ -8,6 +8,11 @@ Rails.application.routes.draw do
 
   devise_for :admins
 
+  #resources :carts, :only => [:show]
+  get '/cart' => 'carts#show'
+
+  resources :order_items, :only => [:create, :update, :destroy]
+
   resources :colors
 
   resources :promotions

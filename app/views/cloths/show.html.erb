@@ -2,14 +2,76 @@
     <% if admin_signed_in? %>
         <div class="admin-links">
             <%= link_to "<i class='fa fa-pencil'></i>".html_safe, edit_cloth_path(@cloth) %>
-            <%= link_to '<i class="fa fa-trash"></i>'.html_safe, cloth_path(@cloth), method: :delete, data: {confirm: "Estás seguro?"} %>
+            <%= link_to '<i class="fa fa-trash"></i>'.html_safe, cloth_path(@cloth), method: :delete, data: {confirm: "Estás seguro de eliminar la prenda?"} %>
         </div>
     <% end %>
-    <h6><%= @cloth.description %></h6>
-    <h5>
-        <%= @cloth.normal_price %>
-        <% if @cloth.discount_price != 0 %>
-        <span><%= @cloth.discount_price %></span>
+
+    <div class="images">
+        <div class="image1">
+            <%= image_tag @cloth.image1.url(:preview) %>
+        </div>
+        <div class="image2">
+            <%= image_tag @cloth.image2.url(:preview) %>
+        </div>
+    </div>
+    <div class="caption">
+        <div class="descr">
+            <p><%= @cloth.description %></p>
+        </div>
+        <div class="info">
+            <div class="sizes">
+                <% @sis.each do |si| %>
+                    <% if si.cloth == @cloth %>
+                        <p><%= si.size.letter %></p>
+                    <% end %>
+                <% end %>
+            </div>
+            <div class="colors">
+                <% @cos.each do |co| %>
+                    <% if co.cloth == @cloth %>
+                        <div id="circle" style="background: <%= co.color.hex %>"></div>
+                    <% end %>
+                <% end %>
+            </div>
+        </div>
+    </div>
+    <div class="prices">
+        <p id="discount">MXN <span id="nom_price"><%= number_to_currency(@cloth.normal_price) %></span> <span id="dis_price"><%= number_to_currency(@cloth.discount_price) %></span></p>
+    </div>
+    <div class="form-order">
+      <div class="col-xs-4">
+        <%= form_for @order_item, remote: true do |f| %>
+          <div class="input-group">
+            <%= f.select :quantity, options_for_select(1..10, @order_item.quantity), class: "form-control"%>
+            <div class="input-group-btn">
+              <%= f.hidden_field :cloth_id, value: @cloth.id %>
+              <%= f.submit "Añadir al carrito", class: "btn btn-primary" %>
+            </div>
+          </div>
         <% end %>
-    </h5>
+      </div>
+    </div>
+    <% if user_signed_in? %>
+        <div class="like">
+            <% if !(current_user.liked? @cloth) %>
+
+                <%= link_to like_cloth_path(@cloth), method: :put do %>
+                    <span class="change-icon">
+                    <i class="fa fa-heart-o"></i>
+                    <i class="fa fa-heart"></i>
+                    </span>
+                <% end %>
+
+            <% else %>
+
+                <%= link_to dislike_cloth_path(@cloth), method: :put do %>
+                    <span class="change-icon">
+                    <i class="fa fa-heart"></i>
+                    <i class="fa fa-heart-o"></i>
+                    </span>
+                <% end %>
+
+            <% end %>
+        </div>
+    <% end %>
 </div>

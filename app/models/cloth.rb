@@ -18,4 +18,13 @@ class Cloth < ActiveRecord::Base
 	validates_attachment_content_type :image2, content_type: %w(image/jpeg image/jpg image/png)
 
     acts_as_votable
+
+    before_save :set_price
+    def set_price
+        if self.discount_price > 0
+            self[:price] = self.discount_price
+        else
+            self[:price] = self.normal_price
+        end
+    end
 end

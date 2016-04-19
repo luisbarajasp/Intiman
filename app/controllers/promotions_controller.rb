@@ -13,7 +13,7 @@ class PromotionsController < ApplicationController
       @cloths = @cloths.where('brand_n = ?', params[:brand]) if params[:brand]
       @cloths = @cloths.where('category_n = ?', params[:category]) if params[:category]
       @cloths = @cloths.select { |c| c.colors_n.include? params[:color] } if params[:color]
-      @cloths = @cloths.where('discount_price < ?', params[:price]) if params[:price]
+      @cloths = @cloths.where('price < ?', params[:price]) if params[:price]
   end
 
   def edit

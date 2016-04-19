@@ -3,9 +3,19 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  before_action :get_categories_brands
+  helper_method :current_order
 
-  def get_categories_brands
+  def current_order
+    if !session[:order_id].nil?
+      Order.find(session[:order_id])
+    else
+      Order.new
+    end
+  end
+
+  before_action :get_navigation
+
+  def get_navigation
       @categories = Category.all.order('created_at ASC')
       @brands = Brand.all.order('created_at ASC')
       @sizes = Size.all.order('created_at ASC')
@@ -16,6 +26,7 @@ class ApplicationController < ActionController::Base
       end
       @cos = Co.all
       @sis = Si.all
+      @order_items = current_order.order_items
   end
 
   before_action :configure_permitted_parameters, if: :devise_controller?

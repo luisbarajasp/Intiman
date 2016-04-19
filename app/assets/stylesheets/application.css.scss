@@ -34,6 +34,7 @@
  $gray: #343434;
  $dark-gray: #2C2B2C;
  $red: #ff4c4c;
+ $green: #0b6018;
 
  *{
      font-family: 'Raleway', sans-serif;
@@ -399,6 +400,7 @@ p,ul,ol{
             .btn-default{
                 border: 0;
                 border-radius: 0;
+                background: none;
                 &:hover{
                     background: none;
                     color: $secondary;
@@ -408,9 +410,9 @@ p,ul,ol{
         .hover{
             .content{
                 display: none;
-                min-width: 350px;
-                min-height: 300px;
-                max-height: 300px;
+                min-width: 450px;
+                min-height: 400px;
+                max-height: 400px;
                 position: absolute;
                 right: -1px;
                 padding: 5px;
@@ -433,10 +435,70 @@ p,ul,ol{
                 }
             }
         }
-        .bag{
+        .cart{
             position: relative;
             .content{
                 top: 64px;
+                padding: 0 10px;
+                p{
+                    margin: 0 0 5px 0;
+                }
+                .ver-cart{
+                    position: absolute;
+                    top: 20px;
+                    right: 35px;
+                    a{
+                        color: $green;
+                        border: 1px solid $green;
+                        text-decoration: none;
+                        font-size: 16px;
+                        -moz-transition: all 0.4s ease;
+                        -o-transition: all 0.4s ease;
+                        -webkit-transition: all 0.4s ease;
+                        transition: all 0.4s ease;
+                        padding: 5px;
+                        &:hover{
+                            background: $green;
+                            color: $white;
+                        }
+                    }
+                }
+                #items{
+                    width: 100%;
+                    overflow-y: scroll;
+                    height: 200px;
+                    .item{
+                        height: 150px;
+                        position: relative;
+                        .value{
+                            p{
+                                span{
+                                    font-weight: 700;
+                                }
+                            }
+                        }
+                        .delete{
+                            position: absolute;
+                            top: 0;
+                            right: 18px;
+                            display: none;
+                            a{
+                                color: $red;
+                                &:hover{
+                                    color: #4a0a0a;
+                                }
+                            }
+                        }
+                        &:hover{
+                            .delete{
+                                display: block;
+                            }
+                        }
+                    }
+                    &::-webkit-scrollbar {
+                        display: none;
+                    }
+                }
             }
         }
         .likes{
@@ -551,8 +613,12 @@ p,ul,ol{
             }
         }
         .account{
+            height: 65px;
+            .btn{
+                padding: 0;
+            }
         }
-        .bag{
+        .cart{
             .content{
                 top: 64px;
             }
@@ -622,13 +688,13 @@ p,ul,ol{
         }
     }
     .buttons{
-        height: 40px;
+        height: 43px;
         .button,.search-form{
-            padding: 5px;
+            padding: 5px 10px 5px 5px;
             margin-top: 5px;
         }
         .button{
-            height: 65px;
+            height: 46px;
             h5{
                 font-size: 14px;
                 color: $white;
@@ -636,13 +702,28 @@ p,ul,ol{
             }
         }
         .account{
+            height: 40px;
+            position: relative;
+            width: 74px;
             h5{
                 a{
                     color: $white;
                 }
             }
+            .btn{
+                margin: 0;
+                position: absolute;
+                top: -17px;
+                left: 0;
+                color: $white;
+            }
+            .dropdown-menu{
+                a{
+                    color: $dark;
+                }
+            }
         }
-        .bag{
+        .cart{
             .content{
                 top: 44px;
             }

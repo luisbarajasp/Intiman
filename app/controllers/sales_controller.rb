@@ -40,13 +40,13 @@ class SalesController < ApplicationController
         #
         # wheres.insert(0, conditions)
 
-        @cloths = Cloth.order( "#{params[:sort] or 'created_at'} #{params[:order] or 'DESC'}")
+        @cloths = Cloth.where('discount_price > 0').order( "#{params[:sort] or 'created_at'} #{params[:order] or 'DESC'}")
 
         @cloths = @cloths.select { |c| c.sizes_n.include? params[:size] } if params[:size]
         @cloths = @cloths.where('brand_n = ?', params[:brand]) if params[:brand]
         @cloths = @cloths.where('category_n = ?', params[:category]) if params[:category]
         @cloths = @cloths.select { |c| c.colors_n.include? params[:color] } if params[:color]
-        @cloths = @cloths.where('discount_price < ?', params[:price]) if params[:price]
+        @cloths = @cloths.where('price < ?', params[:price]) if params[:price]
 
         @cos = Co.all
         @sis = Si.all

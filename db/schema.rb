@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160418200112) do
+ActiveRecord::Schema.define(version: 20160419020536) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(version: 20160418200112) do
     t.string   "category_n"
     t.string   "brand_n"
     t.string   "colors_n",                                     default: "--- []\n"
+    t.decimal  "price",               precision: 12, scale: 3
   end
 
   create_table "colors", force: :cascade do |t|
@@ -119,6 +120,39 @@ ActiveRecord::Schema.define(version: 20160418200112) do
   end
 
   add_index "identities", ["user_id"], name: "index_identities_on_user_id"
+
+  create_table "order_items", force: :cascade do |t|
+    t.integer  "cloth_id"
+    t.integer  "order_id"
+    t.decimal  "unit_price",  precision: 12, scale: 3
+    t.integer  "quantity"
+    t.decimal  "total_price", precision: 12, scale: 3
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+    t.integer  "color_id"
+    t.integer  "size_id"
+  end
+
+  add_index "order_items", ["cloth_id"], name: "index_order_items_on_cloth_id"
+  add_index "order_items", ["order_id"], name: "index_order_items_on_order_id"
+
+  create_table "order_statuses", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.decimal  "subtotal",        precision: 12, scale: 3
+    t.decimal  "tax",             precision: 12, scale: 3
+    t.decimal  "shipping",        precision: 12, scale: 3
+    t.decimal  "total",           precision: 12, scale: 3
+    t.integer  "order_status_id"
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+  end
+
+  add_index "orders", ["order_status_id"], name: "index_orders_on_order_status_id"
 
   create_table "promotions", force: :cascade do |t|
     t.string   "title"

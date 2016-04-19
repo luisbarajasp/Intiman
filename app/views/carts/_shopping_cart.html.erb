@@ -1,0 +1,19 @@
+<% if !@order_item.nil? && @order_item.errors.any? %>
+  <div class="alert alert-danger">
+    <a href="#" data-dismiss="alert" class="close">×</a>
+    <ul>
+    <% @order_item.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+<% if @order_items.size == 0 %>
+  <p class="text-center">
+    Aún no tienes prendas en tu carrito de compra.  Checa nuestras <%= link_to "Sales", sales_index_path %>. <i class="fa fa-exclamation-circle"></i>
+  </p>
+<% else %>
+  <% @order_items.each do |order_item| %>
+    <%= render 'carts/cart_row', cloth: order_item.cloth, order_item: order_item, show_total: true %>
+  <% end %>
+<% end %>

@@ -7,6 +7,9 @@ class ClothsController < ApplicationController
 
   def show
       @cloth = Cloth.find(params[:id])
+      @order_item = current_order.order_items.new
+      @sizes = @cloth.sizes
+      @colors = @cloth.colors
   end
 
   def new

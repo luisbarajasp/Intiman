@@ -1,0 +1,35 @@
+<div class="wrapper">
+    <div class="title">
+        <h3>Carrito</h3>
+        <hr>
+    </div>
+    <div class="subtotal">
+        <h3>Subtotal: MXN <%= number_to_currency current_order.subtotal %></h3>
+        <hr>
+    </div>
+    <div id="items">
+        <% @order_items.each do |item| %>
+            <div class="col-md-4 item">
+                <div class="image">
+                    <%= image_tag item.cloth.image1.url(:thumb), class: "img-thumbnail" %>
+                </div>
+                <div class="description">
+                    <p>
+                        <%= item.cloth.description %>
+                    </p>
+                </div>
+                <div class="value">
+                    <p>
+                        MXN <span><%= number_to_currency item.total_price %></span>
+                    </p>
+                </div>
+                <div class="delete">
+                    <%= link_to "<i class='fa fa-times'></i>".html_safe, item, { data: { confirm: "¿Estás seguro que quieres borrar esta prenda de tu carrito?" }, method: :delete, remote: true } %>
+                </div>
+            </div>
+        <% end %>
+    </div>
+</div>
+<div class="ver-cart">
+    <%= link_to "Detalles", cart_path%>
+</div>
