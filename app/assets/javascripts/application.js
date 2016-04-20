@@ -11,13 +11,13 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
 //= require jquery-fileupload
 //= require twitter/bootstrap
-//= require turbolinks
 //= require masonry/jquery.masonry
-//= require jquery.turbolinks
 //= require_tree .
+//= require turbolinks
 
 var ready = function(){
     // var width = $('.main-navigation').width();
@@ -153,13 +153,20 @@ var ready = function(){
         });
     });
 
-    // $('a.normal-size').on('click', function(){
-    //     $(this).removeClass("normal-size").addClass("selected").siblings().removeClass("selected");
-    // });
-    //
-    // $('#circle').on('click',function(){
-    //     $(this).children("#mini-circle").show();
-    // });
+    $('a.normal-size').on('click', function(e){
+        e.preventDefault();
+        var value = $(this).attr("href");
+        $('#size-input').val(value);
+        $(this).removeClass("normal-size").addClass("selected").siblings().removeClass("selected").addClass("normal-size");
+    });
+
+    $('#link-circle').on('click',function(e){
+        e.preventDefault();
+        var value = $(this).attr("href");
+        $('#color-input').val(value);
+        $(this).children().children().css('opacity', '1');
+        return false;
+    });
 
     $('.btn-number').click(function(e){
             e.preventDefault();
@@ -176,12 +183,16 @@ var ready = function(){
                     }
                     if(parseInt(input.val()) == input.attr('min')) {
                         $(this).attr('disabled', true);
+                        $('.total h5').slideUp();
+
                     }
 
                 } else if(type == 'plus') {
 
                     if(currentVal < input.attr('max')) {
                         input.val(currentVal + 1).change();
+                        alert(currentVal)
+                        $('.total h5').slideDown();
                     }
                     if(parseInt(input.val()) == input.attr('max')) {
                         $(this).attr('disabled', true);
@@ -205,13 +216,13 @@ var ready = function(){
             if(valueCurrent >= minValue) {
                 $(".btn-number[data-type='minus'][data-field='"+name+"']").removeAttr('disabled')
             } else {
-                alert('Sorry, the minimum value was reached');
+                alert('Lo sentimos, mínimo es una prenda');
                 $(this).val($(this).data('oldValue'));
             }
             if(valueCurrent <= maxValue) {
                 $(".btn-number[data-type='plus'][data-field='"+name+"']").removeAttr('disabled')
             } else {
-                alert('Sorry, the maximum value was reached');
+                alert('Lo sentimos, máximo son diez prendas por orden');
                 $(this).val($(this).data('oldValue'));
             }
 

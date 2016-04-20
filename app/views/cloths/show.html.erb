@@ -57,42 +57,58 @@
         </div>
         <div class="form-order">
             <%= form_for @order_item, remote: true do |f| %>
+                <h5>Selecciona una talla</h5>
                 <div class="input-sizes">
-                    <h5>Tallas disponibles</h5>
                     <% @sis.each do |si| %>
-                        <%= link_to si.size.letter, params.merge(:s => si.size_id), class:"normal-size" %>
+                        <%= link_to si.size.letter, "#{si.size_id}", class:"normal-size" %>
                     <% end %>
-                    <%= f.hidden_field :size_id, value: @s_id %>
                 </div>
+                <%= f.hidden_field :size_id, id: "size-input" %>
+                <h5>Selecciona un color</h5>
                 <div class="input-colors">
-                    <h5>Colores disponibles</h5>
                     <% @cos.each do |co| %>
-                        <%= link_to params.merge(:c => co.color_id) do %>
+                        <%= link_to "#{co.color_id}", id: "link-circle" do %>
                             <div id="circle" style="background: <%= co.color.hex %>">
                                 <div id="mini-circle"></div>
                             </div>
                         <% end %>
                     <% end %>
-                    <%= f.hidden_field :color_id, value: @c_id %>
                 </div>
+                <%= f.hidden_field :color_id, id: "color-input" %>
               <div class="input-quantity">
                   <div class="input-group">
-                      <span class="input-group-btn">
-                          <button type="button" class="btn btn-default btn-number" disabled="disabled" data-type="minus" data-field="quant[1]">
+                      <span class="input-group-btn minus">
+                          <button type="button" class="btn btn-default btn-number" disabled="disabled" data-type="minus" data-field="order_item[quantity]">
                               <span class="glyphicon glyphicon-minus"></span>
                           </button>
                       </span>
                       <%= f.text_field :quantity, class: "form-control input-number", value: "1", min: "1", max: "10"%>
-                      <span class="input-group-btn">
-                          <button type="button" class="btn btn-default btn-number" data-type="plus" data-field="quant[1]">
+                      <span class="input-group-btn plus">
+                          <button type="button" class="btn btn-default btn-number" data-type="plus" data-field="order_item[quantity]">
                               <span class="glyphicon glyphicon-plus"></span>
                           </button>
                       </span>
                   </div>
+                  <div class="total">
+                      <script type="text/javascript">
+                          var ready = function(){
+                              $("input[name='order_item[quantity]']").on('change', function(){
+                                  var quant = parseInt($("input[name='order_item[quantity]']").val());
+                                  var display = parseFloat("<%= @cloth.price %>") * quant;
+
+                                  $('#number').html(display);
+                              });
+                          }
+
+                          $(document).ready(ready);
+                          $(document).on('page_load',ready);
+                      </script>
+                      <h5>Total por las prendas: <span id="number"></span></h5>
+                  </div>
               </div>
               <div class="input-btn">
                 <%= f.hidden_field :cloth_id, value: @cloth.id %>
-                <%= f.submit "Añadir al carrito", class: "btn btn-primary" %>
+                <%= f.submit "Añadir al carrito", class: "btn-add" %>
               </div>
             <% end %>
         </div>
