@@ -6,16 +6,16 @@
     </div>
     <div class="col-xs-4">
 
-      <%= form_for order_item, remote: true do |f| %>
+      <%= form_for (order_item), remote: true,:url => "/order_items/#{order_item.id}", :html=>{:id=>'item_form'} do |f| %>
         <h4 class="text-right">Precio por pieza: <span style="color: green"><%= number_to_currency order_item.unit_price %></span></h4>
         <div class="row">
           <div class="col-xs-4">
-            <%= f.select :quantity, options_for_select(1..10, order_item.quantity), class: "form-control"%>
+            <%= f.select :quantity, options_for_select(1..10, order_item.quantity), {}, class: "form-control", onchange: "$('#item_form').submit();"%>
             <%= f.hidden_field :cloth_id, value: cloth.id %>
           </div>
           <div class="col-xs-8 text-right">
             <div class="btn-group">
-              <%= f.submit "Actualizar cantidad", class: "btn btn-primary" %>
+
               <%= link_to "Eliminar", order_item, { data: { confirm: "¿Estás seguro que quieres borrar esta prenda de tu carrito?" }, method: :delete, remote: true, class: "btn btn-danger" } %>
             </div>
           </div>

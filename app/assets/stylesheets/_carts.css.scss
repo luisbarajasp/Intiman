@@ -1,0 +1,33 @@
+// Place all the styles related to the Carts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+$principal: #125688;
+$secondary: #C2B49A;
+$dark: #212121;
+$light-dark: #272727;
+$white: #fff;
+$highlight: #FF884D;
+$light-gray: #ededed;
+$uLight-gray: #f9f9f9;
+$gray: #343434;
+$dark-gray: #2C2B2C;
+$red: #ff4c4c;
+$green: #0b6018;
+
+.shopping-cart{
+    .text-center{
+        padding-top: 50px;
+        font-size: 17px;
+        .fa{
+            color: $red;
+        }
+    }
+    .table-top{
+        height: 33px;
+        border-bottom: 1px solid $dark;
+    }
+    .col-md-2,.col-sm-2{
+        border-left: 1px solid $dark;
+    }
+}

@@ -11,8 +11,12 @@
     <% end %>
 
 	<div class="form-group">
-		<%= f.label :name %> <br>
+		<%= f.label :name, "Nombre en plural de la categoria" %> <br>
 		<%= f.text_field :name, class: "form-control" %>
+	</div>
+    <div class="form-group">
+		<%= f.label :singular, "Nombre en singular de la categoria" %> <br>
+		<%= f.text_field :singular, class: "form-control" %>
 	</div>
 	<div class="form-group">
    	 	<%= f.submit "Submit", class: "btn btn-success" %>

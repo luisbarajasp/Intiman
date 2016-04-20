@@ -23,7 +23,7 @@ Rails.application.routes.draw do
 
   get 'sales/index', :path => 'sales'
 
-  resources :categories, except: [:edit,:update]
+  resources :categories
 
   resources :brands, except: [:edit,:update]
 

@@ -16,6 +16,21 @@ class CategoriesController < ApplicationController
           render 'new', alert: "Error: try again."
       end
   end
+  def edit
+      @category = Category.friendly.find(params[:id])
+  end
+  def update
+      @category = Category.friendly.find(params[:id])
+      respond_to do |f|
+			if @category.update(category_params)
+				f.html {redirect_to @category, notice: "Cloth updated succesfully."}
+				f.json { render :show, status: :ok, location: @category }
+			else
+				f.html { render :edit }
+				f.json { render json: @category.errors, status: :unprocessable_entity }
+			end
+		end
+  end
   def show
       @category = Category.friendly.find(params[:id])
   end
@@ -29,6 +44,6 @@ class CategoriesController < ApplicationController
   private
 
   def category_params
-      params.require(:category).permit(:name)
+      params.require(:category).permit(:name,:singular)
   end
 end

@@ -1,3 +1,121 @@
 // Place all the styles related to the Clothes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+$principal: #125688;
+$secondary: #C2B49A;
+$dark: #212121;
+$light-dark: #272727;
+$white: #fff;
+$highlight: #FF884D;
+$light-gray: #ededed;
+$uLight-gray: #f9f9f9;
+$gray: #343434;
+$dark-gray: #2C2B2C;
+$red: #ff4c4c;
+$green: #0b6018;
+
+.cloth{
+    .all{
+        .category_brand{
+            margin-bottom: 30px;
+        }
+        .descr{
+            margin-top: 30px;
+            border-top: 1px solid $light-gray;
+            h3{
+                font-size: 18.5px;
+                font-weight: 200;
+            }
+            p{
+                font-size: 13px;
+            }
+        }
+        .prices{
+            h3{
+                margin: 30px 0;
+                font-weight: 200;
+                #nom_price{
+                    color: #cdc8c8;
+                    text-decoration: line-through;
+                }
+                #dis_price{
+                    font-weight: 700;
+                }
+            }
+        }
+        .form-order{
+            .input-sizes{
+                .normal-size{
+                    border: 2px solid $secondary;
+                    padding: 3px;
+                    width: 20px;
+                    height: 20px;
+                    background: $white;
+                    text-decoration: none;
+                    color: $secondary;
+                    -moz-transition: all 0.5s ease;
+                    -o-transition: all 0.5s ease;
+                    -webkit-transition: all 0.5s ease;
+                    transition: all 0.5s ease;
+                    font-weight: 400;
+                    &:hover{
+                        background: $secondary;
+                        color: $white;
+                        font-weight: 700;
+                    }
+                }
+                .selected{
+                    border: 2px solid $secondary;
+                    padding: 3px;
+                    width: 20px;
+                    height: 20px;
+                    text-decoration: none;
+                    -moz-transition: all 0.5s ease;
+                    -o-transition: all 0.5s ease;
+                    -webkit-transition: all 0.5s ease;
+                    transition: all 0.5s ease;
+                    background: $secondary;
+                    color: $white;
+                    font-weight: 700;
+                    pointer-events: none;
+                    cursor: default;
+                }
+            }
+            .input-colors{
+                #circle {
+                    display: inline-block;
+                  width: 20px;
+                  height: 20px;
+                  -webkit-border-radius: 10px;
+                  -moz-border-radius: 10px;
+                  border-radius: 10px;
+                  position: relative;
+                  #mini-circle{
+                      display: none;
+                      position: absolute;
+                      top: 7px;
+                      left: 7px;
+                      width: 6px;
+                      height: 6px;
+                      -webkit-border-radius: 3px;
+                      -moz-border-radius: 3px;
+                      border-radius: 3px;
+                      background: $secondary;
+                  }
+                  &:hover{
+                      #mini-circle{
+                          display: block;
+                      }
+                  }
+                }
+            }
+            .input-quantity{
+
+            }
+            .input-btn{
+
+            }
+        }
+    }
+}

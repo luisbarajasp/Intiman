@@ -398,6 +398,9 @@ p,ul,ol{
         }
         .account{
             width: 120px;
+            h5{
+                text-align: right;
+            }
             .btn-default{
                 border: 0;
                 border-radius: 0;
@@ -468,6 +471,12 @@ p,ul,ol{
                     width: 100%;
                     overflow-y: scroll;
                     height: 200px;
+                    .text-center{
+                        font-size: 13px;
+                        .fa{
+                            color: $red;
+                        }
+                    }
                     .item{
                         height: 150px;
                         position: relative;
@@ -714,7 +723,7 @@ p,ul,ol{
                 margin: 0;
                 position: absolute;
                 top: -17px;
-                left: 0;
+                right: 0;
                 color: $white;
             }
             .dropdown-menu{
@@ -965,15 +974,12 @@ p,ul,ol{
                 font-family: 'Vollkorn', serif;
                 p{
                     font-size: 16px;
-                }
-                p#discount{
                     #nom_price{
                         text-decoration: line-through;
-                        color: #878585;
+                        color: #cdc8c8;
                     }
                     #dis_price{
-                        font-size: 20px;
-                        color: $red;
+                        font-weight: 700;
                     }
                 }
             }
@@ -1214,3 +1220,4 @@ p,ul,ol{
 @import 'sizes';
 @import 'sales';
 @import 'colors';
+@import 'carts';

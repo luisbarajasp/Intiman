@@ -8,25 +8,31 @@
         <hr>
     </div>
     <div id="items">
-        <% @order_items.each do |item| %>
-            <div class="col-md-4 item">
-                <div class="image">
-                    <%= image_tag item.cloth.image1.url(:thumb), class: "img-thumbnail" %>
+        <% if @order_items.size == 0 %>
+          <p class="text-center">
+            Aún no tienes prendas en tu carrito de compra. <i class="fa fa-exclamation-circle"></i>
+          </p>
+        <% else %>
+            <% @order_items.each do |item| %>
+                <div class="col-md-4 item">
+                    <div class="image">
+                        <%= image_tag item.cloth.image1.url(:thumb), class: "img-thumbnail" %>
+                    </div>
+                    <div class="description">
+                        <p>
+                            <%= item.cloth.description %>
+                        </p>
+                    </div>
+                    <div class="value">
+                        <p>
+                            MXN <span><%= number_to_currency item.total_price %></span>
+                        </p>
+                    </div>
+                    <div class="delete">
+                        <%= link_to "<i class='fa fa-times'></i>".html_safe, item, { data: { confirm: "¿Estás seguro que quieres borrar esta prenda de tu carrito?" }, method: :delete, remote: true } %>
+                    </div>
                 </div>
-                <div class="description">
-                    <p>
-                        <%= item.cloth.description %>
-                    </p>
-                </div>
-                <div class="value">
-                    <p>
-                        MXN <span><%= number_to_currency item.total_price %></span>
-                    </p>
-                </div>
-                <div class="delete">
-                    <%= link_to "<i class='fa fa-times'></i>".html_safe, item, { data: { confirm: "¿Estás seguro que quieres borrar esta prenda de tu carrito?" }, method: :delete, remote: true } %>
-                </div>
-            </div>
+            <% end %>
         <% end %>
     </div>
 </div>

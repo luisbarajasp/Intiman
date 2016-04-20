@@ -80,7 +80,13 @@
                                 <p><%= cloth.description %></p>
                             </div>
                             <div class="prices">
-                                <p id="discount">MXN <span id="nom_price"><%= number_to_currency(cloth.normal_price) %></span> <span id="dis_price"><%= number_to_currency(cloth.discount_price) %></span></p>
+                                <p id="discount">MXN
+                                    <% if cloth.discount_price != 0 %>
+                                        <span id="nom_price"><%= number_to_currency(cloth.normal_price) %></span> <span id="dis_price"><%= number_to_currency(cloth.discount_price) %></span>
+                                    <% else %>
+                                        <span id="price"><%= number_to_currency(cloth.normal_price) %></span>
+                                    <% end %>
+                                </p>
                             </div>
                             <div class="info">
                                 <div class="sizes">

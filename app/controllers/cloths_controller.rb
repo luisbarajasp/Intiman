@@ -8,8 +8,13 @@ class ClothsController < ApplicationController
   def show
       @cloth = Cloth.find(params[:id])
       @order_item = current_order.order_items.new
-      @sizes = @cloth.sizes
-      @colors = @cloth.colors
+    #   @sizes_c = @cloth.sizes
+    #   @colors_c = @cloth.colors
+    @sis = @cloth.sis
+    @cos = @cloth.cos
+
+    @s_id = params[:s]
+    @c_id = params[:c]
   end
 
   def new

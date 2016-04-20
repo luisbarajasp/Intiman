@@ -6,72 +6,99 @@
         </div>
     <% end %>
 
-    <div class="images">
+    <div class="images col-md-1 col-sm-1">
         <div class="image1">
-            <%= image_tag @cloth.image1.url(:preview) %>
+            <%= image_tag @cloth.image2.url(:thumb) %>
         </div>
         <div class="image2">
-            <%= image_tag @cloth.image2.url(:preview) %>
+            <%= image_tag @cloth.image1.url(:thumb) %>
         </div>
     </div>
-    <div class="caption">
-        <div class="descr">
-            <p><%= @cloth.description %></p>
-        </div>
-        <div class="info">
-            <div class="sizes">
-                <% @sis.each do |si| %>
-                    <% if si.cloth == @cloth %>
-                        <p><%= si.size.letter %></p>
+    <div class="picture col-md-5 col-sm-5">
+        <% if user_signed_in? %>
+            <div class="like">
+                <% if !(current_user.liked? @cloth) %>
+
+                    <%= link_to like_cloth_path(@cloth), method: :put do %>
+                        <span class="change-icon">
+                        <i class="fa fa-heart-o"></i>
+                        <i class="fa fa-heart"></i>
+                        </span>
                     <% end %>
+
+                <% else %>
+
+                    <%= link_to dislike_cloth_path(@cloth), method: :put do %>
+                        <span class="change-icon">
+                        <i class="fa fa-heart"></i>
+                        <i class="fa fa-heart-o"></i>
+                        </span>
+                    <% end %>
+
                 <% end %>
             </div>
-            <div class="colors">
-                <% @cos.each do |co| %>
-                    <% if co.cloth == @cloth %>
-                        <div id="circle" style="background: <%= co.color.hex %>"></div>
-                    <% end %>
-                <% end %>
-            </div>
-        </div>
-    </div>
-    <div class="prices">
-        <p id="discount">MXN <span id="nom_price"><%= number_to_currency(@cloth.normal_price) %></span> <span id="dis_price"><%= number_to_currency(@cloth.discount_price) %></span></p>
-    </div>
-    <div class="form-order">
-      <div class="col-xs-4">
-        <%= form_for @order_item, remote: true do |f| %>
-          <div class="input-group">
-            <%= f.select :quantity, options_for_select(1..10, @order_item.quantity), class: "form-control"%>
-            <div class="input-group-btn">
-              <%= f.hidden_field :cloth_id, value: @cloth.id %>
-              <%= f.submit "Añadir al carrito", class: "btn btn-primary" %>
-            </div>
-          </div>
         <% end %>
-      </div>
     </div>
-    <% if user_signed_in? %>
-        <div class="like">
-            <% if !(current_user.liked? @cloth) %>
-
-                <%= link_to like_cloth_path(@cloth), method: :put do %>
-                    <span class="change-icon">
-                    <i class="fa fa-heart-o"></i>
-                    <i class="fa fa-heart"></i>
-                    </span>
+    <div class="all col-md-6 col-sm-6">
+        <div class="category_brand">
+            <h2>
+            <%= @cloth.category.singular.mb_chars.upcase.to_s %>
+            </h2>
+            <h3><%= @cloth.brand.name %></h3>
+        </div>
+        <div class="prices">
+            <h3>MXN
+                <% if @cloth.discount_price != 0 %>
+                    <span id="nom_price"><%= number_to_currency(@cloth.normal_price) %></span> <span id="dis_price"><%= number_to_currency(@cloth.discount_price) %></span>
+                <% else %>
+                    <span id="price"><%= number_to_currency(@cloth.normal_price) %></span>
                 <% end %>
-
-            <% else %>
-
-                <%= link_to dislike_cloth_path(@cloth), method: :put do %>
-                    <span class="change-icon">
-                    <i class="fa fa-heart"></i>
-                    <i class="fa fa-heart-o"></i>
-                    </span>
-                <% end %>
-
+            </h3>
+        </div>
+        <div class="form-order">
+            <%= form_for @order_item, remote: true do |f| %>
+                <div class="input-sizes">
+                    <h5>Tallas disponibles</h5>
+                    <% @sis.each do |si| %>
+                        <%= link_to si.size.letter, params.merge(:s => si.size_id), class:"normal-size" %>
+                    <% end %>
+                    <%= f.hidden_field :size_id, value: @s_id %>
+                </div>
+                <div class="input-colors">
+                    <h5>Colores disponibles</h5>
+                    <% @cos.each do |co| %>
+                        <%= link_to params.merge(:c => co.color_id) do %>
+                            <div id="circle" style="background: <%= co.color.hex %>">
+                                <div id="mini-circle"></div>
+                            </div>
+                        <% end %>
+                    <% end %>
+                    <%= f.hidden_field :color_id, value: @c_id %>
+                </div>
+              <div class="input-quantity">
+                  <div class="input-group">
+                      <span class="input-group-btn">
+                          <button type="button" class="btn btn-default btn-number" disabled="disabled" data-type="minus" data-field="quant[1]">
+                              <span class="glyphicon glyphicon-minus"></span>
+                          </button>
+                      </span>
+                      <%= f.text_field :quantity, class: "form-control input-number", value: "1", min: "1", max: "10"%>
+                      <span class="input-group-btn">
+                          <button type="button" class="btn btn-default btn-number" data-type="plus" data-field="quant[1]">
+                              <span class="glyphicon glyphicon-plus"></span>
+                          </button>
+                      </span>
+                  </div>
+              </div>
+              <div class="input-btn">
+                <%= f.hidden_field :cloth_id, value: @cloth.id %>
+                <%= f.submit "Añadir al carrito", class: "btn btn-primary" %>
+              </div>
             <% end %>
         </div>
-    <% end %>
+        <div class="descr">
+            <h3>Descripción</h3>
+            <p><%= @cloth.description %></p>
+        </div>
+    </div>
 </div>
