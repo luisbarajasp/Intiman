@@ -7,14 +7,24 @@
     <% end %>
 
     <div class="images col-md-1 col-sm-1">
-        <div class="image1">
-            <%= image_tag @cloth.image2.url(:thumb) %>
+        <div id="image" class="displaying">
+            <%= link_to (image_tag @cloth.image2.url(:thumb)), "img2", id: "link-img" %>
+            <div class="hover"></div>
         </div>
-        <div class="image2">
-            <%= image_tag @cloth.image1.url(:thumb) %>
+        <div id="image">
+            <%= link_to (image_tag @cloth.image1.url(:thumb)), "img1", id: "link-img" %>
+            <div class="hover"></div>
         </div>
     </div>
-    <div class="picture col-md-5 col-sm-5">
+    <div class="picture col-md-6 col-sm-6">
+        <div class="portrait">
+            <div id="img2" class="display">
+                <%= image_tag @cloth.image2.url(:medium) %>
+            </div>
+            <div id="img1" class="hidden">
+                <%= image_tag @cloth.image1.url(:medium) %>
+            </div>
+        </div>
         <% if user_signed_in? %>
             <div class="like">
                 <% if !(current_user.liked? @cloth) %>
@@ -39,7 +49,7 @@
             </div>
         <% end %>
     </div>
-    <div class="all col-md-6 col-sm-6">
+    <div class="all col-md-5 col-sm-5">
         <div class="category_brand">
             <h2>
             <%= @cloth.category.singular.mb_chars.upcase.to_s %>
@@ -95,8 +105,7 @@
                               $("input[name='order_item[quantity]']").on('change', function(){
                                   var quant = parseInt($("input[name='order_item[quantity]']").val());
                                   var display = parseFloat("<%= @cloth.price %>") * quant;
-
-                                  $('#number').html(display);
+                                  $('#number').html('$'+display.toFixed(2));
                               });
                           }
 

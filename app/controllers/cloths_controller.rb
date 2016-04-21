@@ -13,8 +13,7 @@ class ClothsController < ApplicationController
     @sis = @cloth.sis
     @cos = @cloth.cos
 
-    @s_id = params[:s]
-    @c_id = params[:c]
+
   end
 
   def new

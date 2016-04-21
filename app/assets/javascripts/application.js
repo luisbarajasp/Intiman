@@ -191,7 +191,6 @@ var ready = function(){
 
                     if(currentVal < input.attr('max')) {
                         input.val(currentVal + 1).change();
-                        alert(currentVal)
                         $('.total h5').slideDown();
                     }
                     if(parseInt(input.val()) == input.attr('max')) {
@@ -222,7 +221,7 @@ var ready = function(){
             if(valueCurrent <= maxValue) {
                 $(".btn-number[data-type='plus'][data-field='"+name+"']").removeAttr('disabled')
             } else {
-                alert('Lo sentimos, máximo son diez prendas por orden');
+                alert('Lo sentimos, máximo son 10 prendas por orden');
                 $(this).val($(this).data('oldValue'));
             }
 
@@ -244,10 +243,29 @@ var ready = function(){
         }
     });
 
+    $('.cloth .hover').on('mouseover',function(){
+        image = $(this).closest("#image");
+        if (image.hasClass("displaying") == false){
+            image.addClass("displaying").siblings().removeClass('displaying');
+            var id = image.find("#link-img").attr("href");
+
+            var imageP = $('.portrait').find('#'+id);
+            imageP.removeClass("hidden").addClass("display").siblings().removeClass("display").addClass("hidden");
+
+            height = $('.display img').height();
+            $('.portrait').height(height);
+            $('.picture').height(height);
+        }
+    });
+
+    height = $('.display img').height();
+    $('.portrait').height(height);
+    $('.picture').height(height);
+
 };
 
 $(document).ready(ready);
-$(document).on('page:load', ready);
+//$(document).on('page:load', ready);
 
 //For hiding search form when clicking in other part of document
 $(document).mouseup(function (e)
