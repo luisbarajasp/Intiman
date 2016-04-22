@@ -39,4 +39,7 @@
   <% @order_items.each do |order_item| %>
     <%= render 'carts/cart_row', cloth: order_item.cloth, order_item: order_item, show_total: true %>
   <% end %>
+  <div class="total">
+      
+  </div>
 <% end %>

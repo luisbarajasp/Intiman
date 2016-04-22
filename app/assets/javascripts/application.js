@@ -168,6 +168,14 @@ var ready = function(){
         return false;
     });
 
+    $('a.normal-size.cart-el').on('click',function(e){
+        e.preventDefault();
+        var value = $(this).attr("href");
+        $('#size-input-cart').val(value);
+        $(this).removeClass("normal-size").addClass("selected").siblings().removeClass("selected").addClass("normal-size");
+        $('#item_form_cart').submit();
+    });
+
     $('.btn-number').click(function(e){
             e.preventDefault();
 

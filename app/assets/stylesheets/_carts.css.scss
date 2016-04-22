@@ -59,7 +59,7 @@ $green: #0b6018;
               -webkit-border-radius: 3px;
               -moz-border-radius: 3px;
               border-radius: 3px;
-              background: $secondary;
+              background: $white;
           }
           &:hover{
               #mini-circle{
@@ -71,26 +71,26 @@ $green: #0b6018;
     .input-sizes{
         text-align: center;
         .normal-size{
-            border: 2px solid $secondary;
+            border: 2px solid #c8cdcd;
             padding: 3px;
             width: 20px;
             height: 20px;
             background: $white;
             text-decoration: none;
-            color: $secondary;
+            color: #d1d6d6;
             -moz-transition: all 0.5s ease;
             -o-transition: all 0.5s ease;
             -webkit-transition: all 0.5s ease;
             transition: all 0.5s ease;
             font-weight: 400;
             &:hover{
-                background: $secondary;
-                color: $white;
+                border-color: $dark;
+                color: $dark;
                 font-weight: 700;
             }
         }
         .selected{
-            border: 2px solid $secondary;
+            border: 2px solid $dark;
             padding: 3px;
             width: 20px;
             height: 20px;
@@ -99,8 +99,8 @@ $green: #0b6018;
             -o-transition: all 0.5s ease;
             -webkit-transition: all 0.5s ease;
             transition: all 0.5s ease;
-            background: $secondary;
-            color: $white;
+            background: $white;
+            color: $dark;
             font-weight: 700;
             pointer-events: none;
             cursor: default;
