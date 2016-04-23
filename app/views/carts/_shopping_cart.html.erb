@@ -8,9 +8,6 @@
     </ul>
   </div>
 <% end %>
-<div class="page-name">
-    <h3>Carrito de compras</h3>
-</div>
 <div class="table-top">
     <div class="col-md-4 col-sm-4">
         <h5>Prenda</h5>
@@ -36,10 +33,17 @@
     Aún no tienes prendas en tu carrito de compra. <i class="fa fa-exclamation-circle"></i>
   </p>
 <% else %>
-  <% @order_items.each do |order_item| %>
-    <%= render 'carts/cart_row', cloth: order_item.cloth, order_item: order_item, show_total: true %>
-  <% end %>
-  <div class="total">
-      
+  <div class="order_items">
+      <% @order_items.each do |order_item| %>
+        <%= render 'carts/cart_row', cloth: order_item.cloth, order_item: order_item, show_total: true %>
+      <% end %>
+  </div>
+  <div class="footer-cart">
+      <div class="checkout">
+          <a href="#">Checkout</a>
+      </div>
+      <div class="subtotal">
+          <%= render 'carts/subtotal' %>
+      </div>
   </div>
 <% end %>

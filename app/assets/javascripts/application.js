@@ -171,9 +171,9 @@ var ready = function(){
     $('a.normal-size.cart-el').on('click',function(e){
         e.preventDefault();
         var value = $(this).attr("href");
-        $('#size-input-cart').val(value);
+        $(this).parent().next('#size-input-cart').val(value);
         $(this).removeClass("normal-size").addClass("selected").siblings().removeClass("selected").addClass("normal-size");
-        $('#item_form_cart').submit();
+        $(this).closest('#item_form_cart').submit();
     });
 
     $('.btn-number').click(function(e){
@@ -270,6 +270,9 @@ var ready = function(){
     $('.portrait').height(height);
     $('.picture').height(height);
 
+    scHeight = $(window).height() - 216;
+    $('.shopping-cart').height(scHeight);
+
 };
 
 $(document).ready(ready);
@@ -304,6 +307,7 @@ $(window).scroll(function() {
 $(window).resize(function() {
     var sHeight = $(window).height() - 27;
     var sWidth = $(window).width() + 4 ;
+    scHeight = $(window).height() - 216;
 
     $('#slider').width(sWidth);
     $('#slider img').width(sWidth);
@@ -312,4 +316,5 @@ $(window).resize(function() {
     $('#prev').height(sHeight);
     $('#next').height(sHeight);
     $('.home').css("padding-top",sHeight);
+    $('.shopping-cart').height(scHeight);
 });
