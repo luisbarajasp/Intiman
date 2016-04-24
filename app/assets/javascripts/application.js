@@ -192,10 +192,6 @@ var ready = function(){
         $('h5.cart-size').css('color','#C2B49A');
     }
 
-    function scrollToInterest(){
-
-    }
-
     $('a.normal-size.cart-el').on('click',function(e){
         e.preventDefault();
         var value = $(this).attr("href");
@@ -288,7 +284,7 @@ var ready = function(){
         }
     });
 
-    setTimeout(setPortraitH, 100);
+    setTimeout(setPortraitH, 1);
 
     function setPortraitH(){
         height = $('.display img').height();
