@@ -7,11 +7,10 @@ class ClothsController < ApplicationController
 
   def show
       @cloth = Cloth.find(params[:id])
+      @cloths = Cloth.where('category_id = ? AND id != ?', @cloth.category_id, @cloth.id)
       @order_item = current_order.order_items.new
-    #   @sizes_c = @cloth.sizes
-    #   @colors_c = @cloth.colors
-    @sis = @cloth.sis
-    @cos = @cloth.cos
+      @sis = @cloth.sis
+      @cos = @cloth.cos
 
 
   end

@@ -3,6 +3,8 @@ class OrderItem < ActiveRecord::Base
   belongs_to :order
 
   validates :quantity, presence: true, numericality: { only_integer: true, greater_than: 0, lesser_than: 11 }
+  validates :color_id, presence: true
+  validates :size_id, presence: true
   validate :cloth_present
   validate :order_present
 
@@ -23,7 +25,7 @@ class OrderItem < ActiveRecord::Base
 private
   def cloth_present
     if cloth.nil?
-      errors.add(:cloth, " es no válido o está inactivo. Por favor si tienes algún problema dirigete a Ayuda.")
+      errors.add(:cloth, " no es válido o está inactivo. Por favor si tienes algún problema dirigete a Ayuda.")
     end
   end
 

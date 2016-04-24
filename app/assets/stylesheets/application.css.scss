@@ -748,9 +748,13 @@ p,ul,ol{
 .alert{
     z-index: 300;
     position: fixed;
-    top: 97px;
+    top: 105px;
     left: 10%;
     width: 80%;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    -webkit-transition: all 1s ease;
+    transition: all 1s ease;
     ul>li{
         list-style: none;
         font-size: 1em;

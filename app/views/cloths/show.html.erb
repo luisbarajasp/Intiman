@@ -1,4 +1,4 @@
-<div class="cloth">
+<div class="cloth clearfix">
     <% if admin_signed_in? %>
         <div class="admin-links">
             <%= link_to "<i class='fa fa-pencil'></i>".html_safe, edit_cloth_path(@cloth) %>
@@ -66,23 +66,37 @@
             </h3>
         </div>
         <div class="form-order">
-            <%= form_for @order_item, remote: true do |f| %>
+            <%= form_for @order_item, remote: true, id: "item_form" do |f| %>
                 <h5>Selecciona una talla</h5>
                 <div class="input-sizes">
-                    <% @sis.each do |si| %>
-                        <%= link_to si.size.letter, "#{si.size_id}", class:"normal-size" %>
-                    <% end %>
+                    <div class="sizes">
+                        <% @sis.each do |si| %>
+                            <%= link_to si.size.letter, "#{si.size_id}", class:"normal-size" %>
+                        <% end %>
+                    </div>
+                    <div class="alert_size">
+                        <p>
+                            <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Necesitas seleccionar una talla
+                        </p>
+                    </div>
                 </div>
                 <%= f.hidden_field :size_id, id: "size-input" %>
                 <h5>Selecciona un color</h5>
                 <div class="input-colors">
-                    <% @cos.each do |co| %>
-                        <%= link_to "#{co.color_id}", id: "link-circle" do %>
-                            <div id="circle" style="background: <%= co.color.hex %>">
-                                <div id="mini-circle"></div>
-                            </div>
+                    <div class="colors">
+                        <% @cos.each do |co| %>
+                            <%= link_to "#{co.color_id}", class: "link-circle" do %>
+                                <div class="circle" style="background: <%= co.color.hex %>">
+                                    <div class="mini-circle"></div>
+                                </div>
+                            <% end %>
                         <% end %>
-                    <% end %>
+                    </div>
+                    <div class="alert_color">
+                        <p>
+                            <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Necesitas seleccionar un color
+                        </p>
+                    </div>
                 </div>
                 <%= f.hidden_field :color_id, id: "color-input" %>
               <div class="input-quantity">
@@ -127,3 +141,34 @@
         </div>
     </div>
 </div>
+<div id="alert-o-item" class="alert alert-success">
+  <a href="#" data-dismiss="alert" class="close">×</a>
+  <ul>
+    <li>
+      La prenda fue añadida a tu carrito <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+    </li>
+  </ul>
+</div>
+<div class="interest clearfix">
+    <hr>
+    <h3>Otros usuarios también vieron...</h3>
+    <div id="cloths" class="transitions-enabled clearfix">
+        <% @cloths.each do |cloth| %>
+
+            <div class="cloth">
+
+                <div id="image">
+                    <%= image_tag cloth.image2.url(:preview) %>
+                    <%= link_to cloth do%>
+                        <div class="buy"></div>
+                    <% end %>
+                </div>
+                <div class="descr">
+                    <h3><%= cloth.description.truncate_words(5) %></h3>
+                </div>
+            </div>
+
+        <% end %>
+    </div>
+</div>
+<div class="push"></div>

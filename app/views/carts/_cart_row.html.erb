@@ -18,22 +18,22 @@
               <% @cos.each do |co| %>
                   <% if co.cloth == order_item.cloth %>
                       <% if co.color_id == order_item.color_id %>
-                          <%= link_to "#{co.color_id}", id: "link-circle" do %>
-                              <div id="circle" style="background: <%= co.color.hex %>;">
-                                  <div id="mini-circle" style="opacity: 1;"></div>
+                          <%= link_to "#{co.color_id}", class: "link-circle cart-el" do %>
+                              <div class="circle" style="background: <%= co.color.hex %>;">
+                                  <div class="mini-circle" style="opacity: 1;"></div>
                               </div>
                           <% end %>
                       <% else %>
-                          <%= link_to "#{co.color_id}", id: "link-circle" do %>
-                              <div id="circle" style="background: <%= co.color.hex %>;">
-                                  <div id="mini-circle"></div>
+                          <%= link_to "#{co.color_id}", class: "link-circle" do %>
+                              <div class="circle" style="background: <%= co.color.hex %>;">
+                                  <div class="mini-circle"></div>
                               </div>
                           <% end %>
                       <% end %>
                   <% end %>
               <% end %>
           </div>
-          <%= f.hidden_field :color_id, id: "color-input" %>
+          <%= f.hidden_field :color_id, id: "color-input-cart" %>
           <div class="input-sizes col-md-2">
               <% @sis.each do |si| %>
                  <% if si.cloth == order_item.cloth %>
