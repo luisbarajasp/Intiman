@@ -32,6 +32,7 @@ gem 'fancybox2-rails', '~> 0.2.8'
 gem 'jquery-fileupload-rails', '~> 0.4.6'
 gem 'simple_form', '~> 3.2', '>= 3.2.1'
 gem 'formtastic', '~> 3.1', '>= 3.1.4'
+gem 'elevatezoom-rails', '~> 1.0'
 
 
 

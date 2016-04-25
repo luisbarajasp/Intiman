@@ -13,7 +13,7 @@
 //= require jquery
 //= require jquery.turbolinks
 //= require jquery_ujs
-//= require jquery-fileupload
+//= require jquery.elevatezoom
 //= require twitter/bootstrap
 //= require masonry/jquery.masonry
 //= require_tree .
@@ -309,6 +309,14 @@ var ready = function(){
 
     scHeight = $(window).height() - 216;
     $('.shopping-cart').height(scHeight);
+
+    $('#zoom-img').elevateZoom();
+    // $('#zoom-img2').elevateZoom({
+    //     zoomType: "lens",
+    //     lensShape: "square",
+    //     lensSize: 200
+    // });
+
 
 };
 
