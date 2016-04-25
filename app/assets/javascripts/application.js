@@ -292,6 +292,8 @@ var ready = function(){
         $('.picture').height(height);
     }
 
+    $('#zoom-img').elevateZoom();
+
     $('.cloth .hover').on('mouseover',function(){
         image = $(this).closest("#image");
         if (image.hasClass("displaying") == false){
