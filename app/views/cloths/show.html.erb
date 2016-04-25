@@ -22,7 +22,7 @@
                 <%= image_tag @cloth.image2.url(:medium), id: "zoom-img", 'data-zoom-image' => "#{@cloth.image2.url(:large)}" %>
             </div>
             <div id="img1" class="hidden">
-                <%= image_tag @cloth.image1.url(:medium), id: "zoom-img", 'data-zoom-image' => "#{@cloth.image1.url(:large)}" %>
+                <%= image_tag @cloth.image1.url(:medium), id: "zoom-img2", 'data-zoom-image' => "#{@cloth.image1.url(:large)}" %>
             </div>
         </div>
         <% if user_signed_in? %>

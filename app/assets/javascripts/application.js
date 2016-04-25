@@ -301,6 +301,16 @@ var ready = function(){
             var imageP = $('.portrait').find('#'+id);
             imageP.removeClass("hidden").addClass("display").siblings().removeClass("display").addClass("hidden");
 
+            if(id == "img2"){
+                $('#zoom-img').elevateZoom();
+                $('#zoom-img2').removeData('elevateZoom');
+                $('#zoom-img2').removeData('zoomImage');
+            }else{
+                $('#zoom-img2').elevateZoom();
+                $('#zoom-img').removeData('elevateZoom');
+                $('#zoom-img').removeData('zoomImage');
+            }
+
             height = $('.display img').height();
             $('.portrait').height(height);
             $('.picture').height(height);
@@ -309,13 +319,6 @@ var ready = function(){
 
     scHeight = $(window).height() - 216;
     $('.shopping-cart').height(scHeight);
-
-    $('#zoom-img').elevateZoom();
-    // $('#zoom-img2').elevateZoom({
-    //     zoomType: "lens",
-    //     lensShape: "square",
-    //     lensSize: 200
-    // });
 
 
 };
