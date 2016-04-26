@@ -118,26 +118,24 @@ $green: #108823;
             .input-sizes{
                 position: relative;
                 .normal-size{
-                    border: 2px solid #cdc8c8;
+                    border: 1px solid $dark;
                     padding: 3px;
                     width: 20px;
                     height: 20px;
                     background: $white;
                     text-decoration: none;
-                    color: #cdc8c8;
+                    color: $dark;
                     -moz-transition: all 0.5s ease;
                     -o-transition: all 0.5s ease;
                     -webkit-transition: all 0.5s ease;
                     transition: all 0.5s ease;
                     font-weight: 400;
                     &:hover{
-                        border-color: $dark;
-                        color: $dark;
-                        font-weight: 700;
+                        background: #F3F2EB;
                     }
                 }
                 .selected{
-                    border: 2px solid $dark;
+                    border: 1px solid $dark;
                     padding: 3px;
                     width: 20px;
                     height: 20px;
@@ -146,9 +144,8 @@ $green: #108823;
                     -o-transition: all 0.5s ease;
                     -webkit-transition: all 0.5s ease;
                     transition: all 0.5s ease;
-                    background: $white;
-                    color: $dark;
-                    font-weight: 700;
+                    background: $dark;
+                    color: $white;
                     pointer-events: none;
                     cursor: default;
                 }

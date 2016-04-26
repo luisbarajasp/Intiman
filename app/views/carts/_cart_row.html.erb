@@ -38,7 +38,7 @@
               <% @sis.each do |si| %>
                  <% if si.cloth == order_item.cloth %>
                      <% if order_item.size_id == si.size_id %>
-                         <%= link_to si.size.letter, "#{si.size_id}", class:"selected" %>
+                         <%= link_to si.size.letter, "#{si.size_id}", class:"selected cart-el" %>
                      <% else %>
                          <%= link_to si.size.letter, "#{si.size_id}", class:"normal-size cart-el" %>
                      <% end %>

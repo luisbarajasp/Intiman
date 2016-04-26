@@ -6,11 +6,15 @@ class ApplicationController < ActionController::Base
   helper_method :current_order
 
   def current_order
-    if !session[:order_id].nil?
-      Order.find(session[:order_id])
-    else
-      Order.new
+    if session[:order_id]
+      @current_order ||= Order.find(session[:order_id])
+      session[:order_id] = nil if @current_order.order_status_id != 1
     end
+    if session[:order_id].nil?
+      @current_order = Order.new
+      session[:order_id] = @current_order.id
+    end
+    @current_order
   end
 
   before_action :get_navigation
