@@ -2,7 +2,9 @@ Rails.application.routes.draw do
 
   resources :home_sliders, :except => [:show]
 
-  devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks', :sessions => "custom_sessions" }
+  devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks'
+      #, :sessions => "custom_sessions" 
+  }
 
   match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], as: :finish_signup
 

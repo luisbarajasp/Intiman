@@ -30,7 +30,7 @@ class ApplicationController < ActionController::Base
       end
       @cos = Co.all
       @sis = Si.all
-      @order_items = current_order.order_items
+      @order_items = OrderItem.where(order_id: current_order.id)
   end
 
   before_action :configure_permitted_parameters, if: :devise_controller?
