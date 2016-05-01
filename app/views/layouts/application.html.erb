@@ -134,16 +134,50 @@
                 </div>
                 <div class="likes button hover">
                     <% if user_signed_in? %>
-                        <a href="#"><h5><i class="fa fa-heart"></i> (<%= current_user.find_liked_items.count %>)</h5></a>
+                        <a href="/likes"><h5><i class="fa fa-heart"></i> (<%= current_user.find_liked_items.count %>)</h5></a>
                         <div class="content">
-                            <h1>content</h1>
+                            <div class="title">
+                                <h3>Estas prendas te han gustado <i class="fa fa-heart"></i></h3>
+                                <hr>
+                            </div>
+                            <% if @cloths_liked.count > 0 %>
+                                <div class="cloths-liked col-md-offset-1 col-sm-offset-1">
+                                    <% @cloths_liked.each do |cloth| %>
+                                        <%= link_to cloth do %>
+                                            <div class="cloth col-md-2 col-sm-2">
+                                                <div class="thumb">
+                                                    <%= image_tag cloth.image1.url(:preview) %>
+                                                </div>
+                                                <div class="dislike">
+                                                    <%= link_to dislike_cloth_path(cloth), method: :put do %>
+                                                        <span class="change-icon">
+                                                        <i class="fa fa-heart"></i>
+                                                        <i class="fa fa-heart-o"></i>
+                                                        </span>
+                                                    <% end %>
+                                                </div>
+                                            </div>
+                                        <% end %>
+                                    <% end %>
+                                </div>
+                                <%= link_to "Ver todas", users_likes_path, class: "link-all" %>
+                            <% else %>
+                                <div class="no-likes">
+                                    <h4>¿Te gusta? Presiona el <i class="fa fa-heart"></i> para guardar la prenda y verla después</h4>
+                                </div>
+                            <% end %>
                         </div>
                     <% else %>
-                        <a href="#"><h5><i class="fa fa-heart"></i></h5></a>
-                        <div class="content">
-                            <h1>Necesitas iniciar sesión para poder tener una lista de prendas que te gustan</h1>
-                            <%= link_to "Iniciar Sesión", new_user_session_path, class: "btn-intiman" %>
+                    <a href=""><h5><i class="fa fa-heart"></i> (0)</h5></a>
+                    <div class="content">
+                        <div class="title">
+                            <h3>Estas prendas te han gustado <i class="fa fa-heart"></i></h3>
+                            <hr>
                         </div>
+                        <div class="no-likes">
+                            <h4>¿Te gusta? <%= link_to "Inicia sesión", new_user_session_path %>, presiona el <i class="fa fa-heart"></i> para guardar la prenda y verla después</h4>
+                        </div>
+                    </div>
                     <% end %>
                 </div>
                 <div class="cart button hover">

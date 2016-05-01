@@ -284,7 +284,7 @@ var ready = function(){
         }
     });
 
-    setTimeout(setPortraitH, 1);
+    setTimeout(setPortraitH, 10);
 
     function setPortraitH(){
         height = $('.display img').height();

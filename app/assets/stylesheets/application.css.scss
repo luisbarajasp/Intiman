@@ -518,9 +518,157 @@ p,ul,ol{
                 }
             }
             .content{
-                overflow-x: scroll;
                 min-width: 100vw;
                 top: 70px;
+                .title{
+                    margin: 20px;
+                    h3{
+                        padding-left: 100px;
+                        font-weight: 200;
+                        font-size: 20px;
+                        text-align: center;
+                        .fa{
+                            color: $secondary;
+                            font-size: 23px;
+                            margin: 0 5px;
+                            -webkit-animation: beat .5s infinite alternate;
+                        	-moz-animation: beat .5s infinite alternate;
+                        	-ms-animation: beat .5s infinite alternate;
+                        	-o-animation: beat .5s infinite alternate;
+                        	animation: beat .5s infinite alternate;
+
+                        	-webkit-transform-origin: center;
+                        	-moz-transform-origin: center;
+                        	-o-transform-origin: center;
+                        	-ms-transform-origin: center;
+                        	transform-origin: center;
+                        }
+
+
+                        @keyframes "beat" {
+                         to {
+                            -webkit-transform: scale(1.4);
+                           	-moz-transform: scale(1.4);
+                           	-o-transform: scale(1.4);
+                           	-ms-transform: scale(1.4);
+                           	transform: scale(1.4);
+                         }
+
+                        }
+
+                        @-moz-keyframes beat {
+                         to {
+                           -moz-transform: scale(1.4);
+                           transform: scale(1.4);
+                         }
+
+                        }
+
+                        @-webkit-keyframes "beat" {
+                         to {
+                           -webkit-transform: scale(1.4);
+                           transform: scale(1.4);
+                         }
+
+                        }
+
+                        @-ms-keyframes "beat" {
+                         to {
+                           -ms-transform: scale(1.4);
+                           transform: scale(1.4);
+                         }
+
+                        }
+
+                        @-o-keyframes "beat" {
+                         to {
+                           -o-transform: scale(1.4);
+                           transform: scale(1.4);
+                         }
+
+                        }
+                    }
+                    hr{
+                        border-width: 2px;
+                        width: 50vw;
+                        margin: 2px auto;
+                    }
+                }
+                .cloths-liked{
+                    margin-top: 50px;
+                    width: 90%;
+                    .cloth{
+                        position: relative;
+                        border: 1px solid $light-gray;
+                        min-height: 155px;
+                        -moz-transition: all 0.5s ease;
+                        -o-transition: all 0.5s ease;
+                        -webkit-transition: all 0.5s ease;
+                        transition: all 0.5s ease;
+                        .thumb{
+                            position: absolute;
+                            top: 10px;
+                            left: 0;
+                            right: 0;
+                        }
+                        .dislike{
+                            position: absolute;
+                            top: 5px;
+                            right: 5px;
+                            font-size: 15px;
+                            a{
+                                color: $secondary;
+                                text-decoration: none;
+                                &:hover{
+                                    color: $red;
+                                }
+                            }
+                            .change-icon > .fa:nth-child(2) {
+                                  display: none;
+                            }
+                            a:hover{
+                                .change-icon > .fa:nth-child(1) {
+                                  display: none;
+                                }
+                                .change-icon > .fa:nth-child(2) {
+                                  display: inherit;
+                                }
+                            }
+                        }
+                        &:hover{
+                            border-color: $gray;
+                        }
+                    }
+                }
+                .link-all{
+                    position: absolute;
+                    bottom: 35px;
+                    right: 25px;
+                    font-size: 18px;
+                    font-style: italic;
+                    color: $dark;
+                    &:hover{
+                        text-decoration: underline;
+                    }
+                }
+                .no-likes{
+                    margin: 100px 0;
+                    h4{
+                        font-size: 18px;
+                        color: #888888;
+                        text-align: center;
+                        .fa{
+                            color: $red;
+                            font-size: 20px;
+                        }
+                        a{
+                            color: $dark;
+                            &:hover{
+                                text-decoration: underline;
+                            }
+                        }
+                    }
+                }
             }
         }
         .search-form{

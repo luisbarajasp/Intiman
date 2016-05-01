@@ -44,7 +44,7 @@ class ApplicationController < ActionController::Base
       @colors = Color.all.order('created_at ASC')
       @promo = Promotion.where('show = ?', true).first
       if user_signed_in?
-          @cloths_liked = current_user.find_liked_items
+          @cloths_liked = current_user.find_liked_items.first(5)
       end
       @cos = Co.all
       @sis = Si.all
