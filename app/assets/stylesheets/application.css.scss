@@ -523,7 +523,6 @@ p,ul,ol{
                 .title{
                     margin: 20px;
                     h3{
-                        padding-left: 100px;
                         font-weight: 200;
                         font-size: 20px;
                         text-align: center;
@@ -657,6 +656,9 @@ p,ul,ol{
                         font-size: 18px;
                         color: #888888;
                         text-align: center;
+                        span{
+                            font-size: 22px;
+                        }
                         .fa{
                             color: $red;
                             font-size: 20px;

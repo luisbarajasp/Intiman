@@ -163,7 +163,7 @@
                                 <%= link_to "Ver todas", users_likes_path, class: "link-all" %>
                             <% else %>
                                 <div class="no-likes">
-                                    <h4>¿Te gusta? Presiona el <i class="fa fa-heart"></i> para guardar la prenda y verla después</h4>
+                                    <h4><span>¿Te gusta?</span> <br><br>Presiona el <i class="fa fa-heart"></i> para guardar la prenda y verla después</h4>
                                 </div>
                             <% end %>
                         </div>
@@ -175,7 +175,7 @@
                             <hr>
                         </div>
                         <div class="no-likes">
-                            <h4>¿Te gusta? <%= link_to "Inicia sesión", new_user_session_path %>, presiona el <i class="fa fa-heart"></i> para guardar la prenda y verla después</h4>
+                            <h4><span>¿Te gusta?</span> <br><br><%= link_to "Inicia sesión", new_user_session_path %>, presiona el <i class="fa fa-heart"></i> para guardar la prenda y verla después</h4>
                         </div>
                     </div>
                     <% end %>
