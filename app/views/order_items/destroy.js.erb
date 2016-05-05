@@ -1,4 +1,6 @@
 $(".cart-size").html("<%= escape_javascript(render 'layouts/cart_size') %>")
 $(".shopping-cart").html("<%= escape_javascript(render 'carts/shopping_cart') %>")
+$(".checkout-cart").html("<%= escape_javascript(render 'user_orders/checkout_cart') %>")
 $(".hover-cart").html("<%= escape_javascript(render 'layouts/hover_cart') %>")
 $(".subtotal").html("<%= escape_javascript(render 'carts/subtotal') %>")
+$(".total").html("<%= escape_javascript(render 'user_orders/total') %>")

@@ -41,6 +41,7 @@ var ready = function(){
 
     var sHeight = $(window).height() - 27;
     var sWidth = $(window).width() + 4 ;
+    var wHeight = $(window).height() - 105;
 
     $('#slider').width(sWidth);
     $('#slider img').width(sWidth);
@@ -49,6 +50,7 @@ var ready = function(){
     $('#prev').height(sHeight);
     $('#next').height(sHeight);
     $('.home').css("padding-top",sHeight);
+    $('.wrapper_page').css('min-height', wHeight);
 
     if($('.slide').siblings().size() > 1){
         $("#slider").hover(
@@ -320,8 +322,27 @@ var ready = function(){
     });
 
     scHeight = $(window).height() - 216;
+    ccHeight = $(window).height() - 240;
     $('.shopping-cart').height(scHeight);
 
+    $('.checkout-cart').height(ccHeight);
+
+    if ($('#repeated').length){
+        $('#form-address').hide();
+        var showingF = false;
+        $('#another-address').on('click',function(){
+            if (showingF){
+                $('#form-address').slideToggle();
+                showingF = false;
+                $(this).text('Usar otra');
+
+            }else{
+                $('#form-address').slideToggle();
+                showingF = true;
+                $(this).text('Cancelar');
+            }
+        });
+    }
 
 };
 
@@ -358,6 +379,8 @@ $(window).resize(function() {
     var sHeight = $(window).height() - 27;
     var sWidth = $(window).width() + 4 ;
     scHeight = $(window).height() - 216;
+    var wHeight = $(window).height() - 105;
+    ccHeight = $(window).height() - 240;
 
     $('#slider').width(sWidth);
     $('#slider img').width(sWidth);
@@ -366,5 +389,7 @@ $(window).resize(function() {
     $('#prev').height(sHeight);
     $('#next').height(sHeight);
     $('.home').css("padding-top",sHeight);
+    $('.wrapper_page').css('min-height', wHeight);
     $('.shopping-cart').height(scHeight);
+    $('.checkout-cart').height(ccHeight);
 });

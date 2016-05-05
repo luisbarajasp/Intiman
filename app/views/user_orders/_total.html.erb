@@ -1,0 +1,8 @@
+<h6 id="subtotal">Subtotal: MXN <%= number_to_currency current_order.subtotal %></h5>
+<% if current_order.shipping.nil? %>
+<h6 id="shipping">Envío: <a href="">Calcular</a></h5>
+<% else %>
+<h6 id="shipping">Envío: MXN <%= number_to_currency current_order.shipping %></h5>
+<% end %>
+<hr>
+<h5 id="total">Total: MXN <%= number_to_currency current_order.total %></h5>

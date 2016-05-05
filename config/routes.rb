@@ -13,6 +13,19 @@ Rails.application.routes.draw do
 
   resources :order_items, :only => [:create, :update, :destroy]
 
+  get '/orders/buyed' => 'admin_orders#buyed'
+  get '/orders/shipped' => 'admin_orders#shipped'
+  get '/orders/cancelled' => 'admin_orders#cancelled'
+
+  get '/checkout' => 'user_orders#edit'
+
+  put 'order/:id', :to => 'user_orders#update'
+  #patch 'order/:id', :to => 'user_orders#update'
+
+  #patch "/checkout" => "user_orders#update", :as => "user_orders/update"
+
+  resources :user_orders, :only => [:index]
+
   resources :colors
 
   resources :promotions

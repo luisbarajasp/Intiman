@@ -1,0 +1,10 @@
+<div class="bottom-cart">
+    <div class="total">
+        <%= render 'user_orders/total' %>
+    </div>
+</div>
+<div class="order_items">
+    <% @order_items.each do |order_item| %>
+      <%= render 'user_orders/checkout_row', cloth: order_item.cloth, order_item: order_item, show_total: true %>
+    <% end %>
+</div>
