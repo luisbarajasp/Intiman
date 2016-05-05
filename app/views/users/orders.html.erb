@@ -1,0 +1,28 @@
+<div class="wrapper">
+    <%= render 'top_profile' %>
+    <div id="orders-page">
+        <% @orders.each do |order| %>
+            <div class="order col-md-12 col-sm-12">
+                <div class="col-sm-2">
+                    <% if order.order_items.count < 2 %>
+                        <p> 1 prenda
+                    <% else %>
+                        <p> <%= order.order_items.count %> prendas
+                    <% end %>
+                    </p>
+                </div>
+                <div class="col-sm-2 payed">
+                    <p>Subtotal: <%= order.subtotal %></p>
+                    <p>Envío: <%= order.shipping %></p>
+                    <p>Total: <%= order.total %></p>
+                </div>
+                <div class="col-sm-2">
+                    <%= order.updated_at.strftime("%-H:%M, %-d/%-m/%Y") %>
+                </div>
+                <div class="col-sm-6">
+
+                </div>
+            </div>
+        <% end %>
+    </div>
+</div>

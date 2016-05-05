@@ -20,11 +20,6 @@ Rails.application.routes.draw do
   get '/checkout' => 'user_orders#edit'
 
   put 'order/:id', :to => 'user_orders#update'
-  #patch 'order/:id', :to => 'user_orders#update'
-
-  #patch "/checkout" => "user_orders#update", :as => "user_orders/update"
-
-  resources :user_orders, :only => [:index]
 
   resources :colors
 
@@ -32,9 +27,11 @@ Rails.application.routes.draw do
 
   resources :sizes, :except => [:edit, :update]
 
-  resources :users, :only => [:show]
+  get '/user/account' => 'users#show'
 
-  get 'users/likes', :path => 'likes'
+  get '/user/orders' => 'users#orders'
+
+  get '/user/likes' => 'users#likes'
 
   get 'sales/index', :path => 'sales'
 

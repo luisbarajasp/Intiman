@@ -1,3 +1,121 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+$principal: #125688;
+$secondary: #C2B49A;
+$dark: #212121;
+$light-dark: #272727;
+$white: #fff;
+$highlight: #FF884D;
+$light-gray: #ededed;
+$uLight-gray: #f9f9f9;
+$gray: #343434;
+$dark-gray: #2C2B2C;
+$red: #ff4c4c;
+$green: #108823;
+
+.top-profile{
+    position: relative;
+    #name{
+        padding: 20px 0;
+        text-align: center;
+        font-family: 'Vollkorn', serif;
+        letter-spacing: 10px;
+        font-size: 32px;
+        span{
+            font-family: 'Vollkorn', serif;
+            letter-spacing: -1px;
+            //border-bottom: 1px solid $dark;
+        }
+    }
+    h3{
+        text-align: center;
+        color: $secondary;
+        font-size: 17px;
+        font-weight: 200;
+    }
+    .edit-info{
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        border: 1px solid $dark;
+        transition: all 0.6s ease;
+        -moz-transition: all 0.6s ease;
+        -webkit-transition: all 0.6s ease;
+        -o-transition: all 0.6s ease;
+        padding: 5px;
+        font-size: 15px;
+        text-decoration: none;
+        color: $dark;
+        &:hover{
+            background: $dark;
+            color: $white;
+        }
+    }
+    .pages{
+        overflow: auto;
+        padding-top: 2px;
+        div{
+            text-align: center;
+            a{
+                font-size: 17px;
+                color: $dark;
+                text-decoration: none;
+                &:hover{
+                    color: $secondary;
+                    border-bottom: 1px solid $secondary;
+                    font-weight: 400;
+                }
+            }
+            .active{
+                color: $secondary;
+                border-bottom: 1px solid $secondary;
+                font-weight: 400;
+            }
+        }
+        #orders-link{
+
+        }
+        #likes-link{
+
+        }
+        #info-link{
+
+        }
+    }
+}
+#info-page{
+    .payment{
+        position: relative;
+        .card{
+            #wCard{
+                margin: 30px 0;
+                font-size: 15px;
+                padding: 10px 0;
+                text-align: center;
+            }
+        }
+        .pow-strip{
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+    }
+    hr{
+        border-width: 1px;
+        width: 50vw;
+        margin: 2px auto;
+        border-color: #ada9a9;
+    }
+    .addresses{
+        .address{
+            margin-top: 10px;
+            padding-top: 5px;
+            border: 1px solid #b0acac;
+            p{
+                font-size: 14px;
+            }
+        }
+    }
+}

@@ -1,17 +1,17 @@
 class UserOrdersController < ApplicationController
     before_action :authenticate_user!
-  def index
-      @orders = Order.where(user_id: current_user.id)
-  end
+  # def index
+  #     @orders = Order.where(user_id: current_user.id)
+  # end
 
   def edit
       if current_order.order_items.count > 0
           @order = Order.find(current_order.id)
           @order_items = current_order.order_items
-          @orders = Order.all
+          @orders = Order.where(user_id: current_user.id)
           @repeated = false
           @orders.each do |order|
-              if order.user == current_user && order != current_order && !order.address.nil?
+              if order != current_order && !order.address.nil?
                    @repeated = true
                    @address = order.address
                    @suburb = order.suburb

@@ -344,6 +344,19 @@ var ready = function(){
         });
     }
 
+    if($('#info-page').length){
+        $('#info-link').siblings().find('a').removeClass('active');
+        $('#info-link a').addClass('active');
+    }
+    if($('#likes-page').length){
+        $('#likes-link').siblings().find('a').removeClass('active');
+        $('#likes-link a').addClass('active');
+    }
+    if($('#orders-page').length){
+        $('#orders-link').siblings().find('a').removeClass('active');
+        $('#orders-link a').addClass('active');
+    }
+
 };
 
 $(document).ready(ready);
