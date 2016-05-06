@@ -18,10 +18,10 @@
         <% @orders.each do |order| %>
             <div class="order col-md-12 col-sm-12">
                 <div class="col-sm-2 count">
-                    <% if order.order_items.count < 2 %>
+                    <% if order_items_total(order) < 2 %>
                         <p> 1 prenda
                     <% else %>
-                        <p> <%= order.order_items.count %> prendas
+                        <p> <%= order_items_total(order) %> prendas
                     <% end %>
                     </p>
                 </div>

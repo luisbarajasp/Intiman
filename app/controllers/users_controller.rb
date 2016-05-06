@@ -1,9 +1,20 @@
 class UsersController < ApplicationController
     before_action :authenticate_user!
 
+    helper_method :order_items_total
+
+  def order_items_total(order)
+      @order = order
+      @result = 0
+      @order.order_items.each do |item|
+          @result += item.quantity
+      end
+      @result
+  end
+
   def show
       @user = current_user
-      @order = Order.where('user_id = ? AND order_status_id != 1',current_user.id).order('created_at DESC').first
+      @order = Order.where('user_id = ? AND order_status_id != 1 AND address IS NOT NULL',current_user.id).order('created_at DESC').first
   end
 
   def orders
