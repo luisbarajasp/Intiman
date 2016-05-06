@@ -19,9 +19,15 @@
         <div class="addresses">
             <h2>Tu Dirección</h2>
                 <div class="address">
-                    <p>Dirección: <%= @order.address %>, <%= @order.suburb %></p>
-                    <p><%= @order.city %>, <%= @order.state %> </p>
-                    <p>C.P.: <%= @order.cp %></p>
+                    <% if @order %>
+                        <p>Dirección: <%= @order.address %>, <%= @order.suburb %></p>
+                        <p><%= @order.city %>, <%= @order.state %> </p>
+                        <p>C.P.: <%= @order.cp %></p>
+                    <% else %>
+                        <p>
+                            No tienes ninguna dirección registrada.
+                        </p>
+                    <% end %>
                 </div>
         </div>
     </div>
