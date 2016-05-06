@@ -74,20 +74,12 @@ $green: #108823;
                 font-weight: 400;
             }
         }
-        #orders-link{
-
-        }
-        #likes-link{
-
-        }
-        #info-link{
-
-        }
     }
 }
 #info-page{
     .payment{
         position: relative;
+        text-align: center;
         .card{
             #wCard{
                 margin: 30px 0;
@@ -109,13 +101,95 @@ $green: #108823;
         border-color: #ada9a9;
     }
     .addresses{
+        text-align: center;
         .address{
+            margin: 0 auto;
+            width: 50%;
+            padding: 10px;
             margin-top: 10px;
             padding-top: 5px;
-            border: 1px solid #b0acac;
+            //border: 1px solid #b0acac;
             p{
                 font-size: 14px;
             }
         }
     }
+}
+#orders-page{
+    overflow: auto;
+    padding-bottom: 50px;
+    .header-table{
+        border-bottom: 1px solid $dark;
+        div{
+            text-align: center;
+        }
+        .bo{
+            border-left: 1px solid $dark;
+        }
+    }
+    .order{
+        padding-top: 10px;
+        border-bottom: 1px solid $light-gray;
+        .count{
+            p{
+                font-size: 15px;
+            }
+        }
+        .total{
+            p{
+                margin: 0;
+                margin-bottom: 3px;
+                text-align: right;
+                font-size: 13px;
+            }
+            hr{
+                margin: 5px 0;
+            }
+            #tot{
+                margin-top: 7px;
+                font-size: 15px;
+            }
+        }
+        .date-sold{
+            text-align: center;
+            a{
+                color: $dark;
+            }
+        }
+        .order-status{
+            div{
+                text-align: center;
+                h4{
+                    color: #a19d9d;
+                }
+                .fa{
+                    font-size: 32px;
+                    margin-top: 10px;
+                    color: #a19d9d;
+                }
+            }
+            .active{
+                h4{
+                    color: $green;
+                }
+                .fa{
+                    color: $green;
+                }
+            }
+            .passed{
+                position: relative;
+                .fa-check{
+                    position: absolute;
+                    color: $green;
+                //     right: 0;
+                //     left: 0;
+                //     top: 15px;
+                //     font-size: 40px;
+                }
+            }
+        }
+    }
+}
+#likes-page{
+    
 }

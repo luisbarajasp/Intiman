@@ -17,16 +17,12 @@
         </div>
         <hr>
         <div class="addresses">
-            <h2>Tus Direcciones</h2>
-            <% @orders.each do |order| %>
-                <% if order != current_order && !order.address.nil? %>
-                    <div class="address col-md-4 col-sm-4">
-                        <p>Dirección: <%= order.address %>, <%= order.suburb %></p>
-                        <p><%= order.city %>, <%= order.state %> </p>
-                        <p>C.P.: <%= order.cp %></p>
-                    </div>
-                <% end %>
-            <% end %>
+            <h2>Tu Dirección</h2>
+                <div class="address">
+                    <p>Dirección: <%= @order.address %>, <%= @order.suburb %></p>
+                    <p><%= @order.city %>, <%= @order.state %> </p>
+                    <p>C.P.: <%= @order.cp %></p>
+                </div>
         </div>
     </div>
 </div>

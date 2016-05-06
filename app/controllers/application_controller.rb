@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   def current_order
     if user_signed_in?
         if !current_user.order.nil?
-            @current_order ||= Order.where(id: current_user.order[:id]).last
+            @current_order ||= Order.where(user: current_user).order('created_at DESC').first
             if @current_order.order_status_id != 1
                 session[:order_id] = nil
                 @current_order = Order.new

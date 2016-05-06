@@ -49,6 +49,7 @@ class UserOrdersController < ApplicationController
     #   end
 
       @order.update_attribute(:order_status_id, 2)
+      @order.update_attribute(:sold_at, Time.now.in_time_zone)
 
 
       respond_to do |f|

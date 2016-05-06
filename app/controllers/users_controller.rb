@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   def show
       @user = current_user
-      @orders = Order.where(user_id: current_user.id).order('created_at DESC')
+      @order = Order.where('user_id = ? AND order_status_id != 1',current_user.id).order('created_at DESC').first
   end
 
   def orders
