@@ -7,61 +7,66 @@
         <h4 id="summary">Resumen</h4>
         <%= render 'checkout_cart' %>
     </div>
+    <%= form_for @order, :url => "/order/#{@order.id}", method: :put, :html => { :id => "order" } do |f| %>
+    <div id="form-card" class="col-md-6">
+        <div id="stripe_error" class="alert alert-danger" style="display:none"></div>
+            <div class="form-group">
+                <%= label_tag :card_number, "Número de Tarjeta" %>
+                <%= text_field_tag :card_number, nil, {:name => nil, :'data-stripe' => "number", class: "input-card"} %>
+            </div>
+            <div class="form-group">
+                <%= label_tag :card_code, "CVC" %>
+                <%= text_field_tag :card_code, nil, {:name => nil, :'data-stripe' => "cvc", class: "input-card"} %>
+            </div>
+            <div class="form-group">
+                <%= select_month nil, {use_two_digit_numbers: true}, {:name => nil, :'data-stripe' => "exp-month", class: "input-card"} %>
+                <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+10}, {:name => nil, :'data-stripe' => "exp-year", class: "input-card"} %>
+            </div>
+    </div>
     <div class="form-order col-md-6">
         <div class="order-container">
             <% if @repeated %>
-                <div id="repeated">
+                <div id="repeated" class="clearfix">
                     <div id="ya" class="col-xs-12 repeated-el">
-                        Ya tenemos tu dirección <i class="fa fa-check-square" aria-hidden="true"></i>
+                        Ya tenemos tu dirección de envío <i class="fa fa-check-square" aria-hidden="true"></i>
                     </div>
-                    <div id="dir" class="col-xs-7 repeated-el">
-                        <%= @address %> <%= @suburb %> <%= @city %> <%= @state %>, CP <%= @cp %>
+                    <div id="dir" class="col-xs-8 repeated-el">
+                        <%= @address %>, <%= @suburb %> <br> <%= @city %>, <%= @state %> <br> CP <%= @cp %>
                     </div>
-                    <div id="ot" class="col-xs-5 repeated-el">
+                    <div id="ot" class="col-xs-4 repeated-el">
                         <span id="another-address">Usar otra</span>
                     </div>
                 </div>
             <% end %>
             <div id="form-address">
                 <h4>¿A dónde enviaremos tus prendas?</h4>
-                <%= form_for @order, :url => "/order/#{@order.id}", method: :put do |f| %>
-                    <% if @order.errors.any? %>
-
-                        <h2><%= pluralize(@order.errors.count, "error") %> previnieron de guardar la dirección:</h2>
-                        <ul>
-                            <% @order.errors.full_messages.each do |msg| %>
-                                <li><%= msg %></li>
-                            <% end %>
-                        </ul>
-
-                    <% end %>
 
                 	<div class="form-group col-md-12">
                 		<%= f.label :address, "Dirección" %> <br>
-                		<%= f.text_field :address, class: "form-control" %>
+                		<%= f.text_field :address, class: "form-control", value: @address %>
                 	</div>
                     <div class="form-group col-md-7">
                 		<%= f.label :suburb, "Colonia" %> <br>
-                		<%= f.text_field :suburb, class: "form-control" %>
+                		<%= f.text_field :suburb, class: "form-control", value: @suburb %>
                 	</div>
                     <div class="form-group col-md-5">
                 		<%= f.label :cp, "Código Postal" %> <br>
-                		<%= f.text_field :cp, class: "form-control" %>
+                		<%= f.text_field :cp, class: "form-control", value: @cp %>
                 	</div>
                     <div class="form-group col-md-6">
                 		<%= f.label :city, "Ciudad" %> <br>
-                		<%= f.text_field :city, class: "form-control" %>
+                		<%= f.text_field :city, class: "form-control", value: @city %>
                 	</div>
                     <div class="form-group col-md-6">
                 		<%= f.label :state, "Estado" %> <br>
                         <%= f.select :state, options_for_select(mx_states, "Ciudad de México"), {}, class: "form-control" %>
                 	</div>
-                	<div class="form-group center">
-                   	 	<%= f.submit "Aceptar", class: "btn-submit" %>
-                 	</div>
 
-                <% end %>
             </div>
         </div>
     </div>
+    <div class="form-group center">
+        <%= f.submit "Comprar", class: "btn-submit" %>
+    </div>
+    <% end %>
 </div>

@@ -167,9 +167,11 @@ $green: #108823;
 .form-order{
     .order-container{
         border: 1px solid $dark;
+        overflow: auto;
     }
     #repeated{
-        height: 140px;
+        overflow: visible;
+        height: 175px;
         .repeated-el{
             display: inline;
         }
@@ -184,7 +186,7 @@ $green: #108823;
         }
         #ot{
             text-align: right;
-            line-height: 70px;
+            line-height: 102px;
             font-size: 13px;
             span{
                 color: $dark;
@@ -223,4 +225,7 @@ $green: #108823;
             }
         }
     }
+}
+#form-card{
+    
 }
