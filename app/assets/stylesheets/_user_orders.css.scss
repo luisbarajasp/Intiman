@@ -164,6 +164,73 @@ $green: #108823;
     }
 }
 
+#form-card{
+    .order-container{
+        border: 1px solid $dark;
+        overflow: auto;
+        padding: 0 15px;
+    }
+    #customer{
+        margin: 15px 0;
+        #ya{
+            font-size: 17px;
+            line-height: 70px;
+            text-align: center;
+        }
+        #card{
+            padding: 10px 0;
+            line-height: 70px;
+            height: 70px;
+            .fa{
+                margin-right: 10px;
+            }
+            img{
+                height: 15px;
+                width: auto;
+                margin-right: 10px;
+            }
+        }
+        #ot{
+            text-align: right;
+            line-height: 70px;
+            font-size: 13px;
+            span{
+                color: $dark;
+                text-decoration: underline;
+                &:hover{
+                    color: $secondary;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+    #form-fields-card{
+        padding: 20px 0;
+        text-align: center;
+        min-width: 150px;
+        max-width: 200px;
+        border: 1px solid $light-gray;
+        .form-group{
+            position: relative;
+            .fa{
+                position: absolute;
+                top: 28px;
+                left: 17px;
+            }
+        }
+        .input-card{
+            border: none;
+            background: none;
+            border-bottom: 1px solid $dark;
+            width: 100%;
+            -webkit-border-radius: 0px;
+        }
+        #card_number{
+            padding-left: 25px;
+        }
+    }
+}
+
 .form-order{
     .order-container{
         border: 1px solid $dark;
@@ -176,7 +243,7 @@ $green: #108823;
             display: inline;
         }
         #ya{
-            font-size: 14px;
+            font-size: 17px;
             line-height: 70px;
             text-align: center;
         }
@@ -225,7 +292,4 @@ $green: #108823;
             }
         }
     }
-}
-#form-card{
-    
 }

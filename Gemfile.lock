@@ -45,6 +45,7 @@ GEM
       debug_inspector (>= 0.0.1)
     builder (3.2.2)
     byebug (8.2.2)
+    card-rails (0.0.1)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.8)
@@ -244,6 +245,7 @@ DEPENDENCIES
   acts_as_votable (~> 0.10.0)
   autosize-rails (~> 1.18, >= 1.18.17)
   byebug
+  card-rails
   coffee-rails (~> 4.1.0)
   devise (~> 3.5, >= 3.5.2)
   elevatezoom-rails (~> 1.0)

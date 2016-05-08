@@ -9,19 +9,53 @@
     </div>
     <%= form_for @order, :url => "/order/#{@order.id}", method: :put, :html => { :id => "order" } do |f| %>
     <div id="form-card" class="col-md-6">
-        <div id="stripe_error" class="alert alert-danger" style="display:none"></div>
-            <div class="form-group">
-                <%= label_tag :card_number, "Número de Tarjeta" %>
-                <%= text_field_tag :card_number, nil, {:name => nil, :'data-stripe' => "number", class: "input-card"} %>
+        <div class="order-container">
+            <div id="stripe_error" class="alert alert-danger" style="display:none"></div>
+            <% if @customer %>
+                <div id="customer" class="clearfix">
+                    <div id="ya" class="col-xs-12 repeated-el">
+                        Ya tenemos tu tarjeta <i class="fa fa-check-square" aria-hidden="true"></i>
+                    </div>
+                    <div id="card" class="col-xs-8 repeated-el">
+                        <i class="fa fa-credit-card" aria-hidden="true"></i>
+                        <% if @card.brand == "Visa" %>
+                            <%= image_tag "visa.gif" %>
+                        <% elsif @card.brand == "MasterCard" %>
+                            <%= image_tag "mastercard.png" %>
+                        <% elsif @card.brand == "American Express" %>
+                            <%= image_tag "amex.png" %>
+                        <% else %>
+                            <%= @card.brand %>
+                        <% end %>
+                            ****<%= @card.last4 %>
+                    </div>
+                    <div id="ot" class="col-xs-4 repeated-el">
+                        <span id="another-card">Usar otra</span>
+                    </div>
+                </div>
+            <% end %>
+            <div id="form-fields-card" class="col-xs-6 col-xs-offset-3">
+                <div class="form-group col-xs-12">
+                    <%= label_tag :card_number, "Número de Tarjeta" %> <br>
+                    <%= text_field_tag :card_number, nil, {:name => nil, :'data-stripe' => "number", class: "input-card"} %>
+                    <i class="fa fa-credit-card" aria-hidden="true"></i>
+                </div>
+                <div class="form-group col-xs-6">
+                    <%= label_tag :card_code, "CVC" %> <br>
+                    <%= text_field_tag :card_code, nil, {:name => nil, :'data-stripe' => "cvc", class: "input-card"} %>
+                </div>
+                <div class="form-group col-xs-6">
+                    <%= label_tag nil, "Expiración" %> <br>
+                    <%= text_field_tag :exp, nil, {:name => nil, :'data-stripe' => "exp", :placeholder => "MM/AA", class: "input-card"} %>
+                </div>
             </div>
-            <div class="form-group">
-                <%= label_tag :card_code, "CVC" %>
-                <%= text_field_tag :card_code, nil, {:name => nil, :'data-stripe' => "cvc", class: "input-card"} %>
+            <div class="pow-strip col-xs-12">
+                <%=link_to (image_tag "stripe.png"), "https://stripe.com/", target: "_blank" %>
             </div>
-            <div class="form-group">
-                <%= select_month nil, {use_two_digit_numbers: true}, {:name => nil, :'data-stripe' => "exp-month", class: "input-card"} %>
-                <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+10}, {:name => nil, :'data-stripe' => "exp-year", class: "input-card"} %>
+            <div class="exp-stripe col-xs-12">
+                <h4>* Los datos de tu tarjeta son manejados directamente por Stripe. <br>Intiman no guarda ninguno de estos.</h4>
             </div>
+        </div>
     </div>
     <div class="form-order col-md-6">
         <div class="order-container">

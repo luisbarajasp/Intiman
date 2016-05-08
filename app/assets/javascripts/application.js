@@ -344,6 +344,83 @@ var ready = function(){
         });
     }
 
+    if ($('#customer').length){
+        $('#form-fields-card').hide();
+        var showingC = false;
+        $('#another-card').on('click',function(){
+            if (showingC){
+                $('#form-fields-card').slideToggle();
+                showingC = false;
+                $(this).text('Usar otra');
+
+            }else{
+                $('#form-fields-card').slideToggle();
+                showingC = true;
+                $(this).text('Cancelar');
+            }
+        });
+    }
+
+    $('input#card_number').keypress(function(e) {
+        if (e.which < 0x20) {
+            // e.which < 0x20, then it's not a printable character
+            // e.which === 0 - Not a character
+            return;     // Do nothing
+        }
+        if (this.value.length == 19) {
+            e.preventDefault();
+        } else if (this.value.length > 19) {
+            // Maximum exceeded
+            this.value = this.value.substring(0, 19);
+        }
+    });
+
+    $("input#card_number").keyup(function(e){
+        if(e.keyCode != 8 && e.keyCode != 46) {
+            var $this = $(this);
+            if ((($this.val().length+1) % 5)==0 && ($this.val().length) < 19){
+                $this.val($this.val() + " ");
+            }
+        }
+    });
+
+    $('input#exp').keypress(function(e) {
+        if (e.which < 0x20) {
+            // e.which < 0x20, then it's not a printable character
+            // e.which === 0 - Not a character
+            return;     // Do nothing
+        }
+        if (this.value.length == 5) {
+            e.preventDefault();
+        } else if (this.value.length > 5) {
+            // Maximum exceeded
+            this.value = this.value.substring(0, 5);
+        }
+    });
+
+    $('input#card_code').keypress(function(e) {
+        if (e.which < 0x20) {
+            // e.which < 0x20, then it's not a printable character
+            // e.which === 0 - Not a character
+            return;     // Do nothing
+        }
+        if (this.value.length == 3) {
+            e.preventDefault();
+        } else if (this.value.length > 3) {
+            // Maximum exceeded
+            this.value = this.value.substring(0, 3);
+        }
+    });
+
+    $("input#exp").keyup(function(e){
+        if(e.keyCode != 8 && e.keyCode != 46) {
+            var $this = $(this);
+            if ((($this.val().length+1) % 3)==0 && ($this.val().length) < 5){
+                $this.val($this.val() + "/");
+            }
+        }
+    });
+
     if($('#info-page').length){
         $('#info-link').siblings().find('a').removeClass('active');
         $('#info-link a').addClass('active');

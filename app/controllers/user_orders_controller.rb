@@ -26,6 +26,14 @@ class UserOrdersController < ApplicationController
               @state = @order_p.state
           end
 
+          if !current_user.customer_id.nil?
+              @customer = Stripe::Customer.retrieve(current_user.customer_id)
+
+              @card_id = @customer.default_source
+
+              @card = @customer.sources.retrieve(@card_id)
+          end
+
         #   @orders.each do |order|
         #       if order != current_order && !order.address.nil?
         #            @repeated = true
