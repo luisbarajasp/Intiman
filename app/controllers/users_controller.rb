@@ -13,8 +13,23 @@ class UsersController < ApplicationController
   end
 
   def show
-      @user = current_user
+      Stripe.api_key = ENV["STRIPE_API_KEY"]
+
       @order = Order.where('user_id = ? AND order_status_id != 1 AND address IS NOT NULL',current_user.id).order('created_at DESC').first
+
+      if !current_user.customer_id.nil?
+          @customer = Stripe::Customer.retrieve(current_user.customer_id)
+          
+          @cards = Array.new
+
+          @customer.sources.data.each do |card|
+              @cards << card
+          end
+
+
+
+        #   @fDigits =
+      end
   end
 
   def orders

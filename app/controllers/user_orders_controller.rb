@@ -54,7 +54,8 @@ class UserOrdersController < ApplicationController
               # Create a Customer
               customer = Stripe::Customer.create(
                   :source => token,
-                  :description => current_user.email
+                  :description => current_user.name,
+                  :email => current_user.email
               )
 
               # Charge the Customer instead of the card

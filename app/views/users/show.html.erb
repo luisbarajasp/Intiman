@@ -2,17 +2,36 @@
     <%= render 'top_profile' %>
     <div id="info-page">
         <div class="payment">
-            <h2>Tu Tarjeta</h2>
-            <div class="card">
+            <div class="title">
+                <h2>Tus Tarjetas</h2>
+                <div class="pow-strip">
+                    <%=link_to (image_tag "stripe.png"), "https://stripe.com/", target: "_blank" %>
+                </div>
+            </div>
+            <div class="cards-info">
                 <% if current_user.customer_id.nil? %>
                 <p id="wCard">
                     No tienes ninguna tarjeta registrada
                 </p>
                 <% else %>
+                <div class="cards">
+                    <% @cards.each do |card| %>
+                        <div id="card">
+                            <i class="fa fa-credit-card" aria-hidden="true"></i>
+                            <% if card.brand == "Visa" %>
+                                <%= image_tag "visa.gif" %>
+                            <% elsif card.brand == "MasterCard" %>
+                                <%= image_tag "mastercard.png" %>
+                            <% elsif card.brand == "American Express" %>
+                                <%= image_tag "amex.png" %>
+                            <% else %>
+                                <%= card.brand %>
+                            <% end %>
+                                ****<%= card.last4 %>
+                        </div>
+                    <% end %>
+                </div>
                 <% end %>
-            </div>
-            <div class="pow-strip">
-                <%=link_to (image_tag "stripe.png"), "https://stripe.com/", target: "_blank" %>
             </div>
         </div>
         <hr>

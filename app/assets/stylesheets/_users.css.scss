@@ -78,20 +78,43 @@ $green: #108823;
 }
 #info-page{
     .payment{
-        position: relative;
         text-align: center;
-        .card{
+        .title{
+            position: relative;
+            width: 150px;
+            margin: 0 auto;
+            .pow-strip{
+                position: absolute;
+                top: -5px;
+                right: -100px;
+                img{
+                    width: 100px;
+                    height: auto;
+                }
+            }
+        }
+        .cards-info{
+            padding: 10px 0;
             #wCard{
                 margin: 30px 0;
                 font-size: 15px;
                 padding: 10px 0;
                 text-align: center;
             }
-        }
-        .pow-strip{
-            position: absolute;
-            top: 0;
-            right: 0;
+            .cards{
+                margin: 5px 0;
+                #card{
+                    padding: 10px 0;
+                    .fa{
+                        margin-right: 10px;
+                    }
+                    img{
+                        height: 15px;
+                        width: auto;
+                        margin-right: 10px;
+                    }
+                }
+            }
         }
     }
     hr{
@@ -191,5 +214,5 @@ $green: #108823;
     }
 }
 #likes-page{
-    
+
 }
