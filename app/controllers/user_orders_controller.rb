@@ -79,6 +79,7 @@ class UserOrdersController < ApplicationController
 
               @order.update_attribute(:order_status_id, 2)
               @order.update_attribute(:sold_at, Time.now.in_time_zone)
+              @order.update_attribute(:charge_id, charge.id)
 
               flash[:notice] = "Tu compra fue realizada satisfactoriamente."
           rescue Stripe::CardError => e
@@ -96,6 +97,7 @@ class UserOrdersController < ApplicationController
 
                   @order.update_attribute(:order_status_id, 2)
                   @order.update_attribute(:sold_at, Time.now.in_time_zone)
+                  @order.update_attribute(:charge_id, charge.id)
 
                   flash[:notice] = "Tu compra fue realizada satisfactoriamente."
               else
@@ -111,6 +113,7 @@ class UserOrdersController < ApplicationController
 
                   @order.update_attribute(:order_status_id, 2)
                   @order.update_attribute(:sold_at, Time.now.in_time_zone)
+                  @order.update_attribute(:charge_id, charge.id)
 
                   flash[:notice] = "Tu compra fue realizada satisfactoriamente."
               end

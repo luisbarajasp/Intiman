@@ -107,11 +107,7 @@ $green: #108823;
                     padding: 10px 0;
                     .fa{
                         margin-right: 10px;
-                    }
-                    img{
-                        height: 25px;
-                        width: auto;
-                        margin-right: 10px;
+                        font-size: 30px;
                     }
                 }
             }
@@ -192,11 +188,42 @@ $green: #108823;
                 }
             }
             .active{
+                position: relative;
                 h4{
                     color: $green;
                 }
                 .fa{
                     color: $green;
+                }
+                .refund{
+                    position: absolute;
+                    display: none;
+                    top: 10px;
+                    right: 17px;
+                    z-index: 10;
+                    .fa,p{
+                        position: absolute;
+                        color: #bdb9b9;
+                    }
+                    p{
+                        top: 0;
+                        left: -10px;
+                    }
+                    .fa-undo{
+                        top: 5px;
+                        left: 0;
+                        font-size: 40px;
+                    }
+                    .fa-dollar{
+                        top: 15px;
+                        right: -25px;
+                        font-size: 20px;
+                    }
+                    &:hover{
+                        .fa,p{
+                            color: $red;
+                        }
+                    }
                 }
             }
             .passed{
@@ -208,6 +235,56 @@ $green: #108823;
                 //     left: 0;
                 //     top: 15px;
                 //     font-size: 40px;
+                }
+            }
+            .cancelled{
+                position: relative;
+                .col-sm-4{
+                    h4,.fa{
+                        color: $light-gray;
+                    }
+                }
+            }
+            .refunded{
+                z-index: 10;
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                width: 100%;
+                height: 100%;
+                p,.fa{
+                    color: $dark;
+                    position: absolute;
+                }
+                p{
+                    top: 0;
+                    left: 50%;
+                    margin-left: -50px;
+                    font-size: 15px;
+
+                }
+                .fa-undo{
+                    top: 15px;
+                    font-size: 40px;
+                    left: 50%;
+                    margin-left: -25px;
+                }
+                .fa-dollar{
+                    top: 25px;
+                    font-size: 20px;
+                    left: 50%;
+                    margin-left: -12px;
+                }
+            }
+        }
+        &:hover{
+            .order-status{
+                .active{
+                    .refund{
+                        display: block;
+                    }
                 }
             }
         }

@@ -19,6 +19,9 @@ Rails.application.routes.draw do
 
   get '/checkout' => 'user_orders#edit'
 
+  #resources :refunds, :only => [:create]
+  post 'refund/:id', :to => 'refunds#refund', :as => 'refund'
+
   put 'order/:id', :to => 'user_orders#update'
 
   resources :colors

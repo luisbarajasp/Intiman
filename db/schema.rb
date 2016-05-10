@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160506215257) do
+ActiveRecord::Schema.define(version: 20160510014922) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -158,6 +158,7 @@ ActiveRecord::Schema.define(version: 20160506215257) do
     t.string   "city"
     t.string   "state"
     t.datetime "sold_at"
+    t.string   "charge_id"
   end
 
   add_index "orders", ["order_status_id"], name: "index_orders_on_order_status_id"

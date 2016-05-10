@@ -16,15 +16,14 @@
                 <% else %>
                 <div class="cards">
                         <div id="card">
-                            <i class="fa fa-credit-card" aria-hidden="true"></i>
                             <% if @card.brand == "Visa" %>
-                                <%= image_tag "visa.gif" %>
+                                <i class="fa fa-cc-visa" aria-hidden="true"></i>
                             <% elsif @card.brand == "MasterCard" %>
-                                <%= image_tag "mastercard.png" %>
+                                <i class="fa fa-cc-mastercard" aria-hidden="true"></i>
                             <% elsif @card.brand == "American Express" %>
-                                <%= image_tag "amex.png" %>
+                                <i class="fa fa-cc-amex" aria-hidden="true"></i>
                             <% else %>
-                                <%= @card.brand %>
+                                <i class="fa fa-credit-card" aria-hidden="true"></i>
                             <% end %>
                                 ****<%= @card.last4 %>
                         </div>

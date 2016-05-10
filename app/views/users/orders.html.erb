@@ -62,6 +62,14 @@
                             <div class="col-sm-4 col-xs-4 active">
                                 <h4>Pagado</h4>
                                 <i class="fa fa-credit-card-alt" aria-hidden="true"></i>
+
+                                <%= link_to refund_path(order), data: {confirm: "Estás seguro de solicitar reembolso de la orden?"}, method: :post do %>
+                                    <div class="refund">
+                                        <p>Reembolso</p>
+                                        <i class="fa fa-undo" aria-hidden="true"></i>
+                                        <i class="fa fa-dollar" aria-hidden="true"></i>
+                                    </div>
+                                <% end %>
                             </div>
                             <div class="col-sm-4 col-xs-4">
                                 <h4>Enviado</h4>
@@ -84,7 +92,24 @@
                             </div>
                      <% when 4 %>
                          <div class="cancelled">
-
+                             <div class="col-sm-4 col-xs-4">
+                                 <h4>En proceso</h4>
+                                 <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                 <i class="fa fa-check" aria-hidden="true"></i>
+                             </div>
+                             <div class="col-sm-4 col-xs-4">
+                                 <h4>Pagado</h4>
+                                 <i class="fa fa-credit-card-alt" aria-hidden="true"></i>
+                             </div>
+                             <div class="col-sm-4 col-xs-4">
+                                 <h4>Enviado</h4>
+                                 <i class="fa fa-plane" aria-hidden="true"></i>
+                             </div>
+                             <div class="refunded">
+                                 <p>Reembolsada</p>
+                                 <i class="fa fa-undo" aria-hidden="true"></i>
+                                 <i class="fa fa-dollar" aria-hidden="true"></i>
+                             </div>
                          </div>
                     <% end %>
                 </div>
