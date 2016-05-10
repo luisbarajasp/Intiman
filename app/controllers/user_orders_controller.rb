@@ -28,7 +28,7 @@ class UserOrdersController < ApplicationController
 
           if !current_user.customer_id.nil?
               Stripe.api_key = ENV["STRIPE_API_KEY"]
-              
+
               @customer = Stripe::Customer.retrieve(current_user.customer_id)
 
               @card_id = @customer.default_source
@@ -86,16 +86,34 @@ class UserOrdersController < ApplicationController
           end
       else
           begin
-              charge = Stripe::Charge.create(
-                 :amount   => (@order.total * 100).floor, # $15.00 this time
-                 :currency => "mxn",
-                 :customer => current_user.customer_id # Previously stored, then retrieved
-              )
+              token = params[:stripeToken]
+              if !token
+                  charge = Stripe::Charge.create(
+                     :amount   => (@order.total * 100).floor, # $15.00 this time
+                     :currency => "mxn",
+                     :customer => current_user.customer_id # Previously stored, then retrieved
+                  )
 
-              @order.update_attribute(:order_status_id, 2)
-              @order.update_attribute(:sold_at, Time.now.in_time_zone)
+                  @order.update_attribute(:order_status_id, 2)
+                  @order.update_attribute(:sold_at, Time.now.in_time_zone)
 
-              flash[:notice] = "Tu compra fue realizada satisfactoriamente."
+                  flash[:notice] = "Tu compra fue realizada satisfactoriamente."
+              else
+                  cu = Stripe::Customer.retrieve(current_user.customer_id)
+                  cu.source = token # obtained with Stripe.js
+                  cu.save
+
+                  charge = Stripe::Charge.create(
+                     :amount   => (@order.total * 100).floor, # $15.00 this time
+                     :currency => "mxn",
+                     :customer => current_user.customer_id # Previously stored, then retrieved
+                  )
+
+                  @order.update_attribute(:order_status_id, 2)
+                  @order.update_attribute(:sold_at, Time.now.in_time_zone)
+
+                  flash[:notice] = "Tu compra fue realizada satisfactoriamente."
+              end
           rescue Stripe::CardError => e
               flash[:alert] = e.message
           end

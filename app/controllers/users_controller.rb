@@ -20,11 +20,9 @@ class UsersController < ApplicationController
       if !current_user.customer_id.nil?
           @customer = Stripe::Customer.retrieve(current_user.customer_id)
 
-          @cards = Array.new
+          @card_id = @customer.default_source
 
-          @customer.sources.data.each do |card|
-              @cards << card
-          end
+          @card = @customer.sources.retrieve(@card_id)
       end
   end
 
