@@ -15,6 +15,9 @@ $dark-gray: #2C2B2C;
 $red: #ff4c4c;
 $green: #108823;
 
+.col-md-6{
+    margin-bottom: 20px;
+}
 .checkout-cart{
     overflow: hidden;
     position: relative;
@@ -165,11 +168,9 @@ $green: #108823;
 }
 
 #form-card{
-    .order-container{
         border: 1px solid $dark;
         overflow: auto;
         padding: 0 15px;
-    }
     #customer{
         margin: 15px 0;
         #ya{
@@ -178,7 +179,7 @@ $green: #108823;
             text-align: center;
         }
         #card{
-            padding: 10px 0;
+            padding: 10px 20px;
             line-height: 70px;
             height: 70px;
             .fa{
@@ -231,11 +232,9 @@ $green: #108823;
     }
 }
 
-.form-order{
-    .order-container{
+.form-co-order{
         border: 1px solid $dark;
         overflow: auto;
-    }
     #repeated{
         overflow: visible;
         height: 175px;
@@ -272,6 +271,7 @@ $green: #108823;
             font-size: 15px;
         }
         .center{
+            width: 100%;
             text-align: center;
             margin-bottom: 5px;
         }

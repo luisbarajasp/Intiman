@@ -27,6 +27,8 @@ class UserOrdersController < ApplicationController
           end
 
           if !current_user.customer_id.nil?
+              Stripe.api_key = ENV["STRIPE_API_KEY"]
+              
               @customer = Stripe::Customer.retrieve(current_user.customer_id)
 
               @card_id = @customer.default_source
