@@ -194,7 +194,7 @@ var ready = function(){
         $('h5.cart-size').css('color','#C2B49A');
     }
 
-    $('a.normal-size.cart-el').on('click',function(e){
+    $('body').on('click','a.normal-size.cart-el',function(e){
         e.preventDefault();
         var value = $(this).attr("href");
         $(this).parent().next('#size-input-cart').val(value);
@@ -202,7 +202,7 @@ var ready = function(){
         $(this).closest('#item_form_cart').submit();
     });
 
-    $('.link-circle.cart-el').on('click',function(e){
+    $('body').on('click','.link-circle.cart-el',function(e){
         e.preventDefault();
         var value = $(this).attr("href");
         $(this).parent().next('#color-input-cart').val(value);
@@ -289,7 +289,7 @@ var ready = function(){
     setTimeout(setPortraitH, 10);
 
     function setPortraitH(){
-        height = $('.display img').height();
+        height = $('.portrait #img2').height();
         $('.portrait').height(height);
         $('.picture').height(height);
     }
