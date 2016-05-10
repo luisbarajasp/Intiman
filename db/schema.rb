@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20160504020519) do
+=======
+ActiveRecord::Schema.define(version: 20160510014922) do
+>>>>>>> buy
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -157,6 +161,11 @@ ActiveRecord::Schema.define(version: 20160504020519) do
     t.string   "cp"
     t.string   "city"
     t.string   "state"
+<<<<<<< HEAD
+=======
+    t.datetime "sold_at"
+    t.string   "charge_id"
+>>>>>>> buy
   end
 
   add_index "orders", ["order_status_id"], name: "index_orders_on_order_status_id"
@@ -209,7 +218,11 @@ ActiveRecord::Schema.define(version: 20160504020519) do
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
     t.integer  "order_id"
+<<<<<<< HEAD
     t.integer  "customer_id"
+=======
+    t.string   "customer_id"
+>>>>>>> buy
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true

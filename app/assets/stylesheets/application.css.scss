@@ -50,6 +50,7 @@
      margin-top: 97px;
      padding: 1em 3em;
      min-height: 80vh;
+     overflow: auto;
  }
 
 .wrapper{
@@ -895,7 +896,7 @@ p,ul,ol{
     }
 }
 
-.alert{
+.alert.main{
     z-index: 300;
     position: fixed;
     top: 105px;
@@ -1216,6 +1217,17 @@ p,ul,ol{
     }
 }
 
+.form-control{
+    border: none;
+    border-bottom: 1px solid #CCCCCC;
+    box-shadow: none;
+    &:focus{
+        border-color: #cccccc;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }
+}
+
 .footer{
     width: 100%;
     height: 320px;
@@ -1378,3 +1390,5 @@ p,ul,ol{
 @import 'sales';
 @import 'colors';
 @import 'carts';
+@import 'user_orders';
+@import 'admin_orders';

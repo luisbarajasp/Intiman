@@ -13,15 +13,28 @@ Rails.application.routes.draw do
 
   resources :order_items, :only => [:create, :update, :destroy]
 
+  get '/orders/buyed' => 'admin_orders#buyed'
+  get '/orders/shipped' => 'admin_orders#shipped'
+  get '/orders/cancelled' => 'admin_orders#cancelled'
+
+  get '/checkout' => 'user_orders#edit'
+
+  #resources :refunds, :only => [:create]
+  post 'refund/:id', :to => 'refunds#refund', :as => 'refund'
+
+  put 'order/:id', :to => 'user_orders#update'
+
   resources :colors
 
   resources :promotions
 
   resources :sizes, :except => [:edit, :update]
 
-  resources :users, :only => [:show]
+  get '/user/account' => 'users#show'
 
-  get 'users/likes', :path => 'likes'
+  get '/user/orders' => 'users#orders'
+
+  get '/user/likes' => 'users#likes'
 
   get 'sales/index', :path => 'sales'
 

@@ -1,0 +1,18 @@
+<div class="top-profile">
+    <h1 id="name"><%= current_user.first_name.mb_chars.upcase.to_s %> <span><%= current_user.last_name.mb_chars.upcase.to_s %></span></h1>
+    <h3><%= current_user.email %></h3>
+    <%= link_to "Editar", edit_user_registration_path, class: "edit-info" %>
+    <hr>
+    <div class="pages">
+        <div id="info-link" class="col-md-4 col-sm-4">
+            <%= link_to "Información", user_account_path %>
+        </div>
+        <div id="orders-link" class="col-md-4 col-sm-4">
+            <%= link_to "Órdenes", user_orders_path %>
+        </div>
+        <div id="likes-link" class="col-md-4 col-sm-4">
+            <%= link_to "Likes", user_likes_path %>
+        </div>
+    </div>
+    <hr>
+</div>

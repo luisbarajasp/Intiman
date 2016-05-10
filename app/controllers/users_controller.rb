@@ -1,8 +1,33 @@
 class UsersController < ApplicationController
     before_action :authenticate_user!
 
+    helper_method :order_items_total
+
+  def order_items_total(order)
+      @order = order
+      @result = 0
+      @order.order_items.each do |item|
+          @result += item.quantity
+      end
+      @result
+  end
+
   def show
-      @user = User.find(params[:id])
+      Stripe.api_key = ENV["STRIPE_API_KEY"]
+
+      @order = Order.where('user_id = ? AND order_status_id != 1 AND address IS NOT NULL',current_user.id).order('created_at DESC').first
+
+      if !current_user.customer_id.nil?
+          @customer = Stripe::Customer.retrieve(current_user.customer_id)
+
+          @card_id = @customer.default_source
+
+          @card = @customer.sources.retrieve(@card_id)
+      end
+  end
+
+  def orders
+      @orders = Order.where(user_id: current_user.id).order('created_at DESC')
   end
 
   def likes

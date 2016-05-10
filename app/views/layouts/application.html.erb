@@ -4,8 +4,10 @@
   <title>Intiman</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'https://js.stripe.com/v2/' %>
   <link href='https://fonts.googleapis.com/css?family=Vollkorn:400,700' rel='stylesheet' type='text/css'>
   <%= csrf_meta_tags %>
+  <%= tag :meta, :name => "stripe-key", :content => ENV["STRIPE_PUBLIC_KEY"] %>
 </head>
 
 <body>
@@ -122,7 +124,7 @@
                             <i class='fa fa-male'></i> <%= current_user.first_name.split[0]%> <span class="caret"></span>
                           </button>
                           <ul class="dropdown-menu dropdown-menu-right">
-                            <li><%= link_to "Mi cuenta", user_path(current_user.id) %></li>
+                            <li><%= link_to "Mi cuenta", user_account_path %></li>
                             <li role="separator" class="divider"></li>
                             <li><%= link_to "Cerrar sesión",destroy_user_session_path, method: :delete %></li>
                           </ul>
@@ -160,7 +162,7 @@
                                         <% end %>
                                     <% end %>
                                 </div>
-                                <%= link_to "Ver todas", users_likes_path, class: "link-all" %>
+                                <%= link_to "Ver todas", user_likes_path, class: "link-all" %>
                             <% else %>
                                 <div class="no-likes">
                                     <h4><span>¿Te gusta?</span> <br><br>Presiona el <i class="fa fa-heart"></i> para guardar la prenda y verla después</h4>
@@ -203,7 +205,7 @@
         </div>
     </div>
     <noscript>
-        <div class="alert alert-danger">
+        <div class="alert alert-danger main">
           <a href="#" data-dismiss="alert" class="close">×</a>
           <ul>
             <li>
@@ -214,7 +216,7 @@
     </noscript>
 
     <% if notice %>
-          <div class="alert alert-success">
+          <div class="alert alert-success main">
             <a href="#" data-dismiss="alert" class="close">×</a>
             <ul>
               <li>
@@ -223,7 +225,7 @@
             </ul>
           </div>
     <% elsif alert %>
-        <div class="alert alert-danger">
+        <div class="alert alert-danger main">
           <a href="#" data-dismiss="alert" class="close">×</a>
           <ul>
             <li>

@@ -1,0 +1,119 @@
+<div class="wrapper">
+    <%= render 'top_profile' %>
+    <div id="orders-page">
+        <div class="header-table col-md-12 col-sm-12">
+            <div class="col-sm-2">
+                <h4>No. Prendas</h4>
+            </div>
+            <div class="col-sm-2 bo">
+                <h4>Total Pagado</h4>
+            </div>
+            <div class="col-sm-2 bo">
+                <h4>Fecha de compra</h4>
+            </div>
+            <div class="col-sm-6 bo">
+                <h4>Estatus de la orden</h4>
+            </div>
+        </div>
+        <% @orders.each do |order| %>
+            <div class="order col-md-12 col-sm-12">
+                <div class="col-sm-2 count">
+                    <% if order_items_total(order) < 2 %>
+                        <p> 1 prenda
+                    <% else %>
+                        <p> <%= order_items_total(order) %> prendas
+                    <% end %>
+                    </p>
+                </div>
+                <div class="col-sm-2 total">
+                    <p>Subtotal: <%= number_to_currency(order.subtotal) %></p>
+                    <p>Envío: <%= number_to_currency(order.shipping) %></p>
+                    <hr>
+                    <p id="tot">Total: MXN <%= number_to_currency(order.total) %></p>
+                </div>
+                <div class="col-sm-2 date-sold">
+                    <% if order.order_status_id == 1 %>
+                        <%= link_to "Checkout", checkout_path %>
+                    <% else %>
+                        <%= order.sold_at.strftime("%-d/%-m/%Y") %>
+                    <% end %>
+                </div>
+                <div class="col-sm-6 order-status">
+                    <% case order.order_status_id
+                     when 1 %>
+                            <div class="col-sm-4 col-xs-4 active">
+                                <h4>En proceso</h4>
+                                <i class="fa fa-shopping-cart"></i>
+                            </div>
+                            <div class="col-sm-4 col-xs-4">
+                                <h4>Pagado</h4>
+                                <i class="fa fa-credit-card-alt" aria-hidden="true"></i>
+                            </div>
+                            <div class="col-sm-4 col-xs-4">
+                                <h4>Enviado</h4>
+                                <i class="fa fa-plane"></i>
+                            </div>
+                     <% when 2 %>
+                            <div class="col-sm-4 col-xs-4 passed">
+                                <h4>En proceso</h4>
+                                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                <i class="fa fa-check" aria-hidden="true"></i>
+                            </div>
+                            <div class="col-sm-4 col-xs-4 active">
+                                <h4>Pagado</h4>
+                                <i class="fa fa-credit-card-alt" aria-hidden="true"></i>
+
+                                <%= link_to refund_path(order), data: {confirm: "Estás seguro de solicitar reembolso de la orden?"}, method: :post do %>
+                                    <div class="refund">
+                                        <p>Reembolso</p>
+                                        <i class="fa fa-undo" aria-hidden="true"></i>
+                                        <i class="fa fa-dollar" aria-hidden="true"></i>
+                                    </div>
+                                <% end %>
+                            </div>
+                            <div class="col-sm-4 col-xs-4">
+                                <h4>Enviado</h4>
+                                <i class="fa fa-plane" aria-hidden="true"></i>
+                            </div>
+                     <% when 3 %>
+                            <div class="col-sm-4 col-xs-4 passed">
+                                <h4>En proceso</h4>
+                                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                <i class="fa fa-check" aria-hidden="true"></i>
+                            </div>
+                            <div class="col-sm-4 col-xs-4 passed">
+                                <h4>Pagado</h4>
+                                <i class="fa fa-credit-card-alt" aria-hidden="true"></i>
+                                <i class="fa fa-check" aria-hidden="true"></i>
+                            </div>
+                            <div class="col-sm-4 col-xs-4 active">
+                                <h4>Enviado</h4>
+                                <i class="fa fa-plane" aria-hidden="true"></i>
+                            </div>
+                     <% when 4 %>
+                         <div class="cancelled">
+                             <div class="col-sm-4 col-xs-4">
+                                 <h4>En proceso</h4>
+                                 <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                 <i class="fa fa-check" aria-hidden="true"></i>
+                             </div>
+                             <div class="col-sm-4 col-xs-4">
+                                 <h4>Pagado</h4>
+                                 <i class="fa fa-credit-card-alt" aria-hidden="true"></i>
+                             </div>
+                             <div class="col-sm-4 col-xs-4">
+                                 <h4>Enviado</h4>
+                                 <i class="fa fa-plane" aria-hidden="true"></i>
+                             </div>
+                             <div class="refunded">
+                                 <p>Reembolsada</p>
+                                 <i class="fa fa-undo" aria-hidden="true"></i>
+                                 <i class="fa fa-dollar" aria-hidden="true"></i>
+                             </div>
+                         </div>
+                    <% end %>
+                </div>
+            </div>
+        <% end %>
+    </div>
+</div>

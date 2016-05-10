@@ -1,0 +1,105 @@
+<div class="wrapper">
+    <div class="page-name">
+        <h3>Checkout</h3>
+        <hr>
+    </div>
+    <div class="checkout-cart col-md-6 col-md-offset-3">
+        <h4 id="summary">Resumen</h4>
+        <%= render 'checkout_cart' %>
+    </div>
+    <%= form_for @order, :url => "/order/#{@order.id}", method: :put, :html => { :id => "order" } do |f| %>
+    <div class="form-co-order col-md-6 col-md-offset-3">
+        <div class="order-container">
+            <% if @repeated %>
+                <div id="repeated" class="clearfix">
+                    <div id="ya" class="col-xs-12 repeated-el">
+                        Ya tenemos tu dirección de envío <i class="fa fa-check-square" aria-hidden="true"></i>
+                    </div>
+                    <div id="dir" class="col-xs-8 repeated-el">
+                        <%= @address %>, <%= @suburb %> <br> <%= @city %>, <%= @state %> <br> CP <%= @cp %>
+                    </div>
+                    <div id="ot" class="col-xs-4 repeated-el">
+                        <span id="another-address">Usar otra</span>
+                    </div>
+                </div>
+            <% end %>
+            <div id="form-address">
+                <h4>¿A dónde enviaremos tus prendas?</h4>
+
+                	<div class="form-group col-md-12">
+                		<%= f.label :address, "Dirección" %> <br>
+                		<%= f.text_field :address, class: "form-control", value: @address %>
+                	</div>
+                    <div class="form-group col-md-7">
+                		<%= f.label :suburb, "Colonia" %> <br>
+                		<%= f.text_field :suburb, class: "form-control", value: @suburb %>
+                	</div>
+                    <div class="form-group col-md-5">
+                		<%= f.label :cp, "Código Postal" %> <br>
+                		<%= f.text_field :cp, class: "form-control", value: @cp %>
+                	</div>
+                    <div class="form-group col-md-6">
+                		<%= f.label :city, "Ciudad" %> <br>
+                		<%= f.text_field :city, class: "form-control", value: @city %>
+                	</div>
+                    <div class="form-group col-md-6">
+                		<%= f.label :state, "Estado" %> <br>
+                        <%= f.select :state, options_for_select(mx_states, "Ciudad de México"), {}, class: "form-control" %>
+                	</div>
+
+            </div>
+        </div>
+    </div>
+    <div id="form-card" class="col-md-6 col-md-offset-3">
+        <div class="order-container">
+            <div id="stripe_error" class="alert alert-danger" style="display:none"></div>
+            <% if @customer %>
+                <div id="customer" class="clearfix">
+                    <div id="ya" class="col-xs-12 repeated-el">
+                        Ya tenemos tu tarjeta <i class="fa fa-check-square" aria-hidden="true"></i>
+                    </div>
+                    <div id="card" class="col-xs-8 repeated-el">
+                        <% if @card.brand == "Visa" %>
+                            <i class="fa fa-cc-visa" aria-hidden="true"></i>
+                        <% elsif @card.brand == "MasterCard" %>
+                            <i class="fa fa-cc-mastercard" aria-hidden="true"></i>
+                        <% elsif @card.brand == "American Express" %>
+                            <i class="fa fa-cc-amex" aria-hidden="true"></i>
+                        <% else %>
+                            <i class="fa fa-credit-card" aria-hidden="true"></i>
+                        <% end %>
+                            ****<%= @card.last4 %>
+                    </div>
+                    <div id="ot" class="col-xs-4 repeated-el">
+                        <span id="another-card">Usar otra</span>
+                    </div>
+                </div>
+            <% end %>
+            <div id="form-fields-card" class="col-xs-6 col-xs-offset-3">
+                <div class="form-group col-xs-12">
+                    <%= label_tag :card_number, "Número de Tarjeta" %> <br>
+                    <%= text_field_tag :card_number, nil, {:name => nil, :'data-stripe' => "number", class: "input-card"} %>
+                    <i class="fa fa-credit-card" aria-hidden="true"></i>
+                </div>
+                <div class="form-group col-xs-6">
+                    <%= label_tag :card_code, "CVC" %> <br>
+                    <%= text_field_tag :card_code, nil, {:name => nil, :'data-stripe' => "cvc", class: "input-card"} %>
+                </div>
+                <div class="form-group col-xs-6">
+                    <%= label_tag nil, "Expiración" %> <br>
+                    <%= text_field_tag :exp, nil, {:name => nil, :'data-stripe' => "exp", :placeholder => "MM/AA", class: "input-card"} %>
+                </div>
+            </div>
+            <div class="pow-strip col-xs-12">
+                <%=link_to (image_tag "stripe.png"), "https://stripe.com/", target: "_blank" %>
+            </div>
+            <div class="exp-stripe col-xs-12">
+                <h4>* Los datos de tu tarjeta son manejados directamente por Stripe. <br>Intiman no guarda ninguno de estos.</h4>
+            </div>
+        </div>
+    </div>
+    <div class="form-group center clearfix">
+        <%= f.submit "Comprar", class: "btn-submit" %>
+    </div>
+    <% end %>
+</div>

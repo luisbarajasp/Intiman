@@ -1,2 +1,50 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="wrapper">
+    <%= render 'top_profile' %>
+    <div id="info-page">
+        <div class="payment">
+            <div class="title">
+                <h2>Tu Tarjeta</h2>
+                <div class="pow-strip">
+                    <%=link_to (image_tag "stripe.png"), "https://stripe.com/", target: "_blank" %>
+                </div>
+            </div>
+            <div class="cards-info">
+                <% if current_user.customer_id.nil? %>
+                <p id="wCard">
+                    No tienes ninguna tarjeta registrada
+                </p>
+                <% else %>
+                <div class="cards">
+                        <div id="card">
+                            <% if @card.brand == "Visa" %>
+                                <i class="fa fa-cc-visa" aria-hidden="true"></i>
+                            <% elsif @card.brand == "MasterCard" %>
+                                <i class="fa fa-cc-mastercard" aria-hidden="true"></i>
+                            <% elsif @card.brand == "American Express" %>
+                                <i class="fa fa-cc-amex" aria-hidden="true"></i>
+                            <% else %>
+                                <i class="fa fa-credit-card" aria-hidden="true"></i>
+                            <% end %>
+                                ****<%= @card.last4 %>
+                        </div>
+                </div>
+                <% end %>
+            </div>
+        </div>
+        <hr>
+        <div class="addresses">
+            <h2>Tu Dirección</h2>
+                <div class="address">
+                    <% if @order %>
+                        <p>Dirección: <%= @order.address %>, <%= @order.suburb %></p>
+                        <p><%= @order.city %>, <%= @order.state %> </p>
+                        <p>C.P.: <%= @order.cp %></p>
+                    <% else %>
+                        <p>
+                            No tienes ninguna dirección registrada.
+                        </p>
+                    <% end %>
+                </div>
+        </div>
+    </div>
+</div>

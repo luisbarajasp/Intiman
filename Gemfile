@@ -33,7 +33,8 @@ gem 'jquery-fileupload-rails', '~> 0.4.6'
 gem 'simple_form', '~> 3.2', '>= 3.2.1'
 gem 'formtastic', '~> 3.1', '>= 3.1.4'
 gem 'elevatezoom-rails', '~> 1.0'
-
+gem 'stripe', '~> 1.41'
+gem 'card-rails'
 
 
 group :development, :test do
