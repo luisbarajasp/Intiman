@@ -136,7 +136,7 @@
                 </div>
                 <div class="likes button hover">
                     <% if user_signed_in? %>
-                        <a href="/likes"><h5><i class="fa fa-heart"></i> (<%= current_user.find_liked_items.count %>)</h5></a>
+                        <a href="/user/likes"><h5><i class="fa fa-heart"></i> (<%= current_user.find_liked_items.count %>)</h5></a>
                         <div class="content">
                             <div class="title">
                                 <h3>Estas prendas te han gustado <i class="fa fa-heart"></i></h3>

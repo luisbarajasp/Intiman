@@ -8,7 +8,7 @@
         <hr>
     </div>
     <div id="items">
-        <% if @order_items.count == 0 %>
+        <% if @order_items.count < 1 %>
           <p class="text-center">
             Aún no tienes prendas en tu carrito de compra. <i class="fa fa-exclamation-circle"></i>
           </p>

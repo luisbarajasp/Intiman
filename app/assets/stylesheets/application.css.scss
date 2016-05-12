@@ -11,6 +11,7 @@
  * file per style scope.
  *
  *= require_tree .
+ *= require hover
  *= require bootstrap_and_overrides
  *= require jquery.fileupload
  *= require jquery.fileupload-ui
@@ -22,6 +23,7 @@
 
  @import 'normalize';
  @import "font-awesome";
+ @import 'hover';
 
  $principal: #125688;
  $secondary: #C2B49A;

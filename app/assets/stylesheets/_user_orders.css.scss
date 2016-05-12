@@ -168,9 +168,10 @@ $green: #108823;
 }
 
 #form-card{
-        border: 1px solid $dark;
-        overflow: auto;
-        padding: 0 15px;
+    position: relative;
+    border: 1px solid $dark;
+    overflow: auto;
+    padding: 0 15px;
     #customer{
         margin: 15px 0;
         #ya{
@@ -184,11 +185,7 @@ $green: #108823;
             height: 70px;
             .fa{
                 margin-right: 10px;
-            }
-            img{
-                height: 15px;
-                width: auto;
-                margin-right: 10px;
+                font-size: 30px;
             }
         }
         #ot{
@@ -228,6 +225,15 @@ $green: #108823;
         }
         #card_number{
             padding-left: 25px;
+        }
+    }
+    .pow-strip{
+        position: absolute;
+        top: 35px;
+        right: 50px;
+        img{
+            width: 100px;
+            height: auto;
         }
     }
 }
@@ -290,6 +296,25 @@ $green: #108823;
                 color: $white;
                 background: $dark;
             }
+        }
+    }
+}
+#button-buy{
+    margin: 20px 0;
+    text-align: center;
+    .btn{
+        background: $white;
+        transition: all 0.4 ease;
+        -moz-transition: all 0.4s ease;
+        -webkit-transition: all 0.4s ease;
+        -o-transition: all 0.4s ease;
+        border: 1px solid $dark;
+        color: $dark;
+        font-size: 20px;
+        &:hover{
+            background: $dark;
+            color: $white;
+            box-shadow-color: $light-gray;
         }
     }
 }

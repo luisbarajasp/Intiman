@@ -194,7 +194,7 @@ var ready = function(){
         $('h5.cart-size').css('color','#C2B49A');
     }
 
-    $('body').on('click','a.normal-size.cart-el',function(e){
+    $('body').on('click','.normal-size.cart-el',function(e){
         e.preventDefault();
         var value = $(this).attr("href");
         $(this).parent().next('#size-input-cart').val(value);
