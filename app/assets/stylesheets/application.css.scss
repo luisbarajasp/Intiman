@@ -928,6 +928,20 @@ p,ul,ol{
     }
 }
 
+.page-section{
+    text-align: center;
+    padding-bottom: 3em;
+    h3{
+        font-size: 20px;
+    }
+    hr{
+        border-color: $secondary;
+        border-width: 2px;
+        width: 150px;
+        margin: 5px auto;
+    }
+}
+
 .devise-form{
     .button{
         text-align: center;
@@ -1394,3 +1408,4 @@ p,ul,ol{
 @import 'carts';
 @import 'user_orders';
 @import 'admin_orders';
+@import 'dashboard';

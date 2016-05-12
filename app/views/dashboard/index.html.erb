@@ -1,0 +1,53 @@
+<%= render 'side_bar' %>
+<div class="admin-wrapper">
+    <div class="wrapper">
+        <div class="page-section">
+            <h3>Órdenes Recientes</h3>
+            <hr>
+        </div>
+        <div class="recent-orders-admin">
+            <% @orders.each do |order| %>
+                <div class="recent-order col-sm-3 <%= order.order_status.name %>">
+                    <p><%= order_items_total(order) %> prendas</p>
+                    <p><%= order.user.first_name %> <%= order.user.last_name %></p>
+                    <p>MXN <%= number_to_currency(order.total) %></p>
+                    <p><%= order.order_status.name %></p>
+                    <p><%= order.id %></p>
+                </div>
+            <% end %>
+        </div>
+        <hr>
+        <div class="page-section">
+            <h3>Promoción Activa</h3>
+            <hr>
+        </div>
+        <div class="active-promo">
+            <p><span>Titulo: </span><%= @promotion.title %></p>
+            <% if !@promotion.description.nil? %>
+                <p><span>Descripción: </span><%= @promotion.description %></p>
+            <% else %>
+                <p><%= @promotion.cloths.count %> prendas incluidas</p>
+            <% end %>
+            <%= link_to "Ver", @promotion %>
+        </div>
+        <hr>
+        <div class="page-section">
+            <h3>Home Sliders Activos</h3>
+            <hr>
+        </div>
+        <div class="active-sliders">
+            <% @sliders.each do |slider| %>
+                <div class="col-sm-4">
+                    <div class="thumbnail a-slider">
+                        <%= image_tag slider.image.url(:preview) %>
+                        <% if !slider.description.nil? %>
+                            <div class="caption">
+                                <%= slider.description.truncate_words(6) %>
+                            </div>
+                        <% end %>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>

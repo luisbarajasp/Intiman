@@ -1,10 +1,6 @@
 class PromotionsController < ApplicationController
   before_action :authenticate_admin!, :except => [:show]
 
-  def index
-      @promotions = Promotion.all.order('created_at DESC')
-  end
-
   def show
       @promotion = Promotion.find(params[:id])
       @cloths = @promotion.cloths.order( "#{params[:sort] or 'created_at'} #{params[:order] or 'DESC'}")

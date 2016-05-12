@@ -1,12 +1,18 @@
 Rails.application.routes.draw do
 
-  resources :home_sliders, :except => [:show]
+  resources :home_sliders, :except => [:index,:show]
 
   devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks', :sessions => "custom_sessions" }
 
   match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], as: :finish_signup
 
   devise_for :admins
+
+  get '/admin/dashboard' => 'dashboard#index'
+  get '/admin/home_sliders' => 'dashboard#home_sliders'
+  get '/admin/promotions' => 'dashboard#promotions'
+  get '/admin/cloths' => 'dashboard#cloths'
+  get '/admin/orders' => 'dashboard#orders'
 
   #resources :carts, :only => [:show]
   get '/cart' => 'carts#show'
@@ -26,7 +32,7 @@ Rails.application.routes.draw do
 
   resources :colors
 
-  resources :promotions
+  resources :promotions, :except => [:index]
 
   resources :sizes, :except => [:edit, :update]
 
@@ -43,7 +49,7 @@ Rails.application.routes.draw do
   resources :brands, except: [:edit,:update]
 
 
-  resources :cloths do
+  resources :cloths, except: [:index] do
       member do
         put "like", to: "cloths#like"
         put "dislike", to: "cloths#unlike"
