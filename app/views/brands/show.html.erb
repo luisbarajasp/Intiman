@@ -1,15 +1,61 @@
 <div class="page-name">
     <h3><%= @brand.name %></h3>
+    <hr>
 </div>
 <div class="brand-show">
     <% if admin_signed_in? %>
-        <%= link_to '<i class="fa fa-trash"></i>'.html_safe, brand_path(@brand), method: :delete, data: {confirm: "Estas seguro?"} %>
+        <div class="admin_links">
+            <%= link_to '<i class="fa fa-trash"></i>'.html_safe, brand_path(@brand), method: :delete, data: {confirm: "Estas seguro de eliminar esta marca?"} %>
+        </div>
     <% end %>
-    <div class="clothes">
-        <% @brand.cloths.each do |cloth| %>
-            <div class="descr">
-                <p><%= cloth.description %></p>
+    <div class="filters">
+        <div class="btn-group">
+          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Talla <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu">
+            <% @sizes.each do |size| %>
+                <li><%= link_to size.letter, params.merge(:size => size.letter) %></li>
+            <% end %>
+          </ul>
+        </div>
+        <div class="btn-group">
+          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Color <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu">
+            <% @colors.each do |color| %>
+                <li><span id="circle" style="background: <%= color.hex %>"></span> <%= link_to color.name, params.merge(:color => color.name) %> </li>
+            <% end %>
+          </ul>
+        </div>
+        <div class="btn-group">
+          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Categoría <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu">
+            <% @categories.each do |category| %>
+                <li><%= link_to category.name, params.merge(:category => category.name) %></li>
+            <% end %>
+          </ul>
+        </div>
+        <div class="btn-group disable" id="clean">
+            <%= link_to "Limpiar filtros", @brand %>
+        </div>
+        <div class="sort-by">
+            <div class="btn-group">
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Ordenar por: <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-right">
+                <li><%= link_to "Más nuevo", params.merge(:sort => 'created_at', :order => 'DESC') %></li>
+                <li><%= link_to "Precio menor a mayor", params.merge(:sort => 'discount_price', :order => 'ASC') %></li>
+                <li><%= link_to "Precio mayor a menor", params.merge(:sort => 'discount_price', :order => 'DESC') %></li>
+              </ul>
             </div>
-        <% end %>
+        </div>
+    </div>
+    <div id="cloths">
+        <%= render @cloths %>
     </div>
 </div>

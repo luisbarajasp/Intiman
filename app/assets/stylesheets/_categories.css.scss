@@ -20,3 +20,30 @@ $red: #ff4c4c;
     }
 
 }
+
+.categories-index{
+    padding-bottom: 50px;
+    .category{
+        padding-bottom: 20px;
+    }
+    .link{
+        margin-top: 10px;
+        padding: 10px;
+        text-align: center;
+        a{
+            border: 1px solid $dark;
+            padding: 5px 10px;
+            font-size: 16px;
+            text-decoration: none;
+            color: $dark;
+            transition: all 0.5s ease;
+            -moz-transition: all 0.5s ease;
+            -webkit-transition: all 0.5s ease;
+            -o-transition: all 0.5s ease;
+            &:hover{
+                background: $dark;
+                color: $white;
+            }
+        }
+    }
+}

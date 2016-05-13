@@ -1,24 +1,94 @@
 <div class="categories-index skinny_wrapper">
+    <div class="page-name">
+        <h3>Marcas</h3>
+        <hr>
+    </div>
     <% if admin_signed_in? %>
-        <%= link_to "Nueva", new_brand_path %>
+        <div class="admin_links">
+            <%= link_to "Nueva Marca", new_category_path %>
+        </div>
     <% end %>
     <% @brands.each do |brand| %>
-        <div class="brand">
-            <div class="name">
-                <h2><%= brand.name %></h2>
+        <div class="category">
+            <div class="page-section">
+                <h3><%= link_to brand.name, brand %></h3>
+                <hr>
             </div>
-            <div class="clothes">
-                <% brand.cloths.each do |cloth| %>
-                    <div class="cloth">
-                        <div class="desc">
-                            <p><%= cloth.description %></p>
+            <div id="cloths">
+                <% brand.cloths.first(3).each do |cloth| %>
+                    <%= link_to cloth do %>
+                        <div class="box col4">
+                            <div class="thumbnail">
+                                <div class="images">
+                                    <div class="image1">
+                                        <%= image_tag cloth.image1.url(:preview) %>
+                                    </div>
+                                    <div class="image2">
+                                        <%= image_tag cloth.image2.url(:preview) %>
+                                    </div>
+                                </div>
+                                <div class="caption">
+                                    <div class="descr">
+                                        <p><%= cloth.description %></p>
+                                    </div>
+                                    <div class="prices">
+                                        <p id="discount">MXN
+                                            <% if cloth.discount_price != 0 %>
+                                                <span id="nom_price"><%= number_to_currency(cloth.normal_price) %></span> <span id="dis_price"><%= number_to_currency(cloth.discount_price) %></span>
+                                            <% else %>
+                                                <span id="price"><%= number_to_currency(cloth.normal_price) %></span>
+                                            <% end %>
+                                        </p>
+                                    </div>
+                                    <div class="info">
+                                        <div class="sizes">
+                                            <% @sis.each do |si| %>
+                                                <% if si.cloth == cloth %>
+                                                    <p><%= si.size.letter %></p>
+                                                <% end %>
+                                            <% end %>
+                                        </div>
+                                        <div class="colors">
+                                            <% @cos.each do |co| %>
+                                                <% if co.cloth == cloth %>
+                                                    <div id="circle" style="background: <%= co.color.hex %>"></div>
+                                                <% end %>
+                                            <% end %>
+                                        </div>
+                                    </div>
+                                </div>
+                                <% if user_signed_in? %>
+                                    <div class="like">
+                                        <% if !(current_user.liked? cloth) %>
+
+                                            <%= link_to like_cloth_path(cloth), method: :put do %>
+                                                <span class="change-icon">
+                                                <i class="fa fa-heart-o"></i>
+                                                <i class="fa fa-heart"></i>
+                                                </span>
+                                            <% end %>
+
+                                        <% else %>
+
+                                            <%= link_to dislike_cloth_path(cloth), method: :put do %>
+                                                <span class="change-icon">
+                                                <i class="fa fa-heart"></i>
+                                                <i class="fa fa-heart-o"></i>
+                                                </span>
+                                            <% end %>
+
+                                        <% end %>
+                                    </div>
+                                <% end %>
+                            </div>
                         </div>
-                    </div>
+                    <% end %>
                 <% end %>
             </div>
             <div class="link">
                 <%= link_to "Ver más", brand %>
             </div>
         </div>
+        <hr>
     <% end %>
 </div>

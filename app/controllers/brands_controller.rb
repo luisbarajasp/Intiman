@@ -18,6 +18,12 @@ class BrandsController < ApplicationController
     end
     def show
         @brand = Brand.friendly.find(params[:id])
+        @cloths = @brand.cloths.order("#{params[:sort] or 'created_at'} #{params[:order] or 'DESC'}").paginate(:page => params[:page], :per_page => 20)
+
+        @cloths = @cloths.select { |c| c.sizes_n.include? params[:size] } if params[:size]
+        @cloths = @cloths.where('category_n = ?', params[:category]) if params[:category]
+        @cloths = @cloths.select { |c| c.colors_n.include? params[:color] } if params[:color]
+        @cloths = @cloths.where('price < ?', params[:price]) if params[:price]
     end
     def destroy
         @brand = Brand.friendly.find(params[:id])

@@ -931,6 +931,9 @@ p,ul,ol{
 .page-section{
     text-align: center;
     padding-bottom: 3em;
+    a{
+        color: $dark;
+    }
     h3{
         font-size: 20px;
     }
@@ -1393,9 +1396,23 @@ p,ul,ol{
         }
     }
 }
+
+.admin_links{
+    border-top: 1px solid $dark;
+    border-bottom: 1px solid $dark;
+    text-align: center;
+    padding: 5px;
+    margin-bottom: 40px;
+    a{
+        color: $dark;
+        padding: 0 10px;
+    }
+}
+
 .push{
     height: 320px;
 }
+
 
 @import 'brands';
 @import 'categories';
