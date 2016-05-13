@@ -61,6 +61,9 @@ class ApplicationController < ActionController::Base
 
     devise_parameter_sanitizer.for(:account_update) << :first_name
     devise_parameter_sanitizer.for(:account_update) << :last_name
+  end
 
+  def authenticate_admin!
+    redirect_to root_path unless admin_signed_in?
   end
 end

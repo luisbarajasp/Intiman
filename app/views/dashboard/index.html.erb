@@ -7,13 +7,16 @@
         </div>
         <div class="recent-orders-admin">
             <% @orders.each do |order| %>
-                <div class="recent-order col-sm-3 <%= order.order_status.name %>">
-                    <p><%= order_items_total(order) %> prendas</p>
-                    <p><%= order.user.first_name %> <%= order.user.last_name %></p>
-                    <p>MXN <%= number_to_currency(order.total) %></p>
-                    <p><%= order.order_status.name %></p>
-                    <p><%= order.id %></p>
-                </div>
+                <%= link_to admin_order_path(order) do %>
+                    <div class="recent-order col-sm-3 <%= order.order_status.name %>">
+                        <p><%= order_items_total(order) %> prendas</p>
+                        <p><%= order.user.first_name %> <%= order.user.last_name %></p>
+                        <p>MXN <%= number_to_currency(order.total) %></p>
+                        <p><%= order.order_status.name %></p>
+                        <p>Comprada: <%= order.sold_at.strftime("%H:%M, %d/%m/%y") %></p>
+                        <p><%= order.id %></p>
+                    </div>
+                <% end %>
             <% end %>
         </div>
         <hr>
@@ -26,7 +29,7 @@
             <% if !@promotion.description.nil? %>
                 <p><span>Descripción: </span><%= @promotion.description %></p>
             <% else %>
-                <p><%= @promotion.cloths.count %> prendas incluidas</p>
+                <p><span>Número de prendas: </span><%= @promotion.cloths.count %></p>
             <% end %>
             <%= link_to "Ver", @promotion %>
         </div>

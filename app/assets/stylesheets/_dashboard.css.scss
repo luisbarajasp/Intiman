@@ -68,6 +68,9 @@ $green: #108823;
             font-size: 13px;
             margin-bottom: 5px;
         }
+        &:hover{
+            background: $secondary;
+        }
     }
     .Placed{
         background: #eee857;
@@ -98,5 +101,12 @@ $green: #108823;
             background: $dark;
             color: $white;
         }
+    }
+}
+
+.link-ver{
+    text-align: right;
+    a{
+        color: $dark;
     }
 }

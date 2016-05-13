@@ -14,14 +14,15 @@ Rails.application.routes.draw do
   get '/admin/cloths' => 'dashboard#cloths'
   get '/admin/orders' => 'dashboard#orders'
 
-  #resources :carts, :only => [:show]
+  resources :admin_orders, :only => [:show,:edit,:update]
+
   get '/cart' => 'carts#show'
 
   resources :order_items, :only => [:create, :update, :destroy]
 
-  get '/orders/buyed' => 'admin_orders#buyed'
-  get '/orders/shipped' => 'admin_orders#shipped'
-  get '/orders/cancelled' => 'admin_orders#cancelled'
+  get '/admin/orders/buyed' => 'admin_orders#buyed'
+  get '/admin/orders/shipped' => 'admin_orders#shipped'
+  get '/admin/orders/cancelled' => 'admin_orders#cancelled'
 
   get '/checkout' => 'user_orders#edit'
 
