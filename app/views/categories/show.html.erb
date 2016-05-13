@@ -2,7 +2,7 @@
     <h3><%= @category.name %></h3>
     <hr>
 </div>
-<div class="category-show">
+<div class="wrapper">
     <% if admin_signed_in? %>
         <div class="admin_links">
             <%= link_to '<i class="fa fa-trash"></i>'.html_safe, category_path(@category), method: :delete, data: {confirm: "Estas seguro de eliminar la categoría?"} %>
@@ -55,7 +55,7 @@
             </div>
         </div>
     </div>
-    <div id="cloths">
+    <div id="cloths" class="transitions-enabled clearfix">
         <%= render @cloths %>
     </div>
 </div>

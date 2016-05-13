@@ -14,7 +14,7 @@
                 <h3><%= link_to category.name, category %></h3>
                 <hr>
             </div>
-            <div id="cloths">
+            <div id="cloths" class="transitions-enabled clearfix">
                 <% category.cloths.first(3).each do |cloth| %>
                     <%= link_to cloth do %>
                         <div class="box col4">
