@@ -37,7 +37,7 @@
             <h3>Promoción Activa</h3>
             <hr>
         </div>
-        <div class="promo">
+        <div class="promo active">
             <p><span>Titulo: </span><%= @promotion.title %></p>
             <% if !@promotion.description.nil? %>
                 <p><span>Descripción: </span><%= @promotion.description %></p>
@@ -51,12 +51,14 @@
             <h3>Home Sliders Activos</h3>
             <hr>
         </div>
-        <div class="active-sliders">
+        <div class="sliders">
             <% @sliders.each do |slider| %>
                 <div class="col-sm-4">
                     <div class="thumbnail a-slider">
-                        <%= image_tag slider.image.url(:preview) %>
-                        <% if !slider.description.nil? %>
+                        <%= link_to edit_home_slider_path(slider) do %>
+                            <%= image_tag slider.image.url(:preview) %>
+                        <% end %>
+                        <% if slider.description? %>
                             <div class="caption">
                                 <%= slider.description.truncate_words(6) %>
                             </div>

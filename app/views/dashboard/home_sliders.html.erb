@@ -1,1 +1,36 @@
 <%= render 'side_bar' %>
+<div class="admin-wrapper">
+    <div class="wrapper">
+        <div class="page-name">
+            <h3>Home Sliders</h3>
+            <hr>
+        </div>
+        <div class="links">
+            <%= link_to "Nuevo Home Slider", new_home_slider_path %>
+        </div>
+        <div class="home_sliders">
+            <div class="sliders">
+                <% @sliders.each do |slider| %>
+                    <div class="col-sm-4">
+                            <div class="thumbnail a-slider">
+                                <%= link_to edit_home_slider_path(slider) do %>
+                                    <%= image_tag slider.image.url(:preview) %>
+                                <% end %>
+                                <div class="caption">
+                                <% if slider.description? %>
+                                        <%= slider.description.truncate_words(6) %>
+                                <% end %>
+                                <%= form_for slider do |f| %>
+                                    <div class="form-group">
+                                        <%= f.label :display %>
+                                        <%= f.check_box :display, onchange: "$(this).closest('.edit_home_slider').submit();" %>
+                                	</div>
+                                <% end %>
+                                </div>
+                            </div>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>
