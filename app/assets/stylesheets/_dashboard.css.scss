@@ -56,57 +56,79 @@ $green: #108823;
     top: 105px;
     left: 200px;
     overflow: auto;
-}
+    .recent-orders-admin{
+        margin-bottom: 20px;
+        overflow: auto;
+        .recent-order{
+            border: 1px solid $dark;
+            padding: 10px 5px;
+            p{
+                font-size: 13px;
+                margin-bottom: 5px;
+            }
+            &:hover{
+                background: $secondary;
+            }
+        }
+        .Placed{
+            background: #eee857;
+        }
+        .Shipped{
+            background: #63aa4b;
+        }
+        .Cancelled{
+            background: #dd5d5d;
+        }
+    }
 
-.recent-orders-admin{
-    margin-bottom: 20px;
-    overflow: auto;
-    .recent-order{
-        border: 1px solid $dark;
-        padding: 10px 5px;
-        p{
-            font-size: 13px;
-            margin-bottom: 5px;
-        }
-        &:hover{
-            background: $secondary;
-        }
-    }
-    .Placed{
-        background: #eee857;
-    }
-    .Shipped{
-        background: #63aa4b;
-    }
-    .Cancelled{
-        background: #dd5d5d;
-    }
-}
-
-.active-promo{
-    p{
-        font-size: 15px;
-        margin-bottom: 10px;
-        span{
-            font-weight: 700;
-        }
-    }
-    a{
-        border: 1px solid $dark;
+    .promo{
         padding: 5px 10px;
-        font-size: 16px;
-        text-decoration: none;
-        color: $dark;
-        &:hover{
-            background: $dark;
-            color: $white;
+        border: 1px solid $light-gray;
+        position: relative;
+        margin: 0 10px 10px;
+        p{
+            font-size: 15px;
+            margin-bottom: 10px;
+            span{
+                font-weight: 700;
+            }
+        }
+        a{
+            position: absolute;
+            top: 25px;
+            right: 10px;
+            border: 1px solid $dark;
+            padding: 5px 10px;
+            font-size: 16px;
+            text-decoration: none;
+            color: $dark;
+            &:hover{
+                background: $dark;
+                color: $white;
+            }
         }
     }
-}
 
-.link-ver{
-    text-align: right;
-    a{
-        color: $dark;
+    .active{
+        border: 1px solid $dark;
+    }
+
+    .link-ver{
+        text-align: right;
+        a{
+            color: $dark;
+        }
+    }
+
+    .links{
+        border-top: 1px solid $dark;
+        border-bottom: 1px solid $dark;
+        text-align: center;
+        padding: 5px;
+        margin-bottom: 40px;
+        a{
+            color: $dark;
+            padding: 0 10px;
+        }
     }
 }

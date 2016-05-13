@@ -7,7 +7,7 @@
         </div>
         <div class="recent-orders-admin">
             <% @p_orders.each do |order| %>
-                <%= link_to admin_order_path(order) do %>
+                <%= link_to order do %>
                     <div class="recent-order col-sm-3 <%= order.order_status.name %>">
                         <p><%= order_items_total(order) %> prendas</p>
                         <p><%= order.user.first_name %> <%= order.user.last_name %></p>
@@ -29,7 +29,7 @@
         </div>
         <div class="recent-orders-admin">
             <% @s_orders.each do |order| %>
-                <%= link_to admin_order_path(order) do %>
+                <%= link_to order do %>
                     <div class="recent-order col-sm-3 <%= order.order_status.name %>">
                         <p><%= order_items_total(order) %> prendas</p>
                         <p><%= order.user.first_name %> <%= order.user.last_name %></p>
@@ -51,7 +51,7 @@
         </div>
         <div class="recent-orders-admin">
             <% @c_orders.each do |order| %>
-                <%= link_to admin_order_path(order) do %>
+                <%= link_to order do %>
                     <div class="recent-order col-sm-3 <%= order.order_status.name %>">
                         <p><%= order_items_total(order) %> prendas</p>
                         <p><%= order.user.first_name %> <%= order.user.last_name %></p>

@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get '/admin/cloths' => 'dashboard#cloths'
   get '/admin/orders' => 'dashboard#orders'
 
-  resources :admin_orders, :only => [:show,:edit,:update]
+  resources :orders, :only => [:show,:edit,:update]
 
   get '/cart' => 'carts#show'
 

@@ -2,12 +2,25 @@
 <div class="admin-wrapper">
     <div class="wrapper">
         <div class="page-section">
+            <h3>Links</h3>
+            <hr>
+        </div>
+        <div class="links">
+            <%= link_to "Nueva Prenda", new_cloth_path %>
+            <%= link_to "Nuevo Color", new_color_path %>
+            <%= link_to "Nueva Talla", new_size_path %>
+            <%= link_to "Nueva Promoción", new_promotion_path %>
+            <%= link_to "Nuevo Home Slider", new_home_slider_path %>
+            <%= link_to "Nuevo Categoría", new_category_path %>
+            <%= link_to "Nuevo Marca", new_brand_path %>
+        </div>
+        <div class="page-section">
             <h3>Órdenes Recientes</h3>
             <hr>
         </div>
         <div class="recent-orders-admin">
             <% @orders.each do |order| %>
-                <%= link_to admin_order_path(order) do %>
+                <%= link_to order do %>
                     <div class="recent-order col-sm-3 <%= order.order_status.name %>">
                         <p><%= order_items_total(order) %> prendas</p>
                         <p><%= order.user.first_name %> <%= order.user.last_name %></p>
@@ -24,7 +37,7 @@
             <h3>Promoción Activa</h3>
             <hr>
         </div>
-        <div class="active-promo">
+        <div class="promo">
             <p><span>Titulo: </span><%= @promotion.title %></p>
             <% if !@promotion.description.nil? %>
                 <p><span>Descripción: </span><%= @promotion.description %></p>

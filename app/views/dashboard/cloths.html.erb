@@ -1,1 +1,16 @@
 <%= render 'side_bar' %>
+<div class="admin-wrapper">
+    <div class="page-name">
+        <h3>Prendas Activas</h3>
+        <hr>
+    </div>
+    <div class="wrapper">
+        <div class="links">
+            <%= link_to "Nueva Prenda", new_cloth_path %>
+        </div>
+        <div id="cloths" class="transitions-enabled clearfix">
+            <%= render @cloths %>
+        </div>
+        <%= will_paginate @cloths %>
+    </div>
+</div>

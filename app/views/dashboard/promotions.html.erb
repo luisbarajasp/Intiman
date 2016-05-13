@@ -1,1 +1,44 @@
 <%= render 'side_bar' %>
+<div class="admin-wrapper">
+    <div class="wrapper">
+        <div class="page-name">
+            <h3>Promociones</h3>
+            <hr>
+        </div>
+        <div class="links">
+            <%= link_to "Nueva Promoción", new_promotion_path %>
+        </div>
+        <div class="promotions">
+            <% @promotions.each do |promotion| %>
+                <% if promotion.show == true %>
+                    <div class="promo active">
+                        <p><span>Titulo: </span><%= promotion.title %></p>
+                        <% if promotion.description? %>
+                            <p><span>Descripción: </span><%= promotion.description.truncate_words(10) %></p>
+                        <% else %>
+                            <p><span>Número de prendas: </span><%= promotion.cloths.count %></p>
+                        <% end %>
+                        <p><span>Showing</span></p>
+                        <%= link_to "Ver", promotion %>
+                    </div>
+                <% else %>
+                    <div class="promo">
+                        <p><span>Titulo: </span><%= promotion.title %></p>
+                        <% if promotion.description? %>
+                            <p><span>Descripción: </span><%= promotion.description %></p>
+                        <% else %>
+                            <p><span>Número de prendas: </span><%= promotion.cloths.count %></p>
+                        <% end %>
+                        <%= form_for promotion do |f| %>
+                            <div class="form-group">
+                                <%= f.label :show %>
+                                <%= f.check_box :show, onchange: "$(this).closest('.edit_promotion').submit();" %>
+                        	</div>
+                        <% end %>
+                        <%= link_to "Ver", promotion %>
+                    </div>
+                <% end %>
+            <% end %>
+        </div>
+    </div>
+</div>

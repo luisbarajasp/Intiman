@@ -40,7 +40,7 @@ class SalesController < ApplicationController
         #
         # wheres.insert(0, conditions)
 
-        @cloths = Cloth.where('discount_price > 0').order( "#{params[:sort] or 'created_at'} #{params[:order] or 'DESC'}")
+        @cloths = Cloth.where('discount_price > 0').order( "#{params[:sort] or 'created_at'} #{params[:order] or 'DESC'}").paginate(:page => params[:page], :per_page => 20)
 
         @cloths = @cloths.select { |c| c.sizes_n.include? params[:size] } if params[:size]
         @cloths = @cloths.where('brand_n = ?', params[:brand]) if params[:brand]
