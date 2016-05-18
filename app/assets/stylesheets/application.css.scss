@@ -399,8 +399,41 @@ p,ul,ol{
                 }
             }
         }
+        .notifications{
+            width: 50px;
+            display: inline-block;
+            .btn-default{
+                width: 50px;
+                border: 0;
+                border-radius: 0;
+                background: none;
+                position: relative;
+                &:hover{
+                    background: none;
+                    color: $secondary;
+                }
+                #count{
+                    position: absolute;
+                    color: $white;
+                    top: -10px;
+                    right: 0;
+                    height: 20px;
+                    width: 20px;
+                    border-radius: 10px;
+                    -webkit-border-radius: 10px;
+                    -moz-border-radius: 10px;
+                    background: #a12e2e;
+                }
+            }
+            .dropdown-menu{
+                padding: 10px;
+                li{
+                    font-size: 12px;
+                }
+            }
+        }
         .account{
-            width: 120px;
+            width: 60px;
             h5{
                 text-align: right;
             }
@@ -408,9 +441,22 @@ p,ul,ol{
                 border: 0;
                 border-radius: 0;
                 background: none;
+                position: relative;
                 &:hover{
                     background: none;
                     color: $secondary;
+                }
+                #count{
+                    position: absolute;
+                    color: $white;
+                    top: -10px;
+                    right: 0;
+                    height: 20px;
+                    width: 20px;
+                    border-radius: 10px;
+                    -webkit-border-radius: 10px;
+                    -moz-border-radius: 10px;
+                    background: #a12e2e;
                 }
             }
         }
@@ -775,6 +821,14 @@ p,ul,ol{
                 font-size: 14px;
             }
         }
+        .sign-in{
+            a{
+                color: $dark;
+                &:hover{
+                    color: $secondary;
+                }
+            }
+        }
         .account{
             height: 65px;
             .btn{
@@ -862,6 +916,25 @@ p,ul,ol{
                 font-size: 14px;
                 color: $white;
 
+            }
+        }
+        .sign-in{
+            a{
+                color: $white;
+                &:hover{
+                    color: $secondary;
+                }
+            }
+        }
+        .notifications{
+            margin-right: 15px;
+            .fa-bell{
+                color: $white;
+            }
+            &:hover{
+                .fa-bell{
+                    color: $secondary;
+                }
             }
         }
         .account{

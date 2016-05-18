@@ -31,6 +31,8 @@ class OrdersController < ApplicationController
                     notification.update_attribute(:read_at, Time.now.in_time_zone)
                 end
 
+                UNotification.create(user_id: @order.user.id, order_id: @order.id, message: "Tu orden ha sido enviada hacia su destino.")
+
   			else
   				f.html { render :edit }
   				f.json { render json: @order.errors, status: :unprocessable_entity }

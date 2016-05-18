@@ -84,7 +84,7 @@ class UserOrdersController < ApplicationController
               @order.update_attribute(:charge_id, charge.id)
 
               @admins.each do |admin|
-                  ANotification.create(admin: admin, order: @order, message: "Se ha completado la orden #{@order.id}, por el total de #{@order.total}")
+                  ANotification.create(admin_id: admin.id, order_id: @order.id, message: "Compra: Se ha completado la orden #{@order.id}, por el total de #{@order.total}")
               end
 
               flash[:notice] = "Tu compra fue realizada satisfactoriamente."

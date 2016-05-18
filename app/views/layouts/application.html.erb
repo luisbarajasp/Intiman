@@ -105,19 +105,21 @@
         </div>
         <div class="buttons">
             <% if admin_signed_in? %>
-                <div class="btn-group" data-behavior="a_notifications">
-                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class='fa fa-bell'></i> <span class="caret"></span> <span data-behavior="unread-count"><%= @notifications.count %></span>
-                  </button>
-                  <ul class="dropdown-menu dropdown-menu-right" data-behavior="notification-items">
-                    <% if @notifications.count > 0 %>
-                        <% @notifications.each do |notification| %>
-                            <li><%= link_to notification.message, notification.order %></li>
+                <div class="notifications">
+                    <div class="btn-group" data-behavior="a_notifications">
+                      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class='fa fa-bell'></i>  <span id="count" data-behavior="unread-count"><%= @notifications.count %></span>
+                      </button>
+                      <ul class="dropdown-menu dropdown-menu-right" data-behavior="notification-items">
+                        <% if @notifications.count > 0 %>
+                            <% @notifications.each do |notification| %>
+                                <li><%= link_to notification.message, notification.order %></li>
+                            <% end %>
+                        <% else %>
+                            <li>No tienes ninguna notificación</li>
                         <% end %>
-                    <% else %>
-                        <li>No tienes ninguna notificación</li>
-                    <% end %>
-                  </ul>
+                      </ul>
+                    </div>
                 </div>
                 <div class="btn-group">
                   <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -130,9 +132,23 @@
                   </ul>
                 </div>
             <% else %>
-                <div class="account button">
+                <div class="notifications">
                     <h5>
                     <% if user_signed_in? %>
+                        <div class="btn-group" data-behavior="u_notifications">
+                          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-behavior='unread-link'>
+                            <i class='fa fa-bell'></i>  <span id="count" data-behavior="unread-count"></span>
+                          </button>
+                          <ul class="dropdown-menu dropdown-menu-right" data-behavior="notification-items">
+
+                          </ul>
+                        </div>
+                    <% end %>
+                    </h5>
+                </div>
+                <% if user_signed_in? %>
+                <div class="account button">
+                    <h5>
                         <div class="btn-group">
                           <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class='fa fa-male'></i> <%= current_user.first_name.split[0]%> <span class="caret"></span>
@@ -143,11 +159,14 @@
                             <li><%= link_to "Cerrar sesión",destroy_user_session_path, method: :delete %></li>
                           </ul>
                         </div>
-                    <% else %>
-                        <%= link_to "Iniciar Sesión", new_user_session_path %>
-                    <% end %>
                     </h5>
                 </div>
+                <% else %>
+                <div class="sign-in button">
+                    <%= link_to "Iniciar Sesión", new_user_session_path %>
+                </div>
+                <% end %>
+
                 <div class="likes button hover">
                     <% if user_signed_in? %>
                         <a href="/user/likes"><h5><i class="fa fa-heart"></i> (<%= current_user.find_liked_items.count %>)</h5></a>

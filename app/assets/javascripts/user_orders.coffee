@@ -11,7 +11,6 @@ payment =
 
     hanldeStripeResponse: (status,response) ->
         if status == 200
-            alert(response.id)
             $('#order').append($('<input type="hidden" name="stripeToken" />').val(response.id))
             $('#order')[0].submit()
         else
