@@ -105,6 +105,20 @@
         </div>
         <div class="buttons">
             <% if admin_signed_in? %>
+                <div class="btn-group" data-behavior="a_notifications">
+                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class='fa fa-bell'></i> <span class="caret"></span> <span data-behavior="unread-count"><%= @notifications.count %></span>
+                  </button>
+                  <ul class="dropdown-menu dropdown-menu-right" data-behavior="notification-items">
+                    <% if @notifications.count > 0 %>
+                        <% @notifications.each do |notification| %>
+                            <li><%= link_to notification.message, notification.order %></li>
+                        <% end %>
+                    <% else %>
+                        <li>No tienes ninguna notificación</li>
+                    <% end %>
+                  </ul>
+                </div>
                 <div class="btn-group">
                   <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class='fa fa-male'></i> Admin <span class="caret"></span>

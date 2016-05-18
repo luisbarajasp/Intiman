@@ -6,7 +6,9 @@ class User < ActiveRecord::Base
 
   acts_as_voter
 
-  has_one :order, dependent: :destroy
+  has_many :orders, dependent: :destroy
+  has_many :u_notifications, dependent: :destroy
+
 
   def self.find_for_oauth(auth, signed_in_resource = nil)
     identity = Identity.find_for_oauth(auth)

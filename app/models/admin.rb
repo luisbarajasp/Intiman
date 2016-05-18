@@ -4,5 +4,5 @@ class Admin < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :cloths, dependent: :destroy
+  has_many :a_notifications
 end

@@ -7,8 +7,8 @@ class ApplicationController < ActionController::Base
 
   def current_order
     if user_signed_in?
-        if !current_user.order.nil?
-            @current_order ||= Order.where(user: current_user).order('created_at DESC').first
+        @current_order ||= Order.where(user: current_user).order('created_at DESC').first
+        if @current_order
             if @current_order.order_status_id != 1
                 session[:order_id] = nil
                 @current_order = Order.new
@@ -45,6 +45,10 @@ class ApplicationController < ActionController::Base
       @promo = Promotion.where('show = ?', true).first
       if user_signed_in?
           @cloths_liked = current_user.find_liked_items.first(5)
+          @notifications = UNotification.where(user: current_user).unread
+      end
+      if admin_signed_in?
+          @notifications = ANotification.where(admin: current_admin).unread
       end
       @cos = Co.all
       @sis = Si.all
@@ -66,4 +70,18 @@ class ApplicationController < ActionController::Base
   def authenticate_admin!
     redirect_to root_path unless admin_signed_in?
   end
+
+  def authenticate!
+      unless user_signed_in? || admin_signed_in?
+          redirect_to new_user_session_path
+          flash[:alert] = "Necesitas ingresar o registrarte para continuar."
+      end
+  end
+
+  # def authenticate_user!
+  #     unless user_signed_in? || admin_signed_in?
+  #         redirect_to new_user_session_path
+  #         flash[:alert] = "Necesitas ingresar o registrarte para continuar."
+  #     end
+  # end
 end

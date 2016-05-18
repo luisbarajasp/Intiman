@@ -8,6 +8,12 @@ Rails.application.routes.draw do
 
   devise_for :admins
 
+  resources :a_notifications, only: [:index]
+    #   collection do
+    #       post 'mark_as_read/:id', :to => 'a_notifications#mark_as_read', :as => 'mark_as_read'
+    #   end
+  #end
+
   get '/admin/dashboard' => 'dashboard#index'
   get '/admin/home_sliders' => 'dashboard#home_sliders'
   get '/admin/promotions' => 'dashboard#promotions'

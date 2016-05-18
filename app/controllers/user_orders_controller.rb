@@ -53,6 +53,8 @@ class UserOrdersController < ApplicationController
 
   def update
       @order = Order.find(current_order.id)
+      @admins = Admin.all
+      @name = current_user.first_name + " " + current_user.last_name
 
       Stripe.api_key = ENV["STRIPE_API_KEY"]
 
@@ -64,7 +66,7 @@ class UserOrdersController < ApplicationController
               # Create a Customer
               customer = Stripe::Customer.create(
                   :source => token,
-                  :description => current_user.name,
+                  :description => @name,
                   :email => current_user.email
               )
 
@@ -80,6 +82,10 @@ class UserOrdersController < ApplicationController
               @order.update_attribute(:order_status_id, 2)
               @order.update_attribute(:sold_at, Time.now.in_time_zone)
               @order.update_attribute(:charge_id, charge.id)
+
+              @admins.each do |admin|
+                  ANotification.create(admin: admin, order: @order, message: "Se ha completado la orden #{@order.id}, por el total de #{@order.total}")
+              end
 
               flash[:notice] = "Tu compra fue realizada satisfactoriamente."
           rescue Stripe::CardError => e
