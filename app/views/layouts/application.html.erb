@@ -108,7 +108,7 @@
                 <div class="notifications">
                     <div class="btn-group" data-behavior="a_notifications">
                       <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class='fa fa-bell'></i>  <span id="count" data-behavior="unread-count"><%= @notifications.count %></span>
+                        <i class='fa fa-bell'></i> <% if @notifications.count > 0 %> <span id="count" data-behavior="unread-count"><%= @notifications.count %></span> <% end %>
                       </button>
                       <ul class="dropdown-menu dropdown-menu-right" data-behavior="notification-items">
                         <% if @notifications.count > 0 %>
