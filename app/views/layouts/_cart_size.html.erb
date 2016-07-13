@@ -1,1 +1,3 @@
-<i class="fa fa-shopping-cart" aria-hidden="true"></i> (<%= current_order.order_items.count %>)
+<div class="fs1" aria-hidden="true" data-icon="&#xe015;"></div> <% if current_order.order_items.count > 0 %>
+    <div class="badge"></div>
+<% end %>
