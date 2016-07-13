@@ -352,6 +352,27 @@ p,ul,ol{
             }
         }
     }
+    .no-likes{
+        h4{
+            font-size: 15px;
+            text-align: center;
+            font-weight: 400;
+            div{
+                display: inline-block;
+                color: $red;
+            }
+            a{
+                color: $secondary;
+                text-decoration: none;
+                &:hover{
+                    color: $darkSec;
+                }
+            }
+            span{
+                font-size: 18px;
+            }
+        }
+    }
 }
 
 .cart-menu{
@@ -989,20 +1010,8 @@ p,ul,ol{
         .account{
             height: 40px;
             position: relative;
-            h5{
-                a{
-                    color: $dark;
-                }
-            }
-            .btn{
-                margin: 0;
-                position: absolute;
-                top: -17px;
-                right: 0;
-                color: $dark;
-            }
-            .dropdown-menu{
-                a{
+            a{
+                h5{
                     color: $dark;
                 }
             }
