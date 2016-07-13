@@ -6,12 +6,12 @@
         <h3>Carrito <div class="fs1" aria-hidden="true" data-icon="&#xe015;"></div></h3>
         <hr>
     </div>
-    <div id="items">
-        <% if @order_items.count < 1 %>
-          <p class="no-cloths">
-            Aún no tienes prendas en tu carrito de compra. <i class="fa fa-exclamation-circle"></i>
-          </p>
-        <% else %>
+    <% if @order_items.count < 1 %>
+      <p class="no-cloths">
+        Aún no tienes prendas en tu carrito de compra. <i class="fa fa-exclamation-circle"></i>
+      </p>
+    <% else %>
+        <div id="items">
             <% @order_items.each do |item| %>
                 <% if !item.cloth.nil? %>
                     <div class="item">
@@ -36,17 +36,17 @@
                     </div>
                 <% end %>
             <% end %>
-        <% end %>
-    </div>
-    <div class="subtotal">
-        <h3>Subtotal: <span><%= number_to_currency current_order.subtotal %></span></h3>
-    </div>
-    <div class="buttons">
-        <div class="ver-cart">
-            <%= link_to "Ver carrito", cart_path%>
         </div>
-        <div class="checkout">
-            <%= link_to "Checkout", checkout_path%>
+        <div class="subtotal">
+            <h3>Subtotal: <span><%= number_to_currency current_order.subtotal %></span></h3>
         </div>
-    </div>
+        <div class="buttons">
+            <div class="ver-cart">
+                <%= link_to "Ver carrito", cart_path%>
+            </div>
+            <div class="checkout">
+                <%= link_to "Checkout", checkout_path%>
+            </div>
+        </div>
+    <% end %>
 </div>

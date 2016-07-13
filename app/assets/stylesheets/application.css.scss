@@ -145,7 +145,7 @@ p,ul,ol{
     right: 0;
     overflow-x: hidden; /* Disable horizontal scroll */
     transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
-    background: $white;
+    background: $uLight-gray;
     .content{
         margin: 25px;
         display: none;
@@ -178,6 +178,7 @@ p,ul,ol{
         }
         hr{
             border-color: #7c7979;
+            margin: 20px 0 0 0;
         }
     }
 }
@@ -376,10 +377,18 @@ p,ul,ol{
 }
 
 .cart-menu{
+    .no-cloths{
+        margin: 50px 20px;
+        font-size: 15px;
+        text-align: center;
+        .fa{
+            color: $red;
+        }
+    }
     #items{
         .item{
             margin: 0;
-            padding: 0;
+            margin-top: 20px;
             position: relative;
             width: 345px;
             height: 116px;
@@ -930,7 +939,8 @@ p,ul,ol{
     position: fixed;
     top: 0;
     height: 58px;
-    background: $uLight-gray;
+    background: $white;
+    border-bottom: 1px solid $light-gray;
     margin: 0;
     transition: left ease 0.5s;
     #brand{

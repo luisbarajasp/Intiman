@@ -2,6 +2,7 @@
     <h1 id="name"><%= current_user.first_name.mb_chars.upcase.to_s %> <span><%= current_user.last_name.mb_chars.upcase.to_s %></span></h1>
     <h3><%= current_user.email %></h3>
     <%= link_to "Editar", edit_user_registration_path, class: "edit-info" %>
+    <%= link_to "Cerrar sesión",destroy_user_session_path, method: :delete, class: "sign-out" %>
     <hr>
     <div class="pages">
         <div id="info-link" class="col-md-4 col-sm-4">
