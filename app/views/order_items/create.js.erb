@@ -2,6 +2,6 @@
 alert("not valid.")
 <% else %>
   $(".cart-size").html("<%= escape_javascript(render 'layouts/cart_size') %>")
-  $(".hover-cart").html("<%= escape_javascript(render 'layouts/hover_cart') %>")
+  $(".cart-menu").html("<%= escape_javascript(render 'layouts/cart_menu') %>").find('.content').show()
   $(".subtotal").html("<%= escape_javascript(render 'carts/subtotal') %>")
 <% end %>

@@ -26,8 +26,8 @@
  @import 'hover';
  @import 'elegant';
 
- $principal: #125688;
  $secondary: #C2B49A;
+ $darkSec: #968b77;
  $dark: #212121;
  $light-dark: #272727;
  $white: #fff;
@@ -165,9 +165,16 @@ p,ul,ol{
     }
     .title{
         margin-top: 30px;
+        .fs1{
+            display: inline-block;
+            color: $secondary;
+            font-size: 23px;
+            margin: 0 5px;
+        }
         h3{
             font-weight: 400;
-
+            font-size: 22px;
+            padding-left: 10px;
         }
         hr{
             border-color: #7c7979;
@@ -196,10 +203,6 @@ p,ul,ol{
 .likes-menu{
     .title{
         .fs1{
-            display: inline-block;
-            color: $secondary;
-            font-size: 23px;
-            margin: 0 5px;
             -webkit-animation: beat .5s infinite alternate;
             -moz-animation: beat .5s infinite alternate;
             -ms-animation: beat .5s infinite alternate;
@@ -286,6 +289,9 @@ p,ul,ol{
                 left: 140px;
                 width: 100px;
                 height: auto;
+                h5{
+                    margin: 5px 0;
+                }
             }
             .dislike{
                 padding: 0;
@@ -330,6 +336,7 @@ p,ul,ol{
         margin: 40px;
         text-align: center;
         .link-all{
+            font-weight: 400;
             color: $dark;
             text-decoration: none;
             font-size: 11px;
@@ -342,6 +349,129 @@ p,ul,ol{
             &:hover{
                 background: $dark;
                 color: $white;
+            }
+        }
+    }
+}
+
+.cart-menu{
+    #items{
+        .item{
+            margin: 0;
+            padding: 0;
+            position: relative;
+            width: 345px;
+            height: 116px;
+            border-bottom: 1px solid #7c7979;
+            .thumb{
+                padding: 0;
+                position: absolute;
+                top: 9px;
+                left: 0;
+                height: auto;
+                width: 120px;
+                text-align: left;
+                img{
+                    width: 117px;
+                    height: 78px;
+                }
+            }
+            .description{
+                padding: 0;
+                position: absolute;
+                top: 9px;
+                left: 140px;
+                width: 100px;
+                height: auto;
+                h5{
+                    margin: 5px 0;
+                }
+                h5#price{
+                    margin-top: 10px;
+                    font-weight: 200;
+                }
+            }
+            .delete{
+                padding: 0;
+                position: absolute;
+                top: 40px;
+                right: 10px;
+                text-align: right;
+                font-size: 15px;
+                a{
+                    color: $dark;
+                    text-decoration: none;
+                    &:hover{
+                        color: $dark;
+                    }
+                }
+                .change-icon > .fs1:nth-child(2) {
+                      display: none;
+                }
+                a:hover{
+                    .change-icon > .fs1:nth-child(1) {
+                      display: none;
+                    }
+                    .change-icon > .fs1:nth-child(2) {
+                      display: inherit;
+                    }
+                }
+            }
+        }
+    }
+    .subtotal{
+        margin: 15px 0;
+        h3{
+            font-weight: 400;
+            span{
+                margin-left: 20px;
+            }
+        }
+    }
+    .buttons{
+        margin: 40px 0;
+        text-align: center;
+        div{
+            display: inline-block;
+            margin: 0 10px;
+            a{
+                font-weight: 400;
+            }
+        }
+        .ver-cart{
+            a{
+                min-width: 118px;
+                color: $dark;
+                text-decoration: none;
+                font-size: 11px;
+                border: 1px solid $dark;
+                padding: 10px 20px;
+                transition: all 0.6s ease;
+                -moz-transition: all 0.6s ease;
+                -o-transition: all 0.6s ease;
+                -webkit-transition: all 0.6s ease;
+                &:hover{
+                    background: $dark;
+                    color: $white;
+                }
+            }
+        }
+        .checkout{
+            a{
+                min-width: 118px;
+                color: $dark;
+                text-decoration: none;
+                font-size: 11px;
+                background: $secondary;
+                border: 1px solid $secondary;
+                padding: 10px 20px;
+                transition: all 0.6s ease;
+                -moz-transition: all 0.6s ease;
+                -o-transition: all 0.6s ease;
+                -webkit-transition: all 0.6s ease;
+                &:hover{
+                    background: $darkSec;
+                }
             }
         }
     }
