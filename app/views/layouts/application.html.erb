@@ -12,274 +12,281 @@
 
 <body>
 
-    <% if controller.controller_name != 'promotions' %>
-        <% if !@promo.description? %>
-            <%= link_to @promo do %>
-                <% if controller.action_name == 'home' %>
-                    <div class="promotion black">
-                <% else %>
-                    <div class="promotion sec">
+    <div id="displazable">
+        <% if controller.controller_name != 'promotions' %>
+            <% if !@promo.description? %>
+                <%= link_to @promo do %>
+                    <% if controller.action_name == 'home' %>
+                        <div class="promotion black">
+                    <% else %>
+                        <div class="promotion sec">
+                    <% end %>
+                            <h3><%= @promo.title.mb_chars.upcase.to_s %> <i class="fa fa-angle-double-right" aria-hidden="true"></i></h3>
+                        </div>
                 <% end %>
-                        <h3><%= @promo.title.mb_chars.upcase.to_s %> <i class="fa fa-angle-double-right" aria-hidden="true"></i></h3>
-                    </div>
+            <% else %>
+            <!-- Button trigger modal -->
+                <a  href="" data-toggle="modal" data-target="#myModal">
+                    <% if controller.action_name == 'home' %>
+                        <div class="promotion black">
+                    <% else %>
+                        <div class="promotion sec">
+                    <% end %>
+                            <h3><%= @promo.title.mb_chars.upcase.to_s %> <i class="fa fa-angle-double-right" aria-hidden="true"></i></h3>
+                        </div>
+                </a>
+
+                <%= render 'layouts/promModal' %>
             <% end %>
         <% else %>
-        <!-- Button trigger modal -->
-            <a  href="" data-toggle="modal" data-target="#myModal">
-                <% if controller.action_name == 'home' %>
-                    <div class="promotion black">
-                <% else %>
-                    <div class="promotion sec">
-                <% end %>
-                        <h3><%= @promo.title.mb_chars.upcase.to_s %> <i class="fa fa-angle-double-right" aria-hidden="true"></i></h3>
-                    </div>
-            </a>
-
-            <%= render 'layouts/promModal' %>
+            <div class="promotion sec">
+                <h3>APROVECHA ESTA INCREÍBLE PROMOCIÓN <i class="fa fa-exclamation-triangle" aria-hidden="true"></i></h3>
+            </div>
         <% end %>
-    <% else %>
-        <div class="promotion sec">
-            <h3>APROVECHA ESTA INCREÍBLE PROMOCIÓN <i class="fa fa-exclamation-triangle" aria-hidden="true"></i></h3>
-        </div>
-    <% end %>
 
-    <div class="main-navigation normal<% if controller.action_name != 'home' %>-dark<%end%>">
-        <div class="wrapper">
-                <%= link_to root_path do %>
-                    <div id="brand">
-                        <!-- <%= image_tag "brand.png" %> -->
-                        <h1>INTI<span>MAN</span></h1>
-                        <div id="slogan">
-                            <p>
-                                frescura + co<span>modidad + diseño</span>
-                            </p>
-                        </div>
-                    </div>
-                <% end %>
-                <div class="marcas">
-                    <div class="sec-title">
-                        <%= link_to "<h3>Marcas</h3>".html_safe, brands_path %>
-                    </div>
-                    <div class="enlaces">
-                        <% @brands.each do |brand| %>
-                            <h4><%= link_to brand.name, brand_path(brand) %></h4>
-                        <% end %>
-                    </div>
-                </div>
-                <div class="categorias marcas">
-                    <div class="sec-title">
-                        <%= link_to "<h3>Categorías</h3>".html_safe, categories_path %>
-                    </div>
-                    <div class="enlaces">
-                        <% @categories.each do |category| %>
-                            <h4><%= link_to category.name, category_path(category) %></h4>
-                        <% end %>
-                    </div>
-                </div>
-                <div class="buttons">
-                    <% if admin_signed_in? %>
-                        <div class="notifications">
-                            <div class="btn-group" data-behavior="a_notifications">
-                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class='fa fa-bell'></i> <% if @notifications.count > 0 %> <span id="count" data-behavior="unread-count"><%= @notifications.count %></span> <% end %>
-                              </button>
-                              <ul class="dropdown-menu dropdown-menu-right" data-behavior="notification-items">
-                                <% if @notifications.count > 0 %>
-                                    <% @notifications.each do |notification| %>
-                                        <li><%= link_to notification.message, notification.order %></li>
-                                    <% end %>
-                                <% else %>
-                                    <li>No tienes ninguna notificación</li>
-                                <% end %>
-                              </ul>
-                            </div>
-                        </div>
-                        <div class="btn-group">
-                          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class='fa fa-male'></i> Admin <span class="caret"></span>
-                          </button>
-                          <ul class="dropdown-menu dropdown-menu-right">
-                            <li><%= link_to "Dashboard", admin_dashboard_path %></li>
-                            <li role="separator" class="divider"></li>
-                            <li><%= link_to "Cerrar sesión",destroy_admin_session_path, method: :delete %></li>
-                          </ul>
-                        </div>
-                    <% else %>
-                        <div class="notifications">
-                            <h5>
-                            <% if user_signed_in? %>
-                                <div class="btn-group" data-behavior="u_notifications">
-                                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-behavior='unread-link'>
-                                    <i class='fa fa-bell'></i>  <span id="count" data-behavior="unread-count"></span>
-                                  </button>
-                                  <ul class="dropdown-menu dropdown-menu-right" data-behavior="notification-items">
-
-                                  </ul>
-                                </div>
-                            <% end %>
-                            </h5>
-                        </div>
-                        <% if user_signed_in? %>
-                        <div class="account button">
-                            <h5>
-                                <div class="btn-group">
-                                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class='fa fa-male'></i> <%= current_user.first_name.split[0]%> <span class="caret"></span>
-                                  </button>
-                                  <ul class="dropdown-menu dropdown-menu-right">
-                                    <li><%= link_to "Mi cuenta", user_account_path %></li>
-                                    <li role="separator" class="divider"></li>
-                                    <li><%= link_to "Cerrar sesión",destroy_user_session_path, method: :delete %></li>
-                                  </ul>
-                                </div>
-                            </h5>
-                        </div>
-                        <% else %>
-                        <div class="sign-in button">
-                            <%= link_to "Iniciar Sesión", new_user_session_path %>
-                        </div>
-                        <% end %>
-
-                        <div class="likes button hover">
-                            <% if user_signed_in? %>
-                                <a href="/user/likes"><h5><i class="fa fa-heart"></i>
-                                    <% if current_user.find_liked_items.count > 0 %>
-                                        <div class="badge"></div>
-                                    <% end %>
-                                </h5></a>
-                                <div class="content">
-                                    <div class="title">
-                                        <h3>Estas prendas te han gustado <i class="fa fa-heart"></i></h3>
-                                        <hr>
-                                    </div>
-                                    <% if @cloths_liked.count > 0 %>
-                                        <div class="cloths-liked col-md-offset-1 col-sm-offset-1">
-                                            <% @cloths_liked.each do |cloth| %>
-                                                <%= link_to cloth do %>
-                                                    <div class="cloth col-md-2 col-sm-2">
-                                                        <div class="thumb">
-                                                            <%= image_tag cloth.image1.url(:preview) %>
-                                                        </div>
-                                                        <div class="dislike">
-                                                            <%= link_to dislike_cloth_path(cloth), method: :put do %>
-                                                                <span class="change-icon">
-                                                                <i class="fa fa-heart"></i>
-                                                                <i class="fa fa-heart-o"></i>
-                                                                </span>
-                                                            <% end %>
-                                                        </div>
-                                                    </div>
-                                                <% end %>
-                                            <% end %>
-                                        </div>
-                                        <%= link_to "Ver todas", user_likes_path, class: "link-all" %>
-                                    <% else %>
-                                        <div class="no-likes">
-                                            <h4><span>¿Te gusta?</span> <br><br>Presiona el <i class="fa fa-heart"></i> para guardar la prenda y verla después</h4>
-                                        </div>
-                                    <% end %>
-                                </div>
-                            <% else %>
-                            <a href=""><h5><div class="fs1" aria-hidden="true" data-icon="&#xe030;"></div></h5></a>
-                            <div class="content">
-                                <div class="title">
-                                    <h3>Estas prendas te han gustado <i class="fa fa-heart"></i></h3>
-                                    <hr>
-                                </div>
-                                <div class="no-likes">
-                                    <h4><span>¿Te gusta?</span> <br><br><%= link_to "Inicia sesión", new_user_session_path %>, presiona el <i class="fa fa-heart"></i> para guardar la prenda y verla después</h4>
-                                </div>
-                            </div>
-                            <% end %>
-                        </div>
-                        <div class="cart button hover">
-                            <%= link_to cart_path do %>
-                                <h5 class="cart-size"><%= render 'layouts/cart_size' %></h5>
-                            <% end %>
-                            <div class="content hover-cart">
-                                <%= render 'layouts/hover_cart' %>
+        <div class="main-navigation normal<% if controller.action_name != 'home' %>-dark<%end%>">
+            <div class="wrapper">
+                    <%= link_to root_path do %>
+                        <div id="brand">
+                            <!-- <%= image_tag "brand.png" %> -->
+                            <h1>INTI<span>MAN</span></h1>
+                            <div id="slogan">
+                                <p>
+                                    frescura + co<span>modidad + diseño</span>
+                                </p>
                             </div>
                         </div>
                     <% end %>
-                    <div class="search button">
-                        <h5 id="btn-search"><div class="fs1" aria-hidden="true" data-icon="&#x55;"></div></h5>
+                    <div class="marcas">
+                        <div class="sec-title">
+                            <%= link_to "<h3>Marcas</h3>".html_safe, brands_path %>
+                        </div>
+                        <div class="enlaces">
+                            <% @brands.each do |brand| %>
+                                <h4><%= link_to brand.name, brand_path(brand) %></h4>
+                            <% end %>
+                        </div>
                     </div>
+                    <div class="categorias marcas">
+                        <div class="sec-title">
+                            <%= link_to "<h3>Categorías</h3>".html_safe, categories_path %>
+                        </div>
+                        <div class="enlaces">
+                            <% @categories.each do |category| %>
+                                <h4><%= link_to category.name, category_path(category) %></h4>
+                            <% end %>
+                        </div>
+                    </div>
+                    <div class="buttons">
+                        <% if admin_signed_in? %>
+                            <div class="notifications">
+                                <div class="btn-group" data-behavior="a_notifications">
+                                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class='fa fa-bell'></i> <% if @notifications.count > 0 %> <span id="count" data-behavior="unread-count"><%= @notifications.count %></span> <% end %>
+                                  </button>
+                                  <ul class="dropdown-menu dropdown-menu-right" data-behavior="notification-items">
+                                    <% if @notifications.count > 0 %>
+                                        <% @notifications.each do |notification| %>
+                                            <li><%= link_to notification.message, notification.order %></li>
+                                        <% end %>
+                                    <% else %>
+                                        <li>No tienes ninguna notificación</li>
+                                    <% end %>
+                                  </ul>
+                                </div>
+                            </div>
+                            <div class="btn-group">
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class='fa fa-male'></i> Admin <span class="caret"></span>
+                              </button>
+                              <ul class="dropdown-menu dropdown-menu-right">
+                                <li><%= link_to "Dashboard", admin_dashboard_path %></li>
+                                <li role="separator" class="divider"></li>
+                                <li><%= link_to "Cerrar sesión",destroy_admin_session_path, method: :delete %></li>
+                              </ul>
+                            </div>
+                        <% else %>
+                            <div class="notifications">
+                                <h5>
+                                <% if user_signed_in? %>
+                                    <div class="btn-group" data-behavior="u_notifications">
+                                      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-behavior='unread-link'>
+                                        <i class='fa fa-bell'></i>  <span id="count" data-behavior="unread-count"></span>
+                                      </button>
+                                      <ul class="dropdown-menu dropdown-menu-right" data-behavior="notification-items">
+
+                                      </ul>
+                                    </div>
+                                <% end %>
+                                </h5>
+                            </div>
+                            <% if user_signed_in? %>
+                            <div class="account button">
+                                <%= link_to user_account_path do %>
+                                    <h5><%= current_user.first_name.split[0]%></h5>
+                                <% end %>
+                            </div>
+                            <% else %>
+                            <div class="sign-in button">
+                                <%= link_to "Iniciar Sesión", new_user_session_path %>
+                            </div>
+                            <% end %>
+
+                            <div class="likes button">
+                                <% if user_signed_in? %>
+                                    <h5 id="likes-btn"><div class="fs1" aria-hidden="true" data-icon="&#xe030;"></div>
+                                        <% if current_user.find_liked_items.count > 0 %>
+                                            <div class="badge"></div>
+                                        <% end %>
+                                    </h5></a>
+                                <% else %>
+                                    <h5 id="likes-btn"><div class="fs1" aria-hidden="true" data-icon="&#xe030;"></div></h5>
+                                <% end %>
+                            </div>
+                            <div class="cart button">
+                                <h5 id="cart-btn" class="cart-size"><%= render 'layouts/cart_size' %></h5>
+                            </div>
+                        <% end %>
+                        <div class="search button">
+                            <h5 id="btn-search"><div class="fs1" aria-hidden="true" data-icon="&#x55;"></div></h5>
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <noscript>
+            <div class="alert alert-danger main">
+              <a href="#" data-dismiss="alert" class="close">×</a>
+              <ul>
+                <li>
+                  JavaScript no está habilitado y es necesario para que la página funcione. Favor de activarlo en la configuración de tu navegador.
+                </li>
+              </ul>
+            </div>
+        </noscript>
+
+        <% if notice %>
+              <div class="alert alert-success main">
+                <a href="#" data-dismiss="alert" class="close">×</a>
+                <ul>
+                  <li>
+                    <%= notice %>
+                  </li>
+                </ul>
+              </div>
+        <% elsif alert %>
+            <div class="alert alert-danger main">
+              <a href="#" data-dismiss="alert" class="close">×</a>
+              <ul>
+                <li>
+                  <%= alert %>
+                </li>
+              </ul>
+            </div>
+        <% end %>
+
+        <div class="wrapper_page">
+            <%= yield %>
+        </div>
+
+        <% if !admin_signed_in? %>
+            <div class="footer">
+                <div class="social">
+                    <h5>
+                        Redes Sociales
+                    </h5>
+                    <a class="button" href=""><i class="fa fa-facebook"></i></a>
+                    <a class="button" href=""><i class="fa fa-instagram"></i></a>
                 </div>
-        </div>
-    </div>
-    <noscript>
-        <div class="alert alert-danger main">
-          <a href="#" data-dismiss="alert" class="close">×</a>
-          <ul>
-            <li>
-              JavaScript no está habilitado y es necesario para que la página funcione. Favor de activarlo en la configuración de tu navegador.
-            </li>
-          </ul>
-        </div>
-    </noscript>
+                <div class="links">
+                    <p>
+                        <%= link_to "Quienes Somos", pages_about_path %>
+                    </p>
+                    <p>
+                        <%= link_to "Contacto", pages_contact_path %>
+                    </p>
+                    <p>
+                        <%= link_to "Legal", pages_legal_path %>
+                    </p>
+                    <p>
+                        <%= link_to "Ayuda", pages_help_path %>
+                    </p>
+                </div>
+                <div class="newsletter">
+                    <h3>Newsletter <i class="fa fa-envelope"></i></h3>
+                    <p>
+                        Suscríbete a nuestro newsletter para ser
+                        <span> el primero con increíbles promociones!</span>
+                    </p>
+                    <form>
+                        <input type="text" name="email" value="" placeholder="Email">
+                    </form>
 
-    <% if notice %>
-          <div class="alert alert-success main">
-            <a href="#" data-dismiss="alert" class="close">×</a>
-            <ul>
-              <li>
-                <%= notice %>
-              </li>
-            </ul>
-          </div>
-    <% elsif alert %>
-        <div class="alert alert-danger main">
-          <a href="#" data-dismiss="alert" class="close">×</a>
-          <ul>
-            <li>
-              <%= alert %>
-            </li>
-          </ul>
-        </div>
-    <% end %>
-
-    <div class="wrapper_page">
-        <%= yield %>
+                </div>
+                <div class="phrase">
+                    <h4>frescura + comodidad + diseño</h4>
+                </div>
+            </div>
+        <% end %>
     </div>
 
-    <% if !admin_signed_in? %>
-        <div class="footer">
-            <div class="social">
-                <h5>
-                    Redes Sociales
-                </h5>
-                <a class="button" href=""><i class="fa fa-facebook"></i></a>
-                <a class="button" href=""><i class="fa fa-instagram"></i></a>
+    <div class="likes-menu sidenav">
+        <div class="content">
+            <div class="continue">
+                <p><div class="fs1" aria-hidden="true" data-icon="&#x3c;"></div> continuar comprando</p>
             </div>
-            <div class="links">
-                <p>
-                    <%= link_to "Quienes Somos", pages_about_path %>
-                </p>
-                <p>
-                    <%= link_to "Contacto", pages_contact_path %>
-                </p>
-                <p>
-                    <%= link_to "Legal", pages_legal_path %>
-                </p>
-                <p>
-                    <%= link_to "Ayuda", pages_help_path %>
-                </p>
-            </div>
-            <div class="newsletter">
-                <h3>Newsletter <i class="fa fa-envelope"></i></h3>
-                <p>
-                    Suscríbete a nuestro newsletter para ser
-                    <span> el primero con increíbles promociones!</span>
-                </p>
-                <form>
-                    <input type="text" name="email" value="" placeholder="Email">
-                </form>
+            <div class="title">
+                <h3>Wishlist <div class="fs1" aria-hidden="true" data-icon="&#xe089;"></div> </h3>
 
+                <hr>
             </div>
-            <div class="phrase">
-                <h4>frescura + comodidad + diseño</h4>
-            </div>
+            <% if user_signed_in? %>
+                <% if @cloths_liked.count > 0 %>
+                    <div class="cloths-liked">
+                        <% @cloths_liked.each do |cloth| %>
+                            <div class="cloth">
+                                <div class="thumb">
+                                    <%= image_tag cloth.image1.url(:preview) %>
+                                </div>
+                                <div class="description">
+                                    <%= link_to cloth do %>
+
+                                    <h5><%= cloth.category.singular %></h5>
+                                    <h5><%= cloth.brand.name %></h5>
+                                    <% end %>
+                                </div>
+                                <div class="dislike">
+                                    <%= link_to dislike_cloth_path(cloth), method: :put do %>
+                                        <span class="change-icon">
+                                            <div class="fs1" aria-hidden="true" data-icon="&#xe089;"></div>
+                                            <div class="fs1" aria-hidden="true" data-icon="&#xe030;"></div>
+                                        </span>
+                                    <% end %>
+                                </div>
+                            </div>
+                        <% end %>
+                    </div>
+                    <div class="count">
+                        <h4>Número de prendas: <span><%= @cloths_liked.count %></span></h4>
+                    </div>
+                    <div class="todas">
+                        <%= link_to "Ver todas", user_likes_path, class: "link-all" %>
+                    </div>
+                <% else %>
+                    <div class="no-likes">
+                        <h4><span>¿Te gusta?</span> <br><br>Presiona el <i class="fa fa-heart"></i> para guardar la prenda y verla después</h4>
+                    </div>
+                <% end %>
+            <% else %>
+                <div class="no-likes">
+                    <h4><span>¿Te gusta?</span> <br><br><%= link_to "Inicia sesión", new_user_session_path %>, presiona el <i class="fa fa-heart"></i> para guardar la prenda y verla después</h4>
+                </div>
+            <% end %>
         </div>
-    <% end %>
+    </div>
+
+    <div class="cart-menu hover-cart sidenav">
+        <%= render 'layouts/hover_cart' %>
+    </div>
+
 </body>
 </html>

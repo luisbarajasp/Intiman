@@ -58,7 +58,7 @@
 
 .wrapper{
 	width: 100vw;
-    max-width: 1320px;
+    max-width: 1200px;
 	margin: 0px auto;
 }
 
@@ -134,6 +134,217 @@ p,li{
 
 p,ul,ol{
 	margin: 0 0 1.6em 0;
+}
+
+.sidenav{
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 0; /* Stay on top */
+    top: 0;
+    right: 0;
+    overflow-x: hidden; /* Disable horizontal scroll */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+    background: $white;
+    .content{
+        margin: 25px;
+        display: none;
+    }
+    .continue{
+        color: #7c7979;
+        &:hover{
+            cursor: pointer;
+            color: $dark;
+        }
+        div{
+            display: inline-block;
+        }
+        p{
+            font-size: 12px;
+        }
+    }
+    .title{
+        margin-top: 30px;
+        h3{
+            font-weight: 400;
+
+        }
+        hr{
+            border-color: #7c7979;
+        }
+    }
+}
+
+#displazable{
+    transition: left 0.5s;
+    position: absolute;
+    height: auto;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 0;
+    box-shadow: 5px 0 4px 0 #7e7e7e;
+    z-index: 10;
+}
+
+.stop-links {
+  pointer-events: none;
+  cursor: default;
+}
+
+.likes-menu{
+    .title{
+        .fs1{
+            display: inline-block;
+            color: $secondary;
+            font-size: 23px;
+            margin: 0 5px;
+            -webkit-animation: beat .5s infinite alternate;
+            -moz-animation: beat .5s infinite alternate;
+            -ms-animation: beat .5s infinite alternate;
+            -o-animation: beat .5s infinite alternate;
+            animation: beat .5s infinite alternate;
+
+            -webkit-transform-origin: center;
+            -moz-transform-origin: center;
+            -o-transform-origin: center;
+            -ms-transform-origin: center;
+            transform-origin: center;
+        }
+
+
+        @keyframes "beat" {
+         to {
+            -webkit-transform: scale(1.4);
+            -moz-transform: scale(1.4);
+            -o-transform: scale(1.4);
+            -ms-transform: scale(1.4);
+            transform: scale(1.4);
+         }
+
+        }
+
+        @-moz-keyframes beat {
+         to {
+           -moz-transform: scale(1.4);
+           transform: scale(1.4);
+         }
+
+        }
+
+        @-webkit-keyframes "beat" {
+         to {
+           -webkit-transform: scale(1.4);
+           transform: scale(1.4);
+         }
+
+        }
+
+        @-ms-keyframes "beat" {
+         to {
+           -ms-transform: scale(1.4);
+           transform: scale(1.4);
+         }
+
+        }
+
+        @-o-keyframes "beat" {
+         to {
+           -o-transform: scale(1.4);
+           transform: scale(1.4);
+         }
+
+        }
+    }
+    .cloths-liked{
+        margin-bottom: 20px;
+        .cloth{
+            margin: 0;
+            padding: 0;
+            position: relative;
+            width: 345px;
+            height: 116px;
+            border-bottom: 1px solid #7c7979;
+            .thumb{
+                padding: 0;
+                position: absolute;
+                top: 9px;
+                left: 0;
+                height: auto;
+                width: 120px;
+                text-align: left;
+                img{
+                    width: 117px;
+                    height: 78px;
+                }
+            }
+            .description{
+                padding: 0;
+                position: absolute;
+                top: 20px;
+                left: 140px;
+                width: 100px;
+                height: auto;
+            }
+            .dislike{
+                padding: 0;
+                position: absolute;
+                top: 40px;
+                right: 10px;
+                text-align: right;
+                font-size: 15px;
+                a{
+                    color: $secondary;
+                    text-decoration: none;
+                    &:hover{
+                        color: $red;
+                    }
+                }
+                .change-icon > .fs1:nth-child(2) {
+                      display: none;
+                }
+                a:hover{
+                    .change-icon > .fs1:nth-child(1) {
+                      display: none;
+                    }
+                    .change-icon > .fs1:nth-child(2) {
+                      display: inherit;
+                    }
+                }
+            }
+        }
+    }
+    .count{
+        margin: 20px;
+
+        h4{
+            font-weight: 200;
+            font-size: 14px;
+            span{
+                margin-left: 10px;
+            }
+        }
+    }
+    .todas{
+        margin: 40px;
+        text-align: center;
+        .link-all{
+            color: $dark;
+            text-decoration: none;
+            font-size: 11px;
+            border: 1px solid $dark;
+            padding: 10px 20px;
+            transition: all 0.6s ease;
+            -moz-transition: all 0.6s ease;
+            -o-transition: all 0.6s ease;
+            -webkit-transition: all 0.6s ease;
+            &:hover{
+                background: $dark;
+                color: $white;
+            }
+        }
+    }
 }
 
 .promotion{
@@ -291,7 +502,7 @@ p,ul,ol{
             }
         }
         .enlaces{
-            top: 59px;
+            top: 58px;
             display: none;
             position: absolute;
             min-width: 80px;
@@ -410,62 +621,15 @@ p,ul,ol{
             }
         }
         .account{
-            width: 60px;
-            height: 65px;
-            .btn{
-                padding: 0;
-            }
-            h5{
-                text-align: right;
-            }
-            .btn-default{
-                border: 0;
-                border-radius: 0;
-                background: none;
-                position: relative;
-                &:hover{
-                    background: none;
-                    color: $secondary;
-                }
-                #count{
-                    position: absolute;
-                    color: $white;
-                    top: -10px;
-                    right: 0;
-                    height: 20px;
-                    width: 20px;
-                    border-radius: 10px;
-                    -webkit-border-radius: 10px;
-                    -moz-border-radius: 10px;
-                    background: #a12e2e;
-                }
-            }
-        }
-        .hover{
-            .content{
-                display: none;
-                min-width: 450px;
-                min-height: 400px;
-                max-height: 400px;
-                position: absolute;
-                right: -1px;
-                padding: 5px;
-                background: $white;
-                color: $dark;
-                border-left: 1px solid $light-gray;
-                border-right: 1px solid $light-gray;
-                border-bottom: 1px solid $light-gray;
-            }
-            &:hover{
-                background: $white;
-                border-left: 1px solid $light-gray;
-                border-right: 1px solid $light-gray;
-                border-top: 1px solid $light-gray;
-                .content{
-                    display: block;
-                }
+            a{
                 h5{
-                    color: $dark;
+                    font-weight: 400;
+                    color: $white;
+                }
+                &:hover{
+                    h5{
+                        color: $secondary;
+                    }
                 }
             }
         }
@@ -489,74 +653,9 @@ p,ul,ol{
                     right: -6px;
                     background: $secondary;
                 }
-            }
-            .content{
-                top: 64px;
-                padding: 0 10px;
-                p{
-                    margin: 0 0 5px 0;
-                }
-                .ver-cart{
-                    position: absolute;
-                    top: 20px;
-                    right: 35px;
-                    a{
-                        color: $green;
-                        border: 1px solid $green;
-                        text-decoration: none;
-                        font-size: 16px;
-                        -moz-transition: all 0.4s ease;
-                        -o-transition: all 0.4s ease;
-                        -webkit-transition: all 0.4s ease;
-                        transition: all 0.4s ease;
-                        padding: 5px;
-                        &:hover{
-                            background: $green;
-                            color: $white;
-                        }
-                    }
-                }
-                #items{
-                    width: 100%;
-                    overflow-y: scroll;
-                    height: 200px;
-                    .text-center{
-                        font-size: 13px;
-                        .fa{
-                            color: $red;
-                        }
-                    }
-                    .item{
-                        height: 150px;
-                        position: relative;
-                        .value{
-                            p{
-                                span{
-                                    font-weight: 700;
-                                }
-                            }
-                        }
-                        .delete{
-                            position: absolute;
-                            top: 0;
-                            right: 18px;
-                            display: none;
-                            a{
-                                color: $red;
-                                &:hover{
-                                    color: #4a0a0a;
-                                }
-                            }
-                        }
-                        &:hover{
-                            .delete{
-                                display: block;
-                            }
-                        }
-                    }
-                    &::-webkit-scrollbar {
-                        display: none;
-                    }
+                &:hover{
+                    color: $secondary;
+                    cursor: pointer;
                 }
             }
         }
@@ -576,165 +675,9 @@ p,ul,ol{
                     right: -5;
                     background: $secondary;
                 }
-            }
-            &:hover{
-                h5{
+                &:hover{
                     color: $red;
-                }
-            }
-            .content{
-                min-width: 100vw;
-                top: 70px;
-                .title{
-                    margin: 20px;
-                    h3{
-                        font-weight: 200;
-                        font-size: 20px;
-                        text-align: center;
-                        .fa{
-                            color: $secondary;
-                            font-size: 23px;
-                            margin: 0 5px;
-                            -webkit-animation: beat .5s infinite alternate;
-                        	-moz-animation: beat .5s infinite alternate;
-                        	-ms-animation: beat .5s infinite alternate;
-                        	-o-animation: beat .5s infinite alternate;
-                        	animation: beat .5s infinite alternate;
-
-                        	-webkit-transform-origin: center;
-                        	-moz-transform-origin: center;
-                        	-o-transform-origin: center;
-                        	-ms-transform-origin: center;
-                        	transform-origin: center;
-                        }
-
-
-                        @keyframes "beat" {
-                         to {
-                            -webkit-transform: scale(1.4);
-                           	-moz-transform: scale(1.4);
-                           	-o-transform: scale(1.4);
-                           	-ms-transform: scale(1.4);
-                           	transform: scale(1.4);
-                         }
-
-                        }
-
-                        @-moz-keyframes beat {
-                         to {
-                           -moz-transform: scale(1.4);
-                           transform: scale(1.4);
-                         }
-
-                        }
-
-                        @-webkit-keyframes "beat" {
-                         to {
-                           -webkit-transform: scale(1.4);
-                           transform: scale(1.4);
-                         }
-
-                        }
-
-                        @-ms-keyframes "beat" {
-                         to {
-                           -ms-transform: scale(1.4);
-                           transform: scale(1.4);
-                         }
-
-                        }
-
-                        @-o-keyframes "beat" {
-                         to {
-                           -o-transform: scale(1.4);
-                           transform: scale(1.4);
-                         }
-
-                        }
-                    }
-                    hr{
-                        border-width: 2px;
-                        width: 50vw;
-                        margin: 2px auto;
-                    }
-                }
-                .cloths-liked{
-                    margin-top: 50px;
-                    width: 90%;
-                    .cloth{
-                        position: relative;
-                        border: 1px solid $light-gray;
-                        min-height: 155px;
-                        -moz-transition: all 0.5s ease;
-                        -o-transition: all 0.5s ease;
-                        -webkit-transition: all 0.5s ease;
-                        transition: all 0.5s ease;
-                        .thumb{
-                            position: absolute;
-                            top: 10px;
-                            left: 0;
-                            right: 0;
-                        }
-                        .dislike{
-                            position: absolute;
-                            top: 5px;
-                            right: 5px;
-                            font-size: 15px;
-                            a{
-                                color: $secondary;
-                                text-decoration: none;
-                                &:hover{
-                                    color: $red;
-                                }
-                            }
-                            .change-icon > .fa:nth-child(2) {
-                                  display: none;
-                            }
-                            a:hover{
-                                .change-icon > .fa:nth-child(1) {
-                                  display: none;
-                                }
-                                .change-icon > .fa:nth-child(2) {
-                                  display: inherit;
-                                }
-                            }
-                        }
-                        &:hover{
-                            border-color: $gray;
-                        }
-                    }
-                }
-                .link-all{
-                    position: absolute;
-                    bottom: 35px;
-                    right: 25px;
-                    font-size: 18px;
-                    font-style: italic;
-                    color: $dark;
-                    &:hover{
-                        text-decoration: underline;
-                    }
-                }
-                .no-likes{
-                    margin: 100px 0;
-                    h4{
-                        font-size: 18px;
-                        color: #888888;
-                        text-align: center;
-                        span{
-                            font-size: 22px;
-                        }
-                        .fa{
-                            color: $red;
-                            font-size: 20px;
-                        }
-                        a{
-                            color: $dark;
-                            &:hover{
-                                text-decoration: underline;
-                            }
-                        }
-                    }
+                    cursor: pointer;
                 }
             }
         }
@@ -755,10 +698,12 @@ p,ul,ol{
     background: transparent;
     position: absolute;
     top: 35px;
+    left: 0;
 }
 
 .normal-dark{
     margin: 25px 0;
+    left: 0;
     background: transparent;
     position: absolute;
     top: 35px;
@@ -816,17 +761,14 @@ p,ul,ol{
             }
         }
         .account{
-            h5{
-                a{
+            a{
+                h5{
                     color: $dark;
                 }
-            }
-            .btn{
-                color: $dark;
-            }
-            .dropdown-menu{
-                a{
-                    color: $dark;
+                &:hover{
+                    h5{
+                        color: $secondary;
+                    }
                 }
             }
         }
@@ -839,6 +781,7 @@ p,ul,ol{
     height: 58px;
     background: $uLight-gray;
     margin: 0;
+    transition: left ease 0.5s;
     #brand{
         h1{
             letter-spacing: 12px;
@@ -871,7 +814,7 @@ p,ul,ol{
             }
         }
         .enlaces{
-            top: 59px;
+            top: 57px;
             h4{
                 a{
                     color: $dark;
@@ -950,7 +893,7 @@ p,ul,ol{
 .alert.main{
     z-index: 300;
     position: fixed;
-    top: 105px;
+    top: 125px;
     left: 10%;
     width: 80%;
     -moz-transition: all 1s ease;

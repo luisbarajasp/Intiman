@@ -24,6 +24,44 @@ var ready = function(){
     //
     // $('.wrapper_page').css("margin-left", width);
 
+    $('#likes-btn').on('click', function(){
+        $('.likes-menu').css('width', 395);
+        $('#displazable').css('left', -395);
+        $('.shrink').css('left', -395);
+        $('#displazable').addClass('stop-links');
+        $('.likes-menu .content').fadeIn(1000);
+    });
+
+    $('.sidenav .content .continue').on('click', function(){
+        $('.sidenav').width(0);
+        $('#displazable').css('left',0);
+        $('#displazable').removeClass('stop-links');
+        $('.shrink').css('left', 0);
+        $('.sidenav .content').fadeOut(100);
+    });
+
+    $('body').on({
+        'mousewheel': function(e) {
+            if($('.sidenav').width() > 390){
+                if (e.target.class == 'sidenav') return;
+                e.preventDefault();
+                e.stopPropagation();
+            }
+        }
+    });
+
+    $(document).click(function(event) {
+        if(!$(event.target).closest('.sidenav').length) {
+            if($('.sidenav').width() > 0) {
+                $('.sidenav').width(0);
+                $('#displazable').css('left',0);
+                $('#displazable').removeClass('stop-links');
+                $('.shrink').css('left', 0);
+                $('.sidenav .content').fadeOut(100);
+            }
+        }
+    });
+
     var height = $(window).height() - 71;
     var aHeight = $(window).height() - 50;
 
@@ -481,11 +519,15 @@ $(window).scroll(function() {
     $('.main-navigation').addClass('shrink');
     //$('.main-navigation').fadeIn(500);
     $('.main-navigation').removeClass('normal');
-    $('.alert').css('top','50px');
+    $('.alert').css('top','60px');
+    if ($('.sidenav').width() > 394){
+        $('.main-navigation').css('left',-395);
+    }
   } else {
     $('.main-navigation').removeClass('shrink');
     $('.main-navigation').addClass('normal');
-    $('.alert').css('top','105px');
+    $('.main-navigation').css('left',0);
+    $('.alert').css('top','125px');
   }
 });
 
