@@ -99,6 +99,10 @@ body {
 	clear: both;
 }
 
+.fs1{
+    display: inline-block;
+}
+
 h1,h2,h3,h4,h5,h6,p{
     color: $dark;
 }
@@ -453,6 +457,7 @@ p,ul,ol{
         margin: 15px 0;
         h3{
             font-weight: 400;
+            font-size: 18px;
             span{
                 margin-left: 20px;
             }
@@ -625,7 +630,7 @@ p,ul,ol{
             span{
                 font-family: 'Vollkorn', serif;
                 letter-spacing: -3px;
-                //border-bottom: 1px solid $dark;
+
             }
         }
         #slogan{
@@ -725,7 +730,7 @@ p,ul,ol{
         height: 58px;
         .button{
             display: inline-block;
-            padding: 10px;
+            padding: 10px 10px;
             height: 65px;
             h5{
                 font-size: 14px;
@@ -851,18 +856,56 @@ p,ul,ol{
             }
         }
     }
+    .search-field{
+        display: none;
+        position: absolute;
+        left: 0;
+        right: 0;
+        width: 100vw;
+        background: $white;
+        .fs1{
+            font-size: 18px;
+        }
+        form{
+            display: inline-block;
+            margin: 0 17px;
+            width: 80%;
+            input{
+                font-size: 18px;
+                border: none;
+                width: 100%;
+            }
+        }
+        .close{
+            .fs1{
+                color: $dark;
+            }
+        }
+    }
 }
 
-.normal{
-    margin: 25px 0;
+.main-navigation.normal{
+    margin: 17px 0;
     background: transparent;
     position: absolute;
     top: 35px;
     left: 0;
 }
 
+.search-field.normal{
+    top: -15px;
+    height: 92px;
+    padding-top: 34px;
+}
+
+.search-field.shrink{
+    top: 0;
+    height: 58px;
+    padding-top: 17px;
+}
+
 .normal-dark{
-    margin: 25px 0;
+    margin: 17px 0;
     left: 0;
     background: transparent;
     position: absolute;
@@ -935,7 +978,7 @@ p,ul,ol{
     }
 }
 
-.shrink{
+.main-navigation.shrink{
     position: fixed;
     top: 0;
     height: 58px;
@@ -991,9 +1034,10 @@ p,ul,ol{
         }
     }
     .buttons{
-        height: 43px;
+        height: 40px;
         .button{
             height: 46px;
+            padding: 6px 10px;
             h5{
                 color: $dark;
 
