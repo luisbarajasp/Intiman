@@ -32,11 +32,11 @@ class UNotifications
         items = $.map data, (notification) ->
             "<li><a id='#{notification.id}' href='#{notification.url}'>#{notification.message}</a></li>"
 
-        $("[data-behavior='unread-count']").text(items.length)
+        $(".notifications .badge").show()
         $("[data-behavior='notification-items']").html(items)
 
         if items.length == 0
-            $("[data-behavior='unread-count']").text(0)
+            $(".notifications .badge").hide()
             $("[data-behavior='notification-items']").html("<li>No tienes ninguna notificación</li>")
 
 jQuery ->

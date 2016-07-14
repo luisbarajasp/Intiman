@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 
   resources :orders, :only => [:show,:edit,:update]
 
-  get '/cart' => 'carts#show'
+  get '/bag' => 'carts#show'
 
   resources :order_items, :only => [:create, :update, :destroy]
 

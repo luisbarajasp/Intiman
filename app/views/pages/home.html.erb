@@ -1,23 +1,42 @@
 <div class="home">
-    <div id="prev">
-        <i class="fa fa-caret-left" aria-hidden="true"></i>
-    </div>
     <div id="slider">
-        <% @sliders.each do |s| %>
-            <div class="slide">
-                <% if s.description? %>
-                    <div class="description">
-                        <h3><%= s.description %></h3>
-                    </div>
-                <% end %>
-                <%= link_to s.link do %>
-                    <%= image_tag s.image.url(:big) %>
-                <% end %>
+        <div class="slide" id="s1">
+            <div class="mask"></div>
+            <div class="content">
+                <div class="title">
+                    <h1>¡FELIZ DIA DEL PADRE!</h1>
+                </div>
+                <div class="description">
+                    <h3>En Intiman queremos festejarte como te mereces</h3>
+                </div>
+                <div class="guide-btn">
+                    <a href="#">VER PROMOCIÓN</a>
+                </div>
             </div>
-        <% end %>
+            <%= image_tag 'homeslider1' %>
+        </div>
+        <div class="slide" id="s2">
+            <div class="mask"></div>
+            <div class="content content2">
+                <div class="title">
+                    <h1>¡NUEVA LÍNEA!</h1>
+                </div>
+                <div class="description">
+                    <h3>Con el verano llega la nueva línea, chécalos</h3>
+                </div>
+                <div class="guide-btn">
+                    <a href="#">VER PRODUCTOS</a>
+                </div>
+            </div>
+            <%= image_tag 'homeslider2' %>
+        </div>
     </div>
-    <div id="next">
-        <i class="fa fa-caret-right" aria-hidden="true"></i>
+    <div class="changers">
+        <div class="changer active" data-link="s1" ></div>
+        <div class="changer" data-link="s2"></div>
+    </div>
+    <div class="progress-bar">
+        <hr id="bar">
     </div>
     <div class="wrapper">
         <div class="page-name">

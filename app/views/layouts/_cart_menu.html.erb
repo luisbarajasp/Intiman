@@ -3,12 +3,12 @@
         <p><div class="fs1" aria-hidden="true" data-icon="&#x3c;"></div> continuar comprando</p>
     </div>
     <div class="title">
-        <h3>Carrito <div class="fs1" aria-hidden="true" data-icon="&#xe015;"></div></h3>
+        <h3>Bolsa <div class="fs1" aria-hidden="true" data-icon="&#xe013;"></div></h3>
         <hr>
     </div>
     <% if @order_items.count < 1 %>
       <p class="no-cloths">
-        Aún no tienes prendas en tu carrito de compra. <i class="fa fa-exclamation-circle"></i>
+        Aún no tienes prendas en tu bolsa de compras. <i class="fa fa-exclamation-circle"></i>
       </p>
     <% else %>
         <div id="items">
@@ -42,7 +42,7 @@
         </div>
         <div class="buttons">
             <div class="ver-cart">
-                <%= link_to "Ver carrito", cart_path%>
+                <%= link_to "Ver bolsa", bag_path%>
             </div>
             <div class="checkout">
                 <%= link_to "Checkout", checkout_path%>

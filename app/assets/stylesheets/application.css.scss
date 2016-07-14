@@ -758,21 +758,26 @@ p,ul,ol{
                 border-radius: 0;
                 background: none;
                 position: relative;
+                color: $white;
+                font-size: 17px;
+                padding: 3px 10px 6px 10px;
                 &:hover{
                     background: none;
                     color: $secondary;
                 }
-                #count{
+                .badge{
+                    padding: 0;
+                    display: none;
+                    max-width: 10px;
+                    width: 10px;
+                    height: 10px;
+                    -webkit-border-radius: 5px;
+                    -moz-border-radius: 5px;
+                    border-radius: 5px;
                     position: absolute;
-                    color: $white;
-                    top: -10px;
-                    right: 0;
-                    height: 20px;
-                    width: 20px;
-                    border-radius: 10px;
-                    -webkit-border-radius: 10px;
-                    -moz-border-radius: 10px;
-                    background: #a12e2e;
+                    top: -2px;
+                    right: -6px;
+                    background: $secondary;
                 }
             }
             .dropdown-menu{
@@ -957,8 +962,15 @@ p,ul,ol{
             }
         }
         .notifications{
-            .fa-bell{
+            .fa-bell-o{
                 color: $dark;
+            }
+            .btn-default{
+                &:hover{
+                    .fa-bell-o{
+                        color: $secondary;
+                    }
+                }
             }
         }
         .account{
@@ -1038,7 +1050,9 @@ p,ul,ol{
             padding: 6px 10px;
             h5{
                 color: $dark;
-
+                &:hover{
+                    color: $secondary;
+                }
             }
         }
         .sign-in{
@@ -1050,12 +1064,14 @@ p,ul,ol{
             }
         }
         .notifications{
-            .fa-bell{
+            .fa-bell-o{
                 color: $dark;
             }
-            &:hover{
-                .fa-bell{
-                    color: $secondary;
+            .btn-default{
+                &:hover{
+                    .fa-bell-o{
+                        color: $secondary;
+                    }
                 }
             }
         }
@@ -1066,6 +1082,11 @@ p,ul,ol{
                 h5{
                     color: $dark;
                 }
+                &:hover{
+                    h5{
+                        color: $secondary;
+                    }
+                }
             }
         }
         .cart{
@@ -1074,6 +1095,11 @@ p,ul,ol{
             }
         }
         .likes{
+            h5{
+                &:hover{
+                    color: $red;
+                }
+            }
             .content{
                 top: 58px;
             }

@@ -61,7 +61,7 @@ var ready = function(){
         disableScroll();
     });
 
-    $('.sidenav .content .continue').on('click', function(){
+    $('.sidenav').on('click','.continue', function(){
         $('.sidenav').width(0);
         $('#displazable').css('left',0);
         $('#displazable').removeClass('stop-links');
@@ -111,42 +111,18 @@ var ready = function(){
     $('.wrapper_page').css('min-height', wHeight);
 
     if($('.slide').siblings().size() > 1){
-        $("#slider").hover(
-            function () {
-                $("#next").show();
-                $("#prev").show();
-            },
-            function () {
-                $("#next").hide();
-                $("#prev").hide();
-        });
-        $("#next").hover(
-            function () {
-                $("#next").show();
-                $("#prev").show();
-            },
-            function () {
-                $("#next").hide();
-                $("#prev").hide();
-        });
-        $("#prev").hover(
-            function () {
-                $("#next").show();
-                $("#prev").show();
-            },
-            function () {
-                $("#next").hide();
-                $("#prev").hide();
-        });
 
         //Set options
         var speed = 500;
         var autoSwitch = true;
-        var autoSwitchSpeed = 8000;
+        var autoSwitchSpeed = 10000;
         var id;
 
         //Add initial active class
         $('.slide').first().addClass('active');
+
+        //Call the function to begin progressbar
+        progressbar();
 
         //Hide all slides
         $('.slide').hide();
@@ -154,24 +130,43 @@ var ready = function(){
         //Show first slide
         $('.active').show();
 
-        //Arrow functionality
-        $('#next').on('click',nextSlide);
-
-        $('#prev').on('click',prevSlide);
-
         //Auto slide
         if(autoSwitch){
             id = setInterval(nextSlide,autoSwitchSpeed);
         }
+
+        $('.changer').on('click', function(){
+            slider = $(this).data('link');
+            if(slider != $('.slide.active').attr('id')){
+                clearInterval(id);
+
+                progressbar();
+
+                $('.active').removeClass('active');
+                $('#slider').find('#'+slider).addClass('active');
+                $(this).addClass('active');
+
+
+                $('.slide').fadeOut(speed);
+                $('.active').fadeIn(speed);
+
+                if(autoSwitch){
+                    id = setInterval(nextSlide,autoSwitchSpeed);
+                }
+            }
+        });
 
         //Function for switching to next slide
         function nextSlide(){
             //Let the user see the image for 5 sec
             clearInterval(id);
 
+            progressbar();
+
             $('.active').removeClass('active').addClass('oldActive');
             if($('.oldActive').is(':last-child')){
                 $('.slide').first().addClass('active');
+                $('.changer').first().addClass('active');
             }else{
                 $('.oldActive').next().addClass('active');
             }
@@ -185,24 +180,17 @@ var ready = function(){
             }
         }
 
-        //Function for switching to previous slide
-        function prevSlide(){
-            //Let the user see the image for 5 sec
-            clearInterval(id);
-
-            $('.active').removeClass('active').addClass('oldActive');
-            if($('.oldActive').is(':first-child')){
-                $('.slide').last().addClass('active');
-            }else{
-                $('.oldActive').prev().addClass('active');
-            }
-            $('.oldActive').removeClass('oldActive');
-            $('.slide').fadeOut(speed);
-            $('.active').fadeIn(speed);
-
-            //Auto slide until the user press prev arrow
-            if(autoSwitch){
-                id = setInterval(nextSlide,autoSwitchSpeed);
+        function progressbar(){            
+            var elem = $(".progress-bar #bar");
+            var width = 1;
+            var id = setInterval(frame, 100);
+            function frame() {
+                if (width >= 100) {
+                    clearInterval(id);
+                } else {
+                    width++;
+                    elem.width(width + '%');
+                }
             }
         }
     }
