@@ -45,7 +45,7 @@
 
         <div class="main-navigation normal<% if controller.action_name != 'home' %>-dark<%end%>">
             <div class="wrapper">
-                    <%= link_to root_path do %>
+                    <%= link_to root_path, :"data-no-turbolink"=>true do %>
                         <div id="brand">
                             <!-- <%= image_tag "brand.png" %> -->
                             <h1>INTI<span>MAN</span></h1>
@@ -300,7 +300,7 @@
     </div>
 
     <%= render 'layouts/promModal' %>
-    
+
 
 </body>
 </html>
