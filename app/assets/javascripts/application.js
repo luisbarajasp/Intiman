@@ -21,25 +21,19 @@
 
 var ready = function(){
 
-    // var floater = false;
-    //   $('#click').click(function(){
-    //     var top = $(window).scrollTop();
-    //     var left = $(window).scrollLeft();
-    //     if(!floater){
-    //       $('body').css('overflow', 'hidden');
-    //       $(window).scroll(function(){
-    //         $(this).scrollTop(top).scrollLeft(left);
-    //       });
-    //     } else {
-    //       $('body').css('overflow', 'auto');
-    //       $(window).unbind('scroll');
-    //     }
-    //
-    //     $('#slider').css({top: top, left : left}).animate({
-    //       'margin-left' : (floater ? -400 : 0)
-    //     }, 500);
-    //     floater = !floater;
-    //   });
+      var disableScroll = function(){
+          var top = $(window).scrollTop();
+          var left = $(window).scrollLeft();
+          $('body').css('overflow', 'hidden');
+          $('#displazable').scroll(function(){
+            $(this).scrollTop(top).scrollLeft(left);
+          });
+     }
+
+     var enableScroll = function(){
+         $('body').css('overflow', 'auto');
+         $('#displazable').unbind('scroll');
+     }
 
     $('#search-btn').on('click', function(){
         $('.search-field').slideDown(200);
@@ -55,6 +49,7 @@ var ready = function(){
         $('.shrink').css('left', -395);
         $('#displazable').addClass('stop-links');
         $('.likes-menu .content').fadeIn(1000);
+        disableScroll();
     });
 
     $('#cart-btn').on('click', function(){
@@ -63,6 +58,7 @@ var ready = function(){
         $('.shrink').css('left', -395);
         $('#displazable').addClass('stop-links');
         $('.cart-menu .content').fadeIn(1000);
+        disableScroll();
     });
 
     $('.sidenav .content .continue').on('click', function(){
@@ -71,6 +67,7 @@ var ready = function(){
         $('#displazable').removeClass('stop-links');
         $('.shrink').css('left', 0);
         $('.sidenav .content').fadeOut(100);
+        enableScroll();
     });
 
     $(document).click(function(event) {
@@ -81,6 +78,7 @@ var ready = function(){
                 $('#displazable').removeClass('stop-links');
                 $('.shrink').css('left', 0);
                 $('.sidenav .content').fadeOut(100);
+                enableScroll();
             }
         }
     });

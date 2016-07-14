@@ -367,11 +367,8 @@ p,ul,ol{
                 color: $red;
             }
             a{
-                color: $secondary;
-                text-decoration: none;
-                &:hover{
-                    color: $darkSec;
-                }
+                color: $dark;
+                font-weight: 700;
             }
             span{
                 font-size: 18px;
@@ -902,6 +899,7 @@ p,ul,ol{
     top: 0;
     height: 58px;
     padding-top: 17px;
+    border-bottom: 1px solid $light-gray;
 }
 
 .normal-dark{
