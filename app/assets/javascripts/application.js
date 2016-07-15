@@ -21,6 +21,24 @@
 
 var ready = function(){
 
+    //Categories of home page
+    $('#c1').height($('#c1').width()*0.66);
+    $('#c2').height($('#c2').width()*0.66);
+    $('#c3').height($('#c3').width()*0.66);
+    $('#c4').height($('#c4').width()*0.465);
+    $('#c5').height($('#c5').width()*0.465);
+
+    $('#c1').css('top', $('#c2').height()*.0925);
+    $('#c2').css('left', $('#c1').width()*0.88);
+    $('#c3').css('top', $('#c2').height()*.0925);
+
+    if($(window).width() < 964){
+        alert('he');
+        var elem = $('.home #categories');
+        elem.height(elem.width()*0.48);
+    }
+
+
       var disableScroll = function(){
           var top = $(window).scrollTop();
           var left = $(window).scrollLeft();
@@ -97,17 +115,15 @@ var ready = function(){
         }
     }
 
-    var sHeight = $(window).height() - 27;
-    var sWidth = $(window).width() + 4 ;
+    var sHeight = $(window).height() - 30;
+    var sWidth = $(window).width();
     var wHeight = $(window).height() - 105;
 
     $('#slider').width(sWidth);
     $('#slider img').width(sWidth);
     $('#slider').height(sHeight);
     $('#slider img').height(sHeight);
-    $('#prev').height(sHeight);
-    $('#next').height(sHeight);
-    $('.home').css("padding-top",sHeight);
+    $('.home').css("padding-top",sHeight-58);
     $('.wrapper_page').css('min-height', wHeight);
 
     if($('.slide').siblings().size() > 1){
@@ -125,10 +141,10 @@ var ready = function(){
         progressbar();
 
         //Hide all slides
-        $('.slide').hide();
+        // $('.slide').hide();
 
         //Show first slide
-        $('.active').show();
+        // $('.active').show();
 
         //Auto slide
         if(autoSwitch){
@@ -147,8 +163,8 @@ var ready = function(){
                 $(this).addClass('active');
 
 
-                $('.slide').fadeOut(speed);
-                $('.active').fadeIn(speed);
+                // $('.slide').fadeOut(speed);
+                // $('.active').fadeIn(speed);
 
                 if(autoSwitch){
                     id = setInterval(nextSlide,autoSwitchSpeed);
@@ -171,8 +187,8 @@ var ready = function(){
                 $('.oldActive').next().addClass('active');
             }
             $('.oldActive').removeClass('oldActive');
-            $('.slide').fadeOut(speed);
-            $('.active').fadeIn(speed);
+            // $('.slide').fadeOut(speed);
+            // $('.active').fadeIn(speed);
 
             //Auto slide until the user press next arrow
             if(autoSwitch){
@@ -180,7 +196,7 @@ var ready = function(){
             }
         }
 
-        function progressbar(){            
+        function progressbar(){
             var elem = $(".progress-bar #bar");
             var width = 1;
             var id = setInterval(frame, 100);
@@ -540,8 +556,8 @@ $(window).scroll(function() {
 });
 
 $(window).resize(function() {
-    var sHeight = $(window).height() - 27;
-    var sWidth = $(window).width() + 4 ;
+    var sHeight = $(window).height() - 30;
+    var sWidth = $(window).width();
     scHeight = $(window).height() - 216;
     var wHeight = $(window).height() - 105;
     ccHeight = $(window).height() - 240;
@@ -550,10 +566,28 @@ $(window).resize(function() {
     $('#slider img').width(sWidth);
     $('#slider').height(sHeight);
     $('#slider img').height(sHeight);
-    $('#prev').height(sHeight);
-    $('#next').height(sHeight);
-    $('.home').css("padding-top",sHeight);
+    $('.home').css("padding-top",sHeight-58);
     $('.wrapper_page').css('min-height', wHeight);
     $('.shopping-cart').height(scHeight);
     $('.checkout-cart').height(ccHeight);
+
+    //Categories of home page
+    $('#c1').height($('#c1').width()*0.66);
+    $('#c2').height($('#c2').width()*0.66);
+    $('#c3').height($('#c3').width()*0.66);
+    $('#c4').height($('#c4').width()*0.465);
+    $('#c5').height($('#c5').width()*0.465);
+
+    $('#c1').css('top', $('#c2').height()*.0925);
+    $('#c2').css('left', $('#c1').width()*0.88);
+    $('#c3').css('top', $('#c2').height()*.0925);
+
+    if($(window).width() < 964){
+        var elem = $('.home #categories');
+        elem.height(elem.width()*0.48);
+    }else{
+        var elem = $('.home #categories');
+        elem.css('height', '62.5vh');
+    }
+
 });

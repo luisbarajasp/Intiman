@@ -865,6 +865,9 @@ p,ul,ol{
         right: 0;
         width: 100vw;
         background: $white;
+        .wrapper{
+            padding: 0 10px;
+        }
         .fs1{
             font-size: 18px;
         }
@@ -1002,11 +1005,11 @@ p,ul,ol{
             font-size: 24px;
             margin: 0;
             color: $dark;
-            text-align: center;
+            text-align: left;
         }
         #slogan{
             top: 22px;
-            right: 40px;
+            left: 72px;
             p{
                 text-align: right;
                 color: transparent;;

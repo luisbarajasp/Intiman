@@ -1,4 +1,4 @@
-<div class="home">
+<div class="home wrapper">
     <div id="slider">
         <div class="slide" id="s1">
             <div class="mask"></div>
@@ -38,52 +38,46 @@
     <div class="progress-bar">
         <hr id="bar">
     </div>
-    <div class="wrapper">
-        <div class="page-name">
-            <h3>Marcas</h3>
-            <hr>
-        </div>
-        <div id="brands" class="transitions-enabled clearfix">
-            <% @brands.each do |brand| %>
-                <div class="brand">
-                    <div id="image">
-                        <% if brand.cloths.count > 0 %>
-                            <%= image_tag brand.cloths.first.image1.url(:preview) %>
-                        <% end %>
-                        <div class="buy">
-                            <%= link_to "Comprar #{brand.name}", brand %></h3>
-                        </div>
-                    </div>
-                    <div class="name">
-                        <h3><%= brand.name %></h3>
-                    </div>
-
+    <div id="categories">
+        <div class="category" id="c1">
+            <%= image_tag "c1" %>
+            <a href="/categories/termicos">
+                <div class="mask">
+                    <h2>Térmicos</h2>
                 </div>
-            <% end %>
+            </a>
         </div>
-        <div class="page-name">
-            <h3>Categorias</h3>
-            <hr>
-        </div>
-        <div id="categories" class="transitions-enabled clearfix">
-            <% @categories.each do |category| %>
-
-                <div class="category">
-
-                    <div id="image">
-                        <% if category.cloths.count > 0 %>
-                            <%= image_tag category.cloths.first.image2.url(:preview) %>
-                        <% end %>
-                        <%= link_to category do%>
-                        <div class="buy"></div>
-                        <% end %>
-                    </div>
-                    <div class="name">
-                        <h3><%= category.name %></h3>
-                    </div>
+        <div class="category" id="c2">
+            <%= image_tag "c2" %>
+            <a href="categories/trajes-de-bano">
+                <div class="mask">
+                    <h2>Trajes de baño</h2>
                 </div>
-
-            <% end %>
+            </a>
+        </div>
+        <div class="category" id="c3">
+            <%= image_tag "c3" %>
+            <a href="categories/playeras">
+                <div class="mask">
+                    <h2>Playeras</h2>
+                </div>
+            </a>
+        </div>
+        <div class="category" id="c4">
+            <%= image_tag "c4" %>
+            <a href="categories/boxers">
+                <div class="mask">
+                    <h2>Bóxers</h2>
+                </div>
+            </a>
+        </div>
+        <div class="category" id="c5">
+            <%= image_tag "c5" %>
+            <a href="categories/tangas">
+                <div class="mask">
+                    <h2>Tangas</h2>
+                </div>
+            </a>
         </div>
     </div>
 </div>

@@ -16,14 +16,13 @@ $red: #ff4c4c;
 .home{
     color: $dark;
     background: $white;
-    width: 100%;
     padding: none;
     overflow-x: hidden !important;
     height: auto;
     overflow-y: hidden;
     #slider{
         top: 27px;
-        left: -7px;
+        left: -3px;
         width: 100vw;
         height: 100vh;
         position: absolute;
@@ -35,10 +34,13 @@ $red: #ff4c4c;
         }
         .slide{
             position: absolute;
+            opacity: 0;
+            z-index: 1;
+            transition: opacity 1s ease-in-out;
             .mask{
                 position: absolute;
                 bottom: 0;
-                left: 3px;
+                left: 0;
                 height: 100vh;
                 top: 0;
                 width: 100vw;
@@ -91,6 +93,10 @@ $red: #ff4c4c;
                 left: 0;
                 right: 0;
             }
+        }
+        .slide.active{
+            opacity: 1;
+            z-index: 2;
         }
     }
     .changers{
@@ -146,119 +152,80 @@ $red: #ff4c4c;
             -o-transition: width 0.1s ease;
         }
     }
-    #brands{
-        width: 100%;
-        height: 800px;
-        padding: 50px 0 100px 0;
-        margin: 0 auto;
-        text-align: center;
-        .brand{
-            width: 300px;
-            height: 500px;
-            margin: 0 2em;
-            .name{
-                h3{
-                    text-align: center;
-                    text-decoration: none;
-                    margin-top: 50px;
-                }
-            }
-            #image{
-                width: 300px;
-                height: 300px;
-                border: 1px solid $light-gray;
-                img{
-                    width: 300px;
-                }
-                &:hover{
-                    .buy{
-                        display: block;
-                    }
-                }
-            }
-            .buy{
-                z-index: 100;
-                display: none;
-                position: absolute;
-                top: 0;
-                left: 0;
-                bottom: 0;
-                right: 0;
-                width: 300px;
-                height: 300px;
-                background: rgba(0,0,0,0.5);
-                text-align: center;
-                line-height: 300px;
-                a{
-                    text-decoration: none;
-                    text-align: center;
-                    width: 50px;
-                    color: $white;
-                    border: 1px solid $white;
-                    -moz-transition: all 0.5s ease;
-                    -o-transition: all 0.5s ease;
-                    -webkit-transition: all 0.5s ease;
-                    transition: all 0.5s ease;
-                    padding: 3px;
-                    font-size: 12px;
-                    padding: 7px 14px;
-                    font-weight: 400;
-                    &:hover{
-                        background: $white;
-                        color: $dark;
-                    }
-                }
-            }
-        }
-    }
     #categories{
-        width: 100%;
-        height: 600px;
-        padding: 100px 0;
         margin: 0 auto;
+        margin-top: 4vh;
+        position: relative;
+        height: 62.5vh;
+        max-height: 464px;
+        width: 100%;
+        max-width: 963px;
         .category{
-            width: 150px;
-            height: 600px;
-            margin: 0 30px;
-            .name{
-                h3{
-                    text-align: center;
-                    text-decoration: none;
-                    margin-top: 50px;
-                }
+            position: absolute;
+            overflow: hidden;
+            img{
+                transition: all .2s ease-in-out;
+                max-width: 102%;
+                max-height: 102%;
             }
-            #image{
-                width: 150px;
-                height: 300px;
-                border: 1px solid $light-gray;
-                position: relative;
-                overflow: hidden;
-                img{
-                    height: 300px;
-                    position: absolute;
-                    left: -42.5px;
-                    right: -42.5px;
-                    top: 0;
-                }
-                .buy{
-                    z-index: 100;
-                    display: none;
+            a{
+                text-decoration: none;
+                .mask{
                     position: absolute;
                     top: 0;
                     left: 0;
-                    bottom: 0;
                     right: 0;
-                    width: 150px;
-                    height: 300px;
-                    background: rgba(0,0,0,0.2);
-                }
-                &:hover{
-                    .buy{
-                        display: block;
+                    bottom: 0;
+                    height: 100%;
+                    line-height: 100%;
+                    width: 100%;
+                    background: -webkit-linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)); /* For Safari 5.1 to 6.0 */
+              		background: -o-linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)); /* For Opera 11.1 to 12.0 */
+              		background: -moz-linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)); /* For Firefox 3.6 to 15 */
+             		background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)); /* Standard syntax */
+                    h2{
+                        font-size: 20px;
+                        color: $white;
+                        text-align: center;
                     }
                 }
             }
+            &:hover{
+                img{
+                    transform: scale(1.1);
+                    -webkit-filter: blur(2px);
 
+                }
+            }
+        }
+        #c1{
+            left: 0;
+            max-width: 328px;
+            width: 34vw;
+            z-index: 1;
+        }
+        #c2{
+            max-width: 395px;
+            width: 41vw;
+            z-index: 2;
+        }
+        #c3{
+            right: 0;
+            max-width: 328px;
+            width: 34vw;
+            z-index: 1;
+        }
+        #c4{
+            bottom: 0;
+            max-width: 481.5px;
+            width: 50vw;
+            left: 0;
+        }
+        #c5{
+            bottom: 0;
+            max-width: 481.5px;
+            width: 50vw;
+            right: 0;
         }
     }
 }
