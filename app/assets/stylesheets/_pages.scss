@@ -12,6 +12,7 @@ $uLight-gray: #f9f9f9;
 $gray: #343434;
 $dark-gray: #2C2B2C;
 $red: #ff4c4c;
+$light-red: #D4ABAB;
 
 .home{
     color: $dark;
@@ -180,10 +181,14 @@ $red: #ff4c4c;
                     line-height: 100%;
                     width: 100%;
                     background: rgba(0,0,0,0.2);
+                    display: table;
                     h2{
+                        display: table-cell;
+                        vertical-align: middle;
                         font-size: 20px;
                         color: $white;
                         text-align: center;
+                        font-weight: 200;
                     }
                 }
             }
@@ -226,5 +231,125 @@ $red: #ff4c4c;
             width: 50vw;
             right: 0;
         }
+    }
+    #brandssales{
+        margin-top: 30px;
+        width: 100vw;
+        height: auto;
+        overflow-y: auto;
+        overflow-x: hidden;
+        .column{
+            display: inline-block;
+            width: 50%;
+            height: 100%;
+            overflow: hidden;
+        }
+        .brands{
+            display: none;
+            float: left;
+            img{
+                transition: all 0.6s ease;
+                -webkit-transition: all 0.6s ease;
+                -moz-transition: all 0.6s ease;
+                -o-transition: all 0.6s ease;
+
+            }
+            a{
+                &:hover{
+                    img{
+                        transform: scale(1.1);
+                    }
+                }
+            }
+            .row{
+                background: $light-gray;
+                height: 33.3%;
+                margin: 0;
+                img{
+                    max-height: 100%;
+                    width: 100%;
+                }
+                .name{
+                    display: table;
+                    h3{
+                        font-size: 15px;
+                        text-align: center;
+                        display: table-cell;
+                        vertical-align: middle;
+                    }
+                }
+            }
+            .duha,.clovek{
+                .ima{
+                    float: left;
+                }
+                .name{
+                    float: right;
+                }
+            }
+            .byjou{
+                .name{
+                    float: left;
+                }
+                .ima{
+                    float: right;
+                }
+            }
+        }
+        .sales{
+            display: none;
+            float: right;
+            position: relative;
+            background: $light-red;
+            a{
+                text-decoration: none;
+            }
+            .ima{
+                height: 100%;
+                width: 100%;
+                text-align: center;
+                padding-top: 4%;
+                img{
+                    max-height: 92%;
+                    max-width: 100%;
+                    transition: all 0.6s ease;
+                    -webkit-transition: all 0.6s ease;
+                    -moz-transition: all 0.6s ease;
+                    -o-transition: all 0.6s ease;
+                }
+            }
+            .text{
+                margin-left: 2vw;
+                position: absolute;
+                top: 0;
+                h1{
+                    margin: 1.3em 0;
+                    font-size: 30px;
+                }
+                a#sale-link{
+                    padding: 9px 10px;
+                    color: $dark;
+                    font-size: 15px;
+                    text-decoration: none;
+                    border: 2px solid $dark;
+                    transition: all 0.5s ease-in-out;
+                    -webkit-transition: all 0.5s ease-in-out;
+                    -moz-transition: all 0.5s ease-in-out;
+                    -o-transition: all 0.5s ease-in-out;
+                    &:hover{
+                        color: $white;
+                        background: $secondary;
+                        border-color: $secondary;
+                    }
+                }
+            }
+            &:hover{
+                img{
+                    transform: scale(1.1);
+
+                }
+            }
+        }
+
     }
 }

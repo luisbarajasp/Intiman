@@ -7,6 +7,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 
 gem 'jquery-rails'
+gem 'jquery-ui-rails', '~> 5.0', '>= 5.0.5'
 gem 'turbolinks'
 gem 'jquery-turbolinks', '~> 0.2.1'
 gem 'jbuilder', '~> 2.0'

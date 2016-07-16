@@ -1,4 +1,4 @@
-<div class="home wrapper">
+<div class="home">
     <div id="slider">
         <div class="slide" id="s1">
             <div class="mask"></div>
@@ -38,7 +38,7 @@
     <div class="progress-bar">
         <hr id="bar">
     </div>
-    <div id="categories">
+    <div id="categories" class="wrapper">
         <div class="category" id="c1">
             <%= image_tag "c1" %>
             <a href="/categories/termicos">
@@ -79,5 +79,50 @@
                 </div>
             </a>
         </div>
+    </div>
+    <div id="brandssales">
+        <div class="brands column">
+            <a href="/brands/duha">
+                <div class="duha row">
+                    <div class="column ima">
+                        <%= image_tag "duha.png" %>
+                    </div>
+                    <div class="column name">
+                        <h3>DUHA</h3>
+                    </div>
+                </div>
+            </a>
+            <a href="/brands/byjou">
+                <div class="byjou row">
+                    <div class="column name">
+                        <h3>BYJOU</h3>
+                    </div>
+                    <div class="column ima">
+                        <%= image_tag "byjou.png" %>
+                    </div>
+                </div>
+            </a>
+            <a href="/brands/2clovek">
+                <div class="clovek row">
+                    <div class="column ima">
+                        <%= image_tag "clovek.png" %>
+                    </div>
+                    <div class="column name">
+                        <h3>2CLOVEK</h3>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <%= link_to sales_index_path do %>
+            <div class="sales column">
+                <div class="ima">
+                    <%= image_tag "sales.png" %>
+                </div>
+                <div class="text">
+                    <h1>SALES</h1>
+                    <%= link_to "Comprar ahora", sales_index_path, id: "sale-link" %>
+                </div>
+            </div>
+        <% end %>
     </div>
 </div>

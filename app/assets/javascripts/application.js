@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery.turbolinks
 //= require jquery_ujs
+//= require jquery-ui
 //= require jquery.elevatezoom
 //= require twitter/bootstrap
 //= require masonry/jquery.masonry
@@ -122,6 +123,7 @@ var ready = function(){
     $('#slider').height(sHeight);
     $('#slider').css('max-height',maxHSlider);
     $('#slider img').height($('#slider').height());
+    $('#brandssales').height($('#slider').height());
     $('.home').css("padding-top",sHeight-58);
     $('.wrapper_page').css('min-height', wHeight);
     $('.changers').css('top',topChangersSlider);
@@ -556,6 +558,22 @@ $(window).scroll(function() {
     $('.main-navigation').css('left',0);
     $('.alert').css('top','125px');
   }
+
+  function isScrolledIntoView(elem)
+  {
+      var docViewTop = $(window).scrollTop();
+      var docViewBottom = docViewTop + $(window).height();
+      var elemTop = $(elem).offset().top;
+
+      return (elemTop <= docViewBottom);
+  }
+
+  if(isScrolledIntoView('#brandssales')){
+      //alert('yes');
+      $('#brandssales .sales').show('slide',{direction:'right'},1000);
+      $('#brandssales .brands').show('slide',{direction:'left'},1000);
+
+  }
 });
 
 $(window).resize(function() {
@@ -572,6 +590,7 @@ $(window).resize(function() {
     $('#slider').height(sHeight);
     $('#slider').css('max-height',maxHSlider);
     $('#slider img').height($('#slider').height());
+    $('#brandssales').height($('#slider').height());
     $('.home').css("padding-top",sHeight-58);
     $('.wrapper_page').css('min-height', wHeight);
     $('.shopping-cart').height(scHeight);
@@ -592,6 +611,4 @@ $(window).resize(function() {
     $('#c1').css('top', $('#c2').height()*.0925);
     $('#c2').css('left', $('#c1').width()*0.88);
     $('#c3').css('top', $('#c2').height()*.0925);
-
-
 });
