@@ -33,7 +33,6 @@ var ready = function(){
     $('#c3').css('top', $('#c2').height()*.0925);
 
     if($(window).width() < 964){
-        alert('he');
         var elem = $('.home #categories');
         elem.height(elem.width()*0.48);
     }
@@ -128,6 +127,44 @@ var ready = function(){
 
     if($('.slide').siblings().size() > 1){
 
+        function progressbar(){
+            var elem = $(".progress-bar #bar");
+            var width = 1;
+            var id = setInterval(frame, 100);
+            function frame() {
+                if (width >= 100) {
+                    clearInterval(id);
+                } else {
+                    width++;
+                    elem.width(width + '%');
+                }
+            }
+        }
+
+        //Function for switching to next slide
+        function nextSlide(){
+            //Let the user see the image for 5 sec
+            clearInterval(id);
+
+            progressbar();
+
+            $('.active').removeClass('active').addClass('oldActive');
+            if($('.oldActive').is(':last-child')){
+                $('.slide').first().addClass('active');
+                $('.changer').first().addClass('active');
+            }else{
+                $('.oldActive').next().addClass('active');
+            }
+            $('.oldActive').removeClass('oldActive');
+            // $('.slide').fadeOut(speed);
+            // $('.active').fadeIn(speed);
+
+            //Auto slide until the user press next arrow
+            if(autoSwitch){
+                id = setInterval(nextSlide,autoSwitchSpeed);
+            }
+        }
+
         //Set options
         var speed = 500;
         var autoSwitch = true;
@@ -172,43 +209,6 @@ var ready = function(){
             }
         });
 
-        //Function for switching to next slide
-        function nextSlide(){
-            //Let the user see the image for 5 sec
-            clearInterval(id);
-
-            progressbar();
-
-            $('.active').removeClass('active').addClass('oldActive');
-            if($('.oldActive').is(':last-child')){
-                $('.slide').first().addClass('active');
-                $('.changer').first().addClass('active');
-            }else{
-                $('.oldActive').next().addClass('active');
-            }
-            $('.oldActive').removeClass('oldActive');
-            // $('.slide').fadeOut(speed);
-            // $('.active').fadeIn(speed);
-
-            //Auto slide until the user press next arrow
-            if(autoSwitch){
-                id = setInterval(nextSlide,autoSwitchSpeed);
-            }
-        }
-
-        function progressbar(){
-            var elem = $(".progress-bar #bar");
-            var width = 1;
-            var id = setInterval(frame, 100);
-            function frame() {
-                if (width >= 100) {
-                    clearInterval(id);
-                } else {
-                    width++;
-                    elem.width(width + '%');
-                }
-            }
-        }
     }
 
     $('#all').on('click',function(){
@@ -589,5 +589,6 @@ $(window).resize(function() {
         var elem = $('.home #categories');
         elem.css('height', '62.5vh');
     }
+
 
 });
