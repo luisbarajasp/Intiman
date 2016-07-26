@@ -10,6 +10,9 @@
 
     <% end %>
 
+    <div class="form-group">
+		<%= f.input :name, :label => "Nombre del producto", :input_html => { :class => 'form-control'} %>
+	</div>
 	<div class="form-group">
 		<%= f.input :description, :as => :text, :label => "Descripción del producto", :input_html => { :class => 'form-control'} %>
 	</div>

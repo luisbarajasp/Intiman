@@ -13,6 +13,11 @@ $gray: #343434;
 $dark-gray: #2C2B2C;
 $red: #ff4c4c;
 $light-red: #D4ABAB;
+$fb: #3B5999;
+$tw: #4099FF;
+$gplus: #D44837;
+$pin: #CB2027;
+$insta: #417399;
 
 .home{
     color: $dark;
@@ -233,7 +238,7 @@ $light-red: #D4ABAB;
         }
     }
     #brandssales{
-        margin-top: 30px;
+        margin-top: 45px;
         width: 100vw;
         height: auto;
         overflow-y: auto;
@@ -338,8 +343,7 @@ $light-red: #D4ABAB;
                     -o-transition: all 0.5s ease-in-out;
                     &:hover{
                         color: $white;
-                        background: $secondary;
-                        border-color: $secondary;
+                        background: $dark;
                     }
                 }
             }
@@ -350,6 +354,130 @@ $light-red: #D4ABAB;
                 }
             }
         }
+    }
+    #newreleases{
+        margin-top: 45px;
+        h1{
+            font-size: 24px;
+            font-weight: 200;
+        }
+        .cloths{
+            margin-left: -1vw;
+            a{
+                text-decoration: none;
+            }
+            .cloth{
+                padding: 0;
+                padding-left: 1vw;
+                .cloth-image{
+                    width: 100%;
+                    height: 100%;
+                    img{
+                        max-width: 100%;
+                        max-height: 100%;
+                    }
+                }
+                .info{
+                    h5{
+                        margin-top: 15px;
+                        font-weight: 400;
+                    }
+                    #dprice,#price{
+                        font-weight: 600;
+                    }
+                    #nprice{
+                        padding-left: 5px;
+                        font-weight: 400;
+                        color: #979797;
+                        text-decoration: line-through;
+                    }
+                    #dprice{
+                        color: $red;
+                    }
+                }
+                /*.like{
+                    padding: 0;
+                    position: absolute;
+                    top: 10px;
+                    right: 10px;
+                    text-align: right;
+                    font-size: 20px;
+                    a{
+                        color: $red;
+                        text-decoration: none;
+                    }
+                    .change-icon > .fs1:nth-child(2) {
+                          display: none;
+                    }
+                    a:hover{
+                        .change-icon > .fs1:nth-child(1) {
+                          display: none;
+                        }
+                        .change-icon > .fs1:nth-child(2) {
+                          display: inherit;
+                        }
+                    }
+                }*/
+            }
+        }
+    }
+    #social{
+        margin-top: 45px;
+        #followus{
+            width: 40%;
+            margin: 0 auto;
+            h1{
+                font-size: 24px;
+                font-weight: 200;
+                margin: 0;
+                line-height: 24px;
+                height: 24px;
+                transition: all ease 0.3s;
+            }
+            .links{
+                margin-top: -2px;
+                font-size: 24px;
+                padding: 27px 54px;
+                border: 1px solid $dark;
+                -webkit-transition: all .2s ease-in;
+                -moz-transition: all .2s ease-in;
+                -ms-transition: all .2s ease-in;
+                -o-transition: all .2s ease-in;
+                transition: all .2s ease-in;
+                a{
+                    margin-left: 16%;
+                    color: $dark;
+                    text-decoration: none;
+                    transition: all ease 0.3s;
+                    -moz-transition: all ease 0.6s;
+                    -webkit-transition: all ease 0.6s;
+                    -o-transition: all ease 0.6s;
+                    &:hover{
+                        color: rgba(255,255,255,0.8);
+                    }
+                }
+                #fb{
+                    margin-left: 0;
+                }
+            }
+            .color-fb{
+                background: $fb;
+            }
+            .color-gplus{
+                background: $gplus;
+            }
+            .color-insta{
+                background: $insta;
+            }
+            .color-pin{
+                background: $pin;
+            }
+            .color-tw{
+                background: $tw;
+            }
+        }
+        #social-media{
 
+        }
     }
 }

@@ -20,7 +20,7 @@
                         </div>
                         <div class="description">
                             <%= link_to item.cloth do %>
-                                <h5><%= item.cloth.category.singular %></h5>
+                                <h5><%= item.cloth.name %></h5>
                                 <h5><%= item.cloth.brand.name %></h5>
                             <% end %>
                             <h5 id="price"><%= item.quantity %> x <%= number_to_currency item.unit_price %></h5>

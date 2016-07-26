@@ -22,6 +22,12 @@
 
 var ready = function(){
 
+    $('.home .links a').hover(function(){
+        var id = $(this).attr('id');
+        var color = 'color-'+id;
+        $(this).closest('.links').toggleClass(color);
+    });
+
     var elem = $('.home #categories');
     elem.height(elem.width()*0.48);
 

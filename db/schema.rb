@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160516233016) do
+ActiveRecord::Schema.define(version: 20160719005620) do
 
   create_table "a_notifications", force: :cascade do |t|
     t.integer  "admin_id"
@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(version: 20160516233016) do
     t.string   "brand_n"
     t.string   "colors_n",                                     default: "--- []\n"
     t.decimal  "price",               precision: 12, scale: 3
+    t.string   "name"
   end
 
   create_table "colors", force: :cascade do |t|

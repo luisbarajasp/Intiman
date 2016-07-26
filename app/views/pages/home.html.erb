@@ -125,4 +125,60 @@
             </div>
         <% end %>
     </div>
+    <div id="newreleases" class="wrapper clearfix">
+        <h1>Nuevos Productos</h1>
+        <div class="cloths">
+            <% @cloths.each do |cloth| %>
+                <%= link_to cloth do %>
+                    <div class="cloth col-sm-3 col-xs-6">
+                        <div class="cloth-image">
+                            <%= image_tag cloth.image1.url(:medium) %>
+                        </div>
+                        <div class="info">
+                            <h5><%= cloth.name %></h5>
+                            <% if cloth.discount_price != 0 %>
+                                <h5 id="dprice"><%= number_to_currency cloth.discount_price %> <span id="nprice"><%= number_to_currency cloth.normal_price %></span></h5>
+                            <% else %>
+                                <h5 id="price"><%= number_to_currency cloth.normal_price %></h5>
+                            <% end %>
+                        </div>
+                        <!-- <% if user_signed_in? %>
+                            <div class="like">
+                                <% if !(current_user.liked? cloth) %>
+                                    <%= link_to like_cloth_path(cloth), method: :put do %>
+                                        <span class="change-icon">
+                                            <div class="fs1" aria-hidden="true" data-icon="&#xe030;"></div>
+                                            <div class="fs1" aria-hidden="true" data-icon="&#xe089;"></div>
+                                        </span>
+                                    <% end %>
+                                <% else %>
+                                    <%= link_to dislike_cloth_path(cloth), method: :put do %>
+                                        <span class="change-icon">
+                                            <div class="fs1" aria-hidden="true" data-icon="&#xe089;"></div>
+                                            <div class="fs1" aria-hidden="true" data-icon="&#xe030;"></div>
+                                        </span>
+                                    <% end %>
+                                <% end %>
+                            </div>
+                        <% end %> -->
+                    </div>
+                <% end %>
+            <% end %>
+        </div>
+    </div>
+    <div id="social" class="wrapper clearfix">
+        <div id="followus">
+            <h1>SIGUÉNOS</h1>
+            <div class="links">
+                <a id="fb" href=""><i class="fa fa-facebook"></i></a>
+                <a id="gplus" href=""><i class="fa fa-google-plus"></i></a>
+                <a id="insta" href=""><i class="fa fa-instagram"></i></a>
+                <a id="pin" href=""><i class="fa fa-pinterest"></i></a>
+                <a id="tw" href=""><i class="fa fa-twitter"></i></a>
+            </div>
+        </div>
+        <div id="social-media">
+
+        </div>
+    </div>
 </div>
