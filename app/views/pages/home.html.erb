@@ -179,13 +179,27 @@
         </div>
         <div id="social-media">
             <div class="col-sm-6 instagram">
-
+                <h1>Intagram</h1>
+                <hr>
+                <div class="content">
+                    <script type="text/javascript">
+                        var userFeed = new Instafeed({
+                          get: 'user',
+                          userId: '19739162',
+                          accessToken: '19739162.1677ed0.3602fe1b26db43d98f61fc19a2b3b3a7',
+                          limit: '6',
+                          sortBy: 'most-recent'
+                        });
+                        userFeed.run();
+                    </script>
+                    <div id="instafeed"></div>
+                </div>
             </div>
             <div class="col-sm-6 twitter">
                 <h1>Tweets</h1>
                 <hr>
                 <div class="content">
-                    <a class="twitter-timeline" href="https://twitter.com/luis_barajasp" data-tweet-limit="3"  data-chrome="noheader noborders nofooter"></a>
+                    <a class="twitter-timeline" href="https://twitter.com/nfl" data-tweet-limit="2"  data-chrome="noheader noborders nofooter"></a>
                     <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
                 </div>
             </div>

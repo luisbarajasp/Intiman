@@ -36,6 +36,7 @@ gem 'formtastic', '~> 3.1', '>= 3.1.4'
 gem 'elevatezoom-rails', '~> 1.0'
 gem 'stripe', '~> 1.41'
 gem 'hover-rails', '~> 2.0', '>= 2.0.2'
+gem 'instafeed', '~> 0.1.0'
 
 
 group :development, :test do

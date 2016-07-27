@@ -17,6 +17,7 @@
 //= require jquery.elevatezoom
 //= require twitter/bootstrap
 //= require masonry/jquery.masonry
+//= require instafeed
 //= require_tree .
 //= require turbolinks
 
