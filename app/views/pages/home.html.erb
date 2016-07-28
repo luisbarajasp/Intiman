@@ -133,6 +133,20 @@
                     <div class="cloth col-sm-3 col-xs-6">
                         <div class="cloth-image">
                             <%= image_tag cloth.image1.url(:medium) %>
+                            <div class="hover">
+                                <% @sizes.each do |size| %>
+                                    <% cloth.sis.each do |si| %>
+                                        <% if size == si.size %>
+                                            <% @exists = true %>
+                                        <% end %>
+                                    <% end %>
+                                    <% if @exists %>
+                                        <p id="available"><%= size.letter %></p>
+                                    <% else %>
+                                        <p id="unavailable"><%= size.letter %><span>╱</span></p>
+                                    <% end %>
+                                <% end %>
+                            </div>
                         </div>
                         <div class="info">
                             <h5><%= cloth.name %></h5>
