@@ -29,6 +29,7 @@
 
  $secondary: #C2B49A;
  $darkSec: #968b77;
+ $tFooter: #A09B92;
  $dark: #212121;
  $light-dark: #272727;
  $white: #fff;
@@ -39,6 +40,11 @@
  $dark-gray: #2C2B2C;
  $red: #ff4c4c;
  $green: #108823;
+ $fb: #3B5999;
+ $tw: #4099FF;
+ $gplus: #D44837;
+ $pin: #CB2027;
+ $insta: #417399;
 
  *{
      font-family: 'Raleway', sans-serif;
@@ -1463,151 +1469,194 @@ p,ul,ol{
 }
 
 .footer{
-    width: 100%;
-    height: 320px;
-    background: #212020;
-    position: relative;
-    .social{
-        padding: 3em;
-        height: 100%;
-        width: 30%;
+    width: 100vw;
+    height: auto;
+    background: $dark;
+    .newsletter{
+        width: 100%;
         text-align: center;
-        border-right: 1px solid #000;
-        float: left;
-        h5{
-            font-size: 15px;
-            color: $white;
+        padding: 40px;
+        h3{
+            display: inline-block;
+            margin: 0;
+            color: $secondary;
+            font-weight: 200;
+            font-size: 12px;
         }
-        .button {
-          width: 32px;
-          height: 32px;
-          line-height: 30px;
-          display: block;
-          position: relative;
-          -moz-border-radius: 50%;
-          -webkit-border-radius: 50%;
-          border-radius: 50%;
-          border: 2px solid #fff;
-          text-align: center;
-          display: inline-block;
-          vertical-align: middle;
-          position: relative;
-          z-index: 10;
-          color: #fff;
-        }
+        form{
+            display: inline-block;
+            width: 40%;
+            margin-left: 3em;
+            position: relative;
+            input#newsletter-signup{
+                width: 99%;
+                padding: 12px 15px;
+                background: $dark;
+                color: $secondary;
+                font-weight: 100;
+                border: 1px solid $secondary;
+                font-size: 12px;
 
-        .button:hover {
-          color: $secondary;
-          border: 2px solid #000;
-        }
+                &::-webkit-input-placeholder {
+                   color: $secondary;
+                }
 
-        .button:after {
-            position: absolute !important;
-          content: "";
-          width: 32px;
-          height: 32px;
-          display: block;
-          position: relative;
-          -moz-border-radius: 50%;
-          -webkit-border-radius: 50%;
-          border-radius: 50%;
-          right: -2px;
-          top: -2px;
-          background-color: #fff;
-          visibility: hidden;
-          filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
-          opacity: 0;
-          -moz-transition: all 0.4s ease;
-          -o-transition: all 0.4s ease;
-          -webkit-transition: all 0.4s ease;
-          transition: all 0.4s ease;
-          opacity: 1\9;
-          visibility: visible\9;
-          display: none\9;
-          -moz-transform: scale(0.5, 0.5);
-          -ms-transform: scale(0.5, 0.5);
-          -webkit-transform: scale(0.5, 0.5);
-          transform: scale(0.5, 0.5);
-          z-index: -1;
-          -moz-transition: all 0.2s ease;
-          -o-transition: all 0.2s ease;
-          -webkit-transition: all 0.2s ease;
-          transition: all 0.2s ease;
-        }
+                &:-moz-placeholder { /* Firefox 18- */
+                   color: $secondary;
+                }
 
-        .button:hover:after {
-          visibility: visible;
-          filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
-          opacity: 1;
-          display: block\9;
-          -moz-transform: scale(1, 1);
-          -ms-transform: scale(1, 1);
-          -webkit-transform: scale(1, 1);
-          transform: scale(1, 1);
-        }
-    }
-    .links{
-        width: 30%;
-        padding: 3em;
-        height: 100%;
-        text-align: center;
-        float: left;
-        border-right: 1px solid #000;
-        p{
-            font-size: 13px;
-            a{
-                color: $white;
-                text-decoration: none;
+                &::-moz-placeholder {  /* Firefox 19+ */
+                   color: $secondary;
+                }
+
+                &:-ms-input-placeholder {
+                   color: $secondary;
+                }
+            }
+            input#submit{
+                position: absolute;
+                right: 0;
+                top: 0;
+                height: 100%;
+                width: 17%;
+                background: $secondary;
+                box-shadow: none;
+                border: 1px solid $secondary;
                 &:hover{
-                    color: $secondary;
+                    background: $darkSec;
                 }
             }
         }
     }
-    .newsletter{
-        width: 40%;
-        float: left;
-        padding: 3em;
-        h3{
-            color: $white;
-            margin-top: 0;
-            i{
-                margin-left: 0.5em;
+    .info{
+        .information,.service{
+            width: 23%;
+            display: inline-block;
+            vertical-align: top;
+            padding-right: 2%;
+            h3{
+                font-size: 12px;
+                font-weight: 100;
                 color: $secondary;
-            }
-        }
-        p{
-            font-size: 13px;
-            color: $white;
-            span{
-                font-size: 16px;
-                font-weight: 700;
-            }
-        }
-        form{
-            input{
-                border: none;
+                padding-bottom: 10px;
+                margin-bottom: 10px;
                 border-bottom: 1px solid $secondary;
-                background: transparent;
+            }
+            ul{
+                padding-left: 10%;
+                li{
+                    list-style: none;
+                    padding-top: 9px;
+                    a{
+                        color: $tFooter;
+                        text-decoration: none;
+                        font-weight: 100;
+                        font-size: 12px;
+                        &:hover{
+                            color: $secondary;
+                        }
+                    }
+                }
+            }
+        }
+        .contacto{
+            display: inline-block;
+            width: 27%;
+            padding: 44px 0 0 3vw;
+            li{
+                list-style: none;
+                font-size: 12px;
+                color: $tFooter;
+                font-weight: 100;
+                padding-bottom: 20px;
+                span{
+                    color: $secondary;
+                    font-weight: 400;
+                }
+                .fa{
+                    font-size: 20px;
+                    color: $secondary;
+                    padding: 4px 4px 0 0;
+                }
+            }
+        }
+        .logo{
+            display: inline-block;
+            float: right;
+            position: relative;
+            margin-top: 44px;
+            h1{
+                font-family: 'Vollkorn', serif;
+                letter-spacing: 13px;
+                font-size: 40px;
+                margin: 10px 0;
                 color: $white;
-                width: 50%;
+                font-weight: 400;
+                span{
+                    font-family: 'Vollkorn', serif;
+                    letter-spacing: -3px;
+
+                }
+            }
+            #slogan{
+                position: absolute;
+                top: 45px;
+                right: 0;
+                p{
+                    font-size: 11px;
+                    color: $white;
+                    span{
+                        border-top: 1px solid $white;
+                        padding-top: 2px;
+                    }
+                }
             }
         }
     }
-    .phrase{
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        width: 100vw;
-        height: 70px;
-        background: $light-dark;
+    .stripe{
+        h2{
+            color: $tFooter;
+            font-size: 12px;
+            font-weight: 100;
+            text-align: center;
+            a{
+                margin-left: 10px;
+            }
+        }
+    }
+    .social_links{
         text-align: center;
-        h4{
-            line-height: 70px;
-            color: $white;
-            font-size: 20px;
-            margin: 0;
+        padding-top: 60px;
+        padding-bottom: 20px;
+        a{
+            font-size: 15px;
+            color: $secondary;
+            text-decoration: none;
+            margin-left: 40px;
+            transition: all 0.3s ease;
+            -moz-transition: all 0.3s ease;
+            -webkit-transition: all 0.3s ease;
+            -o-transition: all 0.3s ease;
+            -ms-transition: all 0.3s ease;
+
+            &#fb:hover{
+                color: $fb;
+            }
+            &#gplus:hover{
+                color: $gplus;
+            }
+            &#insta:hover{
+                color: $insta;
+            }
+            &#pin:hover{
+                color: $pin;
+            }
+            &#tw:hover{
+                color: $tw;
+            }
+        }
+        #fb{
+            margin-left: 0;
         }
     }
 }

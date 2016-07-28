@@ -27,6 +27,26 @@ var ready = function(){
         var id = $(this).attr('id');
         var color = 'color-'+id;
         $(this).closest('.links').toggleClass(color);
+        $('#follow-social-net').toggle();
+        switch (id) {
+            case "fb":
+                $('#follow-social-net').text("EN FACEBOOK");
+                break;
+            case "gplus":
+                $('#follow-social-net').text("EN GOOGLE PLUS");
+                break;
+            case "insta":
+                $('#follow-social-net').text("EN INSTAGRAM");
+                break;
+            case "pin":
+                $('#follow-social-net').text("EN PINTEREST");
+                break;
+            case "tw":
+                $('#follow-social-net').text("EN TWITTER");
+                break;
+            default:
+                break;
+        }
     });
 
     var elem = $('.home #categories');
