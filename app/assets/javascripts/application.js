@@ -108,7 +108,7 @@ var ready = function(){
         $('#displazable').css('left',0);
         $('#displazable').removeClass('stop-links');
         $('.shrink').css('left', 0);
-        $('.sidenav .content').fadeOut(100);
+        $('.sidenav .content').fadeOut(50);
         enableScroll();
     });
 
@@ -119,7 +119,7 @@ var ready = function(){
                 $('#displazable').css('left',0);
                 $('#displazable').removeClass('stop-links');
                 $('.shrink').css('left', 0);
-                $('.sidenav .content').fadeOut(100);
+                $('.sidenav .content').fadeOut(50);
                 enableScroll();
             }
         }

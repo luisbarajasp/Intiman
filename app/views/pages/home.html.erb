@@ -138,6 +138,7 @@
                             <h5><%= cloth.name %></h5>
                             <% if cloth.discount_price != 0 %>
                                 <h5 id="dprice"><%= number_to_currency cloth.discount_price %> <span id="nprice"><%= number_to_currency cloth.normal_price %></span></h5>
+                                <div class="sale-banner"><h1>SALE</h1></div>
                             <% else %>
                                 <h5 id="price"><%= number_to_currency cloth.normal_price %></h5>
                             <% end %>
