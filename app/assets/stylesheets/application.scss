@@ -600,9 +600,94 @@ p,ul,ol{
         }
     }
     .modal-body{
+
         p{
             color: $dark;
             font-size: 13px;
+        }
+    }
+}
+
+#newsletterSgnup{
+    .modal-dialog{
+        width: 800px;
+        height: 360px;
+    }
+    .modal-content{
+        height: 360px;
+        background-image: image-url("newsletter-modal-bg.jpg");
+        background-position: 0%;
+    }
+    .modal-header{
+        border: 0;
+        padding: 20px 0;
+        text-align: center;
+        .close{
+            float:none;
+            .fs1{
+                font-size: 30px;
+            }
+        }
+    }
+    .modal-body{
+        height: auto;
+        .signup{
+            height: auto;
+            width: 70%;
+            display: inline-block;
+            h1{
+                font-size: 25px;
+                font-weight: 600;
+            }
+            p{
+                color: $dark;
+                font-size: 14px;
+            }
+            form{
+                display: inline-block;
+                width: 80%;
+                position: relative;
+                input#newsletter-signup{
+                    width: 99%;
+                    padding: 12px 15px;
+                    font-weight: 100;
+                    border: 1px solid #999;
+                    font-size: 14px;
+
+                    &::-webkit-input-placeholder {
+                       color: #999;
+                    }
+
+                    &:-moz-placeholder { /* Firefox 18- */
+                       color: #999;
+                    }
+
+                    &::-moz-placeholder {  /* Firefox 19+ */
+                       color: #999;
+                    }
+
+                    &:-ms-input-placeholder {
+                       color: #999;
+                    }
+                }
+                input#submit{
+                    height: 100%;
+                    box-shadow: none;
+                    padding: 6px 12px;
+                    margin: 20px auto;
+                    background: transparent;
+                    border: 1px solid $dark;
+                    transition: all ease 0.6s;
+                    -moz-transition: all ease 0.6s;
+                    -o-transition: all ease 0.6s;
+                    -webkit-transition: all ease 0.6s;
+
+                    &:hover{
+                        background: $gray;
+                        color: $white;
+                    }
+                }
+            }
         }
     }
 }

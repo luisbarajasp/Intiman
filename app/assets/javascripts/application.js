@@ -23,6 +23,17 @@
 
 var ready = function(){
 
+    //Prom signup Newsletter only on first visit
+    if (localStorage['visited'] == 'no') {
+       localStorage['visited'] = 'yes';
+       showNewsletter();
+    }
+
+    function showNewsletter(){
+        $('.showNewsletter').click();
+    }
+
+    //Change color of the followus section depending on the hovered element
     $('.home .links a').hover(function(){
         var id = $(this).attr('id');
         var color = 'color-'+id;

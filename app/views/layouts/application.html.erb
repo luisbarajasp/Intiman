@@ -14,6 +14,7 @@
 <body>
 
     <div id="displazable">
+        <button type="button" class="showNewsletter" data-toggle="modal" data-target="#newsletterSgnup"></button>
         <% if controller.controller_name != 'promotions' %>
             <% if !@promo.description? %>
                 <%= link_to @promo do %>
@@ -321,6 +322,8 @@
     </div>
 
     <%= render 'layouts/promModal' %>
+    <%= render 'layouts/promNewsletter' %>
+
 
 
 </body>
