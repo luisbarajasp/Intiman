@@ -39,7 +39,7 @@
         <hr id="bar">
     </div>
     <div id="categories" class="wrapper">
-        <div class="category" id="c1">
+        <div class="category normal-top" id="c1">
             <%= image_tag "c1" %>
             <a href="/categories/termicos">
                 <div class="mask">
@@ -47,7 +47,7 @@
                 </div>
             </a>
         </div>
-        <div class="category" id="c2">
+        <div class="category normal-top" id="c2">
             <%= image_tag "c2" %>
             <a href="categories/trajes-de-bano">
                 <div class="mask">
@@ -55,7 +55,7 @@
                 </div>
             </a>
         </div>
-        <div class="category" id="c3">
+        <div class="category normal-top" id="c3">
             <%= image_tag "c3" %>
             <a href="categories/playeras">
                 <div class="mask">
@@ -63,7 +63,7 @@
                 </div>
             </a>
         </div>
-        <div class="category" id="c4">
+        <div class="category normal-bottom" id="c4">
             <%= image_tag "c4" %>
             <a href="categories/boxers">
                 <div class="mask">
@@ -71,7 +71,7 @@
                 </div>
             </a>
         </div>
-        <div class="category" id="c5">
+        <div class="category normal-bottom" id="c5">
             <%= image_tag "c5" %>
             <a href="categories/tangas">
                 <div class="mask">
@@ -130,7 +130,7 @@
         <div class="cloths">
             <% @cloths.each do |cloth| %>
                 <%= link_to cloth do %>
-                    <div class="cloth col-sm-3 col-xs-6">
+                    <div class="cloth col-sm-3 col-xs-12">
                         <div class="cloth-image">
                             <%= image_tag cloth.image1.url(:medium) %>
                             <div class="hover">

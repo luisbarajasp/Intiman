@@ -163,12 +163,17 @@ $insta: #417399;
         margin: 0 auto;
         margin-top: 25px;
         position: relative;
-        max-height: 464px;
+        max-height: 433px;
         width: 100%;
         max-width: 963px;
         .category{
             position: absolute;
             overflow: hidden;
+            transition: transform ease 0.3s;
+            -moz-transition: transform ease 0.3s;
+            -webkit-transition: transform ease 0.3s;
+            -o-transition: transform ease 0.3s;
+            -ms-transition: transform ease 0.3s;
             img{
                 transition: all .2s ease-in-out;
                 max-width: 102%;
@@ -198,42 +203,44 @@ $insta: #417399;
                 }
             }
             &:hover{
-                img{
-                    // transform: scale(1.1);
-                    // -webkit-filter: blur(2px);
-                }
                 .mask{
                     background: rgba(0,0,0,0.4);
                 }
             }
         }
+        .normal-top{
+            max-width: 328px;
+            width: 33.4%;
+            z-index: 1;
+            &:hover{
+                transform: scale(1.2);
+                z-index: 2;
+            }
+        }
+        .normal-bottom{
+            max-width: 481.5px;
+            width: 50%;
+            z-index: 1;
+            &:hover{
+                transform: scale(1.2);
+                z-index: 2;
+            }
+        }
         #c1{
             left: 0;
-            max-width: 328px;
-            width: 34vw;
-            z-index: 1;
         }
         #c2{
-            max-width: 395px;
-            width: 41vw;
-            z-index: 2;
+
         }
         #c3{
             right: 0;
-            max-width: 328px;
-            width: 34vw;
-            z-index: 1;
         }
         #c4{
             bottom: 0;
-            max-width: 481.5px;
-            width: 50vw;
             left: 0;
         }
         #c5{
             bottom: 0;
-            max-width: 481.5px;
-            width: 50vw;
             right: 0;
         }
     }
@@ -387,7 +394,7 @@ $insta: #417399;
                         height: 30px;
                         text-align: center;
                         background: $dark;
-                        
+
                         p{
                             display: inline-block;
                             font-size: 12px;

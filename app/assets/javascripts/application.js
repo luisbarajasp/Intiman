@@ -64,17 +64,13 @@ var ready = function(){
     elem.height(elem.width()*0.48);
 
     //Categories of home page
-    $('#c1').height($('#c1').width()*0.66);
-    $('#c2').height($('#c2').width()*0.66);
-    $('#c3').height($('#c3').width()*0.66);
-    $('#c4').height($('#c4').width()*0.465);
-    $('#c5').height($('#c5').width()*0.465);
+    $('.normal-top').height($('.normal-top').width()*0.66);
+    $('.normal-bottom').height($('.normal-bottom').width()*0.465);
 
-    $('#c1').css('top', $('#c2').height()*.0925);
-    $('#c2').css('left', $('#c1').width()*0.88);
-    $('#c3').css('top', $('#c2').height()*.0925);
+    $('#c2').css('left', $('#c1').width()-2);
 
-      var disableScroll = function(){
+    //Disable scroll function
+    var disableScroll = function(){
           var top = $(window).scrollTop();
           var left = $(window).scrollLeft();
           $('body').css('overflow', 'hidden');
@@ -646,7 +642,6 @@ $(window).resize(function() {
     $('#c4').height($('#c4').width()*0.465);
     $('#c5').height($('#c5').width()*0.465);
 
-    $('#c1').css('top', $('#c2').height()*.0925);
-    $('#c2').css('left', $('#c1').width()*0.88);
-    $('#c3').css('top', $('#c2').height()*.0925);
+    $('#c2').css('left', $('#c1').width()-2);
+
 });
