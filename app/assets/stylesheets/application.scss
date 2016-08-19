@@ -1412,6 +1412,16 @@ p,ul,ol{
             width: 70%;
             margin: 0;
             margin-left: 15px;
+            background: $light-gray;
+            .ui-slider-range{
+                background: $dark;
+            }
+            .ui-slider-handle{
+                background: $white;
+            }
+            .ui-slider-handle.ui-state-active{
+                background: $white;
+            }
         }
         #min, #max {
             position: absolute;
