@@ -77,7 +77,7 @@ var ready = function(){
           $('#displazable').scroll(function(){
             $(this).scrollTop(top).scrollLeft(left);
           });
-     }
+    }
 
      var enableScroll = function(){
          $('body').css('overflow', 'auto');
@@ -131,6 +131,11 @@ var ready = function(){
             }
         }
     });
+
+    var top = $('.page-banner').height() / 2 - 18.5;
+    var left = $(window).width() / 2 - 52;
+    $('.page-banner h3').css('top',top);
+    $('.page-banner h3').css('left',left).show();
 
     var height = $(window).height() - 71;
     var aHeight = $(window).height() - 50;
@@ -207,7 +212,7 @@ var ready = function(){
         //Set options
         var speed = 500;
         var autoSwitch = true;
-        var autoSwitchSpeed = 10000;
+        var autoSwitchSpeed = 7000;
         var id;
 
         //Add initial active class
@@ -249,6 +254,15 @@ var ready = function(){
         });
 
     }
+
+    $('.toggle-btn-filters').on('click','#button', function(){
+        $('.filters').slideToggle();
+        if($(this).hasClass('active')){
+            $(this).html('<p><i class="fa fa-filter"></i> Filtros</p>').removeClass('active');
+        }else{
+            $(this).html('<p><i class="fa fa-times"></i> Cerrar</p>').addClass('active');
+        }
+    });
 
     $('#all').on('click',function(){
         $(".choices input").each(function(){
@@ -595,11 +609,13 @@ $(window).scroll(function() {
 
   function isScrolledIntoView(elem)
   {
-      var docViewTop = $(window).scrollTop();
-      var docViewBottom = docViewTop + $(window).height();
-      var elemTop = $(elem).offset().top;
+      if($(elem).length){
+          var docViewTop = $(window).scrollTop();
+          var docViewBottom = docViewTop + $(window).height();
+          var elemTop = $(elem).offset().top;
 
-      return (elemTop <= docViewBottom);
+          return (elemTop <= docViewBottom);
+      }
   }
 
   if(isScrolledIntoView('#brandssales')){
@@ -608,6 +624,14 @@ $(window).scroll(function() {
       $('#brandssales .brands').show('slide',{direction:'left'},1000);
 
   }
+
+  //Page-banner
+  var top = $('.page-banner').height() / 2 - 18.5 + $(document).scrollTop() / 2;
+  $('.page-banner h3').css('top',top);
+
+  //sales-banner image
+  top = $(document).scrollTop() / 2;
+  $('.sales-banner img').css('top',top);
 });
 
 $(window).resize(function() {
@@ -643,5 +667,11 @@ $(window).resize(function() {
     $('#c5').height($('#c5').width()*0.465);
 
     $('#c2').css('left', $('#c1').width()-2);
+
+    //Page-banner
+    var top = $('.page-banner').height() / 2 - 18.5;
+    var left = $(window).width() / 2 - 52;
+    $('.page-banner h3').css('top',top);
+    $('.page-banner h3').css('left',left);
 
 });

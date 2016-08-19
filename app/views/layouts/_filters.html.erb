@@ -1,0 +1,106 @@
+<div class="toggle-btn-filters clearfix">
+    <div id="button">
+        <p><i class="fa fa-filter"></i> Filtros</p>
+    </div>
+    <div class="btn-group disable" id="clean">
+        <%= link_to "Limpiar filtros", sales_index_path %>
+    </div>
+</div>
+<% @max = 0 %>
+<% @cloths.each do |cloth| %>
+    <% if cloth.price > @max %>
+        <% @max = cloth.price %>
+    <% end %>
+<% end %>
+<div class="filters">
+    <div class="filter" id="price">
+      <h3>PRECIO</h3>
+      <div class="options">
+        <script type="text/javascript">
+            $(document).ready(function(){
+                max = <%= @max %>;
+                $('#slider-range').slider({
+                    range: true,
+                    values: [0, max],
+                    min: 0,
+                    max: max,
+                    step: 5,
+                    slide: function(event,ui){
+                        var delay = function() {
+                            var handleIndex = $(ui.handle).index() - 1;
+                            var label = handleIndex == 0 ? '#min' : '#max';
+                            $(label).html('$' + ui.value).position({
+                                my: 'center top',
+                                at: 'center bottom',
+                                of: ui.handle,
+                                offset: "0, 10"
+                            });
+                        };
+
+                        // wait for the ui.handle to set its position
+                        setTimeout(delay, 5);
+                    }
+                });
+                $('#min').html('$0').position({
+                    my: 'center top',
+                    at: 'center bottom',
+                    of: $('#slider-range a:eq(0)'),
+                    offset: "0, 10"
+                });
+
+                $('#max').html('$' + max).position({
+                    my: 'center top',
+                    at: 'center bottom',
+                    of: $('#slider-range a:eq(1)'),
+                    offset: "0, 10"
+                });
+            });
+        </script>
+        <div id="slider-range">
+            <div id="min" class="slid-val"></div>
+            <div id="max" class="slid-val"></div>
+        </div>
+      </div>
+    </div>
+    <div class="filter">
+      <h3>TALLA</h3>
+      <div class="options">
+        <% @sizes.each do |size| %>
+            <p><%= link_to size.letter, params.merge(:size => size.letter) %></p>
+        <% end %>
+      </div>
+    </div>
+    <div class="filter">
+      <h3>COLOR</h3>
+      <div class="options">
+        <% @colors.each do |color| %>
+            <p><span id="circle" style="background: <%= color.hex %>"></span> <%= link_to color.name, params.merge(:color => color.name) %> </p>
+        <% end %>
+      </div>
+    </div>
+    <div class="filter">
+      <h3>MARCA</h3>
+      <div class="options">
+        <% @brands.each do |brand| %>
+            <p><%= link_to brand.name, params.merge(:brand => brand.name) %></p>
+        <% end %>
+      </div>
+    </div>
+    <div class="filter">
+      <h3>CATEGORÍA</h3>
+      <div class="options">
+        <% @categories.each do |category| %>
+            <p><%= link_to category.name, params.merge(:category => category.name) %></p>
+        <% end %>
+      </div>
+    </div>
+    <div class="filter">
+      <h3>ORDENAR POR</h3>
+      <div class="options">
+        <p><%= link_to "Más reciente", params.merge(:sort => 'created_at', :order => 'DESC'), class: 'active' %></p>
+        <p><%= link_to "Más antiguo", params.merge(:sort => 'created_at', :order => 'ASC') %></p>
+        <p><%= link_to "Precio menor a mayor", params.merge(:sort => 'price', :order => 'ASC') %></p>
+        <p><%= link_to "Precio mayor a menor", params.merge(:sort => 'price', :order => 'DESC') %></p>
+      </div>
+    </div>
+</div>

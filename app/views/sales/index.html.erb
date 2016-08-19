@@ -1,67 +1,13 @@
-<div class="page-name">
-    <h3>Sales</h3>
-    <hr>
+<div class="page-banner sales-banner">
+    <h3 class="animated swing">SALES</h3>
+    <%= image_tag "sales.png" %>
 </div>
+<div class="banner-space"></div>
 <div class="wrapper">
-    <div class="filters">
-        <div class="btn-group">
-          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Talla <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu">
-            <% @sizes.each do |size| %>
-                <li><%= link_to size.letter, params.merge(:size => size.letter) %></li>
-            <% end %>
-          </ul>
-        </div>
-        <div class="btn-group">
-          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Color <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu">
-            <% @colors.each do |color| %>
-                <li><span id="circle" style="background: <%= color.hex %>"></span> <%= link_to color.name, params.merge(:color => color.name) %> </li>
-            <% end %>
-          </ul>
-        </div>
-        <div class="btn-group">
-          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Marca <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu">
-            <% @brands.each do |brand| %>
-                <li><%= link_to brand.name, params.merge(:brand => brand.name) %></li>
-            <% end %>
-          </ul>
-        </div>
-        <div class="btn-group">
-          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Categoría <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu">
-            <% @categories.each do |category| %>
-                <li><%= link_to category.name, params.merge(:category => category.name) %></li>
-            <% end %>
-          </ul>
-        </div>
-        <div class="btn-group disable" id="clean">
-            <%= link_to "Limpiar filtros", sales_index_path %>
-        </div>
-        <div class="sort-by">
-            <div class="btn-group">
-              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Ordenar por: <span class="caret"></span>
-              </button>
-              <ul class="dropdown-menu dropdown-menu-right">
-                <li><%= link_to "Más nuevo", params.merge(:sort => 'created_at', :order => 'DESC') %></li>
-                <li><%= link_to "Precio menor a mayor", params.merge(:sort => 'discount_price', :order => 'ASC') %></li>
-                <li><%= link_to "Precio mayor a menor", params.merge(:sort => 'discount_price', :order => 'DESC') %></li>
-              </ul>
-            </div>
-        </div>
-    </div>
 
-    <div id="cloths" class="transitions-enabled clearfix">
+    <%= render 'layouts/filters' %>
+
+    <div class="cloths">
         <%= render @cloths %>
     </div>
 </div>

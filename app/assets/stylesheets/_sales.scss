@@ -1,3 +1,14 @@
 // Place all the styles related to the Sales controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.sales-banner{
+    background: rgba(212, 171, 171, 0.6);
+    overflow: hidden;
+    img{
+        max-height: 80vh;
+        position: absolute;
+        top: 0;
+        right: 23vw;
+    }
+}

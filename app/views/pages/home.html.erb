@@ -3,13 +3,13 @@
         <div class="slide" id="s1">
             <div class="mask"></div>
             <div class="content">
-                <div class="title">
+                <div class="title animated bounceInRight">
                     <h1>¡FELIZ DIA DEL PADRE!</h1>
                 </div>
                 <div class="description">
                     <h3>En Intiman queremos festejarte como te mereces</h3>
                 </div>
-                <div class="guide-btn">
+                <div class="guide-btn animated fadeInUp">
                     <a href="#">VER PROMOCIÓN</a>
                 </div>
             </div>
@@ -18,13 +18,13 @@
         <div class="slide" id="s2">
             <div class="mask"></div>
             <div class="content content2">
-                <div class="title">
+                <div class="title animated bounceInLeft">
                     <h1>¡NUEVA LÍNEA!</h1>
                 </div>
                 <div class="description">
                     <h3>Con el verano llega la nueva línea, chécalos</h3>
                 </div>
-                <div class="guide-btn">
+                <div class="guide-btn animated fadeInUp">
                     <a href="#">VER PRODUCTOS</a>
                 </div>
             </div>
@@ -35,9 +35,9 @@
         <div class="changer active" data-link="s1" ></div>
         <div class="changer" data-link="s2"></div>
     </div>
-    <div class="progress-bar">
+    <!--<div class="progress-bar">
         <hr id="bar">
-    </div>
+    </div>-->
     <div id="categories" class="wrapper">
         <div class="category normal-top" id="c1">
             <%= image_tag "c1" %>
@@ -128,57 +128,7 @@
     <div id="newreleases" class="wrapper clearfix">
         <h1>Nuevos Productos</h1>
         <div class="cloths">
-            <% @cloths.each do |cloth| %>
-                <%= link_to cloth do %>
-                    <div class="cloth col-sm-3 col-xs-12">
-                        <div class="cloth-image">
-                            <%= image_tag cloth.image1.url(:medium) %>
-                            <div class="hover">
-                                <% @sizes.each do |size| %>
-                                    <% cloth.sis.each do |si| %>
-                                        <% if size == si.size %>
-                                            <% @exists = true %>
-                                        <% end %>
-                                    <% end %>
-                                    <% if @exists %>
-                                        <p id="available"><%= size.letter %></p>
-                                    <% else %>
-                                        <p id="unavailable"><%= size.letter %><span>╱</span></p>
-                                    <% end %>
-                                <% end %>
-                            </div>
-                        </div>
-                        <div class="info">
-                            <h5><%= cloth.name %></h5>
-                            <% if cloth.discount_price != 0 %>
-                                <h5 id="dprice"><%= number_to_currency cloth.discount_price %> <span id="nprice"><%= number_to_currency cloth.normal_price %></span></h5>
-                                <div class="sale-banner"><h1>SALE</h1></div>
-                            <% else %>
-                                <h5 id="price"><%= number_to_currency cloth.normal_price %></h5>
-                            <% end %>
-                        </div>
-                        <!-- <% if user_signed_in? %>
-                            <div class="like">
-                                <% if !(current_user.liked? cloth) %>
-                                    <%= link_to like_cloth_path(cloth), method: :put do %>
-                                        <span class="change-icon">
-                                            <div class="fs1" aria-hidden="true" data-icon="&#xe030;"></div>
-                                            <div class="fs1" aria-hidden="true" data-icon="&#xe089;"></div>
-                                        </span>
-                                    <% end %>
-                                <% else %>
-                                    <%= link_to dislike_cloth_path(cloth), method: :put do %>
-                                        <span class="change-icon">
-                                            <div class="fs1" aria-hidden="true" data-icon="&#xe089;"></div>
-                                            <div class="fs1" aria-hidden="true" data-icon="&#xe030;"></div>
-                                        </span>
-                                    <% end %>
-                                <% end %>
-                            </div>
-                        <% end %> -->
-                    </div>
-                <% end %>
-            <% end %>
+            <%= render @cloths %>
         </div>
     </div>
     <div id="social" class="wrapper clearfix">
