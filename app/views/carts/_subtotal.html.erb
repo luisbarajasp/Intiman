@@ -1,1 +1,7 @@
-<h5 id="subtotal">Subtotal: MXN <%= number_to_currency current_order.subtotal %></h5>
+<h5 id="subtotal"><%= number_to_currency current_order.subtotal %></h5>
+<h5>*No incluye envío</h5>
+<% @q = 0 %>
+<% current_order.order_items.each do |oi| %>
+    <% @q += oi.quantity %>
+<% end %>
+<h5 id="quantity">Cantidad de prendas: <%= @q %></h5>
