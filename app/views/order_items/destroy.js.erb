@@ -3,4 +3,5 @@ $(".shopping-cart").html("<%= escape_javascript(render 'carts/shopping_cart') %>
 $(".checkout-cart").html("<%= escape_javascript(render 'user_orders/checkout_cart') %>")
 $(".cart-menu").html("<%= escape_javascript(render 'layouts/cart_menu') %>").find('.content').show()
 $(".subtotal").html("<%= escape_javascript(render 'carts/subtotal') %>")
+$(".subtotal").html("<%= escape_javascript(render 'user_orders/subtotal') %>")
 $(".total").html("<%= escape_javascript(render 'user_orders/total') %>")

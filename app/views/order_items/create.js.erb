@@ -4,4 +4,5 @@ alert("not valid.")
   $(".cart-size").html("<%= escape_javascript(render 'layouts/cart_size') %>")
   $(".cart-menu").html("<%= escape_javascript(render 'layouts/cart_menu') %>").find('.content').show()
   $(".subtotal").html("<%= escape_javascript(render 'carts/subtotal') %>")
+  $(".subtotal").html("<%= escape_javascript(render 'user_orders/subtotal') %>")
 <% end %>

@@ -1,10 +1,23 @@
-<div class="bottom-cart">
-    <div class="total">
-        <%= render 'user_orders/total' %>
-    </div>
-</div>
-<div class="order_items">
-    <% @order_items.each do |order_item| %>
-      <%= render 'user_orders/checkout_row', cloth: order_item.cloth, order_item: order_item, show_total: true %>
+<div class="cloths-bag">
+    <h2>Prendas</h2>
+    <% if @order_items.size == 0 %>
+      <p class="text-center">
+        Aún no tienes prendas en tu bolsa de compra. <i class="fa fa-exclamation-circle"></i>
+      </p>
+    <% else %>
+      <div class="order_items">
+          <% @order_items.each do |order_item| %>
+            <%= render 'user_orders/checkout_row', cloth: order_item.cloth, order_item: order_item, show_total: true %>
+          <% end %>
+      </div>
     <% end %>
+</div>
+
+<div class="side-menu-cart">
+    <div class="next">
+        <p>Siguiente ></p>
+    </div>
+  <div class="subtotal">
+      <%= render 'user_orders/subtotal' %>
+  </div>
 </div>

@@ -326,6 +326,28 @@ var ready = function(){
         $(this).children().children().css('opacity', '1');
     });
 
+    //Step Progressbar Checkout
+    $('.navbar-checkout li').click(function(){
+        var object = $(this).data('object');
+
+        $(this).addClass('active').removeClass('inactive');
+        $(this).nextAll().removeClass('active').addClass('inactive');
+
+        $('.checkout-sec').find('.active').hide('slide',{direction:'left'},1000);
+        $('.checkout-sec').find('#'+object).show('slide',{direction:'right'},1000);
+
+
+    });
+
+    $('.checkout-sec div').click('.next',function(){
+        $(this).hide('slide',{direction:'left'},1000);
+        $(this).next().show('slide',{direction:'right'},1000);
+
+        var object = $(this).attr('id');
+        $('.navbar-checkout li').data(object).addClass('active');
+
+    });
+
     $('.btn-number').click(function(e){
             e.preventDefault();
 
