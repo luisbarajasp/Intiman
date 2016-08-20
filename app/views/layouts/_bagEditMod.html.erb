@@ -1,0 +1,63 @@
+<% current_order.order_items.each do |order_item| %>
+    <!-- Modal -->
+    <div class="modal fade modalBagCloth" id="modalBagCloth<%= order_item.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="fa fa-times-circle" aria-hidden="true"></i></span></button>
+            <h4 class="modal-title" id="myModalLabel"><%= order_item.cloth.name %></h4>
+          </div>
+          <div class="modal-body">
+              <%= image_tag order_item.cloth.image1.url(:medium) %>
+              <%= form_for (order_item), remote: true,:url => "/order_items/#{order_item.id}", :html=>{:id=>'item_form_cart'} do |f| %>
+                  <div class="input-colors">
+                      Color:
+                      <% @cos.each do |co| %>
+                          <% if co.cloth == order_item.cloth %>
+                              <% if co.color_id == order_item.color_id %>
+                                  <%= link_to "#{co.color_id}", class: "link-circle cart-el active" do %>
+                                      <div class="circle" style="background: <%= co.color.hex %>;">
+                                          <div class="mini-circle" style="opacity: 1;"><i class="fa fa-check" aria-hidden="true"></i></div>
+                                      </div>
+                                  <% end %>
+                              <% else %>
+                                  <%= link_to "#{co.color_id}", class: "link-circle cart-el" do %>
+                                      <div class="circle" style="background: <%= co.color.hex %>;">
+                                          <div class="mini-circle"><i class="fa fa-check" aria-hidden="true"></i></div>
+                                      </div>
+                                  <% end %>
+                              <% end %>
+                          <% end %>
+                      <% end %>
+                  </div>
+                  <%= f.hidden_field :color_id, id: "color-input-cart" %>
+                  <div class="input-sizes">
+                      Talla:
+                      <% @sis.each do |si| %>
+                         <% if si.cloth == order_item.cloth %>
+                             <% if order_item.size_id == si.size_id %>
+                                 <%= link_to si.size.letter, "#{si.size_id}", class:"selected cart-el" %>
+                             <% else %>
+                                 <%= link_to si.size.letter, "#{si.size_id}", class:"normal-size cart-el" %>
+                             <% end %>
+                         <% end %>
+                      <% end %>
+                  </div>
+                  <%= f.hidden_field :size_id, id: "size-input-cart" %>
+                  <div class="cantidad">
+                    Cantidad: <%= f.select :quantity, options_for_select(1..10, order_item.quantity), {}, class: "form-control" %>
+                    <%= f.hidden_field :cloth_id, value: order_item.cloth.id %>
+                  </div>
+                  <div class="unit_price">
+                      <h4>Precio Unitario: <%= number_to_currency order_item.unit_price %></h4>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" onclick= "$(this).closest('#item_form_cart').submit();">Guardar Cambios</button>
+                  </div>
+              <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+<% end %>

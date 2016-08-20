@@ -25,66 +25,7 @@
         <h4 class="price"><%= number_to_currency order_item.unit_price %></h4>
         <div class="links">
             <a href="#modalBagCloth<%= order_item.id %>" role="button" class="btn" data-toggle="modal">Editar</a>
-            <%= link_to "Eliminar", order_item, { data: { confirm: "¿Estás seguro que quieres borrar esta prenda de tu carrito?" }, method: :delete, remote: true, class: "delete" } %>
+            <%= link_to "Eliminar", order_item, { data: { confirm: "¿Estás seguro que quieres borrar esta prenda de tu bolsa?" }, method: :delete, remote: true, class: "delete" } %>
         </div>
     </div>
-</div>
-<!-- Modal -->
-<div class="modal fade" id="modalBagCloth<%= order_item.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="fa fa-times-circle" aria-hidden="true"></i></span></button>
-        <h4 class="modal-title" id="myModalLabel"><%= cloth.name %></h4>
-      </div>
-      <div class="modal-body">
-        <p>
-            <%= form_for (order_item), remote: true,:url => "/order_items/#{order_item.id}", :html=>{:id=>'item_form_cart'} do |f| %>
-                <div class="input-colors col-md-1">
-                    <% @cos.each do |co| %>
-                        <% if co.cloth == order_item.cloth %>
-                            <% if co.color_id == order_item.color_id %>
-                                <%= link_to "#{co.color_id}", class: "link-circle cart-el" do %>
-                                    <div class="circle" style="background: <%= co.color.hex %>;">
-                                        <div class="mini-circle" style="opacity: 1;"></div>
-                                    </div>
-                                <% end %>
-                            <% else %>
-                                <%= link_to "#{co.color_id}", class: "link-circle cart-el" do %>
-                                    <div class="circle" style="background: <%= co.color.hex %>;">
-                                        <div class="mini-circle"></div>
-                                    </div>
-                                <% end %>
-                            <% end %>
-                        <% end %>
-                    <% end %>
-                </div>
-                <%= f.hidden_field :color_id, id: "color-input-cart" %>
-                <div class="input-sizes col-md-2">
-                    <% @sis.each do |si| %>
-                       <% if si.cloth == order_item.cloth %>
-                           <% if order_item.size_id == si.size_id %>
-                               <%= link_to si.size.letter, "#{si.size_id}", class:"selected cart-el" %>
-                           <% else %>
-                               <%= link_to si.size.letter, "#{si.size_id}", class:"normal-size cart-el" %>
-                           <% end %>
-                       <% end %>
-                    <% end %>
-                </div>
-                <%= f.hidden_field :size_id, id: "size-input-cart" %>
-                <div class="col-md-2 unit_price">
-                    <h4>MXN <%= number_to_currency order_item.unit_price %></h4>
-                </div>
-                <div class="col-md-1 cantidad">
-                  <%= f.select :quantity, options_for_select(1..10, order_item.quantity), {}, class: "form-control", onchange: "$(this).closest('#item_form_cart').submit();"%>
-                  <%= f.hidden_field :cloth_id, value: cloth.id %>
-                </div>
-                <div class="col-md-2">
-                    <h4 class="text-right">MXN <span style="font-weight: 700;"><%= number_to_currency order_item.total_price %></span></h4>
-                </div>
-            <% end %>
-        </p>
-      </div>
-    </div>
-  </div>
 </div>

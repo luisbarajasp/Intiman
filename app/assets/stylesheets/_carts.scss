@@ -138,3 +138,117 @@ $green: #0b6018;
         }
     }
 }
+
+.modalBagCloth{
+    .modal-header{
+        border: none;
+    }
+    .modal-body{
+        img{
+            max-width: 100%;
+        }
+        form{
+            margin-top: 20px;
+            .input-colors{
+                margin-bottom: 20px;
+                a{
+                    text-decoration: none;
+                }
+                a.active{
+                    cursor: default;
+                    pointer-events: none;
+                }
+                .circle{
+                    width: 20px;
+                    height: 20px;
+                    display: inline-block;
+                    position: relative;
+                    margin-left: 5px;
+                    .mini-circle{
+                        opacity: 0;
+                        font-size: 18px;
+                        position: absolute;
+                        top: -2px;
+                        color: $white;
+                        left: 1px;
+                    }
+                }
+            }
+            .input-sizes{
+                margin-bottom: 20px;
+                a{
+                    margin-left: 5px;
+                    text-decoration: none;
+                }
+                .normal-size{
+                    color: #979797;
+                    &:hover{
+                        color: $dark;
+                        font-weight: 400;
+                    }
+                }
+                .selected{
+                    color: $dark;
+                    cursor: default;
+                    pointer-events: none;
+                    font-weight: 400;
+                }
+            }
+            #order_item_quantity{
+                width: 40px;
+                display: inline-block;
+                margin-left: 10px;
+            }
+            .cantidad{
+                margin-bottom: 20px;
+            }
+        }
+        .info{
+            margin-top: 5%;
+            width: 35%;
+            display: inline-block;
+            h4{
+                font-size: 15px;
+                font-weight: 200;
+                margin: 15px 0;
+            }
+            .top{
+                .name,.size,.color{
+                    display: inline-block;;
+                }
+                .name{
+                    padding-right: 15%;
+                }
+                .size{
+                    font-weight: 400;
+                    padding-left: 15%;
+                }
+                .color{
+                    margin-top: 7px;
+                    padding: 10px;
+                }
+            }
+            #order_item_quantity{
+                width: 40px;
+                display: inline-block;
+                margin-left: 10px;
+            }
+            .price{
+                font-weight: 400;
+            }
+            .links{
+                a{
+                    color: $dark;
+                    font-weight: 200;
+                    margin: 0 20px;
+                    &:hover{
+                        text-decoration: underline;
+                    }
+                }
+                .delete{
+                    color: $red;
+                }
+            }
+        }
+    }
+}
