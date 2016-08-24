@@ -4,18 +4,18 @@
     </div>
     <div class="navbar-checkout">
         <ul>
-            <li data-object="summary" class="active">Resumen</li>
-            <li data-object="shipping" class="inactive">Envío</li>
-            <li data-object="form-card" class="inactive">Pago</li>
-            <li data-object="confirmation" class="inactive">Confirmación</li>
+            <li class="active"><a href="#summary">Resumen</a></li>
+            <li><a href="#shipping">Envío</a></li>
+            <li><a href="#form-card">Pago</a></li>
+            <li><a href="#confirmation">Confirmación</a></li>
         </ul>
     </div>
-    <div class="checkout-sec">
-        <div id="summary" class="checkout-cart active">
+    <div class="checkout-steps">
+        <div id="summary" class="checkout-step checkout-cart active">
             <%= render 'checkout_cart' %>
         </div>
         <%= form_for @order, :url => "/order/#{@order.id}", method: :put, :html => { :id => "order" } do |f| %>
-        <div id="shipping" class="form-co-order">
+        <div id="shipping" class="checkout-step form-co-order inactive">
             <div class="order-container">
                 <% if @repeated %>
                     <div id="repeated" class="clearfix">
@@ -57,7 +57,7 @@
                 </div>
             </div>
         </div>
-        <div id="form-card" class="col-md-6 col-md-offset-3">
+        <div id="form-card" class="checkout-step">
             <div id="stripe_error" class="alert alert-danger" style="display:none"></div>
             <% if @customer %>
                 <div id="customer" class="clearfix">
@@ -102,9 +102,9 @@
             <div class="exp-stripe col-xs-12">
                 <h4>* Los datos de tu tarjeta son manejados directamente por Stripe. <br>Intiman no guarda ninguno de estos.</h4>
             </div>
-        </div>
-        <div id="button-buy" class="form-group clearfix col-md-12">
-            <%= f.submit "Comprar", class: "btn hvr-shadow" %>
+            <div id="button-buy" class="form-group clearfix col-md-12">
+                <%= f.submit "Comprar", class: "btn hvr-shadow" %>
+            </div>
         </div>
         <% end %>
     </div>

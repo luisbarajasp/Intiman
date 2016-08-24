@@ -18,7 +18,7 @@
       <div class="options">
         <script type="text/javascript">
             $(document).ready(function(){
-                max = <%= @max %>;
+                var max = <%= @max %>;
                 $('#slider-range').slider({
                     range: true,
                     values: [0, max],
@@ -28,7 +28,9 @@
                     slide: function(event,ui){
                         var delay = function() {
                             var handleIndex = $(ui.handle).index() - 1;
-                            var label = handleIndex == 0 ? '#min' : '#max';
+                            console.log('Index: '+handleIndex);
+                            var label = handleIndex == 2 ? '#min' : '#max';
+                            console.log('Label: '+label);
                             $(label).html('$' + ui.value).position({
                                 my: 'center top',
                                 at: 'center bottom',
@@ -41,19 +43,9 @@
                         setTimeout(delay, 5);
                     }
                 });
-                $('#min').html('$0').position({
-                    my: 'center top',
-                    at: 'center bottom',
-                    of: $('#slider-range a:eq(0)'),
-                    offset: "0, 10"
-                });
 
-                $('#max').html('$' + max).position({
-                    my: 'center top',
-                    at: 'center bottom',
-                    of: $('#slider-range a:eq(1)'),
-                    offset: "0, 10"
-                });
+                $('#min').html('$0');
+                $('#max').html('$' + max);
             });
         </script>
         <div id="slider-range">

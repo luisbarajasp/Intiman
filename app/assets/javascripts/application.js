@@ -327,24 +327,30 @@ var ready = function(){
     });
 
     //Step Progressbar Checkout
+
     $('.navbar-checkout li').click(function(){
-        var object = $(this).data('object');
+        var id = $(this).find('a').attr('href');
 
-        $(this).addClass('active').removeClass('inactive');
-        $(this).nextAll().removeClass('active').addClass('inactive');
+        $(this).addClass('active');
+        $(this).nextAll().removeClass('active');
+        $(this).prevAll().addClass('active');
 
-        $('.checkout-sec').find('.active').hide('slide',{direction:'left'},1000);
-        $('.checkout-sec').find('#'+object).show('slide',{direction:'right'},1000);
+
+        $('.checkout-sec').find('.active').hide('slide',{direction:'left'},1000).addClass('inactive');
+        $('.checkout-sec').find(id).show('slide',{direction:'right'},1000);
 
 
     });
 
-    $('.checkout-sec div').click('.next',function(){
-        $(this).hide('slide',{direction:'left'},1000);
-        $(this).next().show('slide',{direction:'right'},1000);
+    $('.next-ch-step').on('click',function(){
+        var parent = $(this).parent().parent();
+        parent.hide('slide',{direction:'left'},1000).addClass('inactive');
+        parent.next().show('slide',{direction:'right'},1000);
 
-        var object = $(this).attr('id');
-        $('.navbar-checkout li').data(object).addClass('active');
+        var object = parent.attr('id');
+        if ($('.navbar-checkout li a').attr("href") == '#'+object){
+            $(this).parent().addClass('active');
+        }
 
     });
 
