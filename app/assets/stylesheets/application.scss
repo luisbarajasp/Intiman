@@ -1286,11 +1286,8 @@ p,ul,ol{
             background: none;
             color: $dark;
             border: 1px solid $dark;
-            font-size: 18px;
-            border-radius: 4px;
-            -moz-border-radius: 4px;
-            -webkit-border-radius: 4px;
-            -o-border-radius: 4px;
+            font-size: 15px;
+            padding: 10px 20px;
             &:hover{
                 background: $dark;
                 color: $white;
