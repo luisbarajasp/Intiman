@@ -7,10 +7,10 @@
     <% end %>
 
     <div class="images col-md-1 col-sm-1">
-        <div id="image" class="displaying">
+        <!--<div id="image" class="displaying">
             <%= link_to (image_tag @cloth.image2.url(:thumb)), "img2", id: "link-img" %>
             <div class="hover"></div>
-        </div>
+        </div>-->
         <div id="image">
             <%= link_to (image_tag @cloth.image1.url(:thumb)), "img1", id: "link-img" %>
             <div class="hover"></div>
@@ -18,10 +18,10 @@
     </div>
     <div class="picture col-md-6 col-sm-6">
         <div class="portrait">
-            <div id="img2" class="display">
+            <!--<div id="img2" class="display">
                 <%= image_tag @cloth.image2.url(:medium), id: "zoom-img", 'data-zoom-image' => "#{@cloth.image2.url(:large)}" %>
-            </div>
-            <div id="img1" class="hidden">
+            </div>-->
+            <div id="img1" class="display">
                 <%= image_tag @cloth.image1.url(:medium), id: "zoom-img2", 'data-zoom-image' => "#{@cloth.image1.url(:large)}" %>
             </div>
         </div>
@@ -71,6 +71,7 @@
                 <div class="input-sizes">
                     <div class="sizes">
                         <% @sis.each do |si| %>
+                            <% puts si %>
                             <%= link_to si.size.letter, "#{si.size_id}", class:"normal-size" %>
                         <% end %>
                     </div>

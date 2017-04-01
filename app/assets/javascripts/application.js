@@ -273,7 +273,7 @@ var ready = function(){
     $('a.normal-size').on('click', function(e){
         e.preventDefault();
         var value = $(this).attr("href");
-        $('#size-input-cart').val(value);
+        $('#size-input').val(value);
         $(this).removeClass("normal-size").addClass("selected").siblings().removeClass("selected").addClass("normal-size");
     });
 
