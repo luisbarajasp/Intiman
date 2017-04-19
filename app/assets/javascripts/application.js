@@ -18,6 +18,7 @@
 //= require twitter/bootstrap
 //= require masonry/jquery.masonry
 //= require instafeed
+//= require typed
 //= require_tree .
 //= require turbolinks
 

@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  helper_method :current_order
+  #helper_method :current_order
 
   def current_order
     if user_signed_in?
@@ -35,7 +35,7 @@ class ApplicationController < ActionController::Base
     @current_order
   end
 
-  before_action :get_navigation
+  #before_action :get_navigation
 
   def get_navigation
       @categories = Category.all.order('created_at ASC')
@@ -55,7 +55,7 @@ class ApplicationController < ActionController::Base
       @order_items = OrderItem.where(order_id: current_order.id)
   end
 
-  before_action :configure_permitted_parameters, if: :devise_controller?
+  #before_action :configure_permitted_parameters, if: :devise_controller?
 
   protected
 

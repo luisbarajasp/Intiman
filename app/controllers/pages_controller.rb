@@ -5,6 +5,9 @@ class PagesController < ApplicationController
       @sizes = Size.order('created_at ASC')
   end
 
+  def home_static
+  end
+
   def about
   end
 
